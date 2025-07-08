@@ -1,0 +1,133 @@
+import User from '../models/User.model';
+import { Request, Response } from 'express';
+import admin from '../config/firebase';
+import { getAuth } from 'firebase-admin/auth';
+
+// Get user by ID
+export const getUsers = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const users = await User.find(); 
+    res.status(200).json({ success: true, data: users });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error fetching users',
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
+};
+
+// Create new user
+export const createUsers = async (req: Request, res: Response): Promise<void> => {
+  const { fullName, email, password } = req.body;
+
+  if (!fullName || !email || !password) {
+    res.status(400).json({ message: 'Please provide full name, email, and password' });
+    return;
+  }
+
+  try {
+    const newUser = new User({ fullName, email, password });
+    await newUser.save();
+    res.status(201).json({ message: 'User created successfully' });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error creating user',
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
+}
+
+// Update user
+export const updateUsers = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const { fullName, email, password, firebaseUid } = req.body;
+
+  if (!id) {
+    res.status(400).json({ message: 'User ID is required' });
+    return;
+  }
+
+  try {
+    // Update MongoDB
+    const updateData: any = { fullName, email };
+    if (password) {
+      // Only update password if it's provided
+      updateData.password = password;
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(id, updateData, { new: true });
+    if (!updatedUser) {
+      res.status(404).json({ message: 'User not found in database' });
+      return;
+    }
+
+    // Update Firebase Auth if firebaseUid is provided
+    if (firebaseUid) {
+      try {
+        const auth = getAuth();
+        const updateRequest: any = { displayName: fullName, email };
+        if (password) {
+          updateRequest.password = password;
+        }
+        await auth.updateUser(firebaseUid, updateRequest);
+      } catch (firebaseError) {
+        console.error('Error updating Firebase user:', firebaseError);
+        // Continue with the response even if Firebase update fails
+      }
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      message: 'User updated successfully', 
+      data: updatedUser 
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error updating user',
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
+}
+
+// Delete user
+export const deleteUsers = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const { firebaseUid } = req.body;
+
+  if (!id) {
+    res.status(400).json({ success: false, message: 'User ID is required' });
+    return;
+  }
+
+  try {
+    // Delete from MongoDB
+    const deletedUser = await User.findByIdAndDelete(id);
+    if (!deletedUser) {
+      res.status(404).json({ success: false, message: 'User not found in database' });
+      return;
+    }
+
+    // Delete from Firebase Auth if firebaseUid is provided
+    if (firebaseUid) {
+      try {
+        const auth = getAuth();
+        await auth.deleteUser(firebaseUid);
+      } catch (firebaseError) {
+        console.error('Error deleting Firebase user:', firebaseError);
+        // Continue with the response even if Firebase deletion fails
+      }
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      message: 'User deleted successfully' 
+    });
+  } catch (error) {
+    console.error('Error in delete user:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting user',
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
+}

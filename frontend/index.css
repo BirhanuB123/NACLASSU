@@ -1,0 +1,17 @@
+/*
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input {
+  @apply block w-full mb-2 p-2 border border-gray-300 rounded;
+}
+
+.btn {
+  @apply bg-blue-500 text-white px-4 py-2 rounded;
+}
+
+.card {
+  @apply border p-4 rounded-xl shadow-md;
+}
+*/
