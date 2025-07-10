@@ -88,7 +88,7 @@ const Navbar = () => {
     { to: '/values', label: 'values' },
     { to: '/team', label: 'team' },
     { to: '/sponsors', label: 'sponsors' },
-    { to: '/message', label: 'News & Messages' },
+    { to: '/message', label: 'news' },
     { to: '/gallery', label: 'gallery' }
   ];
 
@@ -154,20 +154,20 @@ const Navbar = () => {
                 <Button 
                   asChild 
                   variant="outline" 
-                  className="w-full justify-start"
+                  className="w-full justify-start h-11 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/80 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 group"
                 >
-                  <Link to="/login" onClick={closeMenu}>
-                    <LogIn className="h-4 w-4 mr-2" />
-                    {t('login')}
+                  <Link to="/login" onClick={closeMenu} className="flex items-center gap-2">
+                    <LogIn className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <span className="font-medium">{t('login')}</span>
                   </Link>
                 </Button>
                 <Button 
                   asChild 
-                  className="w-full justify-start bg-church-700 hover:bg-church-800"
+                  className="w-full justify-start h-11 px-4 rounded-lg bg-gradient-to-r from-church-600 to-church-700 hover:from-church-700 hover:to-church-800 text-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
                 >
-                  <Link to="/signup" onClick={closeMenu}>
-                    <UserPlus className="h-4 w-4 mr-2" />
-                    {t('signup')}
+                  <Link to="/signup" onClick={closeMenu} className="flex items-center gap-2">
+                    <UserPlus className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    <span className="font-medium">{t('signup')}</span>
                   </Link>
                 </Button>
               </div>
@@ -324,21 +324,21 @@ const Navbar = () => {
                   asChild 
                   variant="outline" 
                   size="sm" 
-                  className="border-gray-300 dark:border-gray-600"
+                  className="relative h-9 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/80 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 group"
                 >
-                  <Link to="/login">
-                    <LogIn className="h-4 w-4 mr-1" />
-                    <span>{t('login')}</span>
+                  <Link to="/login" className="flex items-center gap-1.5">
+                    <LogIn className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <span className="font-medium">{t('login')}</span>
                   </Link>
                 </Button>
                 <Button 
                   asChild 
                   size="sm" 
-                  className="bg-church-700 hover:bg-church-800 text-white"
+                  className="relative h-9 px-4 rounded-lg bg-gradient-to-r from-church-600 to-church-700 hover:from-church-700 hover:to-church-800 text-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
                 >
-                  <Link to="/signup">
-                    <UserPlus className="h-4 w-4 mr-1" />
-                    <span>{t('signup')}</span>
+                  <Link to="/signup" className="flex items-center gap-1.5">
+                    <UserPlus className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    <span className="font-medium">{t('signup')}</span>
                   </Link>
                 </Button>
               </>

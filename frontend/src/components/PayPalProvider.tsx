@@ -1,71 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import { PayPalScriptProvider, type ReactPayPalScriptOptions } from '@paypal/react-paypal-js';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { Loader2, AlertCircle } from 'lucide-react';
-
-console.log('PayPalProvider: Initializing...');
-console.log('VITE_PAYPAL_CLIENT_ID:', import.meta.env.VITE_PAYPAL_CLIENT_ID ? 'Found' : 'Missing');
+import { useState, useEffect } from 'react';
 
 interface PayPalProviderProps {
   children: React.ReactNode;
 }
 
 const PayPalProvider: React.FC<PayPalProviderProps> = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const initialOptions: ReactPayPalScriptOptions = {
-    'client-id': import.meta.env.VITE_PAYPAL_CLIENT_ID || '',
-    currency: 'USD',
-  };
+  const [isClient, setIsClient] = useState(false);
+  const clientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
 
   useEffect(() => {
-    const initPayPal = async () => {
-      try {
-        if (!import.meta.env.VITE_PAYPAL_CLIENT_ID) {
-          throw new Error('PayPal Client ID not found in environment');
-        }
-        console.log('PayPalProvider: Client ID check passed');
-      } catch (err) {
-        console.error('PayPalProvider: Initialization error:', err);
-        setError(err instanceof Error ? err.message : 'Failed to initialize PayPal');
-      } finally {
-        console.log('PayPalProvider: Initialization complete');
-        setIsLoading(false);
-      }
-    };
-
-    initPayPal();
+    setIsClient(true);
   }, []);
 
-  if (isLoading) {
-    console.log('PayPalProvider: Rendering loading state');
+  if (!isClient) {
     return (
-      <div className="flex items-center justify-center p-8">
-        <Loader2 className="h-8 w-8 animate-spin text-orthodox-blue" />
-        <span className="ml-2">Loading PayPal...</span>
+      <div className="flex flex-col items-center justify-center p-8 space-y-4">
+        <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
+        <p className="text-lg font-medium">Loading Payment Options</p>
       </div>
     );
   }
 
-  if (error) {
-    console.error('PayPalProvider: Rendering error state:', error);
+  if (!clientId) {
     return (
-      <div className="p-4 bg-red-50 border border-red-200 rounded-md m-4">
-        <div className="flex items-center">
-          <AlertCircle className="h-5 w-5 text-red-500 mr-2" />
-          <h3 className="text-red-800 font-medium">Payment Error</h3>
+      <div className="p-6 bg-red-50 border border-red-200 rounded-lg">
+        <div className="flex items-center mb-3">
+          <AlertCircle className="h-6 w-6 text-red-500 mr-2" />
+          <h3 className="text-lg font-medium text-red-800">Configuration Error</h3>
         </div>
-        <p className="mt-2 text-red-700">{error}</p>
+        <p className="text-red-700 mb-3">PayPal Client ID is missing. Please check your .env file.</p>
       </div>
     );
   }
 
-  console.log('PayPalProvider: Rendering PayPalScriptProvider');
   return (
-    <PayPalScriptProvider options={initialOptions}>
-      <div className="paypal-container">
-        {children}
-      </div>
+    <PayPalScriptProvider 
+      options={{
+        clientId: clientId,
+        components: 'buttons',
+        currency: 'USD',
+        intent: 'capture',
+        enableFunding: 'paypal,card',
+        disableFunding: 'credit',
+        dataSdkIntegrationSource: 'integrationbuilder_sc',
+        debug: import.meta.env.DEV,
+      }}
+      deferLoading={false}
+    >
+      {children}
     </PayPalScriptProvider>
   );
 };

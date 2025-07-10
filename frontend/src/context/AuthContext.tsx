@@ -1,9 +1,10 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { User } from 'firebase/auth';
+import type { User as FirebaseUser } from 'firebase/auth';
 import { auth } from '@/config/firebase';
 import { onAuthStateChanged, signOut as firebaseSignOut } from 'firebase/auth';
 import { useToast } from '@/components/ui/use-toast';
+import { User } from '@/types';
 
 interface AuthContextType {
   user: User | null;
@@ -30,17 +31,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-      
-      // For now, we'll set admin based on email domain or specific emails
-      // You can modify this logic based on your requirements
-      if (currentUser?.email) {
-        setIsAdmin(currentUser.email.includes('admin') || currentUser.email === 'admin@nassu.org');
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        // Map Firebase user to our custom User type
+        const user: User = {
+          id: firebaseUser.uid,
+          email: firebaseUser.email || '',
+          first_name: firebaseUser.displayName?.split(' ')[0] || null,
+          last_name: firebaseUser.displayName?.split(' ').slice(1).join(' ') || null,
+          role: 'user' // Default role, you might want to fetch this from your database
+        };
+        
+        setUser(user);
+        
+        // For now, we'll set admin based on email domain or specific emails
+        // You can modify this logic based on your requirements
+        const isAdminUser = firebaseUser.email?.endsWith('@nassu.org') || 
+                          firebaseUser.email === 'admin@example.com';
+        setIsAdmin(isAdminUser);
       } else {
+        setUser(null);
         setIsAdmin(false);
       }
+      setLoading(false);
     });
 
     return () => unsubscribe();

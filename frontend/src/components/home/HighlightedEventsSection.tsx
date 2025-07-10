@@ -1,34 +1,36 @@
 import { Link } from 'react-router-dom';
 import { Calendar, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from "@/context/LanguageContext";
 
 const HighlightedEventsSection = () => {
+  const { t } = useLanguage();
   // Sample events data - in a real app, this would come from an API
   const highlightedEvents = [
     {
       id: 1,
-      title: 'Annual Youth Conference 2025',
-      date: 'July 15-18, 2025',
-      time: '9:00 AM - 5:00 PM',
-      excerpt: 'Join us for our biggest youth event of the year with inspiring speakers and workshops.',
+      title: t('events.annual_youth_conference.title'),
+      date: t('events.annual_youth_conference.date'),
+      time: t('events.annual_youth_conference.time'),
+      excerpt: t('events.annual_youth_conference.excerpt'),
       image: 'images/events.jpg',
       category: 'events'
     },
     {
       id: 2,
-      title: 'Bible Study Workshop',
-      date: 'July 22, 2025',
-      time: '6:00 PM - 8:00 PM',
-      excerpt: 'Deepen your understanding of the Scriptures with our weekly Bible study sessions.',
+      title: t('events.bible_study_workshop.title'),
+      date: t('events.bible_study_workshop.date'),
+      time: t('events.bible_study_workshop.time'),
+      excerpt: t('events.bible_study_workshop.excerpt'),
       image: 'images/events.jpg',
       category: 'events'
     },
     {
       id: 3,
-      title: 'Community Service Day',
-      date: 'August 5, 2025',
-      time: '8:00 AM - 3:00 PM',
-      excerpt: 'Join us as we give back to our local community through various service projects.',
+      title: t('events.community_service_day.title'),
+      date: t('events.community_service_day.date'),
+      time: t('events.community_service_day.time'),
+      excerpt: t('events.community_service_day.excerpt'),
       image: 'images/events.jpg',
       category: 'events'
     }
@@ -38,9 +40,9 @@ const HighlightedEventsSection = () => {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="section-title">Upcoming Events</h2>
+          <h2 className="section-title">{t('events.upcoming_events')}</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto mt-4">
-            Join us for these exciting upcoming events. Stay connected with our community.
+            {t('events.subtitle')}
           </p>
         </div>
 

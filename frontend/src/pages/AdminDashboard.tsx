@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
-//import { supabase } from '@/integrations/supabase/client';
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "@/components/ui/use-toast";
@@ -9,10 +8,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-//import { Database } from "@/integrations/supabase/types";
 import NewsManagement from "@/components/admin/NewsManagement";
 import TeamManagement from "@/components/admin/TeamManagement";
-import { BarChart3, Users, DollarSign, FileText, Shield } from 'lucide-react';
+import { BarChart3, Users, DollarSign, FileText, Shield, Search, Download, PlusCircle } from 'lucide-react';
 
 interface Donation {
   id: string;
@@ -29,22 +27,24 @@ interface Donation {
   user_id: string | null;
 }
 
-interface User {
-  id: string;
-  email: string;
-  first_name: string | null;
-  last_name: string | null;
-  role: 'user' | 'admin';
-}
+import { User } from '@/types';
 
 const AdminDashboard = () => {
   const [donations, setDonations] = useState<Donation[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [activeTab, setActiveTab] = useState('overview');
-  const [isLoading, setIsLoading] = useState(true);
   const [filterValue, setFilterValue] = useState("");
-  const { isAdmin, user } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
+  const { isAdmin, user, loading } = useAuth();
   const navigate = useNavigate();
+  
+  // Stats for the dashboard cards
+  const stats = [
+    { title: 'Total Donations', value: '$12,540', icon: <DollarSign className="h-6 w-6 text-muted-foreground" />, change: '+12% from last month' },
+    { title: 'Active Users', value: '1,234', icon: <Users className="h-6 w-6 text-muted-foreground" />, change: '+5% from last month' },
+    { title: 'News Articles', value: '42', icon: <FileText className="h-6 w-6 text-muted-foreground" />, change: '3 new this week' },
+    { title: 'Admin Users', value: '8', icon: <Shield className="h-6 w-6 text-muted-foreground" />, change: 'No change' },
+  ];
 
   // Sample data for demonstration
   const sampleDonations: Donation[] = [
@@ -97,7 +97,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     // Redirect if not admin
-    if (!isAdmin && !isLoading) {
+    if (!isAdmin && !loading) {
       navigate('/');
       toast({
         title: "Unauthorized",
@@ -105,7 +105,7 @@ const AdminDashboard = () => {
         variant: "destructive",
       });
     }
-  }, [isAdmin, isLoading, navigate]);
+  }, [isAdmin, loading, navigate]);
 
   useEffect(() => {
     if (isAdmin) {
@@ -200,285 +200,283 @@ const AdminDashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center">
-          <Shield className="h-12 w-12 mx-auto text-blue-700 mb-4" />
-          <p>Loading admin dashboard...</p>
-        </div>
+      <div className="min-h-screen bg-muted/40">
+        <header className="border-b bg-background shadow-sm">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex flex-col space-y-1">
+              <h1 className="text-3xl font-bold tracking-tight text-foreground">Admin Dashboard</h1>
+              <p className="text-muted-foreground text-sm">
+                Welcome back, {user?.first_name || 'Admin'}. Loading your dashboard...
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <main className="container mx-auto px-4 py-12">
+          <div className="flex flex-col items-center justify-center space-y-4">
+            <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+            <p className="text-muted-foreground">Loading dashboard...</p>
+          </div>
+        </main>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center gap-3 mb-8">
-          <Shield className="h-8 w-8 text-blue-700" />
-          <h1 className="text-3xl font-bold text-blue-900">Admin Dashboard</h1>
+    <div className="min-h-screen bg-muted/40">
+      <header className="border-b bg-background shadow-sm">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col space-y-1">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">Admin Dashboard</h1>
+            <p className="text-muted-foreground text-sm">
+              Welcome back, {user?.first_name || 'Admin'}. Here's what's happening with your organization.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-4 py-6 space-y-6">
+        {/* Stats Grid */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <Card key={index} className="hover:shadow-md transition-shadow duration-200">
+              <CardHeader className="flex flex-row items-center justify-between p-4 pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  {stat.title}
+                </CardTitle>
+                <div className="h-5 w-5 text-muted-foreground">
+                  {stat.icon}
+                </div>
+              </CardHeader>
+              <CardContent className="p-4 pt-0">
+                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                <p className="text-xs text-muted-foreground mt-1">{stat.change}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-          <TabsList className="grid w-full grid-cols-5 bg-white rounded-xl shadow mb-6">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="donations">Donations</TabsTrigger>
-            <TabsTrigger value="users">Users</TabsTrigger>
-            <TabsTrigger value="news">News</TabsTrigger>
-            <TabsTrigger value="team">Team</TabsTrigger>
+        <Tabs defaultValue="overview" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-muted/50 p-1 rounded-lg">
+            <TabsTrigger value="overview" className="flex items-center gap-2 rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm">
+              <BarChart3 className="h-4 w-4" />
+              <span>Overview</span>
+            </TabsTrigger>
+            <TabsTrigger value="donations" className="flex items-center gap-2 rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm">
+              <DollarSign className="h-4 w-4" />
+              <span>Donations</span>
+            </TabsTrigger>
+            <TabsTrigger value="users" className="flex items-center gap-2 rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm">
+              <Users className="h-4 w-4" />
+              <span>Users</span>
+            </TabsTrigger>
+            <TabsTrigger value="news" className="flex items-center gap-2 rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm">
+              <FileText className="h-4 w-4" />
+              <span>News</span>
+            </TabsTrigger>
+            <TabsTrigger value="team" className="flex items-center gap-2 rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm">
+              <Shield className="h-4 w-4" />
+              <span>Team</span>
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              <Card className="bg-white shadow-lg rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-700">Total Donations</CardTitle>
-                  <DollarSign className="h-4 w-4 text-blue-400" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-blue-900">{formatCurrency(totalDonations)}</div>
-                  <p className="text-xs text-gray-400">
-                    +20.1% from last month
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white shadow-lg rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-700">Total Users</CardTitle>
-                  <Users className="h-4 w-4 text-blue-400" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-blue-900">{totalUsers}</div>
-                  <p className="text-xs text-gray-400">
-                    +180.1% from last month
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white shadow-lg rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-700">Pending Donations</CardTitle>
-                  <BarChart3 className="h-4 w-4 text-blue-400" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-blue-900">{pendingDonations}</div>
-                  <p className="text-xs text-gray-400">
-                    Requires attention
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white shadow-lg rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-700">Active</CardTitle>
-                  <FileText className="h-4 w-4 text-blue-400" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-blue-900">573</div>
-                  <p className="text-xs text-gray-400">
-                    +201 since last hour
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <Card className="bg-white shadow-lg rounded-2xl border border-gray-100">
+            <Card>
               <CardHeader>
-                <CardTitle className="text-lg font-bold text-blue-900">Recent Activity</CardTitle>
-                <CardDescription className="text-gray-500">
-                  Latest actions and updates from your admin panel
-                </CardDescription>
+                <CardTitle>Recent Activity</CardTitle>
+                <CardDescription>Overview of the latest activities in your organization.</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                    <div>
-                      <p className="font-medium text-blue-900">New donation received</p>
-                      <p className="text-sm text-gray-600">$100 from John Doe</p>
+                <div className="space-y-8">
+                  {sampleDonations.slice(0, 3).map((donation) => (
+                    <div key={donation.id} className="flex items-center">
+                      <div className="space-y-1">
+                        <p className="text-sm font-medium leading-none">
+                          New donation of ${donation.amount} {donation.currency}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {new Date(donation.donation_date || '').toLocaleDateString()}
+                        </p>
+                      </div>
+                      <div className="ml-auto font-medium">
+                        <Button variant="outline" size="sm">View</Button>
+                      </div>
                     </div>
-                    <span className="text-sm text-gray-500">2 hours ago</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                    <div>
-                      <p className="font-medium text-blue-900">New user registered</p>
-                      <p className="text-sm text-gray-600">admin@nassu.org</p>
-                    </div>
-                    <span className="text-sm text-gray-500">4 hours ago</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                    <div>
-                      <p className="font-medium text-blue-900">News article published</p>
-                      <p className="text-sm text-gray-600">Latest community updates</p>
-                    </div>
-                    <span className="text-sm text-gray-500">1 day ago</span>
-                  </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="donations" className="space-y-6">
-            <div className="flex justify-between items-center">
-              <div>
-                <h2 className="text-2xl font-bold text-blue-900">Donation Records</h2>
-                <p className="text-gray-600">Manage and track all donations</p>
-              </div>
-              <div className="flex gap-4">
-                <Button variant="outline">Export CSV</Button>
-                <Button>Generate Report</Button>
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <Label htmlFor="filter" className="sr-only">Filter</Label>
-              <Input
-                id="filter"
-                placeholder="Filter donations..."
-                value={filterValue}
-                onChange={(e) => setFilterValue(e.target.value)}
-                className="max-w-sm"
-              />
-            </div>
-
-            {filteredDonations.length === 0 ? (
-              <Card className="bg-white shadow-lg rounded-2xl border border-gray-100">
-                <CardContent className="text-center py-8">
-                  <DollarSign className="h-12 w-12 mx-auto text-gray-400 mb-4" />
-                  <p className="text-lg text-gray-500">No donations found</p>
-                  <p className="text-sm text-gray-400">Donations will appear here when received</p>
-                </CardContent>
-              </Card>
-            ) : (
-              <div className="rounded-2xl border border-gray-100 overflow-hidden bg-white shadow">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Date</TableHead>
-                      <TableHead>Amount</TableHead>
-                      <TableHead>Payment Method</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Designation</TableHead>
-                      <TableHead>Recurring</TableHead>
-                      <TableHead>Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredDonations.map((donation) => (
-                      <TableRow key={donation.id}>
-                        <TableCell>{formatDate(donation.donation_date)}</TableCell>
-                        <TableCell>{formatCurrency(donation.amount, donation.currency)}</TableCell>
-                        <TableCell className="capitalize">{donation.payment_method.replace('_', ' ')}</TableCell>
-                        <TableCell>
-                          <select 
-                            value={donation.status}
-                            onChange={(e) => handleUpdateDonationStatus(donation.id, e.target.value)}
-                            className="px-2 py-1 rounded text-xs font-medium border"
-                          >
-                            <option value="pending">Pending</option>
-                            <option value="completed">Completed</option>
-                            <option value="failed">Failed</option>
-                            <option value="refunded">Refunded</option>
-                          </select>
-                        </TableCell>
-                        <TableCell>{donation.designation || 'General'}</TableCell>
-                        <TableCell>
-                          {donation.recurring ? `Yes (${donation.frequency})` : 'No'}
-                        </TableCell>
-                        <TableCell>
-                          <Button variant="ghost" size="sm">
-                            View
-                          </Button>
-                        </TableCell>
+            <Card>
+              <CardHeader className="border-b px-6 py-4">
+                <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <CardTitle className="text-lg">Donations</CardTitle>
+                    <CardDescription className="text-sm">Manage and track all donations received.</CardDescription>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                    <div className="relative w-full sm:w-60">
+                      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        type="search"
+                        placeholder="Search donations..."
+                        className="pl-8 w-full"
+                        value={filterValue}
+                        onChange={(e) => setFilterValue(e.target.value)}
+                      />
+                    </div>
+                    <Button variant="outline" size="sm" className="gap-1.5">
+                      <Download className="h-4 w-4" />
+                      <span className="hidden sm:inline">Export</span>
+                      <span className="sr-only sm:hidden">Export</span>
+                    </Button>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="rounded-md border">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="h-10 font-medium text-muted-foreground">Transaction</TableHead>
+                        <TableHead className="h-10 font-medium text-muted-foreground">Amount</TableHead>
+                        <TableHead className="h-10 font-medium text-muted-foreground">Date</TableHead>
+                        <TableHead className="h-10 font-medium text-muted-foreground">Status</TableHead>
+                        <TableHead className="h-10 font-medium text-right text-muted-foreground">Actions</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            )}
+                    </TableHeader>
+                    <TableBody>
+                      {sampleDonations.map((donation) => (
+                        <TableRow key={donation.id} className="hover:bg-muted/50">
+                          <TableCell className="py-4">
+                            <div className="font-medium text-foreground">#{donation.id}</div>
+                            <div className="text-sm text-muted-foreground">
+                              {donation.designation || 'General Donation'}
+                            </div>
+                          </TableCell>
+                          <TableCell className="py-4">
+                            <span className="font-medium text-foreground">${donation.amount}</span>
+                            <span className="text-muted-foreground"> {donation.currency}</span>
+                          </TableCell>
+                          <TableCell className="py-4 text-muted-foreground">
+                            {donation.donation_date ? new Date(donation.donation_date).toLocaleDateString() : 'N/A'}
+                          </TableCell>
+                          <TableCell className="py-4">
+                            <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${
+                              donation.status === 'completed' 
+                                ? 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400' 
+                                : 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+                            }`}>
+                              {donation.status.charAt(0).toUpperCase() + donation.status.slice(1)}
+                            </span>
+                          </TableCell>
+                          <TableCell className="py-4 text-right">
+                            <Button variant="ghost" size="sm" className="h-8 px-2 text-muted-foreground hover:text-foreground">
+                              View
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+                <div className="flex items-center justify-between px-6 py-4 border-t">
+                  <p className="text-sm text-muted-foreground">
+                    Showing <span className="font-medium">1-{sampleDonations.length}</span> of <span className="font-medium">{sampleDonations.length}</span> donations
+                  </p>
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" size="sm" className="h-8" disabled>
+                      Previous
+                    </Button>
+                    <Button variant="outline" size="sm" className="h-8" disabled>
+                      Next
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
-          <TabsContent value="users" className="space-y-6">
-            <div className="flex justify-between items-center">
-              <div>
-                <h2 className="text-2xl font-bold text-blue-900">User Management</h2>
-                <p className="text-gray-600">Manage user accounts and permissions</p>
-              </div>
-              <Button>Add New User</Button>
-            </div>
-
-            <div className="mb-4">
-              <Label htmlFor="filter" className="sr-only">Filter</Label>
-              <Input
-                id="filter"
-                placeholder="Filter users..."
-                value={filterValue}
-                onChange={(e) => setFilterValue(e.target.value)}
-                className="max-w-sm"
-              />
-            </div>
-
-            {filteredUsers.length === 0 ? (
-              <Card className="bg-white shadow-lg rounded-2xl border border-gray-100">
-                <CardContent className="text-center py-8">
-                  <Users className="h-12 w-12 mx-auto text-gray-400 mb-4" />
-                  <p className="text-lg text-gray-500">No users found</p>
-                  <p className="text-sm text-gray-400">Users will appear here when they register</p>
-                </CardContent>
-              </Card>
-            ) : (
-              <div className="rounded-2xl border border-gray-100 overflow-hidden bg-white shadow">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Email</TableHead>
-                      <TableHead>Role</TableHead>
-                      <TableHead>Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredUsers.map((user) => (
-                      <TableRow key={user.id}>
-                        <TableCell>{`${user.first_name || ''} ${user.last_name || ''}`.trim() || 'N/A'}</TableCell>
-                        <TableCell>{user.email}</TableCell>
-                        <TableCell>
-                          <select 
-                            value={user.role}
-                            onChange={(e) => handleUpdateUserRole(user.id, e.target.value as 'user' | 'admin')}
-                            className="px-2 py-1 rounded text-xs font-medium border"
-                          >
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                          </select>
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex gap-2">
-                            <Button variant="ghost" size="sm">
+          <TabsContent value="users" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <CardTitle>Users</CardTitle>
+                    <CardDescription>Manage all registered users and their permissions.</CardDescription>
+                  </div>
+                  <Button size="sm" className="mt-4 md:mt-0">
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Add User
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="mb-4">
+                  <div className="relative">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search users..."
+                      className="pl-8 w-full md:w-[300px]"
+                      value={filterValue}
+                      onChange={(e) => setFilterValue(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="rounded-md border">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>User</TableHead>
+                        <TableHead>Email</TableHead>
+                        <TableHead>Role</TableHead>
+                        <TableHead className="text-right">Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {sampleUsers.map((user) => (
+                        <TableRow key={user.id}>
+                          <TableCell>
+                            <div className="font-medium">{user.first_name} {user.last_name}</div>
+                          </TableCell>
+                          <TableCell className="text-muted-foreground">
+                            {user.email}
+                          </TableCell>
+                          <TableCell>
+                            <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                              user.role === 'admin' 
+                                ? 'bg-blue-100 text-blue-800' 
+                                : 'bg-gray-100 text-gray-800'
+                            }`}>
+                              {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                            </span>
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <Button variant="ghost" size="sm" className="h-8 px-2">
                               Edit
                             </Button>
-                            <Button 
-                              variant="ghost" 
-                              size="sm" 
-                              className="text-red-500"
-                              onClick={() => handleDeleteUser(user.id)}
-                            >
-                              Delete
-                            </Button>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            )}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
-          <TabsContent value="news" className="space-y-6">
+          <TabsContent value="news" className="space-y-4">
             <NewsManagement />
           </TabsContent>
 
-          <TabsContent value="team" className="space-y-6">
+          <TabsContent value="team" className="space-y-4">
             <TeamManagement />
           </TabsContent>
         </Tabs>
-      </div>
+      </main>
     </div>
   );
 };

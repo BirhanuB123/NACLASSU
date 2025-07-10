@@ -1,0 +1,100 @@
+{
+  "welcomeBack": "እንኳን ደህና መጡ",
+  "signInToContinue": "ለመቀጠል ወደ አካውንትዎ ይግቡ",
+  "email": "ኢሜይል",
+  "password": "የይለፍ ቃል",
+  "forgotPassword": "የይለፍ ቃል ረስተዋል?",
+  "signIn": "ግባ",
+  "signingIn": "በመግባት ላይ...",
+  "orContinueWith": "ወይም በመቀጠል",
+  "continueWithGoogle": "በ Google ይቀጥሉ",
+  "continueWithApple": "በ Apple ይቀጥሉ",
+  "dontHaveAccount": "አካውንት የሎትም?",
+  "signUp": "ይመዝገቡ",
+  "termsAndPrivacy": "በመግባት የኛን {{terms}} እና {{privacy}} እንደተቀበሉ ይቆጠራል።",
+  "terms": "ውሎች",
+  "privacy": "የግላዊነት ፖሊሲ",
+  "resetPassword": "የይለፍ ቃል ዳግም ያቋቁሙ",
+  "enterEmailForReset": "የይለፍ ቃል ዳግም ለማቋቋም ኢሜይልዎን ያስገቡ",
+  "sendResetLink": "የዳግም ማቋቋሚያ አገናኝ ላክ",
+  "backToLogin": "ወደ መግቢያ ተመለስ",
+  "sending": "በመላክ ላይ...",
+  
+  "services_section": {
+    "services_page": {
+      "title": "የእኛ አገልግሎቶች",
+      "subtitle": "በሰሜን አሜሪካ ውስጥ የኦርቶዶክስ ትምህርትን በመደገፍ ላይ",
+      "what_we_offer": {
+        "title": "ምን እንደምናቀርብ",
+        "description": "ናሱ በሰሜን አሜሪካ ውስጥ ባሉ ቤተክርስቲያናት ውስጥ የኦርቶዶክስ ክርስትና ትምህርትን ለማበረታታት የተዘጋጁ የተለያዩ አገልግሎቶችን ያቀርባል።"
+      },
+      "services": [
+        {
+          "title": "የእሁድ ት/ቤት የትምህርት ሥርዓት",
+          "description": "ለእሁድ ት/ቤቶች የተሟላ እና አጋር የሆነ የትምህርት ቁሳቁሶች።"
+        },
+        {
+          "title": "የመምህራን ስልጠና",
+          "description": "ለእሁድ ት/ቤት መምህራን የስልጠና ፕሮግራሞች እና ምንጮች።"
+        },
+        {
+          "title": "የወጣቶች ዝግጅቶች",
+          "description": "የወጣቶችን ዝግጅቶች እና እንቅስቃሴዎች ማዘጋጀት እና ማበረታታት።"
+        },
+        {
+          "title": "የምንጭ ልማት",
+          "description": "ለኦርቶዶክስ ትምህርት የትምህርት ምንጮችን መፍጠር እና ማሰራጨት።"
+        },
+        {
+          "title": "የመስመር ላይ ክፍሎች እና ዌብናሮች",
+          "description": "ለተማሪዎች እና ለመምህራን የመስመር ላይ የትምህርት እድሎች።"
+        },
+        {
+          "title": "ለወላጆች ድጋፍ",
+          "description": "ወላጆች የልጆቻቸውን መንፈሳዊ ትምህርት እንዲደግፉ የሚረዳ ምንጮች እና መመሪያዎች።"
+        },
+        {
+          "title": "የድምፅ ምንጮች",
+          "description": "ለትምህርት እና ለመንፈሳዊ እድገት የድምፅ ቁሳቁሶች።"
+        },
+        {
+          "title": "የቤተክርስቲያን ምክር አገልግሎት",
+          "description": "ለቤተክርስቲያን ትምህርት ፕሮግራሞች ድጋፍ እና ምክር።"
+        }
+      ],
+      "how_we_help": "ቤተክርስቲያንዎን እንዴት እንደምናግዝ",
+      "our_process": "የእኛ ሂደት",
+      "process_steps": [
+        {
+          "title": "የመጀመሪያ ውይይት",
+          "description": "የቤተክርስቲያንዎን የተለየ ፍላጎቶች እና ተግዳሮቶች እንወያያለን።"
+        },
+        {
+          "title": "ብጁ የተዘጋጀ ዕቅድ",
+          "description": "የትምህርት ፍላጎቶችዎን ለመፍታት የተመጣጠነ ዕቅድ እንፈጥራለን።"
+        },
+        {
+          "title": "ፈጸም",
+          "description": "ከቡድንዎ ጋር በመሆን ዕቅዱን ለመተግበር እናግዝዎታለን።"
+        },
+        {
+          "title": "ቀጣይነት ያለው ድጋፍ",
+          "description": "ቀጣይነት ያለው ድጋፍ እና ምንጮችን እናቀርባለን።"
+        }
+      ],
+      "request_services": "አገልግሎቶቻችንን ይጠይቁ",
+      "request_description": "የናሱን ምንጮች ወደ ቤተክርስቲያንዎ ለማምጣት ፈላጊ ነዎት? እሁድ ት/ቤት ፕሮግራምዎን እንዴት እንደምናግዝ ለማወያየት ዛሬ ያግኙን።",
+      "form_labels": {
+        "parish_name": "የቤተክርስቲያን ስም",
+        "parish_name_placeholder": "የቤተክርስቲያን ስም ያስገቡ",
+        "your_name": "ስምዎ",
+        "your_name_placeholder": "ሙሉ ስምዎን ያስገቡ",
+        "email": "ኢሜይል",
+        "email_placeholder": "የኢሜይል አድራሻዎን ያስገቡ",
+        "phone": "ስልክ",
+        "phone_placeholder": "ስልክ ቁጥርዎን ያስገቡ"
+      },
+      "submit_button": "ጥያቄ አስገባ"
+    }
+  }
+}

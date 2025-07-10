@@ -8,14 +8,20 @@ import { Calendar, Clock, Tag, FileText, Download } from "lucide-react";
 const NewsPage = () => {
   // State for filter options
   const [currentTab, setCurrentTab] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4; // Number of items to show per page
-  const [visibleItems, setVisibleItems] = useState(itemsPerPage);
+  const [visibleItems, setVisibleItems] = useState(8);
+  const itemsPerPage = 8; // Number of items to load per page
+  
+  useEffect(() => {
+    // Any initialization code can go here
+    return () => {
+      // Cleanup function
+    };
+  }, []);
 
   // Document data from public/documents
   const documents = [
-    { name: "19th year NASSU NASSU.pdf", path: "/documents/19th year NASSU NASSU.pdf" },
-    { name: "2024 METSHET FOR NASSU and NASSU.pdf", path: "/documents/2024 METSHET FOR NASSU and NASSU.pdf" },
+    { name: "19th year NASSU.pdf", path: "/documents/19th year NASSU.pdf" },
+    { name: "2024 METSHET FOR NASSU.pdf", path: "/documents/2024 METSHET FOR NASSU.pdf" },
     { name: "2025 NASSU LIDET.pdf", path: "/documents/2025 NASSU LIDET.pdf" },
     { name: "MICHIGAN SUNDAY SCHOOL THE 4 COUNCILS AND CREED.pdf", path: "/documents/MICHIGAN SUNDAY SCHOOL THE 4 COUNCILS AND CREED.pdf" },
     { name: "NASSU ABIY TSOME.pdf", path: "/documents/NASSU ABIY TSOME.pdf" },
@@ -132,10 +138,7 @@ const NewsPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div 
-        className="relative bg-cover bg-center h-[40vh]" 
-        style={{ backgroundImage: "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDQ0NDQ8PDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0NDw0NFSsZFRkrKy0rKystKy0rLS03LS0tNy03NysrKy0rLSsrKy0rKy0tKy0rKysrKysrLS0rKysrK//AABEIALcBEwMBIgACEQEDEQH/xAAaAAEBAQADAQAAAAAAAAAAAAABAAIDBQYE/8QAFxABAQEBAAAAAAAAAAAAAAAAAAEREv/EABoBAQEBAQEBAQAAAAAAAAAAAAEAAgMEBQb/xAAYEQEBAQEBAAAAAAAAAAAAAAAAEQESAv/aAAwDAQACEQMRAD8A8Egn3H50oIaUkGUkqGdKFQBFZprLLWKs01mhrBWK1WaG8ZrNarNTeMVmtVmprBWaaE2KzSKmsZoNAaFCSISQ10xJINlJApIJPSaNGrXufCK0IaiFoZRCFrOmILWdBhrNVoo1rBWaazWWsDNNZobwVmms1N4KxWqymsFZpotTWCs00VNYKFQGgkE0kCNaxBIOh06yokUgi9EmTr2vhnVrOrRph1azq1lQ6Bo1kw0Wi0Aw2s2qs2hrMOs2pmiNZirNNZtDWCs1WihvBWabWU1irJrNTWKilmprACARQaE0EgGsKqQazUkE01oCSegWsrXtfHh1azq1nVGtGs6tBh0DRayobVazotDUOijRoMNrNWs2hrMVrNptZoazBRarWbQ1itZprKaxUKhNYqzTQmsAIRFBFBQIBRCWtYikGwliSd3q1nVr118qHVrOrQo1o0aNBjWgaNZUNqGjUYdZ0aNDUNo0aLQYqzptZoazFazarRQ1iGoVNCpBFVmmhFBIEA0IoEUFJJa1iSQaxJJF22rWdWvRXzY1q1nRqqjejWdWhRrVrGjQY1aNGjRTDaNGrQYtGjRqahtZVoBVCFRVCGppCqhFBJFAgEVJIhUgFFJacBSDaBCTsdWs6Ndq8Eb1axq1VRvRrOrRTGtGjRoqjWjQEY1aNC0KILRUULUEYqEk0AQiEQiEcWCmMo4sRgFawYDAsOLE1mArCGozhwpGDEUlH06tZ1a3XijWpnVoqjSZ1aqo1q1nVqUa0azqRh1aAVDqGoUxJJNZgWHDirWeWMONYsFbzwzgxvFgreeWcGN4sVPLGDlyWDBTyxgxvFiXLGJsIxnDhSMGLEkokkjGtWjVpeGHVoSUOrRqSjS1klHVoSUSOJHMRRFbzypESq6Z5ZkOEiumeRiw4cFa5ZWNYsVazyxixvFip5YwY3iwU8uPFjdgxUcsYsaxYquWLFjYxVcs4saxYlGcRxKqONM6tNeBrTrK1VQlnSajqBKhMBiOYSDBXTPJMUIreYsRMgrpmCQ4TIK3nkYcJwV0zyzixrEq1nlnFjeDBWuWcGN4MS5YsWNYKhGbBjeCw0RjFjVgQjOLGghBiKSj5kkXzUkkigSiWYUcxqEQxVvMMajMagrpmGEGJvMLQhgdMwwqNB0zFikMMgdMxYsKxN5gxHDga5YVjVgsKjODGkmdxx2BuwUs7jCNgTMGDGkhGcRSUfGkmnyykkEQkjDEi3jUMKDeGRoIN4Y0km8ahiQdcakMSDpjUJSdcUhSDeHFgQbVgxJAWMpFkCxIs6KzYUWNZSSZSSSf/9k=')" }}
-       >
+      <div className="relative bg-gradient-to-r from-blue-800 to-blue-600 h-[40vh] flex items-center justify-center">
         <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center">
           <div className="container mx-auto px-4 text-center flex flex-col items-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">News & Messages</h1>

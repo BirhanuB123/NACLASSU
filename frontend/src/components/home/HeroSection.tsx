@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 import DonateButton from "@/components/DonateButton";
 import JoinUsButton from "@/components/JoinUsButton";
+import { useLanguage } from "@/context/LanguageContext";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -23,14 +25,16 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-20 text-center">
         <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 leading-tight">
-            North America <br />Sunday School Union
+            {t('home_title')}
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-8">
-            Nurturing faith and education in our Orthodox community
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <DonateButton large />
-            <JoinUsButton large />
+            <JoinUsButton large>
+              {t('join_us')}
+            </JoinUsButton>
           </div>
         </div>
       </div>

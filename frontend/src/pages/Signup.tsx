@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Apple } from "lucide-react";
+import { Loader2, Apple, Eye, EyeOff } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 
 import { 
@@ -30,6 +30,8 @@ const SignUpPage = () => {
   const [lastName, setLastName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [socialLoading, setSocialLoading] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
   
   const backgroundStyle = {
@@ -266,44 +268,72 @@ const SignUpPage = () => {
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-                  {t('Password')} <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  className={`w-full px-4 py-3 rounded-lg border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 ${passwordError ? 'border-red-300' : ''}`}
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    if (passwordError) setPasswordError('');
-                  }}
-                />
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+                    {t('Password')} <span className="text-red-500">*</span>
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      autoComplete="new-password"
+                      required
+                      className={`w-full px-4 py-3 rounded-lg border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 pr-10 ${passwordError ? 'border-red-300' : ''}`}
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        if (passwordError) setPasswordError('');
+                      }}
+                    />
+                    <button
+                      type="button"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="confirm-password" className="text-sm font-medium text-gray-700">
                   {t('Confirm Password')} <span className="text-red-500">*</span>
                 </Label>
-                <Input
-                  id="confirm-password"
-                  name="confirmPassword"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  className={`w-full px-4 py-3 rounded-lg border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 ${passwordError ? 'border-red-300' : ''}`}
-                  placeholder="••••••••"
-                  value={confirmPassword}
-                  onChange={(e) => {
-                    setConfirmPassword(e.target.value);
-                    if (passwordError) setPasswordError('');
-                  }}
-                />
+                <div className="relative">
+                  <Input
+                    id="confirm-password"
+                    name="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    autoComplete="new-password"
+                    required
+                    className={`w-full px-4 py-3 rounded-lg border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 pr-10 ${passwordError ? 'border-red-300' : ''}`}
+                    placeholder="••••••••"
+                    value={confirmPassword}
+                    onChange={(e) => {
+                      setConfirmPassword(e.target.value);
+                      if (passwordError) setPasswordError('');
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
+                  </button>
+                </div>
                 {passwordError && (
                   <p className="mt-1 text-sm text-red-600">{passwordError}</p>
                 )}

@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "@/components/ui/use-toast";
 import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
@@ -56,66 +57,69 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-blue-200 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-        <div className="text-center">
-          <div className="flex justify-center mb-4">
-            <Shield className="h-12 w-12 text-blue-700 drop-shadow-md" />
+    <div className="min-h-screen flex items-center justify-center bg-muted/40 p-4">
+      <div className="w-full max-w-md space-y-8">
+        <div className="text-center space-y-2">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+            <Shield className="h-7 w-7 text-primary" />
           </div>
-          <h2 className="text-3xl font-bold text-blue-700 mb-2">Admin Access</h2>
-          <p className="text-base text-gray-700">Sign in to access the administration dashboard</p>
-          <p className="mt-2 text-xs">
-            <Link to="/" className="text-blue-700 hover:text-blue-500 transition-colors font-medium">
+          <div className="space-y-1">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">Admin Access</h1>
+            <p className="text-sm text-muted-foreground">Sign in to access the administration dashboard</p>
+          </div>
+          <p className="text-sm">
+            <Link to="/" className="font-medium text-primary hover:underline underline-offset-4">
               ← Back to main site
             </Link>
           </p>
         </div>
         
-        <form className="mt-8 space-y-6" onSubmit={handleAdminLogin}>
-          <div>
-            <Label htmlFor="admin-email" className="block text-sm font-semibold text-blue-700 mb-1">
-              Admin Email
-            </Label>
-            <Input
-              id="admin-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="rounded-lg block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 transition"
-              placeholder="admin@nassu.org"
-            />
-          </div>
-          <div>
-            <Label htmlFor="admin-password" className="block text-sm font-semibold text-blue-700 mb-1">
-              Admin Password
-            </Label>
-            <Input
-              id="admin-password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="rounded-lg block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 transition"
-            />
-          </div>
-          <div className="pt-2">
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 shadow-md"
-            >
-              <Shield className="h-4 w-4 mr-2" />
-              {isLoading ? 'Authenticating...' : 'Access Admin Dashboard'}
-            </Button>
-          </div>
-        </form>
-        <div className="mt-6 text-center">
-          <p className="text-xs text-gray-400 font-medium">
+        <Card className="border-0 shadow-sm">
+          <CardContent className="pt-6">
+            <form className="space-y-4" onSubmit={handleAdminLogin}>
+              <div className="space-y-2">
+                <Label htmlFor="admin-email" className="text-sm font-medium">
+                  Admin Email
+                </Label>
+                <Input
+                  id="admin-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="admin@nassu.org"
+                  className="h-10"
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="admin-password" className="text-sm font-medium">
+                    Admin Password
+                  </Label>
+                </div>
+                <Input
+                  id="admin-password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="h-10"
+                />
+              </div>
+              <Button type="submit" className="w-full mt-2 bg-gold-500 hover:bg-gold-600 text-black" disabled={isLoading}>
+                <Shield className="mr-2 h-4 w-4" />
+                {isLoading ? 'Authenticating...' : 'Access Admin Dashboard'}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+        
+        <div className="text-center">
+          <p className="text-xs text-muted-foreground">
             Only authorized administrators can access this area!
           </p>
         </div>
