@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, FC } from 'react';
-
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export type Language = 'en' | 'am';
 
@@ -21,12 +20,83 @@ interface LanguageProviderProps {
   children: ReactNode;
 }
 
-const translations: Record<string, any> = {
+// Define translations outside the component
+const translations = {
   en: {
     home: 'Home',
     about: 'About',
     services: 'Services',
     values: 'Values',
+    values_page: {
+      title: 'Our Values',
+      subtitle: 'The principles that guide our work',
+      core_values_title: 'Core Values',
+      core_values_description: 'At North American Sunday School Union, our work is guided by a set of core values that reflect our commitment to Orthodox Christian education and the spiritual formation of children and youth.',
+      
+      educational_excellence: {
+        title: 'Educational Excellence',
+        description: 'We strive for the highest quality in educational content and methodology. Our resources are developed by experienced educators who understand both Orthodox theology and effective teaching practices for different age groups.'
+      },
+      community: {
+        title: 'Community',
+        description: 'We believe in the power of community and relationships. Our programs foster connections between students, families, and parishes, creating a supportive network for spiritual growth and faith development.'
+      },
+      inclusivity: {
+        title: 'Inclusivity',
+        description: 'Within the bounds of Orthodox teaching, we welcome all who seek to learn and grow in the faith. We strive to create materials and programs that respect the diversity of Orthodox jurisdictions while emphasizing our common faith.'
+      },
+      service: {
+        title: 'Service',
+        description: 'Following Christ\'s example, we value service to others. We encourage students to put faith into action through service projects and outreach, learning to express their faith through love for others.'
+      },
+      lifelong_learning: {
+        title: 'Lifelong Learning',
+        description: 'We believe that Orthodox education is a lifelong journey. We support spiritual formation from childhood through adulthood, providing age-appropriate resources that grow with students throughout their lives.'
+      },
+      values: {
+        orthodox_faith: {
+          title: 'Orthodox Faith',
+          description: 'We are committed to authentic Orthodox Christian teaching, maintaining fidelity to the traditions, theology, and practices of the Orthodox Church. All our materials and programs are developed with guidance from Orthodox clergy and theologians.'
+        },
+        educational_excellence: {
+          title: 'Educational Excellence',
+          description: 'We strive for the highest quality in educational content and methodology. Our resources are developed by experienced educators who understand both Orthodox theology and effective teaching practices for different age groups.'
+        },
+        community: {
+          title: 'Community',
+          description: 'We believe in the power of community and relationships. Our programs foster connections between students, families, and parishes, creating a supportive network for spiritual growth and faith development.'
+        },
+        inclusivity: {
+          title: 'Inclusivity',
+          description: 'Within the bounds of Orthodox teaching, we welcome all who seek to learn and grow in the faith. We strive to create materials and programs that respect the diversity of Orthodox jurisdictions while emphasizing our common faith.'
+        },
+        service: {
+          title: 'Service',
+          description: 'Following Christ\'s example, we value service to others. We encourage students to put faith into action through service projects and outreach, learning to express their faith through love for others.'
+        },
+        lifelong_learning: {
+          title: 'Lifelong Learning',
+          description: 'We believe that Orthodox education is a lifelong journey. We support spiritual formation from childhood through adulthood, providing age-appropriate resources that grow with students throughout their lives.'
+        }
+      },
+      approach: {
+        title: 'Our Approach',
+        intro: 'Our approach to Orthodox Christian education is holistic, recognizing that faith formation involves the whole person—mind, body, and spirit. We believe that Sunday School should be more than just an academic exercise; it should be a transformative experience that helps children and youth develop a living relationship with Christ and His Church.',
+        engage_title: 'Engage the Whole Person',
+        engage_content: 'We design our educational materials to engage students intellectually, emotionally, and spiritually. Through a combination of Scripture study, Church history, lives of the saints, liturgical education, and practical application, we help students develop a well-rounded understanding of the Orthodox faith.',
+        tradition_title: 'Connect with Tradition',
+        tradition_content: 'We help students connect with the rich tradition of Orthodoxy in ways that are meaningful and accessible. By incorporating icons, hymns, prayers, and the liturgical calendar into our curriculum, we create an educational experience that is authentically Orthodox and deeply rooted in the life of the Church.',
+        growth_title: 'Foster Personal Growth',
+        growth_content: 'We recognize that each student is on their own spiritual journey. Our materials and programs are designed to meet students where they are, addressing their questions and concerns while guiding them toward a deeper understanding of the faith and a more intimate relationship with Christ.',
+        families_title: 'Support Families',
+        families_content: 'We believe that parents are the primary educators of their children in the faith. Our resources include components for family participation, helping parents continue the educational process at home and integrate Orthodox practices into family life.'
+      },
+      living_values: {
+        title: 'Living Our Values',
+        paragraph1: 'Our values are not just words on a page—they guide everything we do at NASSU. From curriculum development to teacher training, from youth events to parish consultation, we strive to embody these values in all aspects of our work.',
+        paragraph2: 'We invite you to join us in this important mission of nurturing the faith of the next generation. Together, we can help children and youth develop a strong foundation in the Orthodox faith that will support them throughout their lives.'
+      }
+    },
     team: 'Team',
     sponsors: 'Sponsors',
     news: 'News & Messages',
@@ -103,43 +173,43 @@ const translations: Record<string, any> = {
     services_section: {
       services_page: {
         title: 'Our Services',
-        subtitle: 'Supporting Orthodox Education in North America',
+        subtitle: 'Supporting Orthodox Christian Education',
         what_we_offer: {
-          title: 'What We Offer',
-          description: 'NASSU provides a wide range of services designed to support Orthodox Christian education in parishes across North America. Our offerings are developed by experienced educators and clergy to ensure theological accuracy and educational effectiveness.'
+          title: 'What We Provide',
+          description: 'NASSU offers comprehensive support for Orthodox Christian education through various programs and resources. Our services are designed to nurture faith, knowledge, and spiritual growth for all ages within the Orthodox community.'
         },
         services: [
           {
             title: 'Sunday School Curriculum',
-            description: 'Comprehensive, age-appropriate Orthodox Christian education materials for children from preschool through high school.'
+            description: 'Age-appropriate Orthodox Christian educational materials for children from preschool through high school, aligned with Church teachings.'
           },
           {
             title: 'Teacher Training',
-            description: 'Workshops, webinars, and resources to equip Sunday School teachers with effective teaching methods and Orthodox knowledge.'
+            description: 'Professional development programs, workshops, and resources to enhance teaching effectiveness and Orthodox knowledge.'
           },
           {
-            title: 'Youth Events',
-            description: 'Retreats, camps, and activities that bring Orthodox youth together for fellowship and spiritual growth.'
+            title: 'Youth Ministry Programs',
+            description: 'Engaging activities, retreats, and events that foster spiritual growth and Orthodox community among youth.'
           },
           {
-            title: 'Resource Development',
-            description: 'Creation of teaching aids, activity books, and digital resources to enhance the Sunday School experience.'
+            title: 'Educational Resources',
+            description: 'A wide range of teaching materials, activity books, and digital content to support Christian education.'
           },
           {
-            title: 'Webinars and Online Classes',
-            description: 'Live and recorded educational sessions for students, teachers, and parents on various aspects of Orthodox faith.'
+            title: 'Online Learning',
+            description: 'Interactive webinars and recorded sessions on Orthodox faith and practice for students, teachers, and parents.'
           },
           {
-            title: 'Parent Support',
-            description: 'Resources and guidance to help parents continue faith education at home and support their children\'s spiritual journey.'
+            title: 'Family Faith Resources',
+            description: 'Guidance and materials to help parents nurture their children\'s spiritual development at home.'
           },
           {
-            title: 'Audio Resources',
-            description: 'Orthodox music, stories, and teachings in audio format for use in Sunday School and at home.'
+            title: 'Multimedia Library',
+            description: 'Audio recordings of Orthodox hymns, Bible stories, and teachings for educational and devotional use.'
           },
           {
-            title: 'Parish Consultation',
-            description: 'Expert guidance to help parishes establish and strengthen their Sunday School programs.'
+            title: 'Parish Support',
+            description: 'Consultation and resources to help Orthodox parishes develop and enhance their educational programs.'
           }
         ],
         how_we_help: 'How We Can Help Your Parish',
@@ -255,8 +325,53 @@ const translations: Record<string, any> = {
   am: {
     // Navigation
     home: 'ዋና ገጽ',
-    join_us: 'በተልዕኮአችን ውስጥ ይቀላቀሉ',
+    join_us: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
     about: 'ስለ እኛ',
+    values_page: {
+      title: 'የእኛ እሴቶች',
+      subtitle: 'ሥራችንን የሚመሩ መርሆዎች',
+      core_values_title: 'ዋና ዋና እሴቶች',
+      core_values_description: 'በሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት ሥራችን በኦርቶዶክስ ክርስቲያናዊ ትምህርት እና የሕጻናት እና ወጣቶች መንፈሳዊ እድገት ላይ ያለን ቁርጠኝነት የሚያንፀባርቁ ዋና ዋና እሴቶች ይመራሉ።',
+      values: {
+        orthodox_faith: {
+          title: 'የኦርቶዶክስ እምነት',
+          description: 'በእውነተኛ የኦርቶዶክስ ክርስቲያናዊ ትምህርት ተስፋጽተናል፣ የኦርቶዶክስ ቤተክርስቲያንን ትምህርቶች፣ ንጽሕናዎች እና ልምዶች በታማኝነት እንከታተላለን። ሁሉም የእኛ የትምህርት እቃዎች እና ፕሮግራሞች ከኦርቶዶክስ ቄሳውንት እና ንጽሕና ተመራማሪዎች መመሪያ ጋር ተዘጋጅተዋል።'
+        },
+        community: {
+          title: 'ማህበረሰብ',
+          description: 'በማህበረሰብ እና በግንኙነቶች ኃይል እናምናለን። ፕሮግራሞቻችን በተማሪዎች፣ ቤተሰቦች እና ቤተክርስቲያኖች መካከል የሚያገናኙ ሲሆን ለመንፈሳዊ እድገት እና ለእምነት እድገት የሚደግፍ አውታረመረብ ይፈጥራሉ።'
+        },
+        inclusivity: {
+          title: 'አካታችነት',
+          description: 'በኦርቶዶክስ ትምህርት ውስጥ የሚገኙ እኛ የምንቀበላቸው ሁሉ በእምነት ውስጥ ለመማር እና ለመድረስ የሚፈልጉ ናቸው። የተለያዩ የኦርቶዶክስ ቤተክርስቲያኖችን ልዩነቶች የሚከበሩ እና የጋራ እምነታችንን የሚያበረታቱ የትምህርት እቃዎች እና ፕሮግራሞችን ለመፍጠር እንሞክራለን።'
+        },
+        service: {
+          title: 'አገልግሎት',
+          description: 'የክርስቶስን ምሳሌ በመከተል ለሌሎች የምናደርገው አገልግሎት እናስባለን። ተማሪዎች እምነታቸውን በስራ እንዲገልጹ በአገልግሎት ፕሮጀክቶች እና በማህበራዊ አገልግሎቶች በኩል እንበረታታለን፣ እምነታቸውን በሌሎች ፍቅር እንዲገልጹ እናስተምራለን።'
+        },
+        lifelong_learning: {
+          title: 'ዘላቂ ትምህርት',
+          description: 'የኦርቶዶክስ ትምህርት ዘላቂ ጉዞ ነው ብለን እናምናለን። ከሕፃንነት እስከ ወቅታዊ ዕድሜ ድረስ የሚያገለግል የመንፈሳዊ እድገት እናስተዳድራለን፣ በተማሪዎች ዕድሜ ልክ የሚሆኑ እና በህይወታቸው ሁሉ የሚያስተምሯቸው ምንጮችን እናቀርባለን።'
+        }
+      },
+      approach: {
+        title: 'የእኛ አቀራረብ',
+        intro: 'የእኛ የኦርቶዶክስ ክርስቲያናዊ ትምህርት አቀራረብ አጠቃላይ ነው፣ የእምነት እድገት ሙሉውን ሰው - አእምሮ፣ አካል እና ነፍስ - እንደሚያካትት ይለውጣል። የሰንበት ት/ቤት ከአካዳሚክ ልምምድ በላይ መሆን አለበት ብለን እናምናለን፤ ልጆችን እና ወጣቶችን ከክርስቶስ እና ከቤተክርስቲያኑ ጋር ሕያው ግንኙነት እንዲያድርጉ የሚረዳ ተለዋዋጭ ተሞክሮ መሆን አለበት።',
+        engage_title: 'ሙሉውን ሰው ያነቃቅሱ',
+        engage_content: 'የትምህርታችንን እቃዎች ተማሪዎች አስተሳሰባዊ፣ ስሜታዊ እና መንፈሳዊ ለማነቃቃት እንዲሁም ለማሳደግ እንንቀሳቀሳለን። በመጽሐፍ ቅዱስ ጥናት፣ የቤተክርስቲያን ታሪክ፣ የቅዱሳን ሕይወቶች፣ ሊትርጊካዊ ትምህርት እና ተግባራዊ አተገባበሮች በኩል ተማሪዎች የኦርቶዶክስ እምነትን ጠቃሚ ማወቅ እንዲችሉ እናስተምራለን።',
+        tradition_title: 'ከትውፊታችን ጋር ይተሳሰሩ',
+        tradition_content: 'ተማሪዎች ከኦርቶዶክስ ትውፊት ጋር ትርጉም ያለው እና ተደራሽ በሆነ መንገድ እንዲተሳሰሩ እናበረታታለን። አዶዎችን፣ መዝሙራትን፣ ጸሎቶችን እና የሊተርጊ የቀን መቁጠሪያችንን በኩሪኩሎችአችን ውስጥ በማስገባት እውነተኛ የሆነ የኦርቶዶክስ ትምህርታዊ ተሞክሮ እንፈጥራለን።',
+        growth_title: 'የግል እድገትን ያበረታቱ',
+        growth_content: 'እያንዳንዱ ተማሪ በራሱ መንፈሳዊ ጉዞ ላይ እንደሚገኝ እናስተውላለን። የእኛ የትምህርት እቃዎች እና ፕሮግራሞች ተማሪዎች የሚገኙበትን ሁኔታ ለመድረስ የተቀየሱ ሲሆን ጥያቄዎቻቸውን እና ጉጉቶቻቸውን በማንቋሸሽ ወደ የእምነት ጥልቀት እና ወደ ክርስቶስ ጋር ወዳለ ግንኙነት እናቅረባቸዋለን።',
+        families_title: 'ቤተሰቦችን ያበረታቱ',
+        families_content: 'ወላጆች የልጆቻቸው ዋና አስተማሪዎች ናቸው ብለን እናምናለን። የእኛ ምንጮች የቤተሰብ ተሳትፎን የሚያካትቱ ክፍሎችን ያካትታሉ፣ ወላጆች የትምህርት ሂደቱን በቤት ውስጥ እንዲቀጥሉ እና የኦርቶዶክስ ልምዶችን በቤተሰብ ሕይወት ውስጥ እንዲያዋህሩ ይረዳሉ።'
+      },
+      living_values: {
+        title: 'እሴቶቻችንን በሕይወት መተግበር',
+        paragraph1: 'የእኛ እሴቶች በገጽ ላይ ያሉ ቃላት ብቻ አይደሉም - በናሱ ውስጥ በምናደርገው ሁሉ ይመራሉ። ከኩርክዮሎም እድገት እስከ መምህራን ስልጠና፣ ከወጣቶች ክስተቶች እስከ ቤተክርስቲያን ምክር እስከሚሰጥ በስራችን ሁሉ እነዚህን እሴቶች ለመከተል እንሞክራለን።',
+        paragraph2: 'በዚህ አስፈላጊ ተልዕኮ ውስጥ የሚቀጥለውን ትውልድ እምነት ለማዳበር እንድትቀላቀሉ እንጋብዛችኋለን። በጋራ ልጆች እና ወጣቶች በኦርቶዶክስ እምነት ውስጥ ጠንካራ መሠረት እንዲኖራቸው እና በህይወታቸው ሁሉ የሚያበረታታቸው እናስችላለን።'
+      }
+    },
     services: 'አገልግሎቶች',
     values: 'እሴቶች',
     team: 'አባሎች',
@@ -265,6 +380,7 @@ const translations: Record<string, any> = {
     gallery: 'የምስል ስብስቦች',
     
     // Common UI
+    home_title: 'የሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት',
     join: 'ይቀላቀሉ',
     login: 'ግባ',
     signup: 'ይመዝገቡ',
@@ -285,99 +401,53 @@ const translations: Record<string, any> = {
       description: 'ድጋፍዎ በሰሜን አሜሪካ ዙሪያ ለሚገኙ የእሁድ ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመስጠት እንድንቀጥል ይረዳናል።'
     },
     
-    // Homepage translations
-    hero: {
-      title: 'የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት',
-      subtitle: 'በኦርቶዶክስ ማህበረሰባችን ውስጥ እምነትን እና ትምህርትን ማጎልበት'
-    },
-    
-    // About Page
-    about_page: {
-      title: 'ስለ እኛ',
-      subtitle: 'ስለ ታሪካችን፣ ተልዕኮችን እና ራእይ ይወቁ',
-      our_story: 'የእኛ ታሪክ',
-      story_paragraphs: [
-        'የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት (ናሱ) በ2010 ዓ.ም. በሰሜን አሜሪካ ውስጥ የአንድነት ያለው የእሁድ ት/ቤት ትምህርት አስፈላጊነቱን ያስተዋሉ የነበሩ በተለያዩ የሃይማኖት ተቋማት ውስጥ የሚገኙ ተገዢ የኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተክርስቲያን ቄሳማት እና ተማሪዎች ተቋቁመዋል። ከተለያዩ የሃይማኖት ተቋማት የመጡ አስተማሪዎች በሚሳተፉበት ትንሽ ስብሰባ ሆኖ የጀመረው አሁን በሙሉ የሰሜን አሜሪካ ውስጥ የሚገኙ የእሁድ ት/ቤቶችን የሚደግፍ የተሟላ ምንጭ ማዕከል ሆኗል።',
-        'ለ10 አመታት በላይ ያህል የትምህርት ዕቃዎችን በመዘጋጀት፣ ለመምህራን ስልጠናዎችን በማዘጋጀት እና ለልጆች እና ለወጣቶች የሚያስተምሩ የክርስቲያናዊ ትምህርት ዕቃዎችን በማዘጋጀት ላይ ነን። የእኛ ስራ በብዙ የኦርቶዶክስ ክርስቲያናት ዙሪያ ይከናወናል የሃይማኖታችንን ባህል እና ትምህርቶች ወደ አዲስ ትውልድ ለማስተላለፍ የሚያስችል ነው።',
-        'ዛሬ፣ ናሱ በበርካታ መቶ የሚቆጠሩ ቤተክርስቲያናትን ያገለግላል እና በየሳምንቱ በሺዎች የሚቆጠሩ ልጆችን ይደርሳል። በእምነታችን የማይለዋወጥ እውነታዎች ላይ በጥብቅ ተጽእኖ ባለው ሁኔታ የኦርቶዶክስ ማህበረሰቦች የሚቀየሩትን ፍላጎቶች ለመደገፍ እየሰራን እና የምናስተላልፋቸውን ነገሮች እያሳደግን ነው።'
-      ],
-      at_a_glance: 'በአጠቃላይ እይታ',
-      stats: {
-        founded: 'በ2010 ዓ.ም. ተመሠረተ',
-        years_of_service: 'ከ10 አመት በላይ አገልግሎት',
-        parishes_served: '350+ የተገለገሉ ቤተክርስቲያናት',
-        across_jurisdictions: 'በበርካታ ቤተክርስቲያናት ውስጥ',
-        north_america_wide: 'በሙሉ ሰሜን አሜሪካ ውስጥ',
-        countries: 'ዩናይትድ ስቴትስ እና ኢትዮጵያ'
-      },
-      mission_vision: 'የእኛ ተልዕኮ እና ራእይ',
-      mission: {
-        title: 'የእኛ ተልዕኮ',
-        description: 'ልጆችን እና ወጣቶችን ከእምነታቸው፣ ከቤተክርስቲያናቸው ማህበረሰብ እና ከኦርቶዶክስ ትምህርቶች ጋር ጥልቅ ግንኙነት እንዲያደርጉ የሚያግዛቸውን ጥራት ያለው ክርስቲያናዊ ትምህርት ለመስጠት ለኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተክርስቲያናት ድጋፍ ማድረግ።'
-      },
-      vision: {
-        title: 'የእኛ ራእይ',
-        description: 'በእምነት፣ በእውቀት እና በደስታ የሚሞሉ የወደፊቱን ትውልድ እያየን ነን። በሰሜን አሜሪካ ያለ እያንዳንዱ ኦርቶዶክስ ልጅ በጥራት ያለው፣ እውነተኛ የኦርቶዶክስ ትምህርት እንዲኖረው እንፈልጋለን።'
-      },
-      join_mission: {
-        title: 'በተልዕኮአችን ውስጥ ይቀላቀሉ',
-        description: 'ድጋፍዎ በሰሜን አሜሪካ ዙሪያ ለሚገኙ የእሁድ ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመስጠት እንድንቀጥል ይረዳናል።'
-      }
-    },
-    
     // Core Values Section
     educational_excellence: 'ትምህርታዊ ሙሉነት',
     orthodox_faith: 'የኦርቶዶክስ እምነት',
     community: 'ማህበረሰብ',
     
-    core_values_section: {
-      educational_excellence: 'በእምነታችን ውስጥ የተጠለቀ እውነተኛ የኦርቶዶክስ ክርስቲያናዊ ትምህርት ለመስጠት ቁርጠኛ ነን።',
-      orthodox_faith: 'ልጆች እና ወጣቶች ከክርስቶስ ጋር ግላዊ ግንኙነት እንዲፈጥሩ የሚያግዛቸውን ጥልቅ እና ዘላቂ እምነት እናሳድጋለን።',
-      community: 'በወጣቶቻችን መካከል የመኖሪያ እና የግንኙነት ስሜት እንፈጥራለን፣ ከእሁድ ት/ቤት በላይ የሚያራምድ የምታነጽበት ማህበረሰብ እንፈጥራለን።',
-      learn_more: 'ስለ እሴቶቻችን ተጨማሪ ይወቁ'
-    },
     
     // Services Section
     services_section: {
       services_page: {
         title: 'የእኛ አገልግሎቶች',
-        subtitle: 'በሰሜን አሜሪካ ውስጥ የኦርቶዶክስ ትምህርትን በማገዝ ላይ',
+        subtitle: 'የኦርቶዶክስ ክርስቲያናዊ ትምህርትን በማገዝ ላይ',
         what_we_offer: {
-          title: 'ምን እናቀርባለን',
-          description: 'ናሱ በሰሜን አሜሪካ ውስጥ ባሉ የኦርቶዶክስ ቤተክርስቲያናት ውስጥ የክርስቲያናዊ ትምህርትን ለማገዝ የተዘጋጁ የተለያዩ አገልግሎቶችን ያቀርባል። የእኛ አገልግሎቶች በልምድ ያላቸው አስተማሪዎች እና ቄሳማት የተዘጋጁ ሲሆኑ በኦርቶዶክስ እምነት መሰረት ትክክለኛ እና ውጤታማ እንዲሆኑ የተዘጋጁ ናቸው።'
+          title: 'የምናቀርባቸው አገልግሎቶች',
+          description: 'ናሱ በኦርቶዶክስ ክርስቲያናዊ ትምህርት ስርዓት ውስጥ የተለያዩ ድጋፎችን ያቀርባል። የእኛ አገልግሎቶች የሚያበረታቱት እምነት፣ እውቀት እና መንፈሳዊ እድገት ለሁሉም ዕድሜ ቡድኖች በኦርቶዶክስ ማህበረሰብ ውስጥ ነው።'
         },
         services: [
           {
-            title: 'የሰንበት ት/ቤት ሥርዓተ-ትምህርት',
-            description: 'ለመነሻ እስከ ሁለተኛ ደረጃ ድረስ ለልጆች የተዘጋጀ የኦርቶዶክስ ክርስቲያናዊ ትምህርት ቁሳቁሶች።'
+            title: 'የእሁድ ት/ቤት ሥርዓተ-ትምህርት',
+            description: 'ለህፃናት እና ወጣቶች የተዘጋጁ የኦርቶዶክስ ክርስቲያናዊ ትምህርት ቁሳቁሶች፣ ከመዋለ ህፃናት እስከ ሁለተኛ ደረጃ ተማሪዎች ድረስ።'
           },
           {
             title: 'የመምህራን ስልጠና',
-            description: 'ለእሁድ ት/ቤት መምህራን ውጤታማ የትምህርት ዘዴዎችን እና የኦርቶዶክስ እውቀትን ለማስተማር የሚያግዙ የስልጠና አዘገጃጀቶች፣ ዌብናሮች እና ምንጮች።'
+            description: 'ለእሁድ ት/ቤት አስተማሪዎች የሚያስፈልጋቸውን የትምህርት ዘዴዎች እና የኦርቶዶክስ እውቀት ለማሳደግ የሚያግዙ ስልጠናዎች፣ የመስክ ስልጠናዎች እና ምንጮች።'
           },
           {
-            title: 'የወጣቶች ክስተቶች',
-            description: 'ኦርቶዶክስ ወጣቶች ለጋርነት እና ለመንፈሳዊ እድገት የሚሰበሰቡባቸው የመከላከያ፣ ካምፖች እና እንቅስቃሴዎች።'
+            title: 'የወጣቶች ፕሮግራሞች',
+            description: 'ወጣቶች ለመንፈሳዊ እድገታቸው እና የኦርቶዶክስ ማህበረሰባዊ ግንኙነት የሚጠቀሙባቸው እንቅስቃሴዎች፣ የመከላከያ እና የጉብኝት ፕሮግራሞች።'
           },
           {
-            title: 'የምንጭ ልማት',
-            description: 'የትምህርት እርዳታዎችን፣ የእንቅስተ-ክርስትና መጽሐፍትን እና ዲጂታል ምንጮችን ለማዘጋጀት የሚያስችሉ መሳሪያዎች።'
+            title: 'የትምህርት ምንጮች',
+            description: 'ለክርስቲያናዊ ትምህርት የሚያግዙ የተለያዩ የትምህርት እርዳታዎች፣ የእንቅስቃሴ መጽሐፎች እና ዲጂታል ይዘቶች።'
           },
           {
-            title: 'ዌብናሮች እና የመስመር ላይ ክፍሎች',
-            description: 'ለተማሪዎች፣ ለመምህራን እና ለወላጆች የሚዘጋጁ በቀጥታ እና የተቀዳሰ የትምህርት ክፍሎች።'
+            title: 'የመስመር ላይ ትምህርት',
+            description: 'ለተማሪዎች፣ ለመምህራን እና ለወላጆች የሚያስተምሩ በኦርቶዶክስ እምነት እና ልምድ ዙሪያ ያሉ በይነመረብ ዌብናሮች እና የተቀዳሚ የትምህርት ክፍሎች።'
           },
           {
-            title: 'የወላጆች ድጋፍ',
-            description: 'ወላጆች በቤታቸው የእምነት ትምህርትን እንዲቀጥሉ እና ልጆቻቸውን በመንፈሳዊ ጉዞ ላይ እንዲደግፉ የሚያግዙ ምንጮች እና መመሪያዎች።'
+            title: 'የቤተሰብ እምነት ምንጮች',
+            description: 'ወላጆች የእምነት ትምህርትን በቤታቸው በተግባር ለማስተማር እና የልጆቻቸውን መንፈሳዊ እድገት ለማገዝ የሚያግዛቸው መመሪያዎች እና የትምህርት እርዳታዎች።'
           },
           {
-            title: 'የድምፅ ምንጮች',
-            description: 'የኦርቶዶክስ ሙዚቃ፣ ታሪኮች እና ትምህርቶች በድምፅ ቅርጸት ለሰንበት ት/ቤት እና ለቤት አጠቃቀም።'
+            title: 'የመልቲሚዲያ ቤተ-መጽሐፍት',
+            description: 'ለትምህርታዊ እና ለመንፈሳዊ አጠቃቀም የተዘጋጁ የኦርቶዶክስ መዝሙራት፣ የመጽሐፍ ቅዱስ ታሪኮች እና የሃይማኖት ትምህርቶች ድምፃዊ ቅጂዎች።'
           },
           {
-            title: 'የቤተክርስቲያን የምክር አገልግሎት',
-            description: 'ቤተክርስቲያናት የሰንበት ት/ቤት ፕሮግራሞቻቸውን እንዲያቋቁሙ እና እንዲጠነክሩ የሚያግዛቸው የባለሙያ ምክር አገልግሎት።'
+            title: 'የቤተክርስቲያን ድጋፍ',
+            description: 'ኦርቶዶክስ ቤተክርስቲያናት የትምህርት ፕሮግራሞቻቸውን እንዲያሻሽሉ እና እንዲያዳብሩ የሚያግዛቸው የባለሙያ ምክር እና ምንጮች።'
           }
         ],
         how_we_help: 'የእርስዎን ቤተክርስቲያን እንዴት ልናግዝ እንደምንችል',
@@ -417,13 +487,6 @@ const translations: Record<string, any> = {
         }
       }
     },
-    
-    // Call to Action Section
-    cta: {
-      title: 'በተልዕኮአችን ውስጥ ይቀላቀሉ',
-      description: 'የሚቀጥለውን ትውልድ እምነት ለማሳደግ ይርዱን። ድጋፋችሁ ስራችንን የሚቻል ያደርገዋል።'
-    },
-    
     // Events Section
     events: {
       upcoming_events: 'የሚቀርቡ ዝግጅቶች',
@@ -432,8 +495,8 @@ const translations: Record<string, any> = {
       view_all: 'ሁሉንም ዝግጅቶች ይመልከቱ',
       
       annual_youth_conference: {
-        title: 'ዓመታዊ ወጣቶች ስብሰባ 2025',
-        date: 'ጁላይ 15-18, 2025',
+        title: 'ዓመታዊ ወጣቶች ስብሰባ 2017 ዓ.ም',
+        date: 'ሐምሌ 15-18, 2017 ዓ.ም',
         time: 'ጠዋት 9:00 - ምሽት 5:00',
         excerpt: 'ከፈለግነው ንግግር አድርጎች እና የስልጠና ክፍሎች ጋር በዓመቱ ትልቁ የወጣቶች ዝግጅት ይሳተፉ።'
       },
@@ -459,13 +522,13 @@ const translations: Record<string, any> = {
       subtitle: 'ስለ ታሪካችን፣ ተልእኮችን እና ራዕያችንን ይወቁ',
       our_story: 'ታሪካችን',
       story_paragraphs: [
-        'የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት (ናሱ) በ2010 ዓ.ም. በሰሜን አሜሪካ ውስጥ የእሁድ ት/ቤት ትምህርትን በተመሳሳይ መልኩ ለማስተማር የሚያስችል ዘዴ እንዲኖር የሚያስችል ሲሆን በተለያዩ የእምነት ቤተክርስቲያናት የሚገኙ ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን ያካተተ ጉባዔ ነበር። ይህ ጉባዔ ወደ አሁኑ የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት (ናሱ) ተለወጠ።',
+        'የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት (ናሱ) በ2002 ዓ.ም. በሰሜን አሜሪካ ውስጥ የእሁድ ት/ቤት ትምህርትን በተመሳሳይ መልኩ ለማስተማር የሚያስችል ዘዴ እንዲኖር የሚያስችል ሲሆን በተለያዩ የእምነት ቤተክርስቲያናት የሚገኙ ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን ያካተተ ጉባዔ ነበር። ይህ ጉባዔ ወደ አሁኑ የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት (ናሱ) ተለወጠ።',
         'ለ10 አመታት በላይ ሲሆን የተማሪዎችን የኦርቶዶክስ ክርስቲያናዊ ትምህርት ለማስተማር የሚያስችሉ የትምህርት እቃዎችን እያዘጋጀን ነው። ይህም የተለያዩ የኦርቶዶክስ ቤተክርስቲያናት ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን አስተምሯል።',
         'በአሁኑ ጊዜ ናሱ በሺዎች የሚቆጠሩ ተማሪዎችን የሚያገለግል ሲሆን በኦርቶዶክስ እምነት ውስጥ ያሉትን የተለያዩ ትምህርቶች እና ባህሎች በማስተማር ላይ ያተኮረ ነው።'
       ],
       at_a_glance: 'በአጭሩ',
       stats: {
-        founded: 'የተመሰረተው በ2010 ነው',
+        founded: 'የተመሰረተው በ2002 ዓ.ም. ነው',
         years_of_service: 'ከ10 አመት በላይ አገልግሎት',
         parishes_served: '350+ ቤተክርስቲያናት ያገለገሉ',
         across_jurisdictions: 'በተለያዩ የእምነት ቤተክርስቲያናት ውስጥ',
@@ -482,13 +545,13 @@ const translations: Record<string, any> = {
         description: 'በሰሜን አሜሪካ ያለ እያንዳንዱ ኦርቶዶክስ ልጅ በራስ ተስፋ፣ በእውቀት እና በደስታ እምነታቸውን እንዲኖሩበት የሚያስችል ገባሪ፣ እውነተኛ የኦርቶዶክስ ትምህርት እንዲኖረው እናምናለን።'
       },
       join_mission: {
-        title: 'በተልእኮያችን ውስጥ ይታቀፉ',
+        title: 'በተልዕኳችን ውስጥ ይታቀፉ',
         description: 'ድጋፍዎ በሰሜን አሜሪካ ውስጥ ለሚገኙ የእሁድ ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመቀጠል ይረዳናል።'
       }
     },
-    our_mission: 'ተልዕኮናችን',
+    our_mission: 'ተልዕኳችን',
     our_vision: 'ራዕያችን',
-    join_our_mission: 'በተልዕኮናችን ውስጥ ይታቀፉ',
+    join_our_mission: 'በተልዕኳችን ውስጥ ይታቀፉ',
     our_leadership: 'አመራሮቻችን',
     meet_the_team: 'ቡድኑን ያግኙ',
     team_dedicated: 'የናሱን ተገዳዳዮች ሙያዎች',
@@ -516,7 +579,7 @@ const translations: Record<string, any> = {
     lifelong_learning: 'የሕይወት ሙሉ ትምህርት',
     
     // Call to action
-    donate_cta: 'ድጋፋችሁ የእሁድ ት/ቤቶችን በሰሜን አሜሪካ ለማገዝ ምንጮችንና ስልጠናን ለመቀጠል ይረዳናል።',
+    donate_cta: 'ድጋፋችሁ የሰንበት ት/ቤቶችን በሰሜን አሜሪካ ለማገዝ ምንጮችንና ስልጠናን ለመቀጠል ይረዳናል።',
     donation_helps: 'ልገሳችሁ በሰሜን አሜሪካ ውስጥ ለቅዱሳን ቤተክርስቲያናት ጥሩ የኦርቶዶክስ ትምህርት ምንጮችን ለማቅረብ ይረዳናል።',
     passionate_individuals: 'በኦርቶዶክስ ትምህርት ላይ የተሰጡ በፍቅር የሚሰሩ ሰዎችን ለህጻናትና ለወጣቶች ሕይወት ለመለወጥ እንፈልጋለን።',
     nassu_leadership: 'ናሱ በኦርቶዶክስ ትምህርት፣ ፋይናንስ፣ ኮሚዩኒኬሽንና ስትራቴጂ አቅድ የተሞሉ ባለሙያዎች ቡድን ይመራዋል።',
@@ -527,142 +590,22 @@ const translations: Record<string, any> = {
       subtitle: 'በኦርቶዶክስ ማህበረሰባችን ውስጥ ዕምነትን፣ ትምህርትን እና አገልግሎትን ማሳደግ።'
     },
     
-    // Services Section
-    services_section: {
-      services_page: {
-        title: 'አገልግሎቶቻችን',
-        subtitle: 'በሰሜን አሜሪካ ውስጥ የኦርቶዶክስ ትምህርትን በማገዝ',
-        what_we_offer: {
-          title: 'ምን እናቀርባለን',
-          description: 'ናሱ በሰሜን አሜሪካ ውስጥ ባሉ የኦርቶዶክስ ቤተክርስቲያናት ውስጥ የክርስቲያናዊ ትምህርትን ለማገዝ የተዘጋጁ የተለያዩ አገልግሎቶችን ያቀርባል። የእኛ አገልግሎቶች በልምድ ያላቸው አስተማሪዎች እና ቄሳማት የተዘጋጁ ሲሆን በኦርቶዶክስ እምነት መሰረት ትክክለኛ እና ውጤታማ እንዲሆኑ የተዘጋጁ ናቸው።'
-        },
-        services: [
-          {
-            title: 'የሰንበት ት/ቤት ሥርዓተ ትምህርት',
-            description: 'ለመነሻ እስከ ሁለተኛ ደረጃ ድረስ ለልጆች የተዘጋጀ የኦርቶዶክስ ክርስቲያናዊ ትምህርት ቁሳቁሶች።'
-          },
-          {
-            title: 'ለመምህራን ስልጠና',
-            description: 'የስልጠና ክፍሎች፣ የድረ-ገጽ ስልጠናዎች እና ምንጮች ለሰንበት ት/ቤት መምህራን ውጤታማ የትምህርት ዘዴዎችን እና የኦርቶዶክስ እውቀትን ለማግኘት ያስችላቸዋል።'
-          },
-          {
-            title: 'የወጣቶች ዝግጅቶች',
-            description: 'ለኦርቶዶክስ ወጣቶች የሚያገለግሉ የምሽት ስብሰባዎች፣ ካምፖች እና እንቅስቃሴዎች ለጋርነት እና ለመንፈሳዊ እድገት።'
-          },
-          {
-            title: 'የመማሪያ ስርዓተ-ትምህርት ልማት',
-            description: 'የትምህርት እርዳታዎች፣ የእንቅስቃሴ መጽሐፍቶች እና ዲጂታል ምንጮችን በማዘጋጀት የእሁድ ት/ቤት ልምድ ለማሻሻል የሚያገለግሉ ምንጮች።'
-          },
-          {
-            title: 'ዌብናር እና የመስመር ላይ ክፍሎች',
-            description: 'ለተማሪዎች፣ ለመምህራን እና ለወላጆች የሚዘጋጁ የቀጥታ እና የተቀዳሰ የትምህርት ክፍሎች በኦርቶዶክስ እምነት የተለያዩ ገጽታዎች ላይ።'
-          },
-          {
-            title: 'ለወላጆች ድጋፍ',
-            description: 'ወላጆች በቤታቸው የእምነት ትምህርትን እንዲቀጥሉ እና የልጆቻቸውን መንፈሳዊ ጉዞ እንዲደግፉ የሚያግዙ ምንጮች እና መመሪያዎች።'
-          },
-          {
-            title: 'የድምፅ ምንጮች',
-            description: 'የኦርቶዶክስ ሙዚቃ፣ ታሪኮች እና ትምህርቶች በድምፅ ቅርጸት ለእሁድ ት/ቤት እና ለቤት አጠቃቀም።'
-          },
-          {
-            title: 'ለቤተክርስቲያን ኮንሰልቴሽን',
-            description: 'ቤተክርስቲያናት የእሁድ ት/ቤት ፕሮግራሞቻቸውን እንዲያቋቁሙ እና እንዲያጠናክሩ የሚያግዛቸው የባለሙያ መመሪያ።'
-          }
-        ],
-        how_we_help: {
-          title: 'የእርስዎን ቤተክርስቲያን እንዴት እንደምናግዝ',
-          process_title: 'የእኛ ሂደት',
-          steps: [
-            'የእርስዎን ፍላጎት እና ፍላጎቶች እንገልፃለን',
-            'በተገቢው የአገልግሎት ጥቅል ላይ እንስማማለን',
-            'በመስፈርያ በተመሰረተ ስልጠና እና ድጋፍ እናቀርባለን',
-            'የእድገት እና የውጤት መገምገሚያዎችን እናካሂዳለን',
-            'ዘላቂ ድጋፍ እና ምክር እናቀርባለን'
-          ]
-        },
-        contact_section: {
-          title: 'ተጨማሪ መረጃ ያግኙ',
-          description: 'ስለ አገልግሎቶቻችን ተጨማሪ ለማወቅ ወይም ለቤተክርስቲያንዎ የተለየ አገልግሎት ለማዘዝ ዛሬ ያግኙን።',
-          button: 'እንግለጫ ለማወሳሰብ',
-          form: {
-            name: 'ስም',
-            email: 'ኢሜይል',
-            message: 'መልዕክት',
-            submit_button: 'ጥያቄ ላክ',
-            success_message: 'መልእክትዎ ተልኳል! በቅርቡ እንገናኝዎታለን።'
-          }
-        },
-        events: {
-          title: 'የወጣቶች ዝግጅቶች',
-          description: 'ኦርቶዶክስ ወጣቶችን ለጋርነት እና ለመንፈሳዊ እድገት የሚያጣምሩ የመከላከያ፣ ካምፖች እና እንቅስቃሴዎች።'
-        }
-      }
-    },
-    
     // Call to Action Section - Amharic
     cta: {
       title: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
       description: 'የሚቀጥለውን ትውልድ እምነት ለማሳደግ ይርዱን። ድጋፋችሁ ስራችንን የሚቻል ያደርገዋል።'
     },
-    
-    // Events Section - Amharic
-    events: {
-      upcoming_events: 'የሚቀረቡ ዝግጅቶች',
-      subtitle: 'በእነዚህ አስደሳች የሚቀርቡ ዝግጅቶች ውስጥ ይቀላቀሉ። ከማህበረሰባችን ጋር ተገናኝተው ይቆዩ።',
-      learn_more: 'ተጨማሪ ይወቁ',
-      view_all: 'ሁሉንም ዝግጅቶች ይመልከቱ',
-      
-      annual_youth_conference: {
-        title: 'ዓመታዊ ወጣቶች ስብሰባ 2025',
-        date: 'ጁላይ 15-18, 2025',
-        time: 'ጠዋት 9:00 - ምሽት 5:00',
-        excerpt: 'ከፈለግነው ንግግር አድርጎች እና የስልጠና ክፍሎች ጋር በዓመቱ ትልቁ የወጣቶች ዝግጅት ይሳተፉ።'
-      },
-      
-      bible_study_workshop: {
-        title: 'የመጽሐፍ ቅዱስ ጥናት ስልጠና',
-        date: 'ጁላይ 22, 2025',
-        time: 'ምሽት 6:00 - 8:00',
-        excerpt: 'በየሳምንቱ በምናዘጋጃቸው የመጽሐፍ ቅዱስ ጥናት ክፍሎች የመጽሐፍ ቅዱስን ግንዛቤዎን ያብሉ።'
-      },
-      
-      community_service_day: {
-        title: 'የማህበረሰብ አገልግሎት ቀን',
-        date: 'ኦገስት 5, 2025',
-        time: 'ጠዋት 8:00 - ከሰዓት 3:00',
-        excerpt: 'በተለያዩ የማህበረሰብ አገልግሎት ፕሮጀክቶች በአካባቢያችን ለማህበረሰባችን የምንመልስበት ቀን ይሁን።'
-      }
-    },
-    create_account: 'መለያ ይፍጠሩ',
-    sign_in: 'ግባ',
-    email_address: 'የኢሜል አድራሻ',
-    password: 'የይለፍ ቃል',
-    first_name: 'የመጀመሪያ ስም',
-    last_name: 'የአባት ስም',
-    sign_in_action: 'ግባ',
-    sign_up_action: 'ይመዝገቡ',
-    processing: 'በማስኬድ ላይ...',
-    already_have_account: 'ቀድሞውኑ መለያ አለዎት?',
-    new_here: 'እዚህ አዲስ?',
-    create_account_action: 'መለያ ይፍጠሩ',
-    login_successful: 'መግባት ተሳክቷል!',
-    welcome_back: 'እንኳን ደህና መጡ!',
-    login_failed: 'መግባት አልተሳካም',
-    login_error: 'ያልተሳካ ምዝገባ',
-    signup_successful: 'በተሳካ ሁኔታ ተመዝግበዋል!',
-    home_title: 'የሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት'
+    // Add more translations here if needed
   }
 };
 
-export const LanguageProvider: FC<LanguageProviderProps> = ({ children }) => {
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('en');
 
-  const t = (key: string, args: Record<string, string> = {}) => {
+  const t = (key: string, args: Record<string, any> = {}): string | string[] | any => {
     const keys = key.split('.');
     let translation: any = translations[language];
-    
-    // Navigate through the nested object
+
     for (const k of keys) {
       if (translation && typeof translation === 'object' && k in translation) {
         translation = translation[k];
@@ -676,7 +619,7 @@ export const LanguageProvider: FC<LanguageProviderProps> = ({ children }) => {
     if (typeof translation === 'string' && Object.keys(args).length > 0) {
       let result = translation;
       for (const [key, value] of Object.entries(args)) {
-        result = result.replace(new RegExp(`\\{${key}\\}`, 'g'), value);
+        result = result.replace(new RegExp(`\\{${key}\\}`, 'g'), String(value));
       }
       return result;
     }

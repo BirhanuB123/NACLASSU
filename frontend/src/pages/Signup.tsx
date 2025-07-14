@@ -342,7 +342,7 @@ const SignUpPage = () => {
               <div className="pt-2">
                 <Button
                   type="submit"
-                  className="w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors duration-200"
+                  className="w-full py-3 px-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-colors duration-200"
                   disabled={isLoading}
                 >
                   {isLoading ? (

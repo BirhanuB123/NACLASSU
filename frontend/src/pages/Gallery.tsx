@@ -2173,6 +2173,26 @@ const Gallery = () => {
       url: "images/x12.jpg",
       title: "NASSU Events",
       description: ""
+    },
+    {
+      url: "images/x22.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/x23.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/x24.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/x25.jpg",
+      title: "NASSU Events",
+      description: ""
     }
   ];
 

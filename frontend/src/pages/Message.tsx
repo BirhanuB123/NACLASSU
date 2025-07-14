@@ -138,29 +138,69 @@ const NewsPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-blue-800 to-blue-600 h-[40vh] flex items-center justify-center">
-        <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center">
-          <div className="container mx-auto px-4 text-center flex flex-col items-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">News & Messages</h1>
-            <div className="w-20 h-1 bg-orthodox-gold mb-6"></div>
-            <p className="text-lg text-white max-w-2xl">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center z-0" 
+          style={{ 
+            backgroundImage: 'url("/lovable-uploads/5da4f0f9-ca7d-466d-a037-8073cbd0e04b.png")',
+            filter: 'brightness(0.6)'
+          }}
+        />
+        <div className="hero-overlay absolute inset-0 z-10"></div>
+        <div className="container mx-auto px-4 relative z-20 text-center">
+          <div className="transition-all duration-1000 transform">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 leading-tight">
+              News & Messages
+            </h1>
+            <div className="w-20 h-1 bg-gold-400 mx-auto mb-6"></div>
+            <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto">
               Stay updated with the latest news, events, and resources from the North America Sunday School Union.
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* News & Events Content */}
-      <section className="py-16">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="all" className="mb-8">
-            <div className="flex justify-center mb-8">
-              <TabsList className="grid w-full grid-cols-5">
-                <TabsTrigger value="all" onClick={() => setCurrentTab("all")} className="px-4 py-2">All</TabsTrigger>
-                <TabsTrigger value="events" onClick={() => setCurrentTab("events")} className="px-4 py-2">Events</TabsTrigger>
-                <TabsTrigger value="announcements" onClick={() => setCurrentTab("announcements")} className="px-4 py-2">Announcements</TabsTrigger>
-                <TabsTrigger value="resources" onClick={() => setCurrentTab("resources")} className="px-4 py-2">Resources</TabsTrigger>
-                <TabsTrigger value="documents" onClick={() => setCurrentTab("documents")} className="px-4 py-2">Documents</TabsTrigger>
+            <div className="mb-8 overflow-x-auto pb-2">
+              <TabsList className="inline-flex w-auto min-w-full px-4 md:px-0">
+                <TabsTrigger 
+                  value="all" 
+                  onClick={() => setCurrentTab("all")} 
+                  className="whitespace-nowrap px-3 py-2 text-sm md:px-4 md:py-2 md:text-base"
+                >
+                  All
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="events" 
+                  onClick={() => setCurrentTab("events")} 
+                  className="whitespace-nowrap px-3 py-2 text-sm md:px-4 md:py-2 md:text-base"
+                >
+                  Events
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="announcements" 
+                  onClick={() => setCurrentTab("announcements")} 
+                  className="whitespace-nowrap px-3 py-2 text-sm md:px-4 md:py-2 md:text-base"
+                >
+                  Announcements
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="resources" 
+                  onClick={() => setCurrentTab("resources")} 
+                  className="whitespace-nowrap px-3 py-2 text-sm md:px-4 md:py-2 md:text-base"
+                >
+                  Resources
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="documents" 
+                  onClick={() => setCurrentTab("documents")} 
+                  className="whitespace-nowrap px-3 py-2 text-sm md:px-4 md:py-2 md:text-base"
+                >
+                  Documents
+                </TabsTrigger>
               </TabsList>
             </div>
 

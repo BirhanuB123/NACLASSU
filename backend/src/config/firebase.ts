@@ -26,10 +26,20 @@ if (!admin.apps.length) {
   }
 }
 
-export const verifyIdToken = async (token: string) => {
+interface DecodedToken {
+  uid: string;
+  email?: string;
+  name?: string;
+}
+
+export const verifyIdToken = async (token: string): Promise<DecodedToken | null> => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
-    return { uid: decodedToken.uid, email: decodedToken.email };
+    return { 
+      uid: decodedToken.uid, 
+      email: decodedToken.email || undefined,
+      name: decodedToken.name || undefined
+    };
   } catch (error) {
     console.error('Error verifying token:', error);
     return null;

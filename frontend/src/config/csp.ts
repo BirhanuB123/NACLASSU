@@ -8,7 +8,9 @@ export const cspDirectives = {
     'https://api-m.sandbox.paypal.com',
     'https://api-m.paypal.com',
     'ws://localhost:*',
+    'wss://localhost:*',
     'http://localhost:*',
+    'https://localhost:*',
     // Firebase domains
     'https://*.firebaseapp.com',
     'https://*.firebaseio.com',
@@ -18,6 +20,7 @@ export const cspDirectives = {
     'https://securetoken.googleapis.com',
     'https://identitytoolkit.googleapis.com',
     'wss://*.firebaseio.com',
+    'wss://*.firebase.com',
     'https://www.googleapis.com',
     'https://securetoken.googleapis.com'
   ],
@@ -41,6 +44,8 @@ export const cspDirectives = {
     "'self'",
     "'unsafe-inline'",
     "'unsafe-eval'",
+    'http://localhost:*',
+    'ws://localhost:*',
     'https://*.paypal.com',
     'https://*.paypalobjects.com',
     'https://www.paypal.com',

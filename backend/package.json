@@ -14,7 +14,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "@types/react-router-dom": "^5.3.3",
+    "@types/socket.io": "^3.0.1",
     "@types/uuid": "^10.0.0",
     "@types/winston": "^2.4.4",
     "bcryptjs": "^3.0.2",
@@ -31,6 +33,7 @@
     "mongoose": "^8.16.1",
     "rate-limiter-flexible": "^7.1.1",
     "react-router-dom": "^7.6.0",
+    "socket.io": "^4.8.1",
     "winston": "^3.17.0"
   },
   "devDependencies": {
@@ -39,6 +42,7 @@
     "@types/jsonwebtoken": "^9.0.9",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^22.15.19",
+    "@types/paypal__checkout-server-sdk": "^1.0.8",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "nodemon": "^3.1.10",

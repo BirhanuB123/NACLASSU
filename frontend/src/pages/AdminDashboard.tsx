@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { useWebSocket } from '@/hooks/useWebSocket';
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "@/components/ui/use-toast";
@@ -11,6 +12,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import NewsManagement from "@/components/admin/NewsManagement";
 import TeamManagement from "@/components/admin/TeamManagement";
 import { BarChart3, Users, DollarSign, FileText, Shield, Search, Download, PlusCircle } from 'lucide-react';
+
+// Debug function to safely log component state
+const logState = (name: string, value: any) => {
+  try {
+    console.log(`[AdminDashboard] ${name}:`, JSON.parse(JSON.stringify(value)));
+  } catch (error) {
+    console.log(`[AdminDashboard] ${name}:`, value);
+  }
+};
+
+// Debug logging
+console.log('AdminDashboard component is being rendered');
 
 interface Donation {
   id: string;
@@ -30,13 +43,295 @@ interface Donation {
 import { User } from '@/types';
 
 const AdminDashboard = () => {
+  const [activeTab, setActiveTab] = useState('dashboard');
   const [donations, setDonations] = useState<Donation[]>([]);
   const [users, setUsers] = useState<User[]>([]);
-  const [activeTab, setActiveTab] = useState('overview');
-  const [filterValue, setFilterValue] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const { isAdmin, user, loading } = useAuth();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [error, setError] = useState<Error | null>(null);
   const navigate = useNavigate();
+  const { user, isAdmin, loading: authLoading } = useAuth();
+  
+  // Local loading state for dashboard data
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Debug effect to log state changes
+  useEffect(() => {
+    logState('Auth state', {
+      authLoading,
+      user: user ? { id: user.id, email: user.email, role: user.role } : null,
+      isAdmin,
+      timestamp: new Date().toISOString()
+    });
+  }, [authLoading, user, isAdmin]);
+
+  // Handle authentication state and redirects
+  useEffect(() => {
+    try {
+      // Don't proceed if still loading
+      if (authLoading) {
+        logState('Auth still loading', 'Waiting for auth state...');
+        return;
+      }
+
+      // Log the current state for debugging
+      logState('Auth state in AdminDashboard', { 
+        path: window.location.pathname,
+        user: user ? { id: user.id, email: user.email } : 'No user',
+        isAdmin,
+        timestamp: new Date().toISOString()
+      });
+
+      // If no user is logged in, redirect to login
+      if (!user) {
+        logState('No user found', 'Redirecting to login...');
+        if (window.location.pathname !== '/admin/login') {
+          navigate('/admin/login', { 
+            replace: true,
+            state: { from: window.location.pathname }
+          });
+        }
+        return;
+      }
+
+      // If user is not admin, redirect to home
+      if (!isAdmin) {
+        logState('User is not admin', 'Redirecting to home...');
+        if (window.location.pathname !== '/') {
+          toast({
+            title: "Access Denied",
+            description: "You don't have admin privileges.",
+            variant: "destructive",
+          });
+          navigate('/', { replace: true });
+        }
+        return;
+      }
+
+      // If we get here, user is authenticated and is admin
+      logState('User is admin', 'Loading dashboard data...');
+      
+      // Simulate loading dashboard data
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+      
+    } catch (err) {
+      console.error('Error in auth check:', err);
+      setError(err instanceof Error ? err : new Error('Unknown error in auth check'));
+      
+      // On error, redirect to login
+      navigate('/admin/login', { 
+        replace: true,
+        state: { 
+          from: window.location.pathname,
+          error: 'An error occurred while checking your access.'
+        }
+      });
+    }
+  }, [user, isAdmin, authLoading, navigate, toast]);
+
+  // Show error state if there was an error
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen p-4">
+        <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Error Loading Dashboard</h2>
+          <p className="text-muted-foreground mb-4">
+            {error.message || 'An unexpected error occurred while loading the dashboard.'}
+          </p>
+          
+          {process.env.NODE_ENV === 'development' && error.stack && (
+            <details className="mb-4">
+              <summary className="text-sm font-medium text-muted-foreground cursor-pointer">
+                Show technical details
+              </summary>
+              <pre className="mt-2 p-3 bg-gray-100 rounded text-xs overflow-auto">
+                {error.stack}
+              </pre>
+            </details>
+          )}
+          
+          <div className="flex flex-col sm:flex-row gap-3 mt-6">
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                // Clear the error and reload
+                setError(null);
+                window.location.reload();
+              }}
+              className="flex-1"
+            >
+              Try Again
+            </Button>
+            <Button 
+              asChild 
+              variant="default"
+              className="flex-1"
+            >
+              <Link to="/" className="text-center">
+                Go to Home
+              </Link>
+            </Button>
+          </div>
+          
+          <div className="mt-6 pt-4 border-t border-gray-200">
+            <p className="text-sm text-muted-foreground text-center">
+              Still having trouble?{' '}
+              <button 
+                onClick={() => {
+                  // Sign out and redirect to login
+                  signOut();
+                  navigate('/admin/login', { replace: true });
+                }}
+                className="text-primary hover:underline font-medium"
+              >
+                Try signing in again
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show loading state while checking authentication or loading data
+  if (authLoading || isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4 p-4">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary"></div>
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl font-bold">Loading Admin Dashboard</h2>
+          <p className="text-muted-foreground">Please wait while we verify your access</p>
+        </div>
+        
+        {!authLoading && isLoading && (
+          <div className="w-full max-w-md mt-4 space-y-2">
+            <div className="h-2 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-primary/50 animate-pulse"
+                style={{ width: '75%' }}
+              ></div>
+            </div>
+            <p className="text-xs text-muted-foreground text-center">Loading dashboard data...</p>
+          </div>
+        )}
+        
+        {process.env.NODE_ENV === 'development' && (
+          <div className="mt-8 p-4 bg-muted/50 rounded-lg max-w-md w-full">
+            <h3 className="text-sm font-medium mb-2">Debug Info</h3>
+            <pre className="text-xs text-muted-foreground overflow-auto p-2 bg-background rounded">
+              {JSON.stringify({
+                authLoading,
+                isLoading,
+                user: user ? { 
+                  id: user.id, 
+                  email: user.email, 
+                  role: user.role 
+                } : null,
+                isAdmin,
+                timestamp: new Date().toISOString()
+              }, null, 2)}
+            </pre>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Add a safety check in case the component renders without proper auth state
+  if (!user) {
+    console.error('Rendering without user - this should not happen');
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4 p-4 text-center">
+        <div className="bg-destructive/10 p-4 rounded-full">
+          <Shield className="h-8 w-8 text-destructive" />
+        </div>
+        <h2 className="text-2xl font-bold">Authentication Required</h2>
+        <p className="text-muted-foreground">You need to be logged in to access this page.</p>
+        <Button onClick={() => navigate('/admin/login')} className="mt-4">
+          Go to Login
+        </Button>
+      </div>
+    );
+  }
+  
+  if (!isAdmin) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4 p-4 text-center">
+        <div className="bg-destructive/10 p-4 rounded-full">
+          <Shield className="h-8 w-8 text-destructive" />
+        </div>
+        <h2 className="text-2xl font-bold">Access Denied</h2>
+        <p className="text-muted-foreground">You don't have permission to access the admin dashboard.</p>
+        <Button onClick={() => navigate('/')} variant="outline" className="mt-4">
+          Return to Home
+        </Button>
+      </div>
+    );
+  }
+
+  // Handle new payment received via WebSocket
+  const handleNewPayment = useCallback((newPayment: any) => {
+    setDonations(prevDonations => {
+      // Check if payment already exists to avoid duplicates
+      const exists = prevDonations.some(d => d.id === newPayment._id);
+      if (!exists) {
+        return [{
+          id: newPayment._id,
+          amount: newPayment.amount,
+          currency: newPayment.currency || 'USD',
+          payment_method: 'PayPal',
+          status: newPayment.status,
+          transaction_id: newPayment.paypalOrderId || null,
+          donation_date: newPayment.createdAt || new Date().toISOString(),
+          recurring: false,
+          frequency: null,
+          designation: newPayment.description || 'Donation',
+          note: null,
+          user_id: newPayment.userId
+        }, ...prevDonations];
+      }
+      return prevDonations;
+    });
+    
+    // Show toast notification for new payment
+    toast({
+      title: 'New Payment Received',
+      description: `$${newPayment.amount} payment received via PayPal`,
+    });
+  }, []);
+
+  // Handle payment status updates via WebSocket
+  const handlePaymentUpdate = useCallback((updatedPayment: any) => {
+    setDonations(prevDonations => 
+      prevDonations.map(donation => 
+        donation.id === updatedPayment._id 
+          ? { 
+              ...donation, 
+              status: updatedPayment.status,
+              transaction_id: updatedPayment.paypalCaptureId || donation.transaction_id
+            } 
+          : donation
+      )
+    );
+  }, []);
+
+  // Set up WebSocket connection
+  useWebSocket({
+    onNewPayment: handleNewPayment,
+    onPaymentUpdate: handlePaymentUpdate,
+    onPaymentStatusChange: (data) => {
+      setDonations(prevDonations => 
+        prevDonations.map(donation => 
+          donation.id === data.paymentId 
+            ? { ...donation, status: data.status } 
+            : donation
+        )
+      );
+    }
+  });
   
   // Stats for the dashboard cards
   const stats = [
@@ -94,18 +389,6 @@ const AdminDashboard = () => {
       role: 'admin'
     }
   ];
-
-  useEffect(() => {
-    // Redirect if not admin
-    if (!isAdmin && !loading) {
-      navigate('/');
-      toast({
-        title: "Unauthorized",
-        description: "You don't have permission to access this page.",
-        variant: "destructive",
-      });
-    }
-  }, [isAdmin, loading, navigate]);
 
   useEffect(() => {
     if (isAdmin) {
@@ -193,10 +476,6 @@ const AdminDashboard = () => {
   const totalDonations = donations.reduce((sum, donation) => sum + donation.amount, 0);
   const totalUsers = users.length;
   const pendingDonations = donations.filter(d => d.status === 'pending').length;
-
-  if (!isAdmin) {
-    return null;
-  }
 
   if (isLoading) {
     return (

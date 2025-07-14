@@ -1,5 +1,5 @@
 
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import PageHeader from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
@@ -10,8 +10,15 @@ import {
   Headphones,
   GraduationCap,
   Palette,
-  Map
+  Map,
+  LucideIcon
 } from "lucide-react";
+
+interface ServiceItem {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
 import DonateButton from "@/components/DonateButton";
 import JoinUsButton from "@/components/JoinUsButton";
 import { LanguageContext } from "@/context/LanguageContext";
@@ -19,6 +26,50 @@ import { LanguageContext } from "@/context/LanguageContext";
 const Services = () => {
   const { t } = useContext(LanguageContext);
   
+  // Default services data in English
+  const defaultServices: ServiceItem[] = [
+    {
+      title: 'Sunday School Curriculum',
+      description: 'Comprehensive, age-appropriate curriculum materials for Sunday School classes.',
+      icon: BookOpen
+    },
+    {
+      title: 'Teacher Training',
+      description: 'Professional development and training programs for Sunday School teachers.',
+      icon: GraduationCap
+    },
+    {
+      title: 'Youth Events',
+      description: 'Engaging events and activities for Orthodox youth.',
+      icon: Users
+    },
+    {
+      title: 'Resource Development',
+      description: 'Creating and distributing educational materials and resources.',
+      icon: Palette
+    },
+    {
+      title: 'Webinars and Online Classes',
+      description: 'Virtual learning opportunities for students and teachers.',
+      icon: Video
+    },
+    {
+      title: 'Parent Support',
+      description: 'Resources and guidance for parents in their children\'s spiritual education.',
+      icon: Users
+    },
+    {
+      title: 'Audio Resources',
+      description: 'Audio materials for learning and worship.',
+      icon: Headphones
+    },
+    {
+      title: 'Parish Consultation',
+      description: 'Guidance and support for parish education programs.',
+      icon: Users
+    }
+  ];
+
   // Helper function to safely get translations with fallbacks
   const getTranslation = (key: string, fallback: any = '') => {
     try {
@@ -30,14 +81,20 @@ const Services = () => {
     }
   };
 
-  // Safely get services data with fallback to empty array
-  const servicesData = getTranslation('services_section.services_page.services', []);
+  // Safely get services data with fallback to default services
+  let servicesData;
+  try {
+    servicesData = t('services_section.services_page.services', defaultServices);
+  } catch (error) {
+    console.warn('Error loading services data, using defaults');
+    servicesData = defaultServices;
+  }
   
-  // Add error handling for services mapping
+  // Ensure services is always an array with proper fallbacks
   const services = Array.isArray(servicesData) 
     ? servicesData.map((service: any, index: number) => ({
-        title: service?.title || `Service ${index + 1}`,
-        description: service?.description || '',
+        title: service?.title || defaultServices[index]?.title || `Service ${index + 1}`,
+        description: service?.description || defaultServices[index]?.description || '',
         icon: [
           BookOpen,       // Sunday School Curriculum
           GraduationCap,  // Teacher Training
@@ -49,7 +106,7 @@ const Services = () => {
           Map             // Parish Consultation
         ][index] || BookOpen // Fallback to BookOpen if index is out of bounds
       }))
-    : []; // Fallback to empty array if servicesData is not an array
+    : defaultServices; // Fallback to defaultServices if servicesData is not an array
 
   return (
     <>
@@ -79,7 +136,7 @@ const Services = () => {
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 bg-church-100 rounded-full">
-                      <service.icon className="w-6 h-6 text-church-700" />
+                      {React.createElement(service.icon, { className: "w-6 h-6 text-church-700" })}
                     </div>
                     <h3 className="text-xl font-serif font-bold mt-1">{service.title}</h3>
                   </div>

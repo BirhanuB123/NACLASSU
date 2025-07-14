@@ -1,8 +1,9 @@
+import http from 'http';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import connectDB from './config/db';
-
+import SocketService from './services/socket.service';
 import { apiLimiter, xssProtection, corsConfig } from './middleware/security';
 
 import dotenv from 'dotenv';
@@ -15,6 +16,10 @@ import teamMembers from './routes/teamMember.route';
 import payments from './routes/payment.route';
 
 const app = express();
+const server = http.createServer(app);
+
+// Initialize WebSocket server
+SocketService.getInstance(server);
 
 // Security Middlewares
 app.use(helmet());
@@ -38,6 +43,8 @@ app.use('/api/payments', payments);
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`WebSocket server running on port ${PORT}`);
 });

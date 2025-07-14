@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar";
@@ -25,6 +25,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import PayPalProvider from "./components/PayPalProvider";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+import { Button } from "./components/ui/button";
 
 const queryClient = new QueryClient();
 
@@ -41,7 +43,7 @@ const App = () => {
                 <ScrollToTop />
                 <div className="flex flex-col min-h-screen">
                   <Navbar />
-                  <main className="flex-grow pt-20">
+                  <main className="flex-grow">
                     <Routes>
                       <Route path="/" element={<Index />} />
                       <Route path="/about" element={<About />} />
@@ -57,7 +59,39 @@ const App = () => {
                       <Route path="/signup" element={<Signup />} />
                       <Route path="/message" element={<Message />} />
                       <Route path="/admin/login" element={<AdminLoginPage />} />
-                      <Route path="/admin" element={<AdminDashboard />} />
+                      <Route 
+                        path="/admin" 
+                        element={
+                          <ErrorBoundary 
+                            fallback={
+                              <div className="flex items-center justify-center min-h-screen p-4">
+                                <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
+                                  <h2 className="text-2xl font-bold text-red-600 mb-4">Error Loading Admin Dashboard</h2>
+                                  <p className="mb-4">There was an error loading the admin dashboard. Please try again later.</p>
+                                  <div className="flex gap-4">
+                                    <Button 
+                                      variant="outline" 
+                                      onClick={() => window.location.reload()}
+                                      className="w-full"
+                                    >
+                                      Reload Page
+                                    </Button>
+                                    <Button 
+                                      asChild 
+                                      variant="default"
+                                      className="w-full"
+                                    >
+                                      <Link to="/">Go to Home</Link>
+                                    </Button>
+                                  </div>
+                                </div>
+                              </div>
+                            }
+                          >
+                            <AdminDashboard />
+                          </ErrorBoundary>
+                        } 
+                      />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </main>

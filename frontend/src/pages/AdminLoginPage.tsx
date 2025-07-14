@@ -15,42 +15,116 @@ const AdminLoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { t } = useLanguage();
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, loading: authLoading } = useAuth();
 
   useEffect(() => {
-    // Redirect if user is already logged in and is admin
-    if (user && isAdmin) {
-      navigate('/admin');
-    } else if (user && !isAdmin) {
-      navigate('/');
+    // Only run this effect when auth state changes
+    if (authLoading) return;
+    
+    console.log('[AdminLoginPage] Auth state changed', { 
+      user: user ? 'User exists' : 'No user',
+      isAdmin,
+      path: window.location.pathname 
+    });
+
+    // If user is logged in but not an admin, redirect to home
+    if (user && !isAdmin) {
+      console.log('[AdminLoginPage] User is not an admin, redirecting to home');
+      navigate('/', { replace: true });
+      return;
+    }
+
+    // If user is logged in and is admin, and we're on the login page, redirect to admin dashboard
+    if (user && isAdmin && window.location.pathname === '/admin/login') {
+      console.log('[AdminLoginPage] User is admin, redirecting to /admin');
+      navigate('/admin', { replace: true });
+      return;
+    }
+    
+    // If user is logged in but not admin, show message but stay on login page
+    if (user) {
+      console.log('[AdminLoginPage] User is not admin, showing access denied');
       toast({
         title: "Access Denied",
         description: "You don't have admin privileges.",
         variant: "destructive",
       });
+      return;
     }
-  }, [user, isAdmin, navigate]);
+    
+    // If no user is logged in, ensure we're on the login page
+    if (window.location.pathname !== '/admin/login') {
+      console.log('[AdminLoginPage] No user, ensuring on login page');
+      navigate('/admin/login', { replace: true });
+    }
+  }, [user, isAdmin, authLoading, navigate, toast]);
 
   const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      // The redirect will happen in the useEffect above
+    
+    // Basic validation
+    if (!email || !password) {
       toast({
-        title: "Admin login successful",
-        description: "Welcome to the admin dashboard",
-      });
-    } catch (error: any) {
-      console.error('Admin login error:', error);
-      toast({
-        title: "Admin login failed",
-        description: error.message || "Invalid admin credentials",
+        title: "Validation Error",
+        description: "Please enter both email and password",
         variant: "destructive",
       });
+      return;
+    }
+    
+    setIsLoading(true);
+    console.log('[AdminLoginPage] Attempting login with email:', email);
+
+    try {
+      // Clear any previous errors
+      setError(null);
+      
+      // Sign in with Firebase
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const firebaseUser = userCredential.user;
+      
+      if (!firebaseUser) {
+        throw new Error('No user returned from authentication');
+      }
+      
+      console.log('[AdminLoginPage] Login successful, user:', firebaseUser.email);
+      
+      // Show success message
+      toast({
+        title: "Login successful",
+        description: "Redirecting to admin dashboard...",
+      });
+      
+      // The useEffect will handle the actual navigation to /admin
+      // after the auth state updates
+      
+    } catch (error: any) {
+      console.error('[AdminLoginPage] Login error:', error);
+      
+      let errorMessage = "An error occurred during login";
+      
+      // Handle specific error cases
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        errorMessage = "Invalid email or password";
+      } else if (error.code === 'auth/too-many-requests') {
+        errorMessage = "Too many failed attempts. Please try again later.";
+      } else if (error.code) {
+        errorMessage = error.message;
+      }
+      
+      // Set the error state with the error message string
+      setError(errorMessage);
+      
+      // Show error toast
+      toast({
+        title: "Login Failed",
+        description: errorMessage,
+        variant: "destructive",
+      });
+      
     } finally {
       setIsLoading(false);
     }

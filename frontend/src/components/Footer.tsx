@@ -104,8 +104,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-church-800 text-center text-gray-400 text-sm">
           <p>&copy; {currentYear} North America Sunday School Union. All Rights Reserved.</p>
-          <p>✔️ Developed by: <strong><a href="https://www.mulewave.com" target="_blank" rel="noopener noreferrer">Mulewave</a></strong></p>
-        </div>
+          {/*<p>✔️ Developed by: <strong><a href="https://www.mulewave.com" target="_blank" rel="noopener noreferrer">Mulewave</a></strong></p>*/}        </div>
       </div>
     </footer>
   );

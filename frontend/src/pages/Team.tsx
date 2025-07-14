@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import PageHeader from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Linkedin, Globe } from "lucide-react";
@@ -9,9 +10,9 @@ const Team = () => {
   const teamMembers = [
     
     {
-      name: "ጸሀፌ ጥበብ አብርሀም",
+      name: "Wise Chronicler Abraham",
       title: "Chairman",
-      bio: "ጸሀፌ ጥበብ አብርሀም brings over 10 years of experience in leader and leadership management to NASSU.",
+      bio: "Wise Chronicler Abraham brings over 10 years of experience in leader and leadership management to NASSU.",
       image: "/images/1.jpg",
       email: "Sara@nasunion.org",
       linkedin: "https://linkedin.com",
@@ -86,22 +87,24 @@ const Team = () => {
     }
   ];
   
-  const [activeMember, setActiveMember] = useState(null);
+  const [activeMember, setActiveMember] = useState<number | null>(null);
   
-  const handleMemberClick = (index) => {
+  const handleMemberClick = (index: number) => {
     setActiveMember(activeMember === index ? null : index);
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
-      <PageHeader title="Meet The Team" background="">
-        <p className="text-lg text-gray-100">The dedicated professionals behind NASSU</p>
+      <PageHeader title={t('team_page.meet_team')} background="">
+        <p className="text-lg text-gray-100">{t('team_page.subtitle')}</p>
       </PageHeader>
 
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="section-title">Our Leadership</h2>
+            <h2 className="section-title">{t('team_page.our_leadership')}</h2>
             <p className="text-lg text-gray-700">
               NASSU is led by a team of dedicated professionals who bring diverse expertise in Orthodox education, finance, communications, and strategic planning to our organization.
             </p>

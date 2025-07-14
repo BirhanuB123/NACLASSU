@@ -27,26 +27,17 @@ const Navbar = () => {
   const [user, setUser] = useState(auth.currentUser);
   const navRef = useRef<HTMLElement>(null);
 
-  // Handle scroll effect for navbar hide/show
+  // Handle scroll effect for navbar shadow
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Show/hide navbar on scroll
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      
       // Add shadow when scrolled
       setScrolled(currentScrollY > 20);
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -103,71 +94,95 @@ const Navbar = () => {
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="md:hidden bg-white dark:bg-gray-900 shadow-xl overflow-hidden border-t border-gray-100 dark:border-gray-800"
+          className="md:hidden bg-gray-800 shadow-2xl overflow-hidden"
         >
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navLinks.map(({ to, label }) => (
-              <Link
-                key={to}
-                to={to}
-                onClick={closeMenu}
-                className={cn(
-                  'block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200',
-                  isActive(to)
-                    ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400'
-                    : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800'
-                )}
-              >
-                {t(label)}
-              </Link>
-            ))}
-            
-            <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+          <div className="px-4 py-3 space-y-1 bg-gray-800">
+            {/* Language Selector */}
+            <div className="flex justify-center mb-2">
+              <div className="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-3 py-1.5">
+                <button 
+                  onClick={() => { setLanguage('en'); closeMenu(); }}
+                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${language === 'en' ? 'bg-white text-blue-900' : 'text-white/80 hover:text-white'}`}
+                >
+                  EN
+                </button>
+                <span className="mx-1 text-white/50">|</span>
+                <button 
+                  onClick={() => { setLanguage('am'); closeMenu(); }}
+                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${language === 'am' ? 'bg-white text-blue-900' : 'text-white/80 hover:text-white'}`}
+                >
+                  አማ
+                </button>
+              </div>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="space-y-1 mb-2">
+              {navLinks.map(({ to, label }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  onClick={closeMenu}
+                  className={cn(
+                    'block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200',
+                    isActive(to)
+                      ? 'bg-white/20 text-white font-semibold'
+                      : 'text-white/90 hover:bg-white/10 hover:text-white'
+                  )}
+                >
+                  {t(label)}
+                </Link>
+              ))}
+            </div>
 
             {user ? (
               <>
-                <div className="flex items-center px-4 py-3">
-                  <Avatar className="h-9 w-9">
+                <div className="flex items-center px-4 py-3 bg-white/5 rounded-lg mb-2">
+                  <Avatar className="h-10 w-10 border-2 border-white/20">
                     <AvatarImage src={user.photoURL || ''} alt={user.displayName || 'User'} />
-                    <AvatarFallback className="bg-church-100 text-church-700 dark:bg-gray-800 dark:text-white">
+                    <AvatarFallback className="bg-white/10 text-white">
                       {user.displayName?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                    <p className="text-sm font-medium text-white">
                       {user.displayName || 'User'}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    <p className="text-xs text-white/70">
                       {user.email}
                     </p>
                   </div>
                 </div>
                 <button
-                  onClick={handleLogout}
-                  className="w-full text-left px-4 py-3 rounded-lg text-base font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors duration-200"
+                  onClick={() => {
+                    handleLogout();
+                    closeMenu();
+                  }}
+                  className="w-full text-left px-4 py-3 rounded-lg text-base font-medium text-white/90 hover:bg-red-500/20 hover:text-white transition-colors duration-200 flex items-center gap-2"
                 >
-                  {t('logout')}
+                  <LogOut className="h-5 w-5" />
+                  <span>{t('logout')}</span>
                 </button>
               </>
             ) : (
-              <div className="px-2 space-y-2">
+              <div className="space-y-3 pt-2">
                 <Button 
                   asChild 
                   variant="outline" 
-                  className="w-full justify-start h-11 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/80 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 group"
+                  className="w-full justify-center h-12 px-4 rounded-xl border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/40 transition-all duration-200 group"
                 >
-                  <Link to="/login" onClick={closeMenu} className="flex items-center gap-2">
-                    <LogIn className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    <span className="font-medium">{t('login')}</span>
+                  <Link to="/login" onClick={closeMenu} className="flex items-center gap-2 text-base font-medium">
+                    <LogIn className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                    <span>{t('login')}</span>
                   </Link>
                 </Button>
                 <Button 
                   asChild 
-                  className="w-full justify-start h-11 px-4 rounded-lg bg-gradient-to-r from-church-600 to-church-700 hover:from-church-700 hover:to-church-800 text-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+                  className="w-full justify-center h-12 px-4 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 group"
                 >
-                  <Link to="/signup" onClick={closeMenu} className="flex items-center gap-2">
-                    <UserPlus className="h-4 w-4 transition-transform group-hover:scale-110" />
-                    <span className="font-medium">{t('signup')}</span>
+                  <Link to="/signup" onClick={closeMenu} className="flex items-center gap-2 text-base font-medium">
+                    <UserPlus className="h-5 w-5 transition-transform group-hover:scale-110" />
+                    <span>{t('signup')}</span>
                   </Link>
                 </Button>
               </div>
@@ -179,23 +194,20 @@ const Navbar = () => {
   );
 
   return (
-    <motion.header
-      ref={navRef}
-      initial={{ y: 0, opacity: 0 }}
-      animate={{ 
-        y: isVisible ? 0 : -100,
-        opacity: 1,
-        transition: { duration: 0.3 }
-      }}
+    <motion.header 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
-        scrolled 
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm border-gray-100 dark:border-gray-800 py-2" 
-          : "bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-transparent py-4"
+        "sticky top-0 z-50 transition-all duration-300 bg-gradient-to-r from-blue-900/95 to-indigo-900/95 text-white shadow-lg backdrop-blur-sm",
+        scrolled ? 'py-2' : 'py-3'
       )}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+      <nav 
+        ref={navRef}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link 
             to="/" 
@@ -203,56 +215,46 @@ const Navbar = () => {
             onClick={closeMenu}
             aria-label="Home"
           >
-            <div className={cn(
-              "p-1.5 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 text-white transition-all duration-300",
-              scrolled ? "p-1" : "p-1.5"
-            )}>
-              <Church className={cn(
-                "transition-all duration-300",
-                scrolled ? "h-5 w-5" : "h-6 w-6"
-              )} />
+            <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg">
+              <Church className="h-6 w-6 text-white" />
             </div>
-            <div className="text-left">
-              <span className="font-sans text-xl font-bold text-gray-900 dark:text-white block leading-tight">
+            <div className="flex items-center space-x-3">
+              <span className="font-sans text-xl font-bold text-white whitespace-nowrap">
                 NASSU
               </span>
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400 block -mt-0.5 tracking-wide">
+              <span className="text-xs font-medium text-white/80 tracking-wide border-l border-white/30 pl-3">
                 North America Sunday School Union
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-0">
             {navLinks.map(({ to, label }) => (
               <Link
                 key={to}
                 to={to}
                 className={cn(
-                  "px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 relative group overflow-hidden",
-                  "text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400",
+                  "px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 relative group overflow-hidden whitespace-nowrap",
+                  "text-white/90 hover:text-white hover:bg-white/10",
                   isActive(to)
-                    ? "text-indigo-600 dark:text-indigo-400 font-semibold"
-                    : "hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                    ? "text-white font-semibold bg-white/20"
+                    : "hover:bg-white/5"
                 )}
               >
-                <span className="relative z-10">
+                <span className="relative z-10 flex items-center">
                   {t(label)}
+                  {isActive(to) && (
+                    <motion.span 
+                      className="absolute -bottom-1 left-1/2 w-1/2 h-0.5 bg-yellow-400 rounded-full"
+                      layoutId="activeNavLink"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                    />
+                  )}
                 </span>
-                {isActive(to) && (
-                  <motion.span 
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400"
-                    layoutId="activeNavLink"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                  />
-                )}
-                <motion.span 
-                  className="absolute inset-0 bg-indigo-50 dark:bg-indigo-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg"
-                  aria-hidden="true"
-                />
               </Link>
             ))}
-          </nav>
+          </div>
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-3">
@@ -262,11 +264,11 @@ const Navbar = () => {
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="flex items-center gap-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800/50 rounded-full px-3"
+                  className="flex items-center gap-1.5 text-white/90 hover:bg-white/10 hover:text-white rounded-full px-3 py-1.5 border border-white/20 transition-colors duration-200 whitespace-nowrap"
                 >
                   <Globe className="h-4 w-4" />
-                  <span>{language === 'en' ? 'EN' : 'አማ'}</span>
-                  <ChevronDown className="h-3 w-3 opacity-50" />
+                  <span className="text-sm">{language === 'en' ? 'EN' : 'አማ'}</span>
+                  <ChevronDown className="h-3 w-3 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-40">
@@ -324,7 +326,7 @@ const Navbar = () => {
                   asChild 
                   variant="outline" 
                   size="sm" 
-                  className="relative h-9 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/80 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 group"
+                  className="relative h-9 px-4 rounded-lg border border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/40 transition-all duration-200 group"
                 >
                   <Link to="/login" className="flex items-center gap-1.5">
                     <LogIn className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -334,11 +336,11 @@ const Navbar = () => {
                 <Button 
                   asChild 
                   size="sm" 
-                  className="relative h-9 px-4 rounded-lg bg-gradient-to-r from-church-600 to-church-700 hover:from-church-700 hover:to-church-800 text-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+                  className="relative h-9 px-4 rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 group"
                 >
-                  <Link to="/signup" className="flex items-center gap-1.5">
+                  <Link to="/signup" className="flex items-center gap-1.5 font-medium">
                     <UserPlus className="h-4 w-4 transition-transform group-hover:scale-110" />
-                    <span className="font-medium">{t('signup')}</span>
+                    <span>{t('signup')}</span>
                   </Link>
                 </Button>
               </>
@@ -348,7 +350,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors duration-200"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -359,8 +361,8 @@ const Navbar = () => {
             )}
           </button>
         </div>
-      </div>
-
+      </nav>
+      
       {/* Mobile Menu */}
       <MobileMenu />
     </motion.header>
