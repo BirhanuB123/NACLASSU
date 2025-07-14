@@ -23,6 +23,8 @@ interface LanguageProviderProps {
 // Define translations outside the component
 const translations = {
   en: {
+    home_title_line1: 'North American',
+    home_title_line2: 'Sunday School Union',
     home: 'Home',
     about: 'About',
     services: 'Services',
@@ -324,6 +326,8 @@ const translations = {
   },
   am: {
     // Navigation
+    home_title_line1: 'የሰሜን አሜሪካ',
+    home_title_line2: 'የሰንበት ት/ቤት ህብረት',
     home: 'ዋና ገጽ',
     join_us: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
     about: 'ስለ እኛ',
