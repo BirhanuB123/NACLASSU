@@ -2,13 +2,16 @@ import http from 'http';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
+import path from 'path';
+
+// Import environment configuration first
+import './config/env';
+import config from './config/env';
 import connectDB from './config/db';
 import SocketService from './services/socket.service';
 import { apiLimiter, xssProtection, corsConfig } from './middleware/security';
 
-import dotenv from 'dotenv';
-dotenv.config();
-
+// Import routes
 import users from './routes/user.route';
 import auth from './routes/auth.route';
 import lessons from './routes/lesson.route';
