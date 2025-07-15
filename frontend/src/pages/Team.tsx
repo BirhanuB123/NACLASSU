@@ -97,14 +97,14 @@ const Team = () => {
 
   return (
     <>
-      <PageHeader title={t('team_page.meet_team')} background="">
-        <p className="text-lg text-gray-100">{t('team_page.subtitle')}</p>
+      <PageHeader title={t('Meet the Team')} background="">
+        <p className="text-lg text-gray-100">{t('Meet the dedicated individuals guiding our mission')}</p>
       </PageHeader>
 
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="section-title">{t('team_page.our_leadership')}</h2>
+            <h2 className="section-title">{t('Our Leadership Team')}</h2>
             <p className="text-lg text-gray-700">
               NASSU is led by a team of dedicated professionals who bring diverse expertise in Orthodox education, finance, communications, and strategic planning to our organization.
             </p>
