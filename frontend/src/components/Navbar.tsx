@@ -126,8 +126,8 @@ const Navbar = () => {
                   className={cn(
                     'block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200',
                     isActive(to)
-                      ? 'bg-white/20 text-white font-semibold'
-                      : 'text-white/90 hover:bg-white/10 hover:text-white'
+                      ? 'bg-blue-50 text-blue-700 font-semibold'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                   )}
                 >
                   {t(label)}
@@ -158,7 +158,7 @@ const Navbar = () => {
                     handleLogout();
                     closeMenu();
                   }}
-                  className="w-full text-left px-4 py-3 rounded-lg text-base font-medium text-white/90 hover:bg-red-500/20 hover:text-white transition-colors duration-200 flex items-center gap-2"
+                  className="w-full text-left px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200 flex items-center gap-2"
                 >
                   <LogOut className="h-5 w-5" />
                   <span>{t('logout')}</span>
@@ -169,7 +169,7 @@ const Navbar = () => {
                 <Button 
                   asChild 
                   variant="outline" 
-                  className="w-full justify-center h-12 px-4 rounded-xl border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/40 transition-all duration-200 group"
+                  className="w-full justify-center h-12 px-4 rounded-xl border-2 border-gray-200 bg-transparent text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 group"
                 >
                   <Link to="/login" onClick={closeMenu} className="flex items-center gap-2 text-base font-medium">
                     <LogIn className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
@@ -178,7 +178,7 @@ const Navbar = () => {
                 </Button>
                 <Button 
                   asChild 
-                  className="w-full justify-center h-12 px-4 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 group"
+                  className="w-full justify-center h-12 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group"
                 >
                   <Link to="/signup" onClick={closeMenu} className="flex items-center gap-2 text-base font-medium">
                     <UserPlus className="h-5 w-5 transition-transform group-hover:scale-110" />
@@ -199,7 +199,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300 bg-gradient-to-r from-blue-900/95 to-indigo-900/95 text-white shadow-lg backdrop-blur-sm",
+        "sticky top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md text-gray-800 shadow-sm border-b border-gray-100",
         scrolled ? 'py-2' : 'py-3'
       )}
     >
@@ -215,14 +215,14 @@ const Navbar = () => {
             onClick={closeMenu}
             aria-label="Home"
           >
-            <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg">
-              <Church className="h-6 w-6 text-white" />
+            <div className="p-2 rounded-xl bg-blue-50 border border-blue-100 shadow-sm">
+              <Church className="h-6 w-6 text-blue-700" />
             </div>
             <div className="flex items-center space-x-3">
-              <span className="font-sans text-xl font-bold text-white whitespace-nowrap">
+              <span className="font-sans text-xl font-bold text-gray-800 whitespace-nowrap">
                 NASSU
               </span>
-              <span className="text-xs font-medium text-white/80 tracking-wide border-l border-white/30 pl-3">
+              <span className="text-xs font-medium text-gray-600 tracking-wide border-l border-gray-200 pl-3">
                 North America Sunday School Union
               </span>
             </div>
@@ -236,10 +236,10 @@ const Navbar = () => {
                 to={to}
                 className={cn(
                   "px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 relative group overflow-hidden whitespace-nowrap",
-                  "text-white/90 hover:text-white hover:bg-white/10",
+                  "text-gray-700 hover:text-blue-700 hover:bg-gray-100",
                   isActive(to)
-                    ? "text-white font-semibold bg-white/20"
-                    : "hover:bg-white/5"
+                    ? "text-blue-700 font-semibold bg-blue-50"
+                    : "hover:bg-gray-50"
                 )}
               >
                 <span className="relative z-10 flex items-center">
@@ -262,9 +262,9 @@ const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button 
-                  variant="ghost" 
+                  variant="outline" 
                   size="sm" 
-                  className="flex items-center gap-1.5 text-white/90 hover:bg-white/10 hover:text-white rounded-full px-3 py-1.5 border border-white/20 transition-colors duration-200 whitespace-nowrap"
+                  className="flex items-center gap-1.5 text-gray-700 hover:bg-gray-50 hover:text-gray-900 rounded-full px-3 py-1.5 border border-gray-200 transition-colors duration-200 whitespace-nowrap"
                 >
                   <Globe className="h-4 w-4" />
                   <span className="text-sm">{language === 'en' ? 'EN' : 'አማ'}</span>
@@ -326,7 +326,7 @@ const Navbar = () => {
                   asChild 
                   variant="outline" 
                   size="sm" 
-                  className="relative h-9 px-4 rounded-lg border border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/40 transition-all duration-200 group"
+                  className="relative h-9 px-4 rounded-lg border border-gray-200 bg-transparent text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 group"
                 >
                   <Link to="/login" className="flex items-center gap-1.5">
                     <LogIn className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -336,7 +336,7 @@ const Navbar = () => {
                 <Button 
                   asChild 
                   size="sm" 
-                  className="relative h-9 px-4 rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 group"
+                  className="relative h-9 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group"
                 >
                   <Link to="/signup" className="flex items-center gap-1.5 font-medium">
                     <UserPlus className="h-4 w-4 transition-transform group-hover:scale-110" />
@@ -347,19 +347,21 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors duration-200"
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
+          {/* Mobile Menu Button - Only visible on mobile */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-200"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </nav>
       

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Loader2, Apple, Eye, EyeOff } from "lucide-react";
+import { Loader2, Eye, EyeOff } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -332,19 +333,18 @@ const LoginPage = () => {
                 </Button>
                 
                 <Button 
+                  type="button" 
                   variant="outline" 
-                  className="w-full flex items-center justify-center gap-3 py-6 text-base"
-                  onClick={handleAppleSignIn} 
-                  disabled={isLoading || socialLoading === 'google'}
+                  className="w-full flex items-center justify-center gap-2 bg-black text-white hover:bg-gray-800 hover:text-white"
+                  onClick={handleAppleSignIn}
+                  disabled={!!socialLoading}
                 >
                   {socialLoading === 'apple' ? (
-                    <Loader2 className="h-5 w-5 animate-spin" />
+                    <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    <>
-                      <Apple className="h-5 w-5" />
-                      {t('Continue with Apple')}
-                    </>
+                    <FaApple className="h-5 w-5" />
                   )}
+                  {t('Continue with Apple')}
                 </Button>
               </div>
             </form>

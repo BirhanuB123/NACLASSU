@@ -6,8 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Apple, Eye, EyeOff } from "lucide-react";
+import { Loader2, Eye, EyeOff } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
 
 import { 
   createUserWithEmailAndPassword, 
@@ -386,8 +387,9 @@ const SignUpPage = () => {
               </Button>
 
               <Button
+                type="button"
                 variant="outline"
-                className="w-full flex items-center justify-center gap-3 py-6 text-base"
+                className="w-full flex items-center justify-center gap-3 py-6 text-base bg-black text-white hover:bg-gray-800 hover:text-white"
                 onClick={handleAppleSignUp}
                 disabled={!!socialLoading}
               >
@@ -395,7 +397,7 @@ const SignUpPage = () => {
                   <Loader2 className="h-5 w-5 animate-spin" />
                 ) : (
                   <>
-                    <Apple className="h-5 w-5" />
+                    <FaApple className="h-5 w-5" />
                     {t('Continue with Apple')}
                   </>
                 )}

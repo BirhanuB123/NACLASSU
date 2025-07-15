@@ -1,6 +1,5 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import type { User as FirebaseUser } from 'firebase/auth';
 import { auth } from '@/config/firebase';
 import { onAuthStateChanged, signOut as firebaseSignOut } from 'firebase/auth';
 import { useToast } from '@/components/ui/use-toast';
@@ -44,10 +43,28 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         
         setUser(user);
         
-        // For now, we'll set admin based on email domain or specific emails
-        // You can modify this logic based on your requirements
-        const isAdminUser = firebaseUser.email?.endsWith('@nassu.org') || 
-                          firebaseUser.email === 'admin@example.com';
+        // Check for admin access based on email (case-insensitive)
+        const adminEmails = [
+          'admin@nassu.org',
+          'admin@example.com' // Remove this in production
+        ].map(email => email.toLowerCase());
+        
+        const userEmail = firebaseUser.email?.toLowerCase() || '';
+        const isAdminUser = userEmail ? 
+          adminEmails.includes(userEmail) || 
+          userEmail.endsWith('@nassu.org') : false;
+          
+        console.log('Admin check:', {
+          email: userEmail,
+          isAdmin: isAdminUser,
+          timestamp: new Date().toISOString()
+        });
+        
+        console.log('Auth State Changed:', {
+          email: firebaseUser.email,
+          isAdmin: isAdminUser,
+          timestamp: new Date().toISOString()
+        });
         setIsAdmin(isAdminUser);
       } else {
         setUser(null);
