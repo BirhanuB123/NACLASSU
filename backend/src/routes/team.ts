@@ -1,7 +1,7 @@
 import express from 'express';
-import { getTeam } from '../controllers/teamController';
+import { createMembers } from '../controllers/teamController';
 const router = express.Router();
 
-router.get('/', getTeam);
+router.post('/', createMembers);
 
 export default router;

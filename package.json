@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
+    "@types/paypal__checkout-server-sdk": "^1.0.8",
     "concurrently": "^8.0.0",
     "cross-env": "^7.0.3",
     "ts-node": "^10.9.2"

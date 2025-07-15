@@ -41,10 +41,12 @@ export interface UserDocument extends mongoose.Document {
 declare global {
   namespace Express {
     interface UserPayload {
-      _id: string;
+      uid: string;
+      _id?: string;
       email: string;
       role: 'user' | 'admin';
       fullName: string;
+      [key: string]: any; // Allow additional properties
     }
     
     interface Request {
@@ -69,6 +71,7 @@ interface UserObject {
 // Helper function to convert UserDocument or UserObject to UserPayload
 function toUserPayload(user: UserDocument | UserObject): Express.UserPayload {
   return {
+    uid: user._id.toString(),
     _id: user._id.toString(),
     email: user.email,
     role: user.role,

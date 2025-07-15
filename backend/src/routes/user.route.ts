@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import User from '../models/User.model';
 import { errorHandler } from '../middleware/errorHandler';
 import { getUsers, createUsers, updateUsers, deleteUsers } from '../controllers/userController';
-import { create } from 'axios';
+import axios from 'axios';
 
 const router = express.Router();
 
