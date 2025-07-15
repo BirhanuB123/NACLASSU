@@ -3,11 +3,18 @@ import 'express';
 declare global {
   namespace Express {
     interface UserPayload {
-      _id: string;
-      email: string;
+      uid: string;
+      _id?: string | any;  // Using 'any' to match mongoose.Types.ObjectId
+      fullName?: string;
+      email?: string;
       role: 'user' | 'admin';
-      fullName: string;
-      [key: string]: any;
+      lastLogin?: Date | null;
+      failedLoginAttempts?: number;
+      isLocked?: boolean;
+      lockUntil?: Date | null;
+      createdAt: Date;
+      updatedAt: Date;
+      [key: string]: any;  // For any additional properties
     }
 
     interface Request {
