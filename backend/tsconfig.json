@@ -12,7 +12,8 @@
     "forceConsistentCasingInFileNames": true,
     "typeRoots": [
       "./node_modules/@types",
-      "./src/types"
+      "./src/types",
+      "./src/@types"
     ],
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
