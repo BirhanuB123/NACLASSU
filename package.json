@@ -1,12 +1,10 @@
 {
-  "name": "orthodox-union-web",
+  "name": "nassu",
   "private": true,
   "scripts": {
-    "build:backend": "cd backend && npm install && npm run build",
-    "dev": "cross-env NODE_ENV=development ts-node backend/src/server.ts",
-    "build": "npm install && npm run build:backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "node start.js",
-    "render-build": "npm run build"
+    "start": "nodemon backend/server.ts",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
@@ -18,8 +16,6 @@
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
     "@paypal/react-paypal-js": "^8.8.3",
-    "@stripe/stripe-js": "^7.3.0",
-    "@supabase/supabase-js": "^2.49.4",
     "axios": "^1.9.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
@@ -39,3 +35,4 @@
     "winston": "^3.17.0"
   }
 }
+

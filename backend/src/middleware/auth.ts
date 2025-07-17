@@ -42,18 +42,11 @@ export const auth: RequestHandler = async (req: Request, res: Response, next: Ne
 
     // Add user info to request object
     (req as AuthenticatedRequest).user = {
-      uid: decodedToken.uid, // Firebase UID
-      _id: user._id.toString(), // MongoDB _id
-      fullName: user.fullName || '',
+      uid: decodedToken.uid,
       email: user.email,
+      _id: user._id.toString(),
       role: user.role || 'user',
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-      // Optional properties with defaults
-      lastLogin: user.lastLogin || undefined,
-      failedLoginAttempts: user.failedLoginAttempts,
-      isLocked: user.isLocked,
-      lockUntil: user.lockUntil || undefined
+      fullName: user.fullName || ''
     };
     
     next();

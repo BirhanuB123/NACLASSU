@@ -6,7 +6,7 @@ declare global {
     interface UserPayload {
       uid: string;
       email?: string;
-      _id?: string | Types.ObjectId;  // Allow both string and ObjectId
+      _id?: Types.ObjectId;
       role?: string;
       fullName?: string;
       [key: string]: any;

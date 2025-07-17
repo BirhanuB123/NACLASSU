@@ -51,11 +51,10 @@ const paymentSchema = new mongoose.Schema(
   {
     timestamps: true,
     toJSON: {
-      transform: function(doc: any, ret: any) {
-        ret.id = ret._id.toString();
+      transform: function(doc, ret) {
+        ret.id = ret._id;
         delete ret._id;
         delete ret.__v;
-        return ret;
       }
     }
   }
@@ -63,7 +62,6 @@ const paymentSchema = new mongoose.Schema(
 
 // Index for faster queries
 paymentSchema.index({ userId: 1, status: 1 });
-paymentSchema.index({ paypalOrderId: 1 }, { unique: true });
 
 const Payment = mongoose.model("Payment", paymentSchema);
 export default Payment;

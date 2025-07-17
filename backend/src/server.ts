@@ -46,27 +46,8 @@ app.use('/api/payments', payments);
 
 // Start server
 const PORT = process.env.PORT || 5000;
-const __dirname = path.resolve();
 
-// Only serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-  });
-}
-
-// Export the server for testing
-const startServer = () => {
-  return server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`WebSocket server running on port ${PORT}`);
-  });
-};
-
-// Only start the server if this file is run directly (not when imported)
-if (require.main === module) {
-  startServer();
-}
-
-export { app, server, startServer };
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`WebSocket server running on port ${PORT}`);
+});

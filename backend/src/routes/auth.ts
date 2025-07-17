@@ -1,7 +1,7 @@
 
 import express, { Request, Response, NextFunction } from 'express';
-import { login } from '../controllers/authController';
-import User from '../models/User.model';
+import { registerUser, loginUser } from '../controllers/authController';
+import User from '../models/User'; // Make sure this path is correct for your User model
 const router = express.Router();
 
 // Helper to wrap async route handlers
