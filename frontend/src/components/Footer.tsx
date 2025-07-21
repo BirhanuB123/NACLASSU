@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Church, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Church, Mail, MapPin, Phone, Youtube } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa6';
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext"; // Import useLanguage
 
@@ -9,7 +10,27 @@ const Footer = () => {
   
   return (
     <footer className="bg-church-900 text-white">
-      <div className="container mx-auto px-4 pt-16 pb-8">
+      {/* Social Media Banner */}
+      <div className="bg-church-800 py-4">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center space-x-6">
+            <a href="https://www.facebook.com/AndnetGubae?mibextid=LQQJ4d&rdid=IdYmFR9L5302g6pC&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FCYJo7CMwDfiokKYu%2F%3Fmibextid%3DLQQJ4d#" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+              <Facebook size={20} className="text-white" />
+            </a>
+            <a href="https://www.instagram.com/eotc_nassu/?igsh=MXh6d2JneGEzeWdhZg%3D%3D#" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+              <Instagram size={20} className="text-white" />
+            </a>
+            <a href="https://www.youtube.com/@eotcnassumedia6934" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110" aria-label="YouTube">
+              <Youtube size={20} className="text-white" />
+            </a>
+            <a href="https://www.tiktok.com/@eotc_nassu?_t=8qp9ChQlKQw&_r=1" target="_blank" rel="noopener noreferrer" className="bg-black hover:bg-gray-800 p-3 rounded-full transition-all duration-300 transform hover:scale-110" aria-label="TikTok">
+              <FaTiktok size={20} className="text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 pt-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
@@ -20,20 +41,9 @@ const Footer = () => {
                 <span className="text-xs font-light text-gray-400 -mt-1 block">North America Sunday School Union</span>
               </div>
             </div>
-            <p className="text-gray-300 mb-4">
+            <p className="text-gray-300 mb-6">
               Nurturing faith in the next generation through education, community, and Orthodox tradition.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-gold-400 transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gold-400 transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gold-400 transition-colors">
-                <Twitter size={20} />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}

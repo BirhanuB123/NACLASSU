@@ -55,6 +55,17 @@ const Team = () => {
       linkedin: "https://linkedin.com",
       website: "https://Wosen.com"
     },
+    
+    {
+      name: "Biniyam",
+      title: "Hymn Section",
+      bio: "Biniyam oversees our communications strategy and public relations. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.",
+      image: "/images/Ashu.jpg",
+      email: "Biniyam@nasunion.org",
+      linkedin: "https://linkedin.com",
+      website: "https://Biniyam.com"
+      
+    },
     {
       name: "Eskedar",
       title: "Communication Director",
@@ -66,16 +77,6 @@ const Team = () => {
       
     },
     {
-      name: "Biniyam",
-      title: "Hymn Section",
-      bio: "Biniyam oversees our communications strategy and public relations. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.",
-      image: "/images/ashu.jpeg",
-      email: "Biniyam@nasunion.org",
-      linkedin: "https://linkedin.com",
-      website: "https://Biniyam.com"
-      
-    },
-    {
       name: "Betelhem",
       title: "Child and Youth Section",
       bio: "Ms Betelhem oversees our child and youth participation and managing. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.",
@@ -83,6 +84,16 @@ const Team = () => {
       email: "Betelhem@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Betelhem.com"
+      
+    },
+    {
+      name: "Tinsae",
+      title: "IT Director",
+      bio: "Mr. Tinsae oversees our IT operations and management. With a background in marketing and Orthodox theology, he helps articulate our mission to parishes, donors, and the broader Orthodox community.",
+      image: "/images/tins.jpeg",
+      email: "tinsae@nasunion.org",
+      linkedin: "https://linkedin.com",
+      website: "https://tinsaeNassu.com"
       
     }
   ];

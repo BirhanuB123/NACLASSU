@@ -22,7 +22,7 @@ const JoinUsButton: React.FC<JoinUsButtonProps> = ({
       className={`bg-church-700 hover:bg-church-800 text-white flex items-center gap-2 ${large ? 'text-lg py-6 px-8' : ''} ${className}`}
     >
       <Link to="/join-us">
-        <UserPlus className="w-5 h-5" /> {children || t('join_us')}
+        <UserPlus className="w-5 h-5" /> {children || t('Join Us')}
       </Link>
     </Button>
   );
