@@ -32,21 +32,6 @@ const ServicesSection = () => {
       icon: School,
       title: t('services_section.services_page.services.4.title'),
       description: t('services_section.services_page.services.4.description')
-    },
-    {
-      icon: Users2,
-      title: t('services_section.services_page.services.5.title'),
-      description: t('services_section.services_page.services.5.description')
-    },
-    {
-      icon: Mic2,
-      title: t('services_section.services_page.services.6.title'),
-      description: t('services_section.services_page.services.6.description')
-    },
-    {
-      icon: HeartHandshake,
-      title: t('services_section.services_page.services.7.title'),
-      description: t('services_section.services_page.services.7.description')
     }
   ];
   

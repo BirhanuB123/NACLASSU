@@ -182,32 +182,20 @@ const translations = {
         },
         services: [
           {
-            title: 'Sunday School Curriculum',
+            title: 'Harp and Kirar Training',
             description: 'Age-appropriate Orthodox Christian educational materials for children from preschool through high school, aligned with Church teachings.'
           },
           {
-            title: 'Teacher Training',
+            title: 'Raising Childrens with in Orthodoxy Faith',
             description: 'Professional development programs, workshops, and resources to enhance teaching effectiveness and Orthodox knowledge.'
           },
           {
-            title: 'Youth Ministry Programs',
+            title: 'Strengthening the Unity of the Sunday School',
             description: 'Engaging activities, retreats, and events that foster spiritual growth and Orthodox community among youth.'
           },
           {
-            title: 'Educational Resources',
-            description: 'A wide range of teaching materials, activity books, and digital content to support Christian education.'
-          },
-          {
-            title: 'Online Learning',
-            description: 'Interactive webinars and recorded sessions on Orthodox faith and practice for students, teachers, and parents.'
-          },
-          {
-            title: 'Family Faith Resources',
-            description: 'Guidance and materials to help parents nurture their children\'s spiritual development at home.'
-          },
-          {
-            title: 'Multimedia Library',
-            description: 'Audio recordings of Orthodox hymns, Bible stories, and teachings for educational and devotional use.'
+            title: 'Supporting Monastries',
+            description: 'Supporting monastries in their spiritual growth and development.'
           },
           {
             title: 'Parish Support',
@@ -296,14 +284,14 @@ const translations = {
       subtitle: 'Learn about our history, mission, and vision',
       our_story: 'Our Story',
       story_paragraphs: [
-        'The North America Sunday School Union (NASSU) was founded in 2010 by a group of dedicated Ethiopian Orthodox priests and educators who recognized the need for a unified approach to Sunday School education across North America. What began as a small gathering of educators from various jurisdictions has grown into a comprehensive resource center supporting Sunday Schools throughout the continent.',
-        'For over 10 years, we have been developing curriculum materials, organizing teacher training workshops, and creating resources that help parishes provide quality Orthodox Christian education to children and youth. Our work spans across multiple Orthodox jurisdictions, bringing together the rich traditions and teachings of our faith.',
+        'The North America Sunday School Union (NASSU) was founded in September 2/ 2001 by a group of dedicated Ethiopian Orthodox priests and educators who recognized the need for a unified approach to Sunday School education across North America. What began as a small gathering of educators from various jurisdictions has grown into a comprehensive resource center supporting Sunday Schools throughout the continent.',
+        'For over 30 years, we have been developing curriculum materials, organizing teacher training workshops, and creating resources that help parishes provide quality Orthodox Christian education to children and youth. Our work spans across multiple Orthodox jurisdictions, bringing together the rich traditions and teachings of our faith.',
         'Today, NASSU serves hundreds of parishes, reaching thousands of children each week. We continue to expand our offerings and adapt to the changing needs of Orthodox communities while remaining firmly rooted in the unchanging truths of our faith.'
       ],
       at_a_glance: 'At a Glance',
       stats: {
-        founded: 'Founded in 2010',
-        years_of_service: 'Over 10 years of service',
+        founded: 'Founded in September 2/ 2001',
+        years_of_service: 'Over 30 years of service',
         parishes_served: '350+ Parishes Served',
         across_jurisdictions: 'Across multiple jurisdictions',
         north_america_wide: 'North America Wide',
@@ -312,11 +300,19 @@ const translations = {
       mission_vision: 'Our Mission & Vision',
       mission: {
         title: 'Our Mission',
-        description: 'To support Ethiopian Orthodox parishes in providing quality Christian education that nurtures the spiritual growth of children and youth, fostering a deep connection to their faith, church community, and Orthodox tradition.'
+        description: [
+        'NASSU aims to: Restore the authentic St. Yared hymns in church singing.', 
+        'Support and develop monastic establishments and religious congregations financially.', 
+        'Establish educational institutions for foundational Church teaching in Ethiopia.',
+        'Educate Northern American youth about Church teachings and traditions.',
+        'Encourage youth to join Sunday Schools and serve the Church.',
+        'Coordinate and promote the gospel teaching across Northern American churchs.',
+        'Assist dioceses in meeting their operational needs.'
+      ]
       },
       vision: {
         title: 'Our Vision',
-        description: 'We envision a future where every Orthodox child in North America has access to engaging, authentic Orthodox education that prepares them to live out their faith with confidence, knowledge, and joy.'
+        description: 'We envision a future where every Orthodox child in North America has access to engaging, authentic Orthodox education Prepares them to live out their faith with confidence, knowledge, and joy'
       },
       join_mission: {
         title: 'Join Us in Our Mission',
@@ -330,6 +326,7 @@ const translations = {
     home_title_line2: 'የሰንበት ት/ቤት ህብረት',
     home: 'ዋና ገጽ',
     join_us: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
+    'Join Us': 'በተልዕኳችን ውስጥ ይቀላቀሉ',
     about: 'ስለ እኛ',
     values_page: {
       title: 'የእኛ እሴቶች',
@@ -401,8 +398,8 @@ const translations = {
       description: 'የሚቀጥለው ትውልድ በእምነት፣ በእውቀት እና በደስታ የሚያድግበትን የወደፊቱን እያየን ነው። በሰሜን አሜሪካ ያለ እያንዳንዱ ኦርቶዶክስ ልጅ ጥራት ያለው፣ እውነተኛ የኦርቶዶክስ ትምህርት እንዲኖረው እንፈልጋለን።'
     },
     join_mission: {
-      title: 'በተልዕኮአችን ውስጥ ይቀላቀሉ',
-      description: 'ድጋፍዎ በሰሜን አሜሪካ ዙሪያ ለሚገኙ የእሁድ ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመስጠት እንድንቀጥል ይረዳናል።'
+      title: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
+      description: 'ድጋፍዎ በሰሜን አሜሪካ ዙሪያ ለሚገኙ የሰንበት ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመስጠት እንድንቀጥል ይረዳናል።'
     },
     
     // Core Values Section
@@ -418,36 +415,24 @@ const translations = {
         subtitle: 'የኦርቶዶክስ ክርስቲያናዊ ትምህርትን በማገዝ ላይ',
         what_we_offer: {
           title: 'የምናቀርባቸው አገልግሎቶች',
-          description: 'ናሱ በኦርቶዶክስ ክርስቲያናዊ ትምህርት ስርዓት ውስጥ የተለያዩ ድጋፎችን ያቀርባል። የእኛ አገልግሎቶች የሚያበረታቱት እምነት፣ እውቀት እና መንፈሳዊ እድገት ለሁሉም ዕድሜ ቡድኖች በኦርቶዶክስ ማህበረሰብ ውስጥ ነው።'
+          description: 'የሰንበት ትምህርት ቤት ጉባኤው በኦርቶዶክስ ክርስቲያናዊ ትምህርት ስርዓት ውስጥ የተለያዩ ድጋፎችን ያቀርባል። የእኛ አገልግሎቶች የሚያበረታቱት እምነት፣ እውቀት እና መንፈሳዊ እድገት ለሁሉም ዕድሜ ቡድኖች በኦርቶዶክስ ማህበረሰብ ውስጥ ነው።'
         },
         services: [
           {
-            title: 'የእሁድ ት/ቤት ሥርዓተ-ትምህርት',
-            description: 'ለህፃናት እና ወጣቶች የተዘጋጁ የኦርቶዶክስ ክርስቲያናዊ ትምህርት ቁሳቁሶች፣ ከመዋለ ህፃናት እስከ ሁለተኛ ደረጃ ተማሪዎች ድረስ።'
+            title: 'በገና ፣ ክራርና መሰንቆ ስልጠና',
+            description: 'አገልግሎቶችን የሚያበረታቱት እምነት፣ እውቀት እና መንፈሳዊ እድገት ለሁሉም ዕድሜ ቡድኖች በኦርቶዶክስ ማህበረሰብ ውስጥ ነው።'
           },
           {
-            title: 'የመምህራን ስልጠና',
-            description: 'ለእሁድ ት/ቤት አስተማሪዎች የሚያስፈልጋቸውን የትምህርት ዘዴዎች እና የኦርቶዶክስ እውቀት ለማሳደግ የሚያግዙ ስልጠናዎች፣ የመስክ ስልጠናዎች እና ምንጮች።'
+            title: 'ህጻናትን በሃይማኖት ማነጽ',
+            description: 'ለሰንበት ት/ቤት ህጻናት የሚያስፈልጋቸውን የትምህርት ዘዴዎች እና የኦርቶዶክስ እውቀት ለማሳደግ የሚያግዙ ስልጠናዎች፣ የመስክ ስልጠናዎች እና ምንጮች።'
           },
           {
-            title: 'የወጣቶች ፕሮግራሞች',
-            description: 'ወጣቶች ለመንፈሳዊ እድገታቸው እና የኦርቶዶክስ ማህበረሰባዊ ግንኙነት የሚጠቀሙባቸው እንቅስቃሴዎች፣ የመከላከያ እና የጉብኝት ፕሮግራሞች።'
+            title: 'የሰንበት ትምህርት ቤቶችን አንድነት ማጠናከር',
+            description: 'የሰንበት ትምህርት ቤቶችን አንድነት ማጠናከር የሚያስፈልጋቸውን የትምህርት ዘዴዎች እና የኦርቶዶክስ እውቀት ለማሳደግ የሚያግዙ ስልጠናዎች፣ የመስክ ስልጠናዎች እና ምንጮች።'
           },
           {
-            title: 'የትምህርት ምንጮች',
+            title: 'ገዳማትን መራዳት',
             description: 'ለክርስቲያናዊ ትምህርት የሚያግዙ የተለያዩ የትምህርት እርዳታዎች፣ የእንቅስቃሴ መጽሐፎች እና ዲጂታል ይዘቶች።'
-          },
-          {
-            title: 'የመስመር ላይ ትምህርት',
-            description: 'ለተማሪዎች፣ ለመምህራን እና ለወላጆች የሚያስተምሩ በኦርቶዶክስ እምነት እና ልምድ ዙሪያ ያሉ በይነመረብ ዌብናሮች እና የተቀዳሚ የትምህርት ክፍሎች።'
-          },
-          {
-            title: 'የቤተሰብ እምነት ምንጮች',
-            description: 'ወላጆች የእምነት ትምህርትን በቤታቸው በተግባር ለማስተማር እና የልጆቻቸውን መንፈሳዊ እድገት ለማገዝ የሚያግዛቸው መመሪያዎች እና የትምህርት እርዳታዎች።'
-          },
-          {
-            title: 'የመልቲሚዲያ ቤተ-መጽሐፍት',
-            description: 'ለትምህርታዊ እና ለመንፈሳዊ አጠቃቀም የተዘጋጁ የኦርቶዶክስ መዝሙራት፣ የመጽሐፍ ቅዱስ ታሪኮች እና የሃይማኖት ትምህርቶች ድምፃዊ ቅጂዎች።'
           },
           {
             title: 'የቤተክርስቲያን ድጋፍ',
@@ -507,14 +492,14 @@ const translations = {
       
       bible_study_workshop: {
         title: 'የመጽሐፍ ቅዱስ ጥናት ስልጠና',
-        date: 'ጁላይ 22, 2025',
+        date: 'ሐምሌ 05, 2017 ዓ.ም',
         time: 'ምሽት 6:00 - 8:00',
         excerpt: 'በየሳምንቱ በምናዘጋጃቸው የመጽሐፍ ቅዱስ ጥናት ክፍሎች የመጽሐፍ ቅዱስን ግንዛቤዎን ያብሉ።'
       },
       
       community_service_day: {
         title: 'የማህበረሰብ አገልግሎት ቀን',
-        date: 'ኦገስት 5, 2025',
+        date: 'ሐምሌ 29, 2017 ዓ.ም',
         time: 'ጠዋት 8:00 - ከሰዓት 3:00',
         excerpt: 'በተለያዩ የማህበረሰብ አገልግሎት ፕሮጀክቶች በአካባቢያችን ለማህበረሰባችን የምንመልስበት ቀን ይሁን።'
       }
@@ -523,17 +508,17 @@ const translations = {
     // About Page
     about_page: {
       title: 'ስለ እኛ',
-      subtitle: 'ስለ ታሪካችን፣ ተልእኮችን እና ራዕያችንን ይወቁ',
+      subtitle: 'ስለ ታሪካችን፣ ተልዕኳችን እና ራዕያችንን ይወቁ',
       our_story: 'ታሪካችን',
       story_paragraphs: [
-        'የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት (ናሱ) በ2002 ዓ.ም. በሰሜን አሜሪካ ውስጥ የእሁድ ት/ቤት ትምህርትን በተመሳሳይ መልኩ ለማስተማር የሚያስችል ዘዴ እንዲኖር የሚያስችል ሲሆን በተለያዩ የእምነት ቤተክርስቲያናት የሚገኙ ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን ያካተተ ጉባዔ ነበር። ይህ ጉባዔ ወደ አሁኑ የሰሜን አሜሪካ የእሁድ ት/ቤት ህብረት (ናሱ) ተለወጠ።',
-        'ለ10 አመታት በላይ ሲሆን የተማሪዎችን የኦርቶዶክስ ክርስቲያናዊ ትምህርት ለማስተማር የሚያስችሉ የትምህርት እቃዎችን እያዘጋጀን ነው። ይህም የተለያዩ የኦርቶዶክስ ቤተክርስቲያናት ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን አስተምሯል።',
+        'የሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት (ናሱ) ነሃሴ 27 / 1993 ዓ.ም. በሰሜን አሜሪካ ውስጥ ተመሰረተ። የሰንበት ት/ቤቱ ትምህርትን በተመሳሳይ መልኩ ለማስተማር የሚያስችል ዘዴ እንዲኖር የሚያስችል ሲሆን በተለያዩ የዕምነት ቤተክርስቲያናት የሚገኙ ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን ያካተተ ጉባዔ ነው።',
+        'ከተመሰረተ ከ30 ዓመታት በላይ ሲሆን የተማሪዎችን የኦርቶዶክስ ክርስቲያናዊ ትምህርት ለማስተማር የሚያስችሉ የትምህርት እቃዎችን እያዘጋጀን ነው። ይህም የተለያዩ የኦርቶዶክስ ቤተክርስቲያናት ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን አስተምሯል።',
         'በአሁኑ ጊዜ ናሱ በሺዎች የሚቆጠሩ ተማሪዎችን የሚያገለግል ሲሆን በኦርቶዶክስ እምነት ውስጥ ያሉትን የተለያዩ ትምህርቶች እና ባህሎች በማስተማር ላይ ያተኮረ ነው።'
       ],
       at_a_glance: 'በአጭሩ',
       stats: {
-        founded: 'የተመሰረተው በ2002 ዓ.ም. ነው',
-        years_of_service: 'ከ10 አመት በላይ አገልግሎት',
+        founded: 'የተመሰረተው ነሃሴ 27 / 1993 ዓ.ም. ነው',
+        years_of_service: 'ከ30 ዓመት በላይ አገልግሎት',
         parishes_served: '350+ ቤተክርስቲያናት ያገለገሉ',
         across_jurisdictions: 'በተለያዩ የእምነት ቤተክርስቲያናት ውስጥ',
         north_america_wide: 'በሙሉ ሰሜን አሜሪካ',
@@ -542,7 +527,13 @@ const translations = {
       mission_vision: 'የእኛ ተልእኮ እና ራዕይ',
       mission: {
         title: 'የእኛ ተልእኮ',
-        description: 'የኢትዮጵያ ኦርቶዶክስ ቤተክርስቲያናትን ልጆችን እና ወጣቶችን በእምነት፣ በቤተክርስቲያን ማህበረሰብ እና በኦርቶዶክስ ባህል ውስጥ የሚያሳድግ ጥራት ያለው ክርስቲያናዊ ትምህርት እንዲሰጡ ለመርዳት።'
+        description: [
+          'በኢትዮጵያ የሚገኙ ገዳማትና አድባራትን፣ የአብነት ትምህርት ቤቶችን በገንዘብ ለመደገፍ።',
+          'በሰሜን አሜሪካ የሚገኙ ወጣቶች የቤተክርስቲያን ትምህርተ ሃይማኖትን፣ ሥርዓተ ቤተክርስትያንን እና ትውፊትን ከአባቶች ተምረው ለተተኪው ትውልድ እንዲያስተላልፉ።',
+          'በሰሜን አሜሪካ ባሉት አብያተ ክርስትያናት ወጣቱ ትውልድ የሰ/ት/ቤት አባል ሁኖ ቅድስት ቤተክርስትያንን እንዲያገለግል።',
+          'በሰሜን አሜሪካ አብያተ ክርስትያናት ስብከተ ወንጌልን በተጠናከረ ሁኔታ እንዲሰጥ ማስተባበር።',
+          'የአህጉረ ስብከቶችን እንቅስቃሴ በሚያስፈልገው ሁሉ መርዳት።'
+        ]
       },
       vision: {
         title: 'የእኛ ራዕይ',
@@ -550,7 +541,7 @@ const translations = {
       },
       join_mission: {
         title: 'በተልዕኳችን ውስጥ ይታቀፉ',
-        description: 'ድጋፍዎ በሰሜን አሜሪካ ውስጥ ለሚገኙ የእሁድ ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመቀጠል ይረዳናል።'
+        description: 'ድጋፍዎ በሰሜን አሜሪካ ውስጥ ለሚገኙ የሰንበት ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመቀጠል ይረዳናል።'
       }
     },
     our_mission: 'ተልዕኳችን',

@@ -94,9 +94,17 @@ const About = () => {
                     <Target className="w-6 h-6 text-church-700" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4">{mission.title || 'Our Mission'}</h3>
-                  <p className="text-gray-700">
-                    {mission.description || 'To provide comprehensive, theologically sound, and culturally relevant Sunday School resources that nurture the spiritual growth of children and youth in the Ethiopian Orthodox Tewahedo Church across North America, equipping them with a strong foundation in the Orthodox Christian faith.'}
-                  </p>
+                  <div className="text-gray-700">
+                    {Array.isArray(mission.description) ? (
+                      <ul className="list-disc list-outside space-y-2 pl-5">
+                        {(mission.description as string[]).map((item: string, index: number) => (
+                          <li key={index} className="text-left">{item.replace(/^[፩-፰]+\.\s*/, '')}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>{mission.description || 'To provide comprehensive, theologically sound, and culturally relevant Sunday School resources that nurture the spiritual growth of children and youth in the Ethiopian Orthodox Tewahedo Church across North America, equipping them with a strong foundation in the Orthodox Christian faith.'}</p>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
               <Card className="border-gold-200 h-full">

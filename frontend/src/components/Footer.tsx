@@ -88,7 +88,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={18} className="text-gold-400 flex-shrink-0" />
-                <span className="text-gray-300">info@nasunion.org</span>
+                <span className="text-gray-300">eotcnassu.relation@gmail.com</span>
               </div>
             </div>
           </div>

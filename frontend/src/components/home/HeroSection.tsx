@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <DonateButton large />
             <JoinUsButton large>
-              {t('join_us')}
+              {t('Join Us')}
             </JoinUsButton>
           </div>
         </div>

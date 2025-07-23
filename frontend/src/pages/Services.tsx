@@ -29,39 +29,29 @@ const Services = () => {
   // Default services data in English
   const defaultServices: ServiceItem[] = [
     {
-      title: 'Sunday School Curriculum',
+      title: 'Harp and Kirar Training',
       description: 'Comprehensive, age-appropriate curriculum materials for Sunday School classes.',
       icon: BookOpen
     },
     {
-      title: 'Teacher Training',
+      title: 'Raising Childrens with in Orthodoxy Faith',
       description: 'Professional development and training programs for Sunday School teachers.',
       icon: GraduationCap
     },
     {
-      title: 'Youth Events',
-      description: 'Engaging events and activities for Orthodox youth.',
+      title: 'Strengthening the Unity of the Sunday School',
+      description: 'Professional development and training programs for Sunday School teachers.',
+      icon: GraduationCap
+    },
+    {
+      title: 'Supporting Monastries',
+      description: 'Supporting monastries in their spiritual growth and development.',
       icon: Users
     },
     {
       title: 'Resource Development',
       description: 'Creating and distributing educational materials and resources.',
       icon: Palette
-    },
-    {
-      title: 'Webinars and Online Classes',
-      description: 'Virtual learning opportunities for students and teachers.',
-      icon: Video
-    },
-    {
-      title: 'Parent Support',
-      description: 'Resources and guidance for parents in their children\'s spiritual education.',
-      icon: Users
-    },
-    {
-      title: 'Audio Resources',
-      description: 'Audio materials for learning and worship.',
-      icon: Headphones
     },
     {
       title: 'Parish Consultation',
@@ -182,21 +172,6 @@ const Services = () => {
             <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row gap-4">
               <DonateButton className="flex-1" />
               <JoinUsButton className="flex-1" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-church-800 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="text-center mt-12">
-            <h3 className="text-2xl font-serif font-bold mb-4">{t('services_section.services_page.request_services')}</h3>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
-              {t('services_section.services_page.request_description')}
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <JoinUsButton />
-              <DonateButton />
             </div>
           </div>
         </div>
