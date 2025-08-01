@@ -16,6 +16,20 @@ export const createUser = async (userData: {
   }
 };
 
+export const fetchActivityLogs = async (page = 1, limit = 20) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/admin/activities`, {
+      params: { page, limit },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching activity logs:', error);
+    throw error;
+  }
+};
+
 export default {
   createUser,
+  fetchActivityLogs,
 };

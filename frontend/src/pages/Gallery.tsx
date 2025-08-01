@@ -2115,6 +2115,86 @@ const Gallery = () => {
       description: ""
     },
     {
+      url: "images/v1.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v2.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v3.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v4.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v5.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v6.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v7.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v8.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v9.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v10.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v11.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v12.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v13.png",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v14.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v15.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
+      url: "images/v16.jpg",
+      title: "NASSU Events",
+      description: ""
+    },
+    {
       url: "images/x1.jpg",
       title: "NASSU Events",
       description: ""

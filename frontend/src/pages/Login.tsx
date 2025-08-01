@@ -221,52 +221,57 @@ const LoginPage = () => {
   }
 
   const backgroundStyle = {
-    backgroundImage: 'url("/lovable-uploads/5da4f0f9-ca7d-466d-a037-8073cbd0e04b.png")',
-    filter: 'brightness(0.6)'
+    backgroundImage: 'linear-gradient(120deg, rgba(0, 123, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%), url("/lovable-uploads/5da4f0f9-ca7d-466d-a037-8073cbd0e04b.png")',
+    filter: 'brightness(0.7)'
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Gradient Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center z-0" 
+        className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-500" 
         style={backgroundStyle}
       />
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-blue-200/20 to-white/10 z-10" />
+      <div className="absolute inset-0 bg-black/40 z-10" />
       
       <div className="w-full max-w-lg mx-4 z-20">
-        <Card className="border-none shadow-lg bg-white/90 backdrop-blur-sm">
+        <Card className="border-none shadow-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-2xl rounded-2xl">
           <CardHeader className="space-y-1 text-center">
-            <CardTitle className="text-3xl font-serif font-bold text-gray-900">
+            <CardTitle className="text-4xl font-serif font-extrabold text-gray-900 dark:text-white drop-shadow-sm">
               {t('welcomeBack')}
             </CardTitle>
-            <CardDescription className="text-gray-600">
+            <CardDescription className="text-gray-600 dark:text-gray-300">
               {t('Sign In to continue:')}
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
-            
-            <form onSubmit={handleSignIn} className="space-y-4">
+            <form onSubmit={handleSignIn} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="email">{t('Email')}</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder={t('name@example.com')}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+                <Label htmlFor="email" className="text-base font-semibold text-gray-700 dark:text-gray-200">{t('Email')}</Label>
+                <div className="relative">
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder={t('name@example.com')}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="pl-4 pr-12 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    @
+                  </span>
+                </div>
               </div>
-              
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="password" className="text-base font-semibold text-gray-700 dark:text-gray-200">
                     {t('password')}
                   </Label>
                   <button 
                     type="button" 
-                    className="text-sm font-medium text-primary-600 hover:underline" 
+                    className="text-sm font-semibold text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300 rounded"
                     onClick={() => setShowForgotPassword(true)}
                   >
                     {t('Forgot password')}
@@ -280,45 +285,44 @@ const LoginPage = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="pr-10"
+                    className="pl-4 pr-12 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
+                      <EyeOff className="h-5 w-5" />
                     ) : (
-                      <Eye className="h-4 w-4" />
+                      <Eye className="h-5 w-5" />
                     )}
                   </button>
                 </div>
               </div>
-              
               <Button 
                 type="submit" 
-                className="w-full" 
+                className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg shadow-lg transition-all duration-200" 
                 disabled={isLoading || !!socialLoading}
               >
-                {isLoading ? t('signingIn') : t('Sign in')}
+                {isLoading ? (
+                  <span className="flex items-center justify-center gap-2"><Loader2 className="h-5 w-5 animate-spin" />{t('signingIn')}</span>
+                ) : t('Sign in')}
               </Button>
-              
               <div className="relative my-6">
                 <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t border-gray-300"></span>
+                  <span className="w-full border-t border-gray-300 dark:border-gray-700"></span>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
+                  <span className="px-3 bg-white/80 dark:bg-gray-900/80 text-gray-500 dark:text-gray-300 font-medium">
                     {t('or continue with:')}
                   </span>
                 </div>
               </div>
-              
               <div className="space-y-3">
                 <Button 
                   variant="outline" 
-                  className="w-full flex items-center justify-center gap-3 py-6 text-base"
+                  className="w-full flex items-center justify-center gap-3 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-900/80 text-gray-800 dark:text-gray-100 font-semibold text-base hover:bg-blue-50 dark:hover:bg-gray-800/60 hover:border-blue-300 dark:hover:border-blue-500 shadow-sm transition-all"
                   onClick={handleGoogleSignIn} 
                   disabled={isLoading || socialLoading === 'apple'}
                 >
@@ -331,16 +335,15 @@ const LoginPage = () => {
                     </>
                   )}
                 </Button>
-                
                 <Button 
                   type="button" 
                   variant="outline" 
-                  className="w-full flex items-center justify-center gap-2 bg-black text-white hover:bg-gray-800 hover:text-white"
+                  className="w-full flex items-center justify-center gap-3 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gradient-to-r from-black via-gray-900 to-gray-800 text-white font-semibold text-base hover:from-gray-800 hover:to-black shadow-sm transition-all"
                   onClick={handleAppleSignIn}
                   disabled={!!socialLoading}
                 >
                   {socialLoading === 'apple' ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <Loader2 className="h-5 w-5 animate-spin" />
                   ) : (
                     <FaApple className="h-5 w-5" />
                   )}
@@ -350,20 +353,19 @@ const LoginPage = () => {
             </form>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
-            <p className="text-sm text-center text-gray-600">
+            <p className="text-sm text-center text-gray-600 dark:text-gray-300">
               {t('Have not an account?')}{' '}
               <Link 
                 to="/signup" 
-                className="font-medium text-primary-600 hover:text-primary-500 hover:underline"
+                className="font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors"
               >
                 {t('Sign Up')}
               </Link>
             </p>
-            
-            <div className="w-full text-center text-xs text-gray-500">
+            <div className="w-full text-center text-xs text-gray-500 dark:text-gray-400">
               {t('Terms and Privacy', {
-                terms: <a href="/terms" className="text-primary-600 hover:underline">{t('terms')}</a>,
-                privacy: <a href="/privacy" className="text-primary-600 hover:underline">{t('privacy')}</a>
+                terms: <a href="/terms" className="text-blue-600 hover:underline dark:text-blue-400">{t('terms')}</a>,
+                privacy: <a href="/privacy" className="text-blue-600 hover:underline dark:text-blue-400">{t('privacy')}</a>
               })}
             </div>
           </CardFooter>

@@ -1,6 +1,7 @@
 import { Response, NextFunction } from 'express';
 import Payment, { PaymentStatus } from '../../models/Payment.model';
 import { AuthenticatedRequest } from '../../types/express';
+import { logActivity } from './activity.controller';
 
 // @desc    Get all payments (with filtering and pagination)
 // @route   GET /api/admin/payments
@@ -150,6 +151,7 @@ export const updatePaymentStatus = async (req: AuthenticatedRequest, res: Respon
       success: true,
       data: payment
     });
+    await logActivity('update_payment_status', req.user, { paymentId: payment._id, newStatus: payment.status });
     
   } catch (error) {
     console.error('Error updating payment status:', error);

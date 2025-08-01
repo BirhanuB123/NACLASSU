@@ -35,7 +35,6 @@ export const createPaymentOrder = async (req: AuthenticatedRequest, res: Respons
     
     const savedPayment = await payment.save();
     
-    // Emit new payment event to admin dashboard
     SocketService.getInstance()?.emitNewPayment(savedPayment);
 
     res.status(201).json({
@@ -49,9 +48,6 @@ export const createPaymentOrder = async (req: AuthenticatedRequest, res: Respons
   }
 };
 
-// @desc    Capture payment
-// @route   POST /api/payments/capture/:orderId
-// @access  Private
 export const captureOrderPayment = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { orderId } = req.params;
@@ -84,7 +80,6 @@ export const captureOrderPayment = async (req: AuthenticatedRequest, res: Respon
       }
     }
 
-    // Update payment record
     payment.status = capture.status === 'COMPLETED' ? PaymentStatus.COMPLETED : PaymentStatus.FAILED;
     payment.paypalCaptureId = capture.purchase_units[0].payments.captures[0].id;
     const updatedMetadata = {
@@ -107,9 +102,7 @@ export const captureOrderPayment = async (req: AuthenticatedRequest, res: Respon
   }
 };
 
-// @desc    Get payment details
-// @route   GET /api/payments/:id
-// @access  Private
+
 export const getPaymentDetails = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { id } = req.params;

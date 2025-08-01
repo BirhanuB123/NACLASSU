@@ -2,6 +2,7 @@ import User from '../models/User.model';
 import { Request, Response } from 'express';
 import admin from '../config/firebase';
 import { getAuth } from 'firebase-admin/auth';
+import { logActivity } from './admin/activity.controller';
 
 // Get user by ID
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
@@ -28,6 +29,7 @@ export const createUsers = async (req: Request, res: Response): Promise<void> =>
   try {
     const newUser = new User({ fullName, email, password });
     await newUser.save();
+    await logActivity('create_user', req.user, { userId: newUser._id, email: newUser.email });
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
     res.status(500).json({
@@ -81,6 +83,7 @@ export const updateUsers = async (req: Request, res: Response): Promise<void> =>
       message: 'User updated successfully', 
       data: updatedUser 
     });
+    await logActivity('update_user', req.user, { userId: updatedUser._id, email: updatedUser.email });
   } catch (error) {
     res.status(500).json({
       message: 'Error updating user',
@@ -118,10 +121,8 @@ export const deleteUsers = async (req: Request, res: Response): Promise<void> =>
       }
     }
 
-    res.status(200).json({ 
-      success: true, 
-      message: 'User deleted successfully' 
-    });
+    res.status(200).json({ success: true, message: 'User deleted successfully' });
+    await logActivity('delete_user', req.user, { userId: id });
   } catch (error) {
     console.error('Error in delete user:', error);
     res.status(500).json({

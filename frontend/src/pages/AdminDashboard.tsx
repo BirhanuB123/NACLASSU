@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { format } from 'date-fns';
+import { fetchActivityLogs } from '@/services/api';
 
 // Mock data - Replace with actual API calls in production
 const mockUsers = [
@@ -43,6 +44,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
     monthlyGoal: 10000,
     currentMonthDonations: 7500,
   });
+  const [activities, setActivities] = useState<any[]>([]);
+  const [activitiesLoading, setActivitiesLoading] = useState(true);
+  const [activitiesError, setActivitiesError] = useState<string | null>(null);
 
   // Simulate data loading
   useEffect(() => {
@@ -74,6 +78,24 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
     };
     
     loadData();
+  }, [authLoading]);
+
+  // Fetch activity logs on mount
+  useEffect(() => {
+    if (authLoading) return;
+    const loadActivities = async () => {
+      setActivitiesLoading(true);
+      setActivitiesError(null);
+      try {
+        const res = await fetchActivityLogs(1, 10) as { data: any[] };
+        setActivities(res.data || []);
+      } catch (err) {
+        setActivitiesError('Failed to load activity logs');
+      } finally {
+        setActivitiesLoading(false);
+      }
+    };
+    loadActivities();
   }, [authLoading]);
 
   // Handle authentication state and redirects
@@ -214,7 +236,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
               <Calendar className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockActivities.length}</div>
+              <div className="text-2xl font-bold">{activities.length}</div>
               <p className="text-xs text-muted-foreground">
                 activities today
               </p>
@@ -313,36 +335,34 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {mockActivities.map((activity) => (
-                  <div key={activity.id} className="flex items-start space-x-4">
-                    <div className="bg-primary/10 p-2 rounded-full">
-                      {activity.type === 'user' ? (
-                        <UserPlus className="h-4 w-4 text-primary" />
-                      ) : activity.type === 'donation' ? (
-                        <DollarSign className="h-4 w-4 text-primary" />
-                      ) : (
+                {activitiesLoading ? (
+                  <p className="text-muted-foreground">Loading activities...</p>
+                ) : activitiesError ? (
+                  <p className="text-destructive">{activitiesError}</p>
+                ) : activities.length === 0 ? (
+                  <p className="text-muted-foreground">No recent activities.</p>
+                ) : (
+                  activities.map((activity: any) => (
+                    <div key={activity._id} className="flex items-start space-x-4">
+                      <div className="bg-primary/10 p-2 rounded-full">
                         <FileText className="h-4 w-4 text-primary" />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-sm font-medium">
-                          {activity.user} {activity.action}
-                          {activity.type === 'donation' && ` $${activity.amount}`}
-                          {activity.type === 'content' && ` ${activity.item}`}
-                        </p>
-                        <span className="text-xs text-muted-foreground">
-                          {format(new Date(activity.time), 'MMM d, h:mm a')}
-                        </span>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        {activity.type === 'user' && 'New user registration'}
-                        {activity.type === 'donation' && 'Donation received'}
-                        {activity.type === 'content' && 'Content was updated'}
-                      </p>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <p className="text-sm font-medium">
+                            {activity.user?.email || 'Unknown'} {activity.action}
+                          </p>
+                          <span className="text-xs text-muted-foreground">
+                            {activity.createdAt ? format(new Date(activity.createdAt), 'MMM d, h:mm a') : ''}
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          {activity.details ? JSON.stringify(activity.details) : ''}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </CardContent>
           </Card>

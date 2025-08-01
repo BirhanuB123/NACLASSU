@@ -1,6 +1,7 @@
 import { Router, RequestHandler } from 'express';
 import { auth, admin } from '../middleware/auth';
 import * as adminPaymentController from '../controllers/admin/payment.controller';
+import { getActivityLogs } from '../controllers/admin/activity.controller';
 import { AuthenticatedRequest } from '../types/express';
 
 const router = Router();
@@ -41,6 +42,14 @@ router.put('/payments/:id/status', (req, res, next) => {
     return res.status(401).json({ error: 'Unauthorized' });
   }
   return (adminPaymentController.updatePaymentStatus as any)(req, res, next);
+});
+
+// Add activity logs endpoint
+router.get('/activities', (req, res, next) => {
+  if (!isAuthenticated(req)) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  return (getActivityLogs as any)(req, res, next);
 });
 
 export default router;
