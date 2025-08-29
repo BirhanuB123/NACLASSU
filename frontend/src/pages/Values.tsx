@@ -50,38 +50,38 @@ const Values = () => {
 
   const values = [
     {
-      title: t('Orthodox Faith'),
-      description: t("We are committed to authentic Orthodox Christian teaching, maintaining fidelity to the traditions, theology, and practices of the Orthodox Church. All our materials and programs are developed with guidance from Orthodox clergy and theologians."),
+      title: t('values_page.values.orthodox_faith.title'),
+      description: t('values_page.values.orthodox_faith.description'),
       icon: Cross,
       color: "bg-church-600"
     },
     {
-      title: t('Educational Excellence'),
-      description: t("We strive for the highest quality in educational content and methodology. Our resources are developed by experienced educators who understand both Orthodox theology and effective teaching practices for different age groups."),
+      title: t('values_page.values.educational_excellence.title'),
+      description: t('values_page.values.educational_excellence.description'),
       icon: BookOpen,
       color: "bg-church-600"
     },
     {
-      title: t('Community'),
-      description: t("We believe in the power of community and relationships. Our programs foster connections between students, families, and parishes, creating a supportive network for spiritual growth and faith development."),
+      title: t('values_page.values.community.title'),
+      description: t('values_page.values.community.description'),
       icon: Users,
       color: "bg-church-600"
     },
     {
-      title: t('Inclusivity'),
-      description: t("Within the bounds of Orthodox teaching, we welcome all who seek to learn and grow in the faith. We strive to create materials and programs that respect the diversity of Orthodox jurisdictions while emphasizing our common faith."),
+      title: t('values_page.values.inclusivity.title'),
+      description: t('values_page.values.inclusivity.description'),
       icon: Globe,
       color: "bg-church-600"
     },
     {
-      title: t('Service'),
-      description: t("Following Christ's example, we value service to others. We encourage students to put faith into action through service projects and outreach, learning to express their faith through love for others."),
+      title: t('values_page.values.service.title'),
+      description: t('values_page.values.service.description'),
       icon: HeartHandshake,
       color: "bg-church-600"
     },
     {
-      title: t('Lifelong Learning'),
-      description: t("We believe that Orthodox education is a lifelong journey. We support spiritual formation from childhood through adulthood, providing age-appropriate resources that grow with students throughout their lives."),
+      title: t('values_page.values.lifelong_learning.title'),
+      description: t('values_page.values.lifelong_learning.description'),
       icon: Church,
       color: "bg-church-600"
     }

@@ -57,7 +57,7 @@
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
-    "orthodox-union-web": "file:..",
+
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.10",
     "react-day-picker": "^8.10.1",

@@ -3,18 +3,12 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/User.model';
-import { RateLimiterRedis } from 'rate-limiter-flexible';
-import Redis from 'ioredis';
+import { RateLimiterMemory } from 'rate-limiter-flexible';
 import mongoose from 'mongoose';
 import { Types } from 'mongoose';
 
-const redisClient = new Redis({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: parseInt(process.env.REDIS_PORT || '6379')
-});
-
-const rateLimiter = new RateLimiterRedis({
-  storeClient: redisClient,
+// Use in-memory rate limiter instead of Redis
+const rateLimiter = new RateLimiterMemory({
   points: 100, // Number of points
   duration: 60, // Per minute
   blockDuration: 60 * 60 // Block for 1 hour if rate limited
@@ -41,8 +35,9 @@ export interface UserDocument extends mongoose.Document {
 declare global {
   namespace Express {
     interface UserPayload {
-      _id: string;
+      uid: string;
       email: string;
+      _id: string;
       role: 'user' | 'admin';
       fullName: string;
     }
@@ -69,6 +64,7 @@ interface UserObject {
 // Helper function to convert UserDocument or UserObject to UserPayload
 function toUserPayload(user: UserDocument | UserObject): Express.UserPayload {
   return {
+    uid: user._id.toString(),
     _id: user._id.toString(),
     email: user.email,
     role: user.role,

@@ -1,100 +1,95 @@
-import { useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useState, useContext } from "react";
 import PageHeader from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Linkedin, Globe } from "lucide-react";
 import DonateButton from "@/components/DonateButton";
 import JoinUsButton from "@/components/JoinUsButton";
+import { LanguageContext } from "@/context/LanguageContext";
 
 const Team = () => {
+  const { t } = useContext(LanguageContext);
+  
   const teamMembers = [
-    
     {
-      name: "Wise Chronicler Abraham",
-      title: "Chairman",
-      bio: "Wise Chronicler Abraham brings over 10 years of experience in leader and leadership management to NASSU.",
+      name: t('team_page.team_members.abraham.name'),
+      title: t('team_page.team_members.abraham.title'),
+      bio: t('team_page.team_members.abraham.bio'),
       image: "/images/1.jpg",
       email: "Sara@nasunion.org",
       linkedin: "https://linkedin.com",
       website: ""
     },
     {
-      name: "Sara",
-      title: "Finance Director",
-      bio: "Ms. Sara brings over 8 years of experience in finance and non-profit management to NASSU. As our Finance Director, he oversees budgeting, financial planning, and ensures the responsible stewardship of our resources.",
+      name: t('team_page.team_members.sara.name'),
+      title: t('team_page.team_members.sara.title'),
+      bio: t('team_page.team_members.sara.bio'),
       image: "/images/Sara.jpeg",
       email: "Sara@nasunion.org",
       linkedin: "https://linkedin.com",
       website: ""
     },
-  
     {
-      name: "Mintesnot",
-      title: "Secretary",
-      bio: "With a background in education and curriculum development, Mintesnot coordinates all NASSU programs, ensuring they meet the highest standards of Orthodox teaching while engaging students of all ages.",
+      name: t('team_page.team_members.mintesnot.name'),
+      title: t('team_page.team_members.mintesnot.title'),
+      bio: t('team_page.team_members.mintesnot.bio'),
       image: "/images/photo_2024-09-03_23-35-43.jpg",
       email: "Mintesnot@nasunion.org",
       linkedin: "https://linkedin.com",
       website: ""
     },
     {
-      name: "Yared",
-      title: "Communication Lead",
-      bio: "Yared manages all communication efforts for NASSU, from our website and social media presence to newsletters and educational materials. He ensures our message reaches the Orthodox community effectively.",
+      name: t('team_page.team_members.yared.name'),
+      title: t('team_page.team_members.yared.title'),
+      bio: t('team_page.team_members.yared.bio'),
       image: "/images/yared2.jpg",
       email: "Yared@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Yared.com"
     },
     {
-      name: "Wosen",
-      title: "Plan and Strategy Director",
-      bio: "Wosen has served Orthodox parishes for over five years. He leads our strategic planning initiatives, ensuring our work remains focused on our mission and values.",
+      name: t('team_page.team_members.wosen.name'),
+      title: t('team_page.team_members.wosen.title'),
+      bio: t('team_page.team_members.wosen.bio'),
       image: "/images/wos2.jpg",
       email: "Wosen@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Wosen.com"
     },
-    
     {
-      name: "Biniyam",
-      title: "Hymn Section",
-      bio: "Biniyam oversees our communications strategy and public relations. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.",
+      name: t('team_page.team_members.biniyam.name'),
+      title: t('team_page.team_members.biniyam.title'),
+      bio: t('team_page.team_members.biniyam.bio'),
       image: "/images/Ashu.jpg",
       email: "Biniyam@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Biniyam.com"
-      
     },
     {
-      name: "Eskedar",
-      title: "Communication Director",
-      bio: "Eskedar oversees our communications strategy and public relations. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.",
+      name: t('team_page.team_members.eskedar.name'),
+      title: t('team_page.team_members.eskedar.title'),
+      bio: t('team_page.team_members.eskedar.bio'),
       image: "/images/esku.jpg",
       email: "Eskedar@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Eskedar.com"
-      
     },
     {
-      name: "Betelhem",
-      title: "Child and Youth Section",
-      bio: "Ms Betelhem oversees our child and youth participation and managing. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.",
+      name: t('team_page.team_members.betelhem.name'),
+      title: t('team_page.team_members.betelhem.title'),
+      bio: t('team_page.team_members.betelhem.bio'),
       image: "/images/Betelhem.jpg",
       email: "Betelhem@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Betelhem.com"
-      
     },
     {
-      name: "Tinsae",
-      title: "IT Director",
-      bio: "Mr. Tinsae oversees our IT operations and management. With a background in marketing and Orthodox theology, he helps articulate our mission to parishes, donors, and the broader Orthodox community.",
+      name: t('team_page.team_members.tinsae.name'),
+      title: t('team_page.team_members.tinsae.title'),
+      bio: t('team_page.team_members.tinsae.bio'),
       image: "/images/tins.jpeg",
       email: "tinsae@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://tinsaeNassu.com"
-      
     }
   ];
   
@@ -104,20 +99,18 @@ const Team = () => {
     setActiveMember(activeMember === index ? null : index);
   };
 
-  const { t } = useTranslation();
-
   return (
     <>
-      <PageHeader title={t('Meet the Team')} background="">
-        <p className="text-lg text-gray-100">{t('Meet the dedicated individuals guiding our mission')}</p>
+      <PageHeader title={t('team_page.title')} background="">
+        <p className="text-lg text-gray-100">{t('team_page.subtitle')}</p>
       </PageHeader>
 
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="section-title">{t('Our Leadership Team')}</h2>
+            <h2 className="section-title">{t('team_page.leadership_title')}</h2>
             <p className="text-lg text-gray-700">
-              NASSU is led by a team of dedicated professionals who bring diverse expertise in Orthodox education, finance, communications, and strategic planning to our organization.
+              {t('team_page.leadership_description')}
             </p>
           </div>
 
@@ -168,9 +161,9 @@ const Team = () => {
           </div>
           
           <div className="mt-16 text-center">
-            <h3 className="text-2xl font-serif font-bold mb-4">Join Our Team</h3>
+            <h3 className="text-2xl font-serif font-bold mb-4">{t('team_page.join_team.title')}</h3>
             <p className="text-gray-700 max-w-2xl mx-auto mb-8">
-              We're always looking for passionate individuals who share our commitment to Orthodox education and want to make a difference in the lives of children and youth.
+              {t('team_page.join_team.description')}
             </p>
             <JoinUsButton large />
           </div>
@@ -179,9 +172,9 @@ const Team = () => {
 
       <section className="py-16 bg-church-800 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-serif font-bold mb-6">Support Our Work</h2>
+          <h2 className="text-3xl font-serif font-bold mb-6">{t('team_page.support_work.title')}</h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Your donation helps us continue providing quality Orthodox education resources to parishes across North America.
+            {t('team_page.support_work.description')}
           </p>
           <DonateButton className="bg-gold-500 hover:bg-gold-600 text-black" large />
         </div>

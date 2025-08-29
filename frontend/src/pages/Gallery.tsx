@@ -6,17 +6,23 @@ import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 
-
+interface ImageItem {
+  url: string;
+  title: string;
+  description: string;
+}
 
 const Gallery = () => {
   const { t } = useLanguage();
-  const [openImage, setOpenImage] = useState(null);
+  const [openImage, setOpenImage] = useState<ImageItem | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const images = [
     {
       url: "images/photo_2024-02-02_15-42-04.jpg",
-      title: "Church Exterior",
-      description: "A beautiful Orthodox church exterior."
+      title: t('gallery_page.image_titles.church_exterior'),
+      description: t('gallery_page.image_descriptions.church_exterior')
     },
     {
       url: "images/photo_2024-02-02_15-42-08.jpg",
@@ -65,62 +71,62 @@ const Gallery = () => {
     },
     {
       url: "images/new10.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new2.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new11.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new12.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new13.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new14.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new15.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new16.jpeg",
-      title: "Community Outreach",
-      description: "NASSU volunteers participating in community service"
+      title: t('gallery_page.image_titles.community_outreach'),
+      description: t('gallery_page.image_descriptions.community_outreach')
     },
     {
       url: "images/new17.jpeg",
-      title: "NASSU Events",
+      title: t('gallery_page.image_titles.nassu_events'),
       description: ""
     },
     {
       url: "images/new18.jpeg",
-      title: "NASSU Events",
+      title: t('gallery_page.image_titles.nassu_events'),
       description: ""
     },
     {
       url: "images/new19.jpeg",
-      title: "NASSU Events",
+      title: t('gallery_page.image_titles.nassu_events'),
       description: ""
     },
     {
       url: "images/new20.jpeg",
-      title: "NASSU Events",
+      title: t('gallery_page.image_titles.nassu_events'),
       description: ""
     },
     {
@@ -2278,59 +2284,180 @@ const Gallery = () => {
 
   return (
     <>
-      <PageHeader title="Photo Gallery" background="">
-        <p className="text-lg text-gray-100">Images from our EOTC NASSU community and events</p>
+      <PageHeader title={t('gallery_page.title')} background="">
+        <p className="text-lg text-gray-100 font-light">{t('gallery_page.subtitle')}</p>
       </PageHeader>
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="section-title">Our Orthodox Community</h2>
-            <p className="text-lg text-gray-700">
-              Explore images from Sunday School classes, teacher workshops, youth events, and more from the North America Sunday School Union community.
+      
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">
+              {t('gallery_page.section_title')}
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+              {t('gallery_page.section_description')}
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {images.map((image, index) => (
-              <Card 
-                key={index} 
-                className="overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer group"
-                onClick={() => setOpenImage(image)}
-              >
-                <div className="aspect-[4/3] relative overflow-hidden">
-                  <img 
-                    src={image.url} 
-                    alt={image.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <h3 className="text-white font-serif font-bold text-lg">{image.title}</h3>
-                  </div>
+          
+          {/* Search and Filter Section */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+              <div className="relative flex-1 max-w-md">
+                <input
+                  type="text"
+                  placeholder={t('gallery_page.search_placeholder')}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white shadow-sm"
+                />
+                <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
                 </div>
-              </Card>
-            ))}
+              </div>
+              
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="px-6 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white shadow-sm cursor-pointer"
+              >
+                <option value="all">{t('gallery_page.categories.all')}</option>
+                <option value="church">{t('gallery_page.categories.church')}</option>
+                <option value="sunday_school">{t('gallery_page.categories.sunday_school')}</option>
+                <option value="youth">{t('gallery_page.categories.youth')}</option>
+                <option value="community">{t('gallery_page.categories.community')}</option>
+                <option value="events">{t('gallery_page.categories.events')}</option>
+              </select>
+            </div>
+          </div>
+          
+          {(() => {
+            const filteredImages = images.filter((image) => {
+              const matchesSearch = image.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                  image.description.toLowerCase().includes(searchTerm.toLowerCase());
+              const matchesCategory = selectedCategory === "all" || 
+                                    (selectedCategory === "church" && image.title.includes("Church")) ||
+                                    (selectedCategory === "sunday_school" && image.title.includes("Sunday School")) ||
+                                    (selectedCategory === "youth" && image.title.includes("Youth")) ||
+                                    (selectedCategory === "community" && image.title.includes("Community")) ||
+                                    (selectedCategory === "events" && image.title.includes("NASSU Events"));
+              return matchesSearch && matchesCategory;
+            });
+
+            if (filteredImages.length === 0) {
+                             return (
+                 <div className="text-center py-16">
+                   <div className="max-w-md mx-auto">
+                     <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+                       <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                       </svg>
+                     </div>
+                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('gallery_page.no_results.title')}</h3>
+                     <p className="text-gray-600 mb-4">{t('gallery_page.no_results.description')}</p>
+                     <button
+                       onClick={() => {
+                         setSearchTerm("");
+                         setSelectedCategory("all");
+                       }}
+                       className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                     >
+                       {t('gallery_page.no_results.clear_filters')}
+                     </button>
+                   </div>
+                 </div>
+               );
+            }
+
+                          return (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {filteredImages.map((image, index) => (
+                  <Card 
+                    key={index} 
+                    className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer group bg-white border-0 rounded-xl transform hover:-translate-y-1"
+                    onClick={() => setOpenImage(image)}
+                  >
+                    <div className="aspect-[4/3] relative overflow-hidden">
+                      <img 
+                        src={image.url} 
+                        alt={image.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/placeholder.svg';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-5">
+                        <h3 className="text-white font-serif font-bold text-lg mb-2 drop-shadow-lg">{image.title}</h3>
+                        {image.description && (
+                          <p className="text-white/90 text-sm leading-relaxed drop-shadow-lg line-clamp-2">{image.description}</p>
+                        )}
+                      </div>
+                      <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      </div>
+                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <span className="text-xs font-medium text-gray-700">#{index + 1}</span>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            );
+          })()}
+          
+          <div className="text-center mt-16">
+            <p className="text-gray-500 text-sm">
+              {(() => {
+                const filteredImages = images.filter((image) => {
+                  const matchesSearch = image.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                      image.description.toLowerCase().includes(searchTerm.toLowerCase());
+                  const matchesCategory = selectedCategory === "all" || 
+                                        (selectedCategory === "church" && image.title.includes("Church")) ||
+                                        (selectedCategory === "sunday_school" && image.title.includes("Sunday School")) ||
+                                        (selectedCategory === "youth" && image.title.includes("Youth")) ||
+                                        (selectedCategory === "community" && image.title.includes("Community")) ||
+                                        (selectedCategory === "events" && image.title.includes("NASSU Events"));
+                  return matchesSearch && matchesCategory;
+                });
+                return t('gallery_page.photo_count', { 
+                  filtered: filteredImages.length, 
+                  total: images.length 
+                });
+              })()}
+            </p>
           </div>
         </div>
       </section>
 
       <Dialog open={!!openImage} onOpenChange={() => setOpenImage(null)}>
-        <DialogContent className="max-w-5xl p-0 overflow-hidden bg-transparent border-none">
+        <DialogContent className="max-w-6xl p-0 overflow-hidden bg-transparent border-none">
           <div className="relative">
             <button 
-              className="absolute top-4 right-4 z-10 bg-black/60 rounded-full p-2 hover:bg-black/80 transition-colors"
+              className="absolute top-6 right-6 z-20 bg-black/70 backdrop-blur-sm rounded-full p-3 hover:bg-black/90 transition-all duration-300 hover:scale-110 shadow-lg"
               onClick={() => setOpenImage(null)}
             >
-              <X className="text-white" size={20} />
+              <X className="text-white" size={24} />
             </button>
             
-            <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src={openImage?.url} 
-                alt={openImage?.title} 
-                className="w-full h-auto max-h-[70vh] object-contain bg-black"
-              />
-              <div className="p-6">
-                <h3 className="font-serif text-2xl font-bold mb-2">{openImage?.title}</h3>
-                <p className="text-gray-700">{openImage?.description}</p>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
+              <div className="relative bg-gradient-to-br from-gray-900 to-black p-8">
+                <img 
+                  src={openImage?.url} 
+                  alt={openImage?.title} 
+                  className="w-full h-auto max-h-[75vh] object-contain mx-auto"
+                />
+              </div>
+              <div className="p-8 bg-white">
+                <h3 className="font-serif text-3xl font-bold mb-4 text-gray-900">{openImage?.title}</h3>
+                {openImage?.description && (
+                  <p className="text-gray-600 text-lg leading-relaxed">{openImage?.description}</p>
+                )}
+                {!openImage?.description && (
+                  <p className="text-gray-400 italic">{t('gallery_page.no_description')}</p>
+                )}
               </div>
             </div>
           </div>

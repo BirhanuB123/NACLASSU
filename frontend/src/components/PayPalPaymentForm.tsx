@@ -26,6 +26,12 @@ const PayPalPaymentForm: React.FC<PayPalPaymentFormProps> = (props) => {
 
   const createOrder = (_data: any, actions: any) => {
     console.log('Creating PayPal order with amount:', amount);
+    
+    // Validate amount
+    if (!amount || amount === 'Custom' || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
+      throw new Error('Please enter a valid donation amount');
+    }
+    
     try {
       const description = note 
         ? `Donation: ${designation} (Note: ${note})`

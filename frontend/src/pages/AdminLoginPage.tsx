@@ -9,7 +9,8 @@ import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/config/firebase';
-import { Shield } from 'lucide-react';
+import { Shield, Lock, ArrowLeft } from 'lucide-react';
+import PageHeader from "@/components/PageHeader";
 
 const AdminLoginPage = () => {
   const [email, setEmail] = useState('');
@@ -48,8 +49,8 @@ const AdminLoginPage = () => {
     if (user) {
       console.log('[AdminLoginPage] User is not admin, showing access denied');
       toast({
-        title: "Access Denied",
-        description: "You don't have admin privileges.",
+        title: t('admin_page.access_denied'),
+        description: t('admin_page.no_admin_privileges'),
         variant: "destructive",
       });
       return;
@@ -69,7 +70,7 @@ const AdminLoginPage = () => {
     if (!email || !password) {
       toast({
         title: "Validation Error",
-        description: "Please enter both email and password",
+        description: t('admin_page.validation.enter_both'),
         variant: "destructive",
       });
       return;
@@ -94,8 +95,8 @@ const AdminLoginPage = () => {
       
       // Show success message
       toast({
-        title: "Login successful",
-        description: "Redirecting to admin dashboard...",
+        title: t('admin_page.login_successful'),
+        description: t('admin_page.redirecting_dashboard'),
       });
       
       // The useEffect will handle the actual navigation to /admin
@@ -104,13 +105,13 @@ const AdminLoginPage = () => {
     } catch (error: any) {
       console.error('[AdminLoginPage] Login error:', error);
       
-      let errorMessage = "An error occurred during login";
+      let errorMessage = t('admin_page.validation.general_error');
       
       // Handle specific error cases
       if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-        errorMessage = "Invalid email or password";
+        errorMessage = t('admin_page.validation.invalid_credentials');
       } else if (error.code === 'auth/too-many-requests') {
-        errorMessage = "Too many failed attempts. Please try again later.";
+        errorMessage = t('admin_page.validation.too_many_attempts');
       } else if (error.code) {
         errorMessage = error.message;
       }
@@ -120,7 +121,7 @@ const AdminLoginPage = () => {
       
       // Show error toast
       toast({
-        title: "Login Failed",
+        title: t('admin_page.login_failed'),
         description: errorMessage,
         variant: "destructive",
       });
@@ -131,74 +132,117 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted/40 p-4">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center space-y-2">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-            <Shield className="h-7 w-7 text-primary" />
-          </div>
-          <div className="space-y-1">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">Admin Access</h1>
-            <p className="text-sm text-muted-foreground">Sign in to access the administration dashboard</p>
-          </div>
-          <p className="text-sm">
-            <Link to="/" className="font-medium text-primary hover:underline underline-offset-4">
-              ← Back to main site
-            </Link>
-          </p>
-        </div>
-        
-        <Card className="border-0 shadow-sm">
-          <CardContent className="pt-6">
-            <form className="space-y-4" onSubmit={handleAdminLogin}>
-              <div className="space-y-2">
-                <Label htmlFor="admin-email" className="text-sm font-medium">
-                  Admin Email
-                </Label>
-                <Input
-                  id="admin-email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@nassu.org"
-                  className="h-10"
-                />
+    <>
+      <PageHeader title={t('admin_page.admin_access')} background="">
+        <p className="text-lg text-gray-100">{t('admin_page.sign_in_dashboard')}</p>
+      </PageHeader>
+
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <div className="container mx-auto px-4">
+          <div className="max-w-md mx-auto">
+            {/* Enhanced Header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl mb-6 shadow-lg">
+                <Shield className="w-10 h-10 text-white" />
               </div>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="admin-password" className="text-sm font-medium">
-                    Admin Password
-                  </Label>
-                </div>
-                <Input
-                  id="admin-password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="h-10"
-                />
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                {t('admin_page.admin_access')}
+              </h2>
+              <p className="text-gray-600">
+                {t('admin_page.authorized_only')}
+              </p>
+            </div>
+
+            {/* Login Form Card */}
+            <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <form className="space-y-6" onSubmit={handleAdminLogin}>
+                  {/* Email Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="admin-email" className="text-sm font-medium text-gray-700">
+                      {t('admin_page.admin_email')}
+                    </Label>
+                    <Input
+                      id="admin-email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder={t('admin_page.email_placeholder')}
+                      className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-xl transition-all duration-200"
+                    />
+                  </div>
+
+                  {/* Password Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="admin-password" className="text-sm font-medium text-gray-700">
+                      {t('admin_page.admin_password')}
+                    </Label>
+                    <Input
+                      id="admin-password"
+                      name="password"
+                      type="password"
+                      autoComplete="current-password"
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-xl transition-all duration-200"
+                    />
+                  </div>
+
+                  {/* Error Display */}
+                  {error && (
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-sm text-red-600">{error}</p>
+                    </div>
+                  )}
+
+                  {/* Submit Button */}
+                  <Button 
+                    type="submit" 
+                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl" 
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                        {t('admin_page.authenticating')}
+                      </>
+                    ) : (
+                      <>
+                        <Lock className="mr-2 h-4 w-4" />
+                        {t('admin_page.access_dashboard')}
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+
+            {/* Back to Main Site Link */}
+            <div className="text-center mt-6">
+              <Link 
+                to="/" 
+                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                {t('admin_page.back_to_main')}
+              </Link>
+            </div>
+
+            {/* Security Notice */}
+            <div className="text-center mt-8">
+              <div className="inline-flex items-center gap-2 text-sm text-gray-500 bg-gray-50 px-4 py-2 rounded-full">
+                <Shield className="w-4 h-4 text-gray-400" />
+                <span>{t('admin_page.authorized_only')}</span>
               </div>
-              <Button type="submit" className="w-full mt-2 bg-gold-500 hover:bg-gold-600 text-black" disabled={isLoading}>
-                <Shield className="mr-2 h-4 w-4" />
-                {isLoading ? 'Authenticating...' : 'Access Admin Dashboard'}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-        
-        <div className="text-center">
-          <p className="text-xs text-muted-foreground">
-            Only authorized administrators can access this area!
-          </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

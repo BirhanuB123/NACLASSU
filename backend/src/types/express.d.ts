@@ -5,10 +5,10 @@ declare global {
   namespace Express {
     interface UserPayload {
       uid: string;
-      email?: string;
-      _id?: Types.ObjectId;
-      role?: string;
-      fullName?: string;
+      email: string;
+      _id: string;
+      role: 'user' | 'admin';
+      fullName: string;
       [key: string]: any;
     }
   }

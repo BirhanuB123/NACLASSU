@@ -1,11 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import { RateLimiterRedis } from 'rate-limiter-flexible';
-import Redis from 'ioredis';
-
-// Initialize Redis client
-const redisClient = new Redis();
 
 // Rate limiter configuration
 const apiLimiter = rateLimit({

@@ -63,11 +63,11 @@ const Footer = () => {
                 <Link to="/values" className="text-gray-300 hover:text-gold-400 transition-colors">{t('Our Values')}</Link>
               </li>
               <li>
-                <Link to="/team" className="text-gray-300 hover:text-gold-400 transition-colors">{t('Meet the Team')}</Link>
+                <Link to="/team" className="text-gray-300 hover:text-gold-400 transition-colors">{t('team_page.title')}</Link>
               </li>
-              <li>
-                <Link to="/sponsors" className="text-gray-300 hover:text-gold-400 transition-colors">{t('Sponsors and Partners')}</Link>
-              </li>
+                          <li>
+              <Link to="/sponsors" className="text-gray-300 hover:text-gold-400 transition-colors">{t('sponsors_page.title')}</Link>
+            </li>
               <li>
                 <Link to="/gallery" className="text-gray-300 hover:text-gold-400 transition-colors">{t('Gallery')}</Link>
               </li>

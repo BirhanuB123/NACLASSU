@@ -38,7 +38,9 @@ export const cspDirectives = {
     'https://*.firebaseio.com',
     'https://*.firebase.com',
     'https://*.firebasestorage.app',
-    'https://lh3.googleusercontent.com'
+    'https://lh3.googleusercontent.com',
+    'https://*.youtube.com',
+    'https://img.youtube.com'
   ],
   'script-src': [
     "'self'",
@@ -84,7 +86,10 @@ export const cspDirectives = {
     'https://identitytoolkit.googleapis.com',
     'https://*.firebaseapp.com',
     'https://www.recaptcha.net',
-    'https://www.gstatic.com/recaptcha/'
+    'https://www.gstatic.com/recaptcha/',
+    'https://www.youtube.com',
+    'https://*.youtube.com',
+    'https://www.youtube-nocookie.com'
   ],
   'font-src': [
     "'self'",

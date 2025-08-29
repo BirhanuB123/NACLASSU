@@ -29,6 +29,7 @@ const translations = {
     about: 'About',
     services: 'Services',
     values: 'Values',
+    videos: 'Videos',
     values_page: {
       title: 'Our Values',
       subtitle: 'The principles that guide our work',
@@ -100,6 +101,207 @@ const translations = {
       }
     },
     team: 'Team',
+    team_page: {
+      title: 'Meet the Team',
+      subtitle: 'Meet the dedicated individuals guiding our mission',
+      leadership_title: 'Our Leadership Team',
+      leadership_description: 'NASSU is led by a team of dedicated professionals who bring diverse expertise in Orthodox education, finance, communications, and strategic planning to our organization.',
+      team_members: {
+        abraham: {
+          name: 'Wise Chronicler Abraham',
+          title: 'Chairman',
+          bio: 'Wise Chronicler Abraham brings over 10 years of experience in leader and leadership management to NASSU.'
+        },
+        sara: {
+          name: 'Sara',
+          title: 'Finance Director',
+          bio: 'Ms. Sara brings over 8 years of experience in finance and non-profit management to NASSU. As our Finance Director, he oversees budgeting, financial planning, and ensures the responsible stewardship of our resources.'
+        },
+        mintesnot: {
+          name: 'Mintesnot',
+          title: 'Secretary',
+          bio: 'With a background in education and curriculum development, Mintesnot coordinates all NASSU programs, ensuring they meet the highest standards of Orthodox teaching while engaging students of all ages.'
+        },
+        yared: {
+          name: 'Yared',
+          title: 'Communication Lead',
+          bio: 'Yared manages all communication efforts for NASSU, from our website and social media presence to newsletters and educational materials. He ensures our message reaches the Orthodox community effectively.'
+        },
+        wosen: {
+          name: 'Wosen',
+          title: 'Plan and Strategy Director',
+          bio: 'Wosen has served Orthodox parishes for over five years. He leads our strategic planning initiatives, ensuring our work remains focused on our mission and values.'
+        },
+        biniyam: {
+          name: 'Biniyam',
+          title: 'Hymn Section',
+          bio: 'Biniyam oversees our communications strategy and public relations. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.'
+        },
+        eskedar: {
+          name: 'Eskedar',
+          title: 'Communication Director',
+          bio: 'Eskedar oversees our communications strategy and public relations. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.'
+        },
+        betelhem: {
+          name: 'Betelhem',
+          title: 'Child and Youth Section',
+          bio: 'Ms Betelhem oversees our child and youth participation and managing. With a background in marketing and Orthodox theology, she helps articulate our mission to parishes, donors, and the broader Orthodox community.'
+        },
+        tinsae: {
+          name: 'Tinsae',
+          title: 'IT Director',
+          bio: 'Mr. Tinsae oversees our IT operations and management. With a background in marketing and Orthodox theology, he helps articulate our mission to parishes, donors, and the broader Orthodox community.'
+        }
+      },
+      join_team: {
+        title: 'Join Our Team',
+        description: 'We\'re always looking for passionate individuals who share our commitment to Orthodox education and want to make a difference in the lives of children and youth.'
+      },
+      support_work: {
+        title: 'Support Our Work',
+        description: 'Your donation helps us continue providing quality Orthodox education resources to parishes across North America.'
+      }
+    },
+    sponsors_page: {
+      title: 'Sponsors & Partners',
+      subtitle: 'The organizations that make our work possible',
+      major_sponsors: {
+        title: 'Our Major Sponsors',
+        description: 'NASSU\'s work would not be possible without the generous support of our major sponsors. These organizations share our commitment to Orthodox education and have made significant contributions to our mission.'
+      },
+      partners: {
+        title: 'Our Partners',
+        description: 'We collaborate with numerous Orthodox organizations across North America to advance our shared mission of providing quality Orthodox Christian education.'
+      },
+      become_sponsor: {
+        title: 'Become a Sponsor or Partner',
+        description: 'Support from organizations like yours helps us reach more parishes and provide better resources for Orthodox Christian education. By becoming a sponsor or partner, you\'ll be making a significant contribution to the spiritual formation of Orthodox youth across North America.'
+      },
+      sponsorship_benefits: {
+        title: 'Sponsorship Benefits',
+        benefits: [
+          'Recognition on our website and publications',
+          'Opportunities to connect with Orthodox parishes',
+          'Input on educational initiatives',
+          'Support Orthodox education across North America'
+        ]
+      },
+      partnership_opportunities: {
+        title: 'Partnership Opportunities',
+        opportunities: [
+          'Collaborative educational projects',
+          'Resource sharing and development',
+          'Joint events and programs',
+          'Networking with Orthodox organizations'
+        ]
+      },
+      visit_website: 'Visit Website'
+    },
+    news_page: {
+      title: 'News & Messages',
+      subtitle: 'Stay updated with the latest news, events, and resources from the North America Sunday School Union',
+      tabs: {
+        all: 'All',
+        events: 'Events',
+        announcements: 'Announcements',
+        resources: 'Resources',
+        documents: 'Documents'
+      },
+      news_items: {
+        annual_conference: {
+          title: 'Annual Conference Dates Announced',
+          excerpt: 'Join us for our 2025 Annual Conference focused on innovative approaches to Orthodox education.',
+          reading_time: '4 min read'
+        },
+        new_curriculum: {
+          title: 'New Curriculum Resources Released',
+          excerpt: 'Explore our newly released curriculum materials designed for middle school Sunday School classes.',
+          reading_time: '3 min read'
+        },
+        teacher_training: {
+          title: 'Teacher Training Workshop Series',
+          excerpt: 'Register for our spring teacher training workshops offered online and in several major cities.',
+          reading_time: '5 min read'
+        },
+        partnership: {
+          title: 'NASSU Partners with Orthodox Publisher',
+          excerpt: 'We\'re excited to announce our new partnership with Byzantine Press to develop Sunday School materials.',
+          reading_time: '2 min read'
+        },
+        summer_camp: {
+          title: 'Summer Youth Camp Registration Open',
+          excerpt: 'Register your children for our annual Orthodox summer youth camp with specialized programs for all ages.',
+          reading_time: '6 min read'
+        },
+        new_board: {
+          title: 'New Board Members Welcomed',
+          excerpt: 'NASSU welcomes three new board members bringing expertise in education, finance, and technology.',
+          reading_time: '4 min read'
+        },
+        digital_library: {
+          title: 'Digital Resource Library Expanded',
+          excerpt: 'Our digital library now includes over 500 resources for Orthodox Sunday Schools, with new materials for all age groups.',
+          reading_time: '3 min read'
+        },
+        regional_conference: {
+          title: 'Regional Conference Success',
+          excerpt: 'Over 200 Sunday School teachers gathered for our Midwest regional conference focused on engaging Orthodox youth.',
+          reading_time: '5 min read'
+        }
+      },
+      actions: {
+        read_more: 'Read More →',
+        load_more: 'Load More',
+        download: 'Download',
+        subscribe: 'Subscribe'
+      },
+      newsletter: {
+        title: 'Stay Updated',
+        description: 'Subscribe to our newsletter to receive the latest news, events, and resources directly in your inbox.',
+        form: {
+          first_name: 'First Name',
+          first_name_placeholder: 'first name',
+          last_name: 'Last Name',
+          last_name_placeholder: 'last name',
+          email: 'Email Address',
+          email_placeholder: 'you@example.com',
+          agreement: 'I agree to receive email communications from NASSU'
+        }
+      },
+      upcoming_events: {
+        title: 'Upcoming Events',
+        subtitle: 'Mark your calendar for these important upcoming NASSU events and gatherings.',
+        teacher_workshop: {
+          title: 'Teacher Training Workshop',
+          description: 'A comprehensive workshop designed to equip Sunday School teachers with effective teaching methods, classroom management strategies, and engaging activities for Orthodox education.',
+          location: 'Chicago, IL',
+          type: 'In-Person',
+          audience: 'Teachers'
+        },
+        annual_conference: {
+          title: 'Annual Conference',
+          description: 'NASSU\'s flagship event bringing together Orthodox educators, clergy, and experts for three days of learning, networking, and inspiration. Registration includes all sessions, materials, and meals.',
+          location: 'Boston, MA',
+          type: 'In-Person',
+          audience: 'All Educators'
+        },
+        youth_camp: {
+          title: 'Youth Summer Camp',
+          description: 'A week-long immersive camp experience for Orthodox youth ages 9-16. Activities include daily church services, religious education, sports, crafts, music, and outdoor adventures.',
+          location: 'New York State',
+          type: 'Residential',
+          audience: 'Youth Ages 9-16'
+        },
+        view_calendar: 'View Full Calendar'
+      },
+      social_media: {
+        title: 'Connect With Us',
+        description: 'Follow us on social media for daily updates, resources, and inspiration for Orthodox Sunday Schools.'
+      },
+      document_types: {
+        pdf_document: 'PDF Document'
+      }
+    },
     sponsors: 'Sponsors',
     news: 'News & Messages',
     news_am: 'ዜና እና መልዕክቶች',
@@ -285,7 +487,7 @@ const translations = {
       our_story: 'Our Story',
       story_paragraphs: [
         'The North America Sunday School Union (NASSU) was founded in September 2/ 2001 by a group of dedicated Ethiopian Orthodox priests and educators who recognized the need for a unified approach to Sunday School education across North America. What began as a small gathering of educators from various jurisdictions has grown into a comprehensive resource center supporting Sunday Schools throughout the continent.',
-        'For over 30 years, we have been developing curriculum materials, organizing teacher training workshops, and creating resources that help parishes provide quality Orthodox Christian education to children and youth. Our work spans across multiple Orthodox jurisdictions, bringing together the rich traditions and teachings of our faith.',
+        'For over 20 years, we have been developing curriculum materials, organizing teacher training workshops, and creating resources that help parishes provide quality Orthodox Christian education to children and youth. Our work spans across multiple Orthodox jurisdictions, bringing together the rich traditions and teachings of our faith.',
         'Today, NASSU serves hundreds of parishes, reaching thousands of children each week. We continue to expand our offerings and adapt to the changing needs of Orthodox communities while remaining firmly rooted in the unchanging truths of our faith.'
       ],
       at_a_glance: 'At a Glance',
@@ -318,6 +520,334 @@ const translations = {
         title: 'Join Us in Our Mission',
         description: 'Your support helps us continue providing resources and training to Sunday Schools across North America.'
       }
+    },
+    // Gallery page translations
+    gallery_page: {
+      title: 'Photo Gallery',
+      subtitle: 'Images from our EOTC NASSU community and events',
+      section_title: 'Our Orthodox Community',
+      section_description: 'Explore images from Sunday School classes, teacher workshops, youth events, and more from the North America Sunday School Union community.',
+      search_placeholder: 'Search photos...',
+      categories: {
+        all: 'All Categories',
+        church: 'Church',
+        sunday_school: 'Sunday School',
+        youth: 'Youth Events',
+        community: 'Community Outreach',
+        events: 'NASSU Events'
+      },
+      no_results: {
+        title: 'No photos found',
+        description: 'Try adjusting your search terms or category filter.',
+        clear_filters: 'Clear filters'
+      },
+      photo_count: '{filtered} of {total} photos • Click any image to view larger',
+      no_description: 'No description available',
+      youtube_section: {
+        title: 'Watch NASSU Videos on YouTube',
+        description: 'Discover our Sunday School lessons, Orthodox teachings, youth activities, and community events through our video content.',
+        visit_channel: 'Visit YouTube Channel',
+        subscribe: 'Subscribe',
+        latest_videos: 'Latest videos: Sunday School lessons, Youth activities, Orthodox teachings'
+      },
+      image_titles: {
+        church_exterior: 'Church Exterior',
+        church_interior: 'Church Interior',
+        sunday_school_class: 'Sunday School Class',
+        teacher_workshop: 'Teacher Workshop',
+        youth_camp: 'Youth Camp',
+        community_outreach: 'Community Outreach',
+        nassu_events: 'NASSU Events'
+      },
+      image_descriptions: {
+        church_exterior: 'A beautiful Orthodox church exterior.',
+        church_interior: 'The interior of our Orthodox church.',
+        sunday_school_class: 'Students learning about Orthodox faith.',
+        teacher_workshop: 'Teachers participating in professional development.',
+        youth_camp: 'Youth engaging in spiritual activities.',
+        community_outreach: 'NASSU volunteers participating in community service'
+      }
+    },
+    // Videos page translations
+    videos_page: {
+      title: 'Video Gallery',
+      subtitle: 'Watch NASSU videos and teachings',
+      section_title: 'Our Video Collection',
+      section_description: 'Discover our Sunday School lessons, Orthodox teachings, youth activities, and community events through our video content.',
+      search_placeholder: 'Search videos...',
+      categories: {
+        all: 'All Categories',
+        church: 'Church',
+        sunday_school: 'Sunday School',
+        youth: 'Youth Events',
+        community: 'Community Outreach',
+        events: 'NASSU Events'
+      },
+      no_results: {
+        title: 'No videos found',
+        description: 'Try adjusting your search terms or category filter.',
+        clear_filters: 'Clear filters'
+      },
+      video_count: '{count} of {total} videos • Click any video to watch',
+      no_description: 'No description available',
+      youtube_channel_button: 'Visit NASSU YouTube Channel',
+      video_titles: {
+        sunday_school_lesson: 'Sunday School Lesson - Orthodox Faith',
+        youth_ministry: 'Youth Ministry Activities',
+        community_outreach: 'Community Outreach Program',
+        teacher_training: 'Teacher Training Workshop',
+        orthodox_traditions: 'Orthodox Traditions & Customs',
+        family_faith: 'Family Faith Formation',
+        annual_conference: 'NASSU Annual Conference',
+        prayer_worship: 'Prayer & Worship Guide',
+        children_ministry: 'Children\'s Ministry Resources'
+      },
+      video_descriptions: {
+        sunday_school_lesson: 'Learn about the fundamentals of Orthodox Christianity in this engaging Sunday School lesson',
+        youth_ministry: 'Discover exciting youth activities and spiritual development programs at NASSU',
+        community_outreach: 'See how NASSU serves the community through various outreach initiatives',
+        teacher_training: 'Professional development session for Sunday School teachers and volunteers',
+        orthodox_traditions: 'Explore the rich traditions and customs of the Orthodox Church',
+        family_faith: 'Guidance for families on incorporating Orthodox practices into daily life',
+        annual_conference: 'Highlights from our annual conference featuring speakers and workshops',
+        prayer_worship: 'Learn about Orthodox prayer practices and worship traditions',
+        children_ministry: 'Educational resources and activities for teaching Orthodox faith to children'
+      }
+    },
+    // Donate page translations
+    donate_page: {
+      title: 'Donate to Orthodox Union Sunday School',
+      subtitle: 'Support Orthodox education for the next generation.',
+      description: 'Your generous donation helps us continue providing quality Orthodox education resources and training to Sunday Schools across North America.',
+      select_amount: {
+        title: 'Select Donation Amount',
+        subtitle: 'Choose your donation amount',
+        custom_amount: 'Enter Custom Amount',
+        custom_placeholder: 'Enter amount',
+        valid_amount: '✓ Valid amount: $',
+        invalid_amount: 'Please enter a valid amount greater than $0'
+      },
+      make_donation: {
+        title: 'Make a Donation',
+        frequency: 'Frequency',
+        one_time: 'One Time',
+        monthly: 'Monthly',
+        designation: 'Donation Designation',
+        designation_options: {
+          general: 'General Fund (Greatest Need)',
+          curriculum: 'Curriculum Development',
+          teacher_training: 'Teacher Training Programs',
+          technology: 'Digital Resources & Technology',
+          scholarship: 'Youth Scholarships'
+        },
+        note: 'Note (Optional)',
+        note_placeholder: 'Add a personal note with your donation'
+      },
+      payment_methods: {
+        paypal: 'PayPal',
+        bank_transfer: 'Bank Transfer',
+        zelle: 'Zelle',
+        credit_card: 'Credit Card'
+      },
+      validation: {
+        enter_custom_amount: 'Please enter a custom amount',
+        enter_valid_amount: 'Enter a valid amount above to proceed with your donation.'
+      },
+      zelle: {
+        title: 'Send via Zelle',
+        subtitle: 'Send your donation to:',
+        email: 'Nassupay@gmail.com',
+        copy_email: 'Copy Email',
+        email_copied: '✓ Email copied!',
+        email_copied_desc: 'Paste it into your Zelle app to complete your donation.',
+        important: 'Important: Include your name and email in the payment memo/note.',
+        confirmation: 'You\'ll receive a confirmation email within 24-48 hours after we process your donation.',
+        secure_title: 'Secure & Easy Donation',
+        secure_desc: 'Your donation is processed securely through Zelle\'s trusted payment network. No account registration required.'
+      },
+      impact: {
+        title: 'Your Impact',
+        amount_25: '$25 provides:',
+        amount_25_items: [
+          'Training materials for one Sunday School teacher',
+          'Educational resources for 5 students'
+        ],
+        amount_50: '$50 provides:',
+        amount_50_items: [
+          'A complete curriculum kit for one classroom',
+          'Scholarships for two teachers to attend workshops'
+        ],
+        amount_100: '$100 provides:',
+        amount_100_items: [
+          'Digital resources for an entire parish',
+          'Materials for regional teacher training events',
+          'Scholarships for youth camp participants'
+        ],
+        amount_250: '$250+ provides:',
+        amount_250_items: [
+          'Complete Sunday School program support for a small parish',
+          'Development of new curriculum materials',
+          'Technology upgrades for digital resource delivery'
+        ],
+        tax_deductible: 'NASSU is a 501(c)(3) non-profit organization. Your donation is tax-deductible to the extent allowed by law.'
+      },
+      success: {
+        title: 'Thank you for your donation!',
+        description: 'Your donation will support Orthodox Sunday School education.',
+        error_title: 'Error processing donation',
+        error_description: 'Your payment was processed but we couldn\'t record it. Please contact support.',
+        payment_failed: 'Payment failed',
+        payment_error: 'An error occurred during payment processing. Please try again.'
+      }
+    },
+    admin_page: {
+      title: 'Admin Access',
+      subtitle: 'Sign in to access the administration dashboard',
+      admin_access: 'Admin Access',
+      sign_in_dashboard: 'Sign in to access the administration dashboard',
+      back_to_main: '← Back to main site',
+      admin_email: 'Admin Email',
+      admin_password: 'Admin Password',
+      email_placeholder: 'admin@nassu.org',
+      access_dashboard: 'Access Admin Dashboard',
+      authenticating: 'Authenticating...',
+      authorized_only: 'Only authorized administrators can access this area!',
+      validation: {
+        enter_both: 'Please enter both email and password',
+        invalid_credentials: 'Invalid email or password',
+        too_many_attempts: 'Too many failed attempts. Please try again later.',
+        general_error: 'An error occurred during login'
+      },
+      access_denied: 'Access Denied',
+      no_admin_privileges: 'You don\'t have admin privileges.',
+      login_successful: 'Login successful',
+      redirecting_dashboard: 'Redirecting to admin dashboard...',
+      login_failed: 'Login Failed'
+    },
+    admin_dashboard: {
+      title: 'Admin Dashboard',
+      welcome_back: 'Welcome back, {email}',
+      settings: 'Settings',
+      sign_out: 'Sign Out',
+      loading_dashboard: 'Loading dashboard...',
+      stats: {
+        total_users: 'Total Users',
+        active_users: 'active users',
+        donations: 'Donations',
+        pending: 'pending',
+        monthly_goal: 'Monthly Goal',
+        target: 'Target: {amount}',
+        recent_activity: 'Recent Activity',
+        activities_today: 'activities today'
+      },
+      recent_users: {
+        title: 'Recent Users',
+        description: 'Latest registered users',
+        invite_user: 'Invite User',
+        view_all_users: 'View all users',
+        role: {
+          admin: 'Admin',
+          editor: 'Editor',
+          viewer: 'Viewer'
+        },
+        status: {
+          active: 'active',
+          inactive: 'inactive'
+        }
+      },
+      recent_donations: {
+        title: 'Recent Donations',
+        description: 'Latest donations received',
+        view_all_donations: 'View all donations',
+        status: {
+          completed: 'completed',
+          pending: 'pending'
+        }
+      },
+      recent_activity: {
+        title: 'Recent Activity',
+        description: 'Latest activities in the system',
+        loading_activities: 'Loading activities...',
+        no_activities: 'No recent activities.',
+        failed_to_load: 'Failed to load activity logs',
+        unknown_user: 'Unknown'
+      },
+      error_messages: {
+        access_denied: 'Access Denied',
+        no_permission: 'You do not have permission to access the admin dashboard.',
+        failed_to_load_data: 'Failed to load dashboard data'
+      }
+    },
+    login_page: {
+      title: 'Welcome Back',
+      subtitle: 'Sign In to continue:',
+      email: 'Email',
+      password: 'Password',
+      forgot_password: 'Forgot password',
+      sign_in: 'Sign in',
+      signing_in: 'Signing in...',
+      or_continue_with: 'or continue with:',
+      continue_with_google: 'Continue with Google',
+      continue_with_apple: 'Continue with Apple',
+      no_account: 'Have not an account?',
+      sign_up: 'Sign Up',
+      terms_and_privacy: 'By signing in, you agree to our {terms} and {privacy}',
+      terms: 'Terms of Service',
+      privacy: 'Privacy Policy',
+      reset_password: 'Reset Password',
+      enter_email_for_reset: 'Enter your email address and we will send you a link to reset your password.',
+      your_email_placeholder: 'your@email.com',
+      send_reset_link: 'Send Reset Link',
+      sending: 'Sending...',
+      back_to_login: 'Back to Login',
+      error: 'Error',
+      success: 'Success',
+      email_required: 'Email Required',
+      please_fill_fields: 'Please fill in all fields',
+      logged_in_successfully: 'Logged in successfully!',
+      login_failed: 'Login Failed',
+      failed_to_sign_in: 'Failed to sign in',
+      logged_in_with_google: 'Logged in with Google!',
+      failed_google_sign_in: 'Failed to sign in with Google',
+      logged_in_with_apple: 'Logged in with Apple!',
+      failed_apple_sign_in: 'Failed to sign in with Apple',
+      password_reset_sent: 'Password reset email sent. Please check your inbox.',
+      failed_to_send_reset: 'Failed to send reset email',
+      name_email_placeholder: 'name@example.com'
+    },
+    signup_page: {
+      title: 'Create your account',
+      subtitle: 'Join our community today',
+      first_name: 'First Name',
+      last_name: 'Last Name',
+      email_address: 'Email address',
+      password: 'Password',
+      confirm_password: 'Confirm Password',
+      sign_up: 'Sign up',
+      creating_account: 'Creating Account...',
+      or_continue_with: 'Or continue with',
+      continue_with_google: 'Continue with Google',
+      continue_with_apple: 'Continue with Apple',
+      already_have_account: 'Already have an account?',
+      sign_in: 'Sign in',
+      terms_privacy_text: 'By signing up, you agree to our {terms} and {privacy}.',
+      terms: 'Terms',
+      privacy: 'Privacy Policy',
+      // Form validation and messages
+      passwords_not_match: 'Passwords do not match',
+      sign_up_successful: 'Sign up successful',
+      verification_email_sent: 'A verification email has been sent to {email}.',
+      verify_email_before_login: 'Please verify your email before logging in.',
+      sign_up_failed: 'Sign up failed',
+      sign_up_error: 'Sign up error',
+      account_created_successfully: 'Account created successfully',
+      account_created: 'Account created',
+      google_sign_up_failed: 'Google sign up failed',
+      // Placeholders
+      first_name_placeholder: 'John',
+      last_name_placeholder: 'Doe',
+      email_placeholder: 'your@email.com',
+      password_placeholder: '••••••••'
     }
   },
   am: {
@@ -328,6 +858,7 @@ const translations = {
     join_us: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
     'Join Us': 'በተልዕኳችን ውስጥ ይቀላቀሉ',
     about: 'ስለ እኛ',
+    videos: 'ቪዲዮዎች',
     values_page: {
       title: 'የእኛ እሴቶች',
       subtitle: 'ሥራችንን የሚመሩ መርሆዎች',
@@ -337,6 +868,10 @@ const translations = {
         orthodox_faith: {
           title: 'የኦርቶዶክስ እምነት',
           description: 'በእውነተኛ የኦርቶዶክስ ክርስቲያናዊ ትምህርት ተስፋጽተናል፣ የኦርቶዶክስ ቤተክርስቲያንን ትምህርቶች፣ ንጽሕናዎች እና ልምዶች በታማኝነት እንከታተላለን። ሁሉም የእኛ የትምህርት እቃዎች እና ፕሮግራሞች ከኦርቶዶክስ ቄሳውንት እና ንጽሕና ተመራማሪዎች መመሪያ ጋር ተዘጋጅተዋል።'
+        },
+        educational_excellence: {
+          title: 'ትምህርታዊ ሙሉነት',
+          description: 'በትምህርታዊ ይዘት እና በዘዴ ላይ ከፍተኛ ጥራት እንዲኖረን እንሞክራለን። የእኛ ምንጮች ኦርቶዶክስ ቲዮሎጂ እና የተለያዩ ዕድሜ ቡድኖች ለማስተማር የሚያግዙ ውጤታማ የትምህርት ልምዶችን የሚያውቁ ባለስልጠና ተማሪዎች ያዘጋጁ ናቸው።'
         },
         community: {
           title: 'ማህበረሰብ',
@@ -376,6 +911,207 @@ const translations = {
     services: 'አገልግሎቶች',
     values: 'እሴቶች',
     team: 'አባሎች',
+    team_page: {
+      title: 'ቡድኑን ያግኙ',
+      subtitle: 'ተልዕኳችንን የሚመሩ ተሰጥኦ ያላቸው ሰዎችን ያግኙ',
+      leadership_title: 'የእኛ የመሪነት ቡድን',
+      leadership_description: 'ናሱ በኦርቶዶክስ ትምህርት፣ ፋይናንስ፣ ኮሚዩኒኬሽን እና ስትራቴጂ አቅድ ላይ የተለያዩ ስፔሻሊቲዎች ያሏቸው ተሰጥኦ ያላቸው ባለሙያዎች ቡድን ይመራዋል።',
+      team_members: {
+        abraham: {
+          name: 'ጸሀፌ ጥበብ አብርሃም',
+          title: 'ፕሬዚደንት',
+          bio: 'ጸሀፌ ጥበብ አብርሃም በናሱ ውስጥ በመሪነት እና በመሪነት አስተዳደር ላይ ከ10 ዓመት በላይ ስራ ልምድ ያለው ነው።'
+        },
+        sara: {
+          name: 'ሳራ',
+          title: 'የፋይናንስ ዳይሬክተር',
+          bio: 'ወ/ሮ ሳራ በናሱ ውስጥ በፋይናንስ እና በስራ ላይ ያልተመሰረተ አስተዳደር ላይ ከ8 ዓመት በላይ ስራ ልምድ ያለው ነው። እንደ የፋይናንስ ዳይሬክተር የገንዘብ አድራሻ፣ የፋይናንስ እቅድ እና የሀብታችን ተጠያቂ አስተዳደር ያረጋግጣል።'
+        },
+        mintesnot: {
+          name: 'ምንተስኖት',
+          title: 'ጸሐፊ',
+          bio: 'በትምህርት እና በኩርክዮሎም እድገት ላይ ያለው የስራ ልምድ ጋር፣ ምንተስኖት ሁሉንም የናሱ ፕሮግራሞች ያስተባብራል፣ ከፍተኛ የኦርቶዶክስ ትምህርት መመዘኛዎችን እያሟሉ ለሁሉም ዕድሜ ተማሪዎች የሚያስማሙ እንዲሆኑ ያደርጋሉ።'
+        },
+        yared: {
+          name: 'ያሬድ',
+          title: 'የኮሚዩኒኬሽን መሪ',
+          bio: 'ያሬድ ለናሱ የሚደረጉ ሁሉንም የኮሚዩኒኬሽን ጥረቶች ያስተዳድራል፣ ከድህረ ገጻችን እና ከማህበራዊ ሚዲያ ተገኝነት እስከ ዜና መጽሐፍት እና የትምህርት እቃዎች ድረስ። መልእክታችን ወደ ኦርቶዶክስ ማህበረሰብ በውጤታማ ሁኔታ እንዲደርስ ያረጋግጣል።'
+        },
+        wosen: {
+          name: 'ወሰን',
+          title: 'የእቅድ እና ስትራቴጂ ዳይሬክተር',
+          bio: 'ወሰን ከ5 ዓመት በላይ ለኦርቶዶክስ ቤተክርስቲያናት አገልግሏል። የእኛ ስትራቴጂ እቅድ ተነሳሽነቶችን ያስመራል፣ የስራችን ተልዕኳችን እና እሴቶቻችን ላይ እንዲሰተኩ ያደርጋል።'
+        },
+        biniyam: {
+          name: 'ቢንያም',
+          title: 'የመዝሙር ክፍል',
+          bio: 'ቢንያም የእኛ የኮሚዩኒኬሽን ስትራቴጂ እና የህዝብ ግንኙነት ያስተዳድራል። በግብይት እና በኦርቶዶክስ ንጽሕና ላይ ያለው የስራ ልምድ ጋር፣ ተልዕኳችንን ወደ ቤተክርስቲያናት፣ ወደ ለግሱ ሰዎች እና ወደ ሰፊው ኦርቶዶክስ ማህበረሰብ ለመግለጽ ያግዛል።'
+        },
+        eskedar: {
+          name: 'እስከዳር',
+          title: 'የኮሚዩኒኬሽን ዳይሬክተር',
+          bio: 'እስከዳር የእኛ የኮሚዩኒኬሽን ስትራቴጂ እና የህዝብ ግንኙነት ያስተዳድራል። በግብይት እና በኦርቶዶክስ ንጽሕና ላይ ያለው የስራ ልምድ ጋር፣ ተልዕኳችንን ወደ ቤተክርስቲያናት፣ ወደ ለግሱ ሰዎች እና ወደ ሰፊው ኦርቶዶክስ ማህበረሰብ ለመግለጽ ያግዛል።'
+        },
+        betelhem: {
+          name: 'ቤተልሄም',
+          title: 'የልጆች እና ወጣቶች ክፍል',
+          bio: 'ወ/ሮ ቤተልሄም የልጆቻችን እና የወጣቶቻችን ተሳታፊነት እና አስተዳደር ያስተዳድራል። በግብይት እና በኦርቶዶክስ ንጽሕና ላይ ያለው የስራ ልምድ ጋር፣ ተልዕኳችንን ወደ ቤተክርስቲያናት፣ ወደ ለግሱ ሰዎች እና ወደ ሰፊው ኦርቶዶክስ ማህበረሰብ ለመግለጽ ያግዛል።'
+        },
+        tinsae: {
+          name: 'ትንሳኤ',
+          title: 'የአይቲ ዳይሬክተር',
+          bio: 'የእኛ የአይቲ ስራዎችን እና አስተዳደር ያስተዳድራል። በግብይት እና በኦርቶዶክስ ንጽሕና ላይ ያለው የስራ ልምድ ጋር፣ ተልዕኳችንን ወደ ቤተክርስቲያናት፣ ወደ ለግሱ ሰዎች እና ወደ ሰፊው ኦርቶዶክስ ማህበረሰብ ለመግለጽ ያግዛል።'
+        }
+      },
+      join_team: {
+        title: 'ቡድናችንን ይቀላቀሉ',
+        description: 'በኦርቶዶክስ ትምህርት ላይ የሚያለውን ቁርጠኝነታችን የሚያጋሩ እና በልጆች እና ወጣቶች ሕይወት ላይ ለውጥ ለማድረግ የሚፈልጉ ተሰጥኦ ያላቸው ሰዎችን ሁልጊዜ እንፈልጋለን።'
+      },
+      support_work: {
+        title: 'ስራችንን ደግፉ',
+        description: 'የእርስዎ ልገሳ በሰሜን አሜሪካ ውስጥ ለሚገኙ ቤተክርስቲያናት ጥራት ያለው የኦርቶዶክስ ትምህርት ምንጮችን ለመቀጠል ይረዳናል።'
+      }
+    },
+    sponsors_page: {
+      title: 'ደጋፊዎች እና አጋሮች',
+      subtitle: 'ስራችንን የሚያስችሉ ድርጅቶች',
+      major_sponsors: {
+        title: 'ዋና ደጋፊዎቻችን',
+        description: 'የናሱ ስራ ያለ የእነዚህ ዋና ደጋፊዎቻችን ተሰጥኦ ያለው ድጋፍ አይቻልም። እነዚህ ድርጅቶች በኦርቶዶክስ ትምህርት ላይ ያለውን ቁርጠኝነታችን ያጋራሉ እና ለተልዕኳችን አስፈላጊ አስተዋፅዖ አድርገዋል።'
+      },
+      partners: {
+        title: 'አጋሮቻችን',
+        description: 'በሰሜን አሜሪካ ውስጥ ጥራት ያለው የኦርቶዶክስ ክርስቲያናዊ ትምህርት ለመስጠት የጋራ ተልዕኳችንን ለማሳደግ ከብዙ የኦርቶዶክስ ድርጅቶች ጋር እንተባበራለን።'
+      },
+      become_sponsor: {
+        title: 'ደጋፊ ወይም አጋር ይሁኑ',
+        description: 'እንደ እርስዎ ያሉ ድርጅቶች ድጋፍ ተጨማሪ ቤተክርስቲያናትን ለማድረስ እና ለኦርቶዶክስ ክርስቲያናዊ ትምህርት የተሻለ ምንጮችን ለመስጠት ያስችለናል። ደጋፊ ወይም አጋር በመሆን በሰሜን አሜሪካ ውስጥ ለሚገኙ የኦርቶዶክስ ወጣቶች መንፈሳዊ እድገት ላይ አስፈላጊ አስተዋፅዖ እያደረጉ ነው።'
+      },
+      sponsorship_benefits: {
+        title: 'የደጋፍ ጥቅሞች',
+        benefits: [
+          'በድህረ ገጻችን እና በግማሽ ሰነዶች ላይ መታወቅ',
+          'ከኦርቶዶክስ ቤተክርስቲያናት ጋር የመገናኘት እድሎች',
+          'በትምህርታዊ ተነሳሽነቶች ላይ አስተያየት',
+          'በሰሜን አሜሪካ ውስጥ የኦርቶዶክስ ትምህርትን ድጋፍ'
+        ]
+      },
+      partnership_opportunities: {
+        title: 'የአጋርነት እድሎች',
+        opportunities: [
+          'የትብብር ትምህርታዊ ፕሮጀክቶች',
+          'የምንጭ መጋራት እና እድገት',
+          'የጋራ ክስተቶች እና ፕሮግራሞች',
+          'ከኦርቶዶክስ ድርጅቶች ጋር የመደራጀት'
+        ]
+      },
+      visit_website: 'ድህረ ገጽ ይጎብዙ'
+    },
+    news_page: {
+      title: 'ዜና እና መልዕክቶች',
+      subtitle: 'ከሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት የቅርብ ዜናዎችን፣ ዝግጅቶችን እና ምንጮችን ለማወቅ ይቀጥሉ',
+      tabs: {
+        all: 'ሁሉም',
+        events: 'ዝግጅቶች',
+        announcements: 'ማስታወቂያዎች',
+        resources: 'ምንጮች',
+        documents: 'ሰነዶች'
+      },
+      news_items: {
+        annual_conference: {
+          title: 'ዓመታዊ ስብሰባ የተወሰነ ቀን ተገለጸ',
+          excerpt: 'በኦርቶዶክስ ትምህርት ላይ ያተኩረ የ2025 ዓመታችንን ዓመታዊ ስብሰባ ይቀላቀሉ።',
+          reading_time: '4 ደቂቃ ያነብባል'
+        },
+        new_curriculum: {
+          title: 'አዲስ የትምህርት ምንጮች ተለቀቁ',
+          excerpt: 'ለመካከለኛ ደረጃ የሰንበት ት/ቤት ክፍሎች የተዘጋጁ አዲሶቻችንን የትምህርት እቃዎች ያስሱ።',
+          reading_time: '3 ደቂቃ ያነብባል'
+        },
+        teacher_training: {
+          title: 'የመምህራን ስልጠና የስራ አደረጃጀት ተከታታይ',
+          excerpt: 'በመስመር ላይ እና በብዙ ዋና ከተማዎች ውስጥ የሚቀርቡ የጸደይ የመምህራን ስልጠና የስራ አደረጃጀቶችን ይመዝገቡ።',
+          reading_time: '5 ደቂቃ ያነብባል'
+        },
+        partnership: {
+          title: 'ናሱ ከኦርቶዶክስ አሳታሚ ጋር ተጣምሯል',
+          excerpt: 'የሰንበት ት/ቤት እቃዎችን ለማዳበር ከባይዛንቲን ፕሬስ ጋር ያለውን አዲስ አጋርነታችን ለማስታወቅ ተስማምተናል።',
+          reading_time: '2 ደቂቃ ያነብባል'
+        },
+        summer_camp: {
+          title: 'የጸደይ ወጣቶች ካምፕ ምዝገባ ተከፍቷል',
+          excerpt: 'ለሁሉም ዕድሜ ቡድኖች የተዘጋጁ ልዩ ፕሮግራሞች ያሉትን የዓመታችንን የኦርቶዶክስ የጸደይ ወጣቶች ካምፕ ለልጆቻችሁ ይመዝገቡ።',
+          reading_time: '6 ደቂቃ ያነብባል'
+        },
+        new_board: {
+          title: 'አዲሶች የቦርድ አባላት ተቀብለዋል',
+          excerpt: 'ናሱ በትምህርት፣ በፋይናንስ እና በቴክኖሎጂ ላይ ያለውን ስፔሻሊቲ ያላቸው ሶስት አዲሶች የቦርድ አባላትን ያቀበለ።',
+          reading_time: '4 ደቂቃ ያነብባል'
+        },
+        digital_library: {
+          title: 'ዲጂታል የምንጭ ቤተ-መጽሐፍት ተስፋጽቷል',
+          excerpt: 'የእኛ ዲጂታል ቤተ-መጽሐፍት አሁን ለኦርቶዶክስ የሰንበት ት/ቤቶች ከ500 በላይ ምንጮችን ያካትታል፣ ለሁሉም ዕድሜ ቡድኖች አዲስ እቃዎች አሉ።',
+          reading_time: '3 ደቂቃ ያነብባል'
+        },
+        regional_conference: {
+          title: 'የክልል ስብሰባ ስኬት',
+          excerpt: 'ከ200 በላይ የሰንበት ት/ቤት መምህራን በኦርቶዶክስ ወጣቶችን ለማነቃቃት ያተኩረ የእኛን የምዕራብ ክልል ስብሰባ ሰብስበዋል።',
+          reading_time: '5 ደቂቃ ያነብባል'
+        }
+      },
+      actions: {
+        read_more: 'ተጨማሪ ያንብቡ →',
+        load_more: 'ተጨማሪ ያስገኙ',
+        download: 'ያውርዱ',
+        subscribe: 'ይመዝገቡ'
+      },
+      newsletter: {
+        title: 'ወቅታዊ ይሁኑ',
+        description: 'የቅርብ ዜናዎችን፣ ዝግጅቶችን እና ምንጮችን በቀጥታ በድህረ ገጻችሁ ለመቀበል የዜና መጽሐፍታችንን ይመዝገቡ።',
+        form: {
+          first_name: 'የመጀመሪያ ስም',
+          first_name_placeholder: 'የመጀመሪያ ስም',
+          last_name: 'የመጨረሻ ስም',
+          last_name_placeholder: 'የመጨረሻ ስም',
+          email: 'የኢሜይል አድራሻ',
+          email_placeholder: 'እርስዎ@ምሳሌ.com',
+          agreement: 'ከናሱ የኢሜይል ግንኙነቶችን ለመቀበል እስማማለሁ'
+        }
+      },
+      upcoming_events: {
+        title: 'የሚቀርቡ ዝግጅቶች',
+        subtitle: 'እነዚህን አስፈላጊ የሚቀርቡ የናሱ ዝግጅቶችን እና ስብሰባዎችን ለማስታወስ የቀን መቁጠሪያዎችዎን ምልክት ያድርጉ።',
+        teacher_workshop: {
+          title: 'የመምህራን ስልጠና የስራ አደረጃጀት',
+          description: 'የሰንበት ት/ቤት መምህራንን ውጤታማ የመማሪያ ዘዴዎችን፣ የክፍል አስተዳደር ስትራቴጂዎችን እና ለኦርቶዶክስ ትምህርት የሚያነቃቁ እንቅስቃሴዎችን ለማስታጠቅ የተዘጋጀ ሁለገብ የስራ አደረጃጀት ነው።',
+          location: 'ቺካጎ፣ አይኤል',
+          type: 'በግል',
+          audience: 'መምህራን'
+        },
+        annual_conference: {
+          title: 'ዓመታዊ ስብሰባ',
+          description: 'የናሱ ዋና ዝግጅት ኦርቶዶክስ ትምህርት ሰጪዎችን፣ ቄሳውንትን እና ባለሙያዎችን ለማገናኘት የሚያገለግል ሶስት ቀናት የመማር፣ የመደራጀት እና የመነሳሳት ነው። ምዝገባ ሁሉንም ክፍሎች፣ እቃዎች እና ምግቦች ያካትታል።',
+          location: 'ቦስተን፣ ኤምኤ',
+          type: 'በግል',
+          audience: 'ሁሉም ትምህርት ሰጪዎች'
+        },
+        youth_camp: {
+          title: 'የወጣቶች የጸደይ ካምፕ',
+          description: 'ለ9-16 ዓመት የሚሆኑ የኦርቶዶክስ ወጣቶች የሳምንት ሙሉ የሚሆን የመሳተፍ ካምፕ ልምድ ነው። እንቅስቃሴዎች የዕለት ቤተክርስቲያን አገልግሎቶችን፣ የሃይማኖት ትምህርትን፣ ስፖርትን፣ የእጅ ስራን፣ ሙዚቃን እና የውጪ ድንጋይ ላይ የሚደረጉ ድንቅ ነገሮችን ያካትታሉ።',
+          location: 'የኒዮርክ ግዛት',
+          type: 'የመኖሪያ ቤት',
+          audience: 'ወጣቶች 9-16 ዓመት'
+        },
+        view_calendar: 'ሙሉ የቀን መቁጠሪያ ይመልከቱ'
+      },
+      social_media: {
+        title: 'ከእኛ ጋር ይገናኙ',
+        description: 'ለኦርቶዶክስ የሰንበት ት/ቤቶች የዕለት ዜናዎችን፣ ምንጮችን እና መነሳሳትን ለማግኘት በማህበራዊ ሚዲያ ይከተሉን።'
+      },
+      document_types: {
+        pdf_document: 'የፒዲኤፍ ሰነድ'
+      }
+    },
     sponsors: 'ስፖንሰሮች',
     news: 'ዜና እና መልዕክት',
     gallery: 'የምስል ስብስቦች',
@@ -395,18 +1131,12 @@ const translations = {
     // Vision and Mission
     vision: {
       title: 'የእኛ ራእይ',
-      description: 'የሚቀጥለው ትውልድ በእምነት፣ በእውቀት እና በደስታ የሚያድግበትን የወደፊቱን እያየን ነው። በሰሜን አሜሪካ ያለ እያንዳንዱ ኦርቶዶክስ ልጅ ጥራት ያለው፣ እውነተኛ የኦርቶዶክስ ትምህርት እንዲኖረው እንፈልጋለን።'
+      description: 'የሚቀጥለው ትውልድ በእምነት፣ በእውቀት እና በደስታ የሚያድግበትን የወደፊቱን እያየን ነው። በሰሜን አሜሪካ ያለ እያንዳንዱ ኦርቶዶክስ ልጅ ጥራት ያለው፣ እውነተኛ የኦርቶዶክስ ትምህርት እንዲኖረው እናምናለን።'
     },
     join_mission: {
       title: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
       description: 'ድጋፍዎ በሰሜን አሜሪካ ዙሪያ ለሚገኙ የሰንበት ት/ቤቶች ምንጮችን እና ስልጠናዎችን ለመስጠት እንድንቀጥል ይረዳናል።'
     },
-    
-    // Core Values Section
-    educational_excellence: 'ትምህርታዊ ሙሉነት',
-    orthodox_faith: 'የኦርቶዶክስ እምነት',
-    community: 'ማህበረሰብ',
-    
     
     // Services Section
     services_section: {
@@ -518,7 +1248,7 @@ const translations = {
       at_a_glance: 'በአጭሩ',
       stats: {
         founded: 'የተመሰረተው ነሃሴ 27 / 1993 ዓ.ም. ነው',
-        years_of_service: 'ከ30 ዓመት በላይ አገልግሎት',
+        years_of_service: 'ከ20 ዓመት በላይ አገልግሎት',
         parishes_served: '350+ ቤተክርስቲያናት ያገለገሉ',
         across_jurisdictions: 'በተለያዩ የእምነት ቤተክርስቲያናት ውስጥ',
         north_america_wide: 'በሙሉ ሰሜን አሜሪካ',
@@ -590,6 +1320,335 @@ const translations = {
       title: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
       description: 'የሚቀጥለውን ትውልድ እምነት ለማሳደግ ይርዱን። ድጋፋችሁ ስራችንን የሚቻል ያደርገዋል።'
     },
+    // Gallery page translations - Amharic
+    gallery_page: {
+      title: 'የፎቶ ጋለሪ',
+      subtitle: 'ከየኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ናሱ ማህበረሰብ እና እንቅስቃሴዎች የተወሰዱ ምስሎች',
+      section_title: 'የእኛ ኦርቶዶክስ ማህበረሰብ',
+      section_description: 'ከሰንበት ት/ቤት ክፍሎች፣ ከመምህራን ስልጠናዎች፣ ከወጣት እንቅስቃሴዎች እና ከሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት ማህበረሰብ ሌሎች እንቅስቃሴዎች የተወሰዱ ምስሎችን ይመልከቱ።',
+      search_placeholder: 'ፎቶዎችን ይፈልጉ...',
+      categories: {
+        all: 'ሁሉም ምድቦች',
+        church: 'ቤተክርስቲያን',
+        sunday_school: 'ሰንበት ት/ቤት',
+        youth: 'የወጣቶች እንቅስቃሴዎች',
+        community: 'የማህበረሰብ አገልግሎት',
+        events: 'የናሱ እንቅስቃሴዎች'
+      },
+      no_results: {
+        title: 'ምንም ፎቶ አልተገኘም',
+        description: 'የፍለጋ ቃላትዎን ወይም የምድብ አጣራሪዎን ያስተካክሉ።',
+        clear_filters: 'አጣራሪዎችን ያጽዱ'
+      },
+      photo_count: '{filtered} ከ {total} ፎቶዎች • ለትልቅ እይታ ማንኛውንም ምስል ይጫኑ',
+      no_description: 'ምንም መግለጫ አይደለም',
+      youtube_section: {
+        title: 'የናሱ ቪዲዮዎችን በዩቱብ ይመልከቱ',
+        description: 'የሰንበት ት/ቤት ትምህርቶቻችንን፣ የኦርቶዶክስ ትምህርቶችን፣ የወጣት እንቅስቃሴዎችን እና የማህበረሰብ ክስተቶችን በቪዲዮ ይዘታችን ይወቁ።',
+        visit_channel: 'የዩቱብ ቻነል ይጎብኙ',
+        subscribe: 'ይመዝገቡ',
+        latest_videos: 'የቅርብ ጊዜ ቪዲዮዎች: የሰንበት ት/ቤት ትምህርቶች፣ የወጣት እንቅስቃሴዎች፣ የኦርቶዶክስ ትምህርቶች'
+      },
+      image_titles: {
+        church_exterior: 'የቤተክርስቲያን ውጫዊ ክፍል',
+        church_interior: 'የቤተክርስቲያን ውስጣዊ ክፍል',
+        sunday_school_class: 'የሰንበት ት/ቤት ክፍል',
+        teacher_workshop: 'የመምህራን ስልጠና',
+        youth_camp: 'የወጣቶች ካምፕ',
+        community_outreach: 'የማህበረሰብ አገልግሎት',
+        nassu_events: 'የናሱ እንቅስቃሴዎች'
+      },
+      image_descriptions: {
+        church_exterior: 'ውብ የኦርቶዶክስ ቤተክርስቲያን ውጫዊ ክፍል።',
+        church_interior: 'የእኛ ኦርቶዶክስ ቤተክርስቲያን ውስጣዊ ክፍል።',
+        sunday_school_class: 'ተማሪዎች ስለ ኦርቶዶክስ እምነት በመማር ላይ።',
+        teacher_workshop: 'መምህራን በሙያ ማሳደጊያ ስልጠናዎች ላይ ተሳትፈዋል።',
+        youth_camp: 'ወጣቶች በመንፈሳዊ እንቅስቃሴዎች ላይ ተሳትፈዋል።',
+        community_outreach: 'የናሱ በፈቃደኝነት የሚሰሩ ሰዎች በማህበረሰብ አገልግሎት ላይ ተሳትፈዋል።'
+      }
+    },
+    // Videos page translations - Amharic
+    videos_page: {
+      title: 'የቪዲዮ ጋለሪ',
+      subtitle: 'የናሱ ቪዲዮዎችን እና ትምህርቶችን ይመልከቱ',
+      section_title: 'የቪዲዮ ስብስባችን',
+      section_description: 'የሰንበት ት/ቤት ትምህርቶቻችንን፣ የኦርቶዶክስ ትምህርቶችን፣ የወጣት እንቅስቃሴዎችን እና የማህበረሰብ ክስተቶችን በቪዲዮ ይዘታችን ይወቁ።',
+      search_placeholder: 'ቪዲዮዎችን ይፈልጉ...',
+      categories: {
+        all: 'ሁሉም ምድቦች',
+        church: 'ቤተክርስቲያን',
+        sunday_school: 'ሰንበት ት/ቤት',
+        youth: 'የወጣቶች እንቅስቃሴዎች',
+        community: 'የማህበረሰብ አገልግሎት',
+        events: 'የናሱ እንቅስቃሴዎች'
+      },
+      no_results: {
+        title: 'ምንም ቪዲዮ አልተገኘም',
+        description: 'የፍለጋ ቃላትዎን ወይም የምድብ አጣራሪዎን ያስተካክሉ።',
+        clear_filters: 'አጣራሪዎችን ያጽዱ'
+      },
+      video_count: '{count} ከ {total} ቪዲዮዎች • ለመመልከት ማንኛውንም ቪዲዮ ይጫኑ',
+      no_description: 'ምንም መግለጫ አይደለም',
+      youtube_channel_button: 'የናሱ ዩቱብ ቻነል ይጎብኙ',
+      video_titles: {
+        sunday_school_lesson: 'የሰንበት ት/ቤት ትምህርት - የኦርቶዶክስ እምነት',
+        youth_ministry: 'የወጣቶች አገልግሎት እንቅስቃሴዎች',
+        community_outreach: 'የማህበረሰብ አገልግሎት ፕሮግራም',
+        teacher_training: 'የመምህራን ስልጠና ስራ ቤት',
+        orthodox_traditions: 'የኦርቶዶክስ ትውፊቶች እና ልማዶች',
+        family_faith: 'የቤተሰብ እምነት እድገት',
+        annual_conference: 'የናሱ የዓመት ኮንፈረንስ',
+        prayer_worship: 'የጸሎት እና የመስገድ መመሪያ',
+        children_ministry: 'የልጆች አገልግሎት ምንጮች'
+      },
+      video_descriptions: {
+        sunday_school_lesson: 'በዚህ የሚያሳስብ የሰንበት ት/ቤት ትምህርት ውስጥ የኦርቶዶክስ ክርስቲያናዊ እምነት መሰረታዊ ነገሮችን ይማሩ',
+        youth_ministry: 'በናሱ ውስጥ የሚደረጉ አዝናኝ የወጣቶች እንቅስቃሴዎችን እና የመንፈሳዊ እድገት ፕሮግራሞችን ያግኙ',
+        community_outreach: 'ናሱ በተለያዩ የማህበራዊ አገልግሎት ተነሳሽነቶች በኩል ማህበረሰብን እንዴት እንደሚያገለግል ይመልከቱ',
+        teacher_training: 'ለሰንበት ት/ቤት መምህራን እና በፈቃደኝነት የሚሰሩ ሰዎች የሙያ እድገት ክፍል',
+        orthodox_traditions: 'የኦርቶዶክስ ቤተክርስቲያን ባለው ባለ ጥልቀት ትውፊቶች እና ልማዶች ይጎበኙ',
+        family_faith: 'የኦርቶዶክስ ልማዶችን በዕለት ተዕለት ሕይወት ውስጥ ለማዋህድ ለቤተሰቦች መመሪያ',
+        annual_conference: 'ከተናጋሪዎች እና ከስራ ቤቶች ጋር የሚደረገው የእኛ የዓመት ኮንፈረንስ ዋና ነጥቦች',
+        prayer_worship: 'የኦርቶዶክስ የጸሎት ልምዶችን እና የመስገድ ትውፊቶችን ይማሩ',
+        children_ministry: 'ለልጆች የኦርቶዶክስ እምነትን ለመማር የሚያገለግሉ የትምህርት ምንጮች እና እንቅስቃሴዎች'
+      }
+    },
+    // Donate page translations - Amharic
+    donate_page: {
+      title: 'የኦርቶዶክስ ህብረት ሰንበት ት/ቤት ለማገዝ ይለጥፉ',
+      subtitle: 'የሚቀጥለውን ትውልድ የኦርቶዶክስ ትምህርት ደግፉ።',
+      description: 'የእርስዎ በጎ ልገሳ በሰሜን አሜሪካ ውስጥ ለሚገኙ የሰንበት ት/ቤቶች ጥራት ያለው የኦርቶዶክስ ትምህርት ምንጮችን እና ስልጠናዎችን ለመቀጠል ይረዳናል።',
+      select_amount: {
+        title: 'የልገሳ መጠን ይምረጡ',
+        subtitle: 'የልገሳዎችን መጠን ይምረጡ',
+        custom_amount: 'የግል መጠን ያስገቡ',
+        custom_placeholder: 'መጠን ያስገቡ',
+        valid_amount: '✓ ትክክለኛ መጠን: $',
+        invalid_amount: 'እባክዎ ከ$0 በላይ የሆነ ትክክለኛ መጠን ያስገቡ'
+      },
+      make_donation: {
+        title: 'ልገሳ ያድርጉ',
+        frequency: 'ድግግሞሽ',
+        one_time: 'አንድ ጊዜ',
+        monthly: 'ወርሃዊ',
+        designation: 'የልገሳ አድራሻ',
+        designation_options: {
+          general: 'የጥቅም ፈንድ (ትልቁ ፍላጎት)',
+          curriculum: 'የኩርክዮሎም እድገት',
+          teacher_training: 'የመምህራን ስልጠና ፕሮግራሞች',
+          technology: 'ዲጂታል ምንጮች እና ቴክኖሎጂ',
+          scholarship: 'የወጣቶች ስኮላርሺፖች'
+        },
+        note: 'ማስታወሻ (አማራጭ)',
+        note_placeholder: 'ከልገሳዎ ጋር የግል ማስታወሻ ያክሉ'
+      },
+      payment_methods: {
+        paypal: 'ፔይፓል',
+        bank_transfer: 'የባንክ ማስተላለፊያ',
+        zelle: 'ዘሌ',
+        credit_card: 'የክሬዲት ካርድ'
+      },
+      validation: {
+        enter_custom_amount: 'እባክዎ የግል መጠን ያስገቡ',
+        enter_valid_amount: 'ልገሳዎችን ለመቀጠል ከላይ ትክክለኛ መጠን ያስገቡ።'
+      },
+      zelle: {
+        title: 'በዘሌ ይላኩ',
+        subtitle: 'የልገሳዎችን ወደዚህ ያስተላልፉ:',
+        email: 'Nassupay@gmail.com',
+        copy_email: 'ኢሜይል ያውዱ',
+        email_copied: '✓ ኢሜይል ተወድዷል!',
+        email_copied_desc: 'የልገሳዎችን ለመጨረስ ዘሌ መተግበሪያዎ ውስጥ ያስገቡት።',
+        important: 'አስፈላጊ: በክፍያ ማስታወሻ/ማስታወሻ ውስጥ ስምዎን እና ኢሜይልዎን ያካትቱ።',
+        confirmation: 'የልገሳዎችን ካደረግን በኋላ በ24-48 ሰዓታት ውስጥ የማረጋገጫ ኢሜይል ያገኛሉ።',
+        secure_title: 'ደህንነቱ የተጠበቀ እና ቀላል ልገሳ',
+        secure_desc: 'የልገሳዎች የሚደረገው በዘሌ የተጠበቀ የክፍያ አውታረመረብ በኩል በደህንነት ይሰራል። የመለያ ምዝገባ አያስፈልግም።'
+      },
+      impact: {
+        title: 'የእርስዎ ተጽዕኖ',
+        amount_25: '$25 የሚያቀርበው:',
+        amount_25_items: [
+          'ለአንድ የሰንበት ት/ቤት መምህር የስልጠና ቁሳቁሶች',
+          'ለ5 ተማሪዎች የትምህርት ምንጮች'
+        ],
+        amount_50: '$50 የሚያቀርበው:',
+        amount_50_items: [
+          'ለአንድ ክፍል ሙሉ የኩርክዮሎም ኪት',
+          'ለሁለት መምህራን ወርክሾፖች ለመገኘት ስኮላርሺፖች'
+        ],
+        amount_100: '$100 የሚያቀርበው:',
+        amount_100_items: [
+          'ለሙሉ ቤተክርስቲያን ዲጂታል ምንጮች',
+          'ለክልላዊ የመምህራን ስልጠና ክስተቶች ቁሳቁሶች',
+          'ለወጣት ካምፕ ተሳታፊዎች ስኮላርሺፖች'
+        ],
+        amount_250: '$250+ የሚያቀርበው:',
+        amount_250_items: [
+          'ለትንሽ ቤተክርስቲያን ሙሉ የሰንበት ት/ቤት ፕሮግራም ድጋፍ',
+          'የአዲስ ኩርክዮሎም ቁሳቁሶች እድገት',
+          'የዲጂታል ምንጮች ለመላክ ቴክኖሎጂ ዓመት'
+        ],
+        tax_deductible: 'ናሱ የ501(c)(3) ለትርፍ ያልተቋቋመ ድርጅት ነው። የልገሳዎች በህግ የተፈቀደ መጠን ውስጥ ከግብር ይቀንሳል።'
+      },
+      success: {
+        title: 'ልገሳዎን ስላደረጉ እናመሰግናለን!',
+        description: 'የልገሳዎች የኦርቶዶክስ ሰንበት ት/ቤት ትምህርትን ያደጋል።',
+        error_title: 'የልገሳ ማደረጊያ ስህተት',
+        error_description: 'የክፍያዎች ተሰራ ነበር ነገር ግን ማስታወስ አልተቻለም። እባክዎ ድጋፍ ያግኙ።',
+        payment_failed: 'ክፍያ አልተሳካ ም',
+        payment_error: 'በክፍያ ማደረጊያ ሂደት ውስጥ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ።'
+      }
+    },
+    admin_page: {
+      title: 'የአስተዳደር መዳረሻ',
+      subtitle: 'የአስተዳደር ዳሽቦርድ ለመድረስ ይግቡ',
+      admin_access: 'የአስተዳደር መዳረሻ',
+      sign_in_dashboard: 'የአስተዳደር ዳሽቦርድ ለመድረስ ይግቡ',
+      back_to_main: '← ወደ ዋና ጣቢያ ይመለሱ',
+      admin_email: 'የአስተዳደር ኢሜይል',
+      admin_password: 'የአስተዳደር ይለፍ ቃል',
+      email_placeholder: 'admin@nassu.org',
+      access_dashboard: 'የአስተዳደር ዳሽቦርድ ያግኙ',
+      authenticating: 'የሚሰራጭ...',
+      authorized_only: 'ይህን አካባቢ የሚያገኙ የሚያውቁ አስተዳደሮች ብቻ ናቸው!',
+      validation: {
+        enter_both: 'እባክዎ ኢሜይል እና ይለፍ ቃል ያስገቡ',
+        invalid_credentials: 'ልክ ያልሆነ ኢሜይል ወይም ይለፍ ቃል',
+        too_many_attempts: 'በጣም ብዙ ያልተሳካ ሙከራዎች። እባክዎ በኋላ ይሞክሩ።',
+        general_error: 'በግብይት ሂደት ውስጥ ስህተት ተከስቷል'
+      },
+      access_denied: 'መዳረሻ ተከልዷል',
+      no_admin_privileges: 'የአስተዳደር መብቶች የሉዎትም።',
+      login_successful: 'ግብይቱ ተሳክቷል',
+      redirecting_dashboard: 'ወደ የአስተዳደር ዳሽቦርድ ይዛወራል...',
+      login_failed: 'ግብይቱ አልተሳካም'
+    },
+    admin_dashboard: {
+      title: 'የአስተዳደር ዳሽቦርድ',
+      welcome_back: 'እንኳን ደህና መጡ፣ {email}',
+      settings: 'ቅንብሮች',
+      sign_out: 'ይውጡ',
+      loading_dashboard: 'ዳሽቦርድ እያጫወተ ነው...',
+      stats: {
+        total_users: 'ጠቅላላ ተጠቃሚዎች',
+        active_users: 'ንቁ ተጠቃሚዎች',
+        donations: 'ልገሳዎች',
+        pending: 'በጥበቃ ላይ',
+        monthly_goal: 'ወርሃዊ ግብ',
+        target: 'ዓላማ: {amount}',
+        recent_activity: 'የቅርብ ጊዜ እንቅስቃሴ',
+        activities_today: 'ዛሬ ያሉ እንቅስቃሴዎች'
+      },
+      recent_users: {
+        title: 'የቅርብ ጊዜ ተጠቃሚዎች',
+        description: 'የቅርብ ጊዜ የተቀበሉ ልገሳዎች',
+        view_all_users: 'ሁሉንም ልገሳዎች ይመልከቱ',
+        role: {
+          admin: 'አስተዳደር',
+          editor: 'አዘራጫ',
+          viewer: 'ደጋፊ'
+        },
+        status: {
+          active: 'ንቁ',
+          inactive: 'ንቁ አይደለም'
+        }
+      },
+      recent_donations: {
+        title: 'የቅርብ ጊዜ ልገሳዎች',
+        description: 'የቅርብ ጊዜ የተቀበሉ ልገሳዎች',
+        view_all_donations: 'ሁሉንም ልገሳዎች ይመልከቱ',
+        status: {
+          completed: 'ተጠናቅቋል',
+          pending: 'በጥበቃ ላይ'
+        }
+      },
+      recent_activity: {
+        title: 'የቅርብ ጊዜ እንቅስቃሴ',
+        description: 'በስርዓቱ ውስጥ ያሉ የቅርብ ጊዜ እንቅስቃሴዎች',
+        loading_activities: 'እንቅስቃሴዎች እያጫወቱ ናቸው...',
+        no_activities: 'የቅርብ ጊዜ እንቅስቃሴዎች የሉም።',
+        failed_to_load: 'የእንቅስቃሴ መዝገቦች ማጫወት አልተሳካም',
+        unknown_user: 'ያልታወቀ'
+      },
+      error_messages: {
+        access_denied: 'መዳረሻ ተከልዷል',
+        no_permission: 'የአስተዳደር ዳሽቦርድ ለመድረስ ፈቃድ የለዎትም።',
+        failed_to_load_data: 'የዳሽቦርድ ዳሰሳ ማጫወት አልተሳካም'
+      }
+    },
+    login_page: {
+      title: 'እንኳን ደህና መጡ!',
+      subtitle: 'የሚቀጥል ለመሆን ይግቡ:',
+      email: 'ኢሜይል',
+      password: 'ይለፍ ቃል',
+      forgot_password: 'ይለፍ ቃል ረሳዎት?',
+      sign_in: 'ይግቡ',
+      signing_in: 'የሚገባ ነው...',
+      or_continue_with: 'ወይም ይቀጥሉ:',
+      continue_with_google: 'በ Google ይቀጥሉ',
+      continue_with_apple: 'በ Apple ይቀጥሉ',
+      no_account: 'መለያ የለዎትም?',
+      sign_up: 'ይመዝገቡ',
+      terms_and_privacy: 'በመግቢያ ላይ፣ የእኛን {terms} እና {privacy} እንደምትስማሙ ያረጋግጣሉ',
+      terms: 'የአገልግሎት ውል',
+      privacy: 'የግል መረጃ ፖሊሲ',
+      // Password reset form
+      reset_password: 'ይለፍ ቃል ዳግም ያዘዝ',
+      enter_email_for_reset: 'የእርስዎን የኢሜይል አድራሻ ያስገቡ እና ይለፍ ቃልዎን ለመዳገም አገናኝ እንልካለን።',
+      your_email_placeholder: 'your@email.com',
+      send_reset_link: 'ዳግም የማዘዝ አገናኝ ላክ',
+      sending: 'የሚልክ ነው...',
+      back_to_login: 'ወደ ግብይት ይመለሱ',
+      // Form validation and messages
+      error: 'ስህተት',
+      success: 'ተሳክቷል',
+      email_required: 'ኢሜይል ያስፈልጋል',
+      please_fill_fields: 'እባክዎ ሁሉንም መስኮች ያስገቡ',
+      logged_in_successfully: 'በተሳካ ገብተዋል!',
+      login_failed: 'ግብይቱ አልተሳካም',
+      failed_to_sign_in: 'መግቢያ አልተሳካም',
+      logged_in_with_google: 'በ Google በተሳካ ገብተዋል!',
+      failed_google_sign_in: 'በ Google መግቢያ አልተሳካም',
+      logged_in_with_apple: 'በ Apple በተሳካ ገብተዋል!',
+      failed_apple_sign_in: 'በ Apple መግቢያ አልተሳካም',
+      password_reset_sent: 'የይለፍ ቃል ዳግም የማዘዝ ኢሜይል ተልኳል። እባክዎ የግብይት ሳጥንዎን ያረጋግጡ።',
+      failed_to_send_reset: 'የዳግም የማዘዝ ኢሜይል ማስተላለፍ አልተሳካም',
+      name_email_placeholder: 'name@example.com'
+    },
+    signup_page: {
+      title: 'መለያዎን ይፍጠሩ',
+      subtitle: 'ዛሬ በማህበራችን ውስጥ ይቀላቀሉ',
+      first_name: 'የመጀመሪያ ስም',
+      last_name: 'የመጨረሻ ስም',
+      email_address: 'የኢሜይል አድራሻ',
+      password: 'ይለፍ ቃል',
+      confirm_password: 'ይለፍ ቃል ያረጋግጡ',
+      sign_up: 'ይመዝገቡ',
+      creating_account: 'መለያ የሚፈጥር ነው...',
+      or_continue_with: 'ወይም ይቀጥሉ',
+      continue_with_google: 'በ Google ይቀጥሉ',
+      continue_with_apple: 'በ Apple ይቀጥሉ',
+      already_have_account: 'መለያ አለዎት?',
+      sign_in: 'ይግቡ',
+      terms_privacy_text: 'በመመዝገብ ላይ፣ የእኛን {terms} እና {privacy} እንደምትስማሙ ያረጋግጣሉ።',
+      terms: 'ውል',
+      privacy: 'የግል መረጃ ፖሊሲ',
+      // Form validation and messages
+      passwords_not_match: 'ይለፍ ቃሎች አይጣጣሙም',
+      sign_up_successful: 'መመዝገብ ተሳክቷል',
+      verification_email_sent: 'የማረጋገጫ ኢሜይል ወደ {email} ተልኳል።',
+      verify_email_before_login: 'እባክዎ ከመግቢያ በፊት ኢሜይልዎን ያረጋግጡ።',
+      sign_up_failed: 'መመዝገብ አልተሳካም',
+      sign_up_error: 'የመመዝገብ ስህተት',
+      account_created_successfully: 'መለያ በተሳካ ተፈጥሯል',
+      account_created: 'መለያ ተፈጥሯል',
+      google_sign_up_failed: 'በ Google መመዝገብ አልተሳካም',
+      // Placeholders
+      first_name_placeholder: 'ዮሐንስ',
+      last_name_placeholder: 'ዶው',
+      email_placeholder: 'your@email.com',
+      password_placeholder: '••••••••'
+    }
     // Add more translations here if needed
   }
 };

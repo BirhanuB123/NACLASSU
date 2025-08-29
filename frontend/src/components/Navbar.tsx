@@ -79,8 +79,9 @@ const Navbar = () => {
     { to: '/values', label: 'values' },
     { to: '/team', label: 'team' },
     { to: '/sponsors', label: 'sponsors' },
-    { to: '/message', label: 'news' },
-    { to: '/gallery', label: 'gallery' }
+    { to: '/message', label: 'news_page.title' },
+    { to: '/gallery', label: 'gallery' },
+    { to: '/videos', label: 'videos' }
   ];
 
   const isActive = (path: string) => location.pathname === path;

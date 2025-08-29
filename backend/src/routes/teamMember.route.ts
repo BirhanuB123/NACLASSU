@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import { TeamMember } from '../models/TeamMember.model';
 import { errorHandler } from '../middleware/errorHandler';
 import { createMembers } from '../controllers/teamController';
-import { create } from 'axios';
 
 const router = express.Router();
 

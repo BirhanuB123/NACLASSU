@@ -1,11 +1,14 @@
 
+import { useContext } from "react";
 import PageHeader from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink, Handshake, Heart } from "lucide-react";
 import DonateButton from "@/components/DonateButton";
 import JoinUsButton from "@/components/JoinUsButton";
+import { LanguageContext } from "@/context/LanguageContext";
 
 const Sponsors = () => {
+  const { t } = useContext(LanguageContext);
   // Sample sponsors and partners data
   const majorSponsors = [
     {
@@ -48,16 +51,16 @@ const Sponsors = () => {
 
   return (
     <>
-      <PageHeader title="Sponsors & Partners" background="">
-        <p className="text-lg text-gray-100">The organizations that make our work possible</p>
+      <PageHeader title={t('sponsors_page.title')} background="">
+        <p className="text-lg text-gray-100">{t('sponsors_page.subtitle')}</p>
       </PageHeader>
 
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="section-title">Our Major Sponsors</h2>
+            <h2 className="section-title">{t('sponsors_page.major_sponsors.title')}</h2>
             <p className="text-lg text-gray-700">
-              NASSU's work would not be possible without the generous support of our major sponsors. These organizations share our commitment to Orthodox education and have made significant contributions to our mission.
+              {t('sponsors_page.major_sponsors.description')}
             </p>
           </div>
 
@@ -80,7 +83,7 @@ const Sponsors = () => {
                         rel="noopener noreferrer" 
                         className="inline-flex items-center gap-2 text-church-700 hover:text-church-900 transition-colors"
                       >
-                        Visit Website <ExternalLink size={16} />
+                        {t('sponsors_page.visit_website')} <ExternalLink size={16} />
                       </a>
                     </div>
                   </div>
@@ -97,9 +100,9 @@ const Sponsors = () => {
             <div className="flex items-center justify-center mb-4">
               <Handshake className="w-12 h-12 text-church-700" />
             </div>
-            <h2 className="section-title">Our Partners</h2>
+            <h2 className="section-title">{t('sponsors_page.partners.title')}</h2>
             <p className="text-lg text-gray-700">
-              We collaborate with numerous Orthodox organizations across North America to advance our shared mission of providing quality Orthodox Christian education.
+              {t('sponsors_page.partners.description')}
             </p>
           </div>
 
@@ -118,7 +121,7 @@ const Sponsors = () => {
                       rel="noopener noreferrer" 
                       className="inline-flex items-center gap-1 text-sm text-church-700 hover:text-church-900 transition-colors"
                     >
-                      Visit Website <ExternalLink size={14} />
+                      {t('sponsors_page.visit_website')} <ExternalLink size={14} />
                     </a>
                   </div>
                 </CardContent>
@@ -134,68 +137,36 @@ const Sponsors = () => {
             <div className="bg-church-50 border border-church-100 rounded-lg p-8 shadow-sm">
               <div className="flex items-center gap-4 mb-6">
                 <Heart className="w-8 h-8 text-red-600" />
-                <h2 className="text-2xl font-serif font-bold">Become a Sponsor or Partner</h2>
+                <h2 className="text-2xl font-serif font-bold">{t('sponsors_page.become_sponsor.title')}</h2>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                Support from organizations like yours helps us reach more parishes and provide better resources for Orthodox Christian education. By becoming a sponsor or partner, you'll be making a significant contribution to the spiritual formation of Orthodox youth across North America.
+                {t('sponsors_page.become_sponsor.description')}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100">
-                  <h3 className="text-xl font-serif font-bold mb-3 text-church-800">Sponsorship Benefits</h3>
+                  <h3 className="text-xl font-serif font-bold mb-3 text-church-800">{t('sponsors_page.sponsorship_benefits.title')}</h3>
                   <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Recognition on our website and publications
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Opportunities to connect with Orthodox parishes
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Input on educational initiatives
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Support Orthodox education across North America
-                    </li>
+                    {t('sponsors_page.sponsorship_benefits.benefits').map((benefit, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {benefit}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100">
-                  <h3 className="text-xl font-serif font-bold mb-3 text-church-800">Partnership Opportunities</h3>
+                  <h3 className="text-xl font-serif font-bold mb-3 text-church-800">{t('sponsors_page.partnership_opportunities.title')}</h3>
                   <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                      Collaborative educational projects
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                      Resource sharing and development
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                      Joint events and programs
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                      Networking with Orthodox organizations
-                    </li>
+                    {t('sponsors_page.partnership_opportunities.opportunities').map((opportunity, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        {opportunity}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

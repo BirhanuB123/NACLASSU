@@ -14,6 +14,7 @@ import Values from "./pages/Values";
 import Team from "./pages/Team";
 import Sponsors from "./pages/Sponsors";
 import Gallery from "./pages/Gallery";
+import Videos from "./pages/Videos";
 import Donate from "./pages/Donate";
 import JoinUs from "./pages/JoinUs";
 import Login from "./pages/Login";
@@ -52,6 +53,7 @@ const App = () => {
                       <Route path="/team" element={<Team />} />
                       <Route path="/sponsors" element={<Sponsors />} />
                       <Route path="/gallery" element={<Gallery />} />
+                      <Route path="/videos" element={<Videos />} />
                       <Route path="/donate" element={<Donate />} />
                       <Route path="/join-us" element={<JoinUs />} />
                       <Route path="/profile" element={<ProfilePage />} />
