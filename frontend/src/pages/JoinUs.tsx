@@ -5,25 +5,32 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { UserPlus, Users, BookOpen, HeartHandshake } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useLanguage } from "@/context/LanguageContext";
 
 const JoinUs = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const { language } = useLanguage();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // In a real application, this would send the form data to a server
     setFormSubmitted(true);
     // Reset form after 3 seconds
     setTimeout(() => {
       setFormSubmitted(false);
-      e.target.reset();
+      e.currentTarget.reset();
     }, 3000);
+  };
+
+  // Simple translation function for this page
+  const translate = (en: string, am: string) => {
+    return language === 'am' ? am : en;
   };
 
   return (
     <>
-      <PageHeader title="Join Our Mission" background="">
-        <p className="text-lg text-gray-100">Become part of our Orthodox education community</p>
+      <PageHeader title={translate("Join Our Mission", "የእኛን ተልእኮ ይቀላቀሉ")} background="">
+        <p className="text-lg text-gray-100">{translate("Become part of our Orthodox education community", "የእኛን ኦርቶዶክስ ትምህርት ማህበረሰብ አባል ይሁኑ")}</p>
       </PageHeader>
 
       <section className="py-16">
@@ -32,17 +39,20 @@ const JoinUs = () => {
             <div className="flex justify-center mb-4">
               <UserPlus className="w-12 h-12 text-church-700" />
             </div>
-            <h2 className="section-title">How You Can Get Involved</h2>
+            <h2 className="section-title">{translate("How You Can Get Involved", "እንዴት መሳተፍ እንደሚችሉ")}</h2>
             <p className="text-lg text-gray-700">
-              There are many ways to participate in NASSU's mission of providing quality Orthodox Christian education to children and youth across North America. Whether you're a teacher, parent, clergy member, or supporter, we welcome your involvement.
+              {translate(
+                "There are many ways to participate in NASSU's mission of providing quality Orthodox Christian education to children and youth across North America. Whether you're a teacher, parent, clergy member, or supporter, we welcome your involvement.",
+                "በሰሜን አሜሪካ ውስጥ ለልጆች እና ለወጣቶች ጥራት ያለው ኦርቶዶክስ ክርስቲያናዊ ትምህርት ለመስጠት በ NASSU ተልእኮ ውስጥ መሳተፍ የሚችሉት ብዙ መንገዶች አሉ። እርስዎ አስተማሪ፣ ወላጅ፣ ቄስ ወይም ደጋፊ ስለሆኑ፣ ተሳታፊነትዎን እንወዳለን።"
+              )}
             </p>
           </div>
 
           <Tabs defaultValue="volunteer" className="max-w-4xl mx-auto">
             <TabsList className="grid grid-cols-3 mb-8">
-              <TabsTrigger value="volunteer">Volunteer</TabsTrigger>
-              <TabsTrigger value="parish">Parish Membership</TabsTrigger>
-              <TabsTrigger value="donate">Support Us</TabsTrigger>
+              <TabsTrigger value="volunteer">{translate("Volunteer", "በፈቃደኝነት")}</TabsTrigger>
+              <TabsTrigger value="parish">{translate("Parish Membership", "የቤተክርስቲያን አባልነት")}</TabsTrigger>
+              <TabsTrigger value="donate">{translate("Support Us", "ደግፉን")}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="volunteer" className="border rounded-lg p-6">
