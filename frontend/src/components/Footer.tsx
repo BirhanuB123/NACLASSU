@@ -38,7 +38,7 @@ const Footer = () => {
               <Church className="text-gold-400" size={28} />
               <div>
                 <span className="font-serif text-xl font-medium block text-white">NASSU</span>
-                <span className="text-xs font-light text-gray-400 -mt-1 block">North America Sunday School Union</span>
+                <span className="text-xs font-light text-gray-400 -mt-1 block">Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union</span>
               </div>
             </div>
             <p className="text-gray-300 mb-6">
@@ -113,7 +113,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-church-800 text-center text-gray-400 text-sm">
-          <p>&copy; {currentYear} North America Sunday School Union. All Rights Reserved.</p>
+          <p>&copy; {currentYear} Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union. All Rights Reserved.</p>
           {/*<p>✔️ Developed by: <strong><a href="https://www.mulewave.com" target="_blank" rel="noopener noreferrer">Mulewave</a></strong></p>*/}        </div>
       </div>
     </footer>

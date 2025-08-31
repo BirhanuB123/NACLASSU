@@ -253,8 +253,8 @@ const Navbar = () => {
                   <Sparkles className="h-4 w-4 text-gold-500" />
                 </motion.div>
               </div>
-              <span className="text-xs font-medium text-gray-600 tracking-wide border-l-2 border-gold-400 pl-2">
-                North America Sunday School Union
+              <span className="text-[8px] sm:text-[9px] font-medium text-gray-600 tracking-wide border-l-2 border-gold-400 pl-2 max-w-[200px] sm:max-w-[250px] lg:max-w-[280px] truncate">
+                Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union
               </span>
             </div>
           </Link>

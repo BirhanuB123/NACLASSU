@@ -98,7 +98,7 @@ const Values = () => {
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="section-title">{t('values_page.core_values_title', {defaultValue: 'Core Values'})}</h2>
             <p className="text-lg text-gray-700">
-              {t('values_page.core_values_description', {defaultValue: 'At North America Sunday School Union, our work is guided by a set of core values that reflect our commitment to Orthodox Christian education and the spiritual formation of children and youth.'})}
+              {t('values_page.core_values_description', {defaultValue: 'At Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union, our work is guided by a set of core values that reflect our commitment to Orthodox Christian education and the spiritual formation of children and youth.'})}
             </p>
           </div>
 

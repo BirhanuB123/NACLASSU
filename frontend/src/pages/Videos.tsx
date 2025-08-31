@@ -38,7 +38,7 @@ const Videos: React.FC = () => {
       url: "https://www.youtube.com/watch?v=nQoSa6Oa-hg",
       title: t('videos_page.video_titles.community_outreach'),
       description: t('videos_page.video_descriptions.community_outreach'), 
-      thumbnail: "https://img.youtube.com/vi/nQoSa6Oa-hg/maxresdefault.jpg",
+      thumbnail: "https://img.youtube.com/vi/EJHQYkBCJpE/maxresdefault.jpg",
       videoId: "nQoSa6Oa-hg"
     },
     {

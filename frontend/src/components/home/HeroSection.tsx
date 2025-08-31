@@ -17,14 +17,14 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center z-0" 
         style={{ 
-          backgroundImage: 'url("/lovable-uploads/5da4f0f9-ca7d-466d-a037-8073cbd0e04b.png")',
+          backgroundImage: 'url("images/church2.png")',
           filter: 'brightness(0.6)'
         }}
       />
       <div className="hero-overlay absolute inset-0 z-10"></div>
       <div className="container mx-auto px-4 relative z-20 text-center">
         <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h1 className="text-4xl md:text-7xl font-serif font-bold text-white mb-4 leading-tight">
+          <h1 className="text-3xl md:text-6xl font-serif font-bold text-white mb-4 leading-tight">
             <div>{t('home_title_line1')}</div>
             <div>{t('home_title_line2')}</div>
           </h1>

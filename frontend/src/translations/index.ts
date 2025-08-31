@@ -15,7 +15,7 @@ export interface Translations {
 const translations: Record<Language, Translations> = {
   en: {
     hero: {
-      title: 'North America Sunday School Union',
+      title: 'Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union',
       subtitle: 'Nurturing faith and education in our Orthodox community',
     },
     welcome: {
@@ -25,7 +25,7 @@ const translations: Record<Language, Translations> = {
   },
   am: {
     hero: {
-      title: 'የሰሜን አሜሪካ የእሁድ ሰንበት ት/ቤት ማኅበር',
+      title: 'በኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተክርስትያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አህጉረ ስብከት የሰንበት ትምህርት ቤቶች ህብረት',
       subtitle: 'ሃይማኖታዊ እምነት እና ትምህርትን በኦርቶዶክስ ማህበረሰባችን ውስጥ ማሳደግ',
     },
     welcome: {

@@ -23,8 +23,8 @@ interface LanguageProviderProps {
 // Define translations outside the component
 const translations = {
   en: {
-    home_title_line1: 'North American',
-    home_title_line2: 'Sunday School Union',
+    home_title_line1: 'Ethiopia Orthodox Tewahedo Church',
+    home_title_line2: 'North America Caribbean Latin America Archdiocese Sunday Schools Union',
     home: 'Home',
     about: 'About',
     services: 'Services',
@@ -34,7 +34,7 @@ const translations = {
       title: 'Our Values',
       subtitle: 'The principles that guide our work',
       core_values_title: 'Core Values',
-      core_values_description: 'At North American Sunday School Union, our work is guided by a set of core values that reflect our commitment to Orthodox Christian education and the spiritual formation of children and youth.',
+      core_values_description: 'At Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union, our work is guided by a set of core values that reflect our commitment to Orthodox Christian education and the spiritual formation of children and youth.',
       
       educational_excellence: {
         title: 'Educational Excellence',
@@ -199,7 +199,7 @@ const translations = {
     },
     news_page: {
       title: 'News & Messages',
-      subtitle: 'Stay updated with the latest news, events, and resources from the North America Sunday School Union',
+      subtitle: 'Stay updated with the latest news, events, and resources from the Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union',
       tabs: {
         all: 'All',
         events: 'Events',
@@ -336,7 +336,7 @@ const translations = {
     login_failed: 'Login failed',
     login_error: 'Invalid credentials',
     signup_successful: 'Signup successful!',
-    home_title: 'North American Sunday School Union',
+          home_title: 'Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union',
     check_email: 'Please check your email to verify your account.',
     signup_failed: 'Signup failed',
     signup_error: 'An error occurred during signup.',
@@ -449,7 +449,7 @@ const translations = {
     },
     // Homepage translations
     hero: {
-      title: 'North America Sunday School Union',
+      title: 'Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union',
       subtitle: 'Nurturing faith and education in our Orthodox community'
     },
     // Events Section
@@ -486,7 +486,7 @@ const translations = {
       subtitle: 'Learn about our history, mission, and vision',
       our_story: 'Our Story',
       story_paragraphs: [
-        'The North America Sunday School Union (NASSU) was founded in September 2/ 2001 by a group of dedicated Ethiopian Orthodox priests and educators who recognized the need for a unified approach to Sunday School education across North America. What began as a small gathering of educators from various jurisdictions has grown into a comprehensive resource center supporting Sunday Schools throughout the continent.',
+        'The Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union (NASSU) was founded in September 2/ 2001 by a group of dedicated Ethiopian Orthodox priests and educators who recognized the need for a unified approach to Sunday School education across North America, Caribbean, and Latin America. What began as a small gathering of educators from various jurisdictions has grown into a comprehensive resource center supporting Sunday Schools throughout the continent.',
         'For over 20 years, we have been developing curriculum materials, organizing teacher training workshops, and creating resources that help parishes provide quality Orthodox Christian education to children and youth. Our work spans across multiple Orthodox jurisdictions, bringing together the rich traditions and teachings of our faith.',
         'Today, NASSU serves hundreds of parishes, reaching thousands of children each week. We continue to expand our offerings and adapt to the changing needs of Orthodox communities while remaining firmly rooted in the unchanging truths of our faith.'
       ],
@@ -526,7 +526,7 @@ const translations = {
       title: 'Photo Gallery',
       subtitle: 'Images from our EOTC NASSU community and events',
       section_title: 'Our Orthodox Community',
-      section_description: 'Explore images from Sunday School classes, teacher workshops, youth events, and more from the North America Sunday School Union community.',
+      section_description: 'Explore images from Sunday School classes, teacher workshops, youth events, and more from the Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union community.',
       search_placeholder: 'Search photos...',
       categories: {
         all: 'All Categories',
@@ -852,8 +852,8 @@ const translations = {
   },
   am: {
     // Navigation
-    home_title_line1: 'የሰሜን አሜሪካ',
-    home_title_line2: 'የሰንበት ት/ቤት ህብረት',
+    home_title_line1: 'በኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተክርስትያን',
+    home_title_line2: 'የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አህጉረ ስብከት የሰንበት ትምህርት ቤቶች ህብረት',
     home: 'ዋና ገጽ',
     join_us: 'በተልዕኳችን ውስጥ ይቀላቀሉ',
     'Join Us': 'በተልዕኳችን ውስጥ ይቀላቀሉ',
@@ -863,7 +863,7 @@ const translations = {
       title: 'የእኛ እሴቶች',
       subtitle: 'ሥራችንን የሚመሩ መርሆዎች',
       core_values_title: 'ዋና ዋና እሴቶች',
-      core_values_description: 'በሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት ሥራችን በኦርቶዶክስ ክርስቲያናዊ ትምህርት እና የሕጻናት እና ወጣቶች መንፈሳዊ እድገት ላይ ያለን ቁርጠኝነት የሚያንፀባርቁ ዋና ዋና እሴቶች ይመራሉ።',
+      core_values_description: 'በየኢትዮጵያ ኦርቶዶክስ ቴዋሕዶ ቤተክርስቲያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አርክዲዮሴስ የሰንበት ት/ቤቶች ህብረት ሥራችን በኦርቶዶክስ ክርስቲያናዊ ትምህርት እና የሕጻናት እና ወጣቶች መንፈሳዊ እድገት ላይ ያለን ቁርጠኝነት የሚያንፀባርቁ ዋና ዋና እሴቶች ይመራሉ።',
       values: {
         orthodox_faith: {
           title: 'የኦርቶዶክስ እምነት',
@@ -1117,7 +1117,7 @@ const translations = {
     gallery: 'የምስል ስብስቦች',
     
     // Common UI
-    home_title: 'የሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት',
+    home_title: 'የኢትዮጵያ ኦርቶዶክስ ቴዋሕዶ ቤተክርስቲያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አርክዲዮሴስ የሰንበት ት/ቤቶች ህብረት',
     join: 'ይቀላቀሉ',
     login: 'ግባ',
     signup: 'ይመዝገቡ',
@@ -1241,7 +1241,7 @@ const translations = {
       subtitle: 'ስለ ታሪካችን፣ ተልዕኳችን እና ራዕያችንን ይወቁ',
       our_story: 'ታሪካችን',
       story_paragraphs: [
-        'የሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት (ናሱ) ነሃሴ 27 / 1993 ዓ.ም. በሰሜን አሜሪካ ውስጥ ተመሰረተ። የሰንበት ት/ቤቱ ትምህርትን በተመሳሳይ መልኩ ለማስተማር የሚያስችል ዘዴ እንዲኖር የሚያስችል ሲሆን በተለያዩ የዕምነት ቤተክርስቲያናት የሚገኙ ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን ያካተተ ጉባዔ ነው።',
+        'የኢትዮጵያ ኦርቶዶክስ ቴዋሕዶ ቤተክርስቲያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አርክዲዮሴስ የሰንበት ት/ቤቶች ህብረት (ናሱ) ነሃሴ 27 / 1993 ዓ.ም. በሰሜን አሜሪካ፣ ካሪቢያን እና ላቲን አሜሪካ ውስጥ ተመሰረተ። የሰንበት ት/ቤቱ ትምህርትን በተመሳሳይ መልኩ ለማስተማር የሚያስችል ዘዴ እንዲኖር የሚያስችል ሲሆን በተለያዩ የዕምነት ቤተክርስቲያናት የሚገኙ ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን ያካተተ ጉባዔ ነው።',
         'ከተመሰረተ ከ30 ዓመታት በላይ ሲሆን የተማሪዎችን የኦርቶዶክስ ክርስቲያናዊ ትምህርት ለማስተማር የሚያስችሉ የትምህርት እቃዎችን እያዘጋጀን ነው። ይህም የተለያዩ የኦርቶዶክስ ቤተክርስቲያናት ተማሪዎችን ለማስተማር የሚዘጋጁ መምህራንን አስተምሯል።',
         'በአሁኑ ጊዜ ናሱ በሺዎች የሚቆጠሩ ተማሪዎችን የሚያገለግል ሲሆን በኦርቶዶክስ እምነት ውስጥ ያሉትን የተለያዩ ትምህርቶች እና ባህሎች በማስተማር ላይ ያተኮረ ነው።'
       ],
@@ -1311,7 +1311,7 @@ const translations = {
     
     // Homepage translations
     hero: {
-      title: 'የሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት',
+      title: 'የኢትዮጵያ ኦርቶዶክስ ቴዋሕዶ ቤተክርስቲያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አርክዲዮሴስ የሰንበት ት/ቤቶች ህብረት',
       subtitle: 'በኦርቶዶክስ ማህበረሰባችን ውስጥ ዕምነትን፣ ትምህርትን እና አገልግሎትን ማሳደግ።'
     },
     
@@ -1325,7 +1325,7 @@ const translations = {
       title: 'የፎቶ ጋለሪ',
       subtitle: 'ከየኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ናሱ ማህበረሰብ እና እንቅስቃሴዎች የተወሰዱ ምስሎች',
       section_title: 'የእኛ ኦርቶዶክስ ማህበረሰብ',
-      section_description: 'ከሰንበት ት/ቤት ክፍሎች፣ ከመምህራን ስልጠናዎች፣ ከወጣት እንቅስቃሴዎች እና ከሰሜን አሜሪካ የሰንበት ት/ቤት ህብረት ማህበረሰብ ሌሎች እንቅስቃሴዎች የተወሰዱ ምስሎችን ይመልከቱ።',
+      section_description: 'ከሰንበት ት/ቤት ክፍሎች፣ ከመምህራን ስልጠናዎች፣ ከወጣት እንቅስቃሴዎች እና ከየኢትዮጵያ ኦርቶዶክስ ቴዋሕዶ ቤተክርስቲያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አርክዲዮሴስ የሰንበት ት/ቤቶች ህብረት ማህበረሰብ ሌሎች እንቅስቃሴዎች የተወሰዱ ምስሎችን ይመልከቱ።',
       search_placeholder: 'ፎቶዎችን ይፈልጉ...',
       categories: {
         all: 'ሁሉም ምድቦች',
