@@ -96,7 +96,7 @@ const translations = {
       },
       living_values: {
         title: 'Living Our Values',
-        paragraph1: 'Our values are not just words on a page—they guide everything we do at NASSU. From curriculum development to teacher training, from youth events to parish consultation, we strive to embody these values in all aspects of our work.',
+        paragraph1: 'Our values are not just words on a page—they guide everything we do at EOTC NACLAASSU. From curriculum development to teacher training, from youth events to parish consultation, we strive to embody these values in all aspects of our work.',
         paragraph2: 'We invite you to join us in this important mission of nurturing the faith of the next generation. Together, we can help children and youth develop a strong foundation in the Orthodox faith that will support them throughout their lives.'
       }
     },
@@ -105,27 +105,27 @@ const translations = {
       title: 'Meet the Team',
       subtitle: 'Meet the dedicated individuals guiding our mission',
       leadership_title: 'Our Leadership Team',
-      leadership_description: 'NASSU is led by a team of dedicated professionals who bring diverse expertise in Orthodox education, finance, communications, and strategic planning to our organization.',
+      leadership_description: 'EOTC NACLAASSU is led by a team of dedicated professionals who bring diverse expertise in Orthodox education, finance, communications, and strategic planning to our organization.',
       team_members: {
         abraham: {
           name: 'Wise Chronicler Abraham',
           title: 'Chairman',
-          bio: 'Wise Chronicler Abraham brings over 10 years of experience in leader and leadership management to NASSU.'
+          bio: 'Wise Chronicler Abraham brings over 10 years of experience in leader and leadership management to EOTC NACLAASSU.'
         },
         sara: {
           name: 'Sara',
           title: 'Finance Director',
-          bio: 'Ms. Sara brings over 8 years of experience in finance and non-profit management to NASSU. As our Finance Director, he oversees budgeting, financial planning, and ensures the responsible stewardship of our resources.'
+          bio: 'Ms. Sara brings over 8 years of experience in finance and non-profit management to EOTC NACLAASSU. As our Finance Director, he oversees budgeting, financial planning, and ensures the responsible stewardship of our resources.'
         },
         mintesnot: {
           name: 'Mintesnot',
           title: 'Secretary',
-          bio: 'With a background in education and curriculum development, Mintesnot coordinates all NASSU programs, ensuring they meet the highest standards of Orthodox teaching while engaging students of all ages.'
+          bio: 'With a background in education and curriculum development, Mintesnot coordinates all EOTC NACLAASSU programs, ensuring they meet the highest standards of Orthodox teaching while engaging students of all ages.'
         },
         yared: {
           name: 'Yared',
           title: 'Communication Lead',
-          bio: 'Yared manages all communication efforts for NASSU, from our website and social media presence to newsletters and educational materials. He ensures our message reaches the Orthodox community effectively.'
+          bio: 'Yared manages all communication efforts for EOTC NACLAASSU, from our website and social media presence to newsletters and educational materials. He ensures our message reaches the Orthodox community effectively.'
         },
         wosen: {
           name: 'Wosen',
@@ -167,7 +167,7 @@ const translations = {
       subtitle: 'The organizations that make our work possible',
       major_sponsors: {
         title: 'Our Major Sponsors',
-        description: 'NASSU\'s work would not be possible without the generous support of our major sponsors. These organizations share our commitment to Orthodox education and have made significant contributions to our mission.'
+        description: 'EOTC NACLAASSU\'s work would not be possible without the generous support of our major sponsors. These organizations share our commitment to Orthodox education and have made significant contributions to our mission.'
       },
       partners: {
         title: 'Our Partners',
@@ -224,7 +224,7 @@ const translations = {
           reading_time: '5 min read'
         },
         partnership: {
-          title: 'NASSU Partners with Orthodox Publisher',
+          title: 'EOTC NACLAASSU Partners with Orthodox Publisher',
           excerpt: 'We\'re excited to announce our new partnership with Byzantine Press to develop Sunday School materials.',
           reading_time: '2 min read'
         },
@@ -235,7 +235,7 @@ const translations = {
         },
         new_board: {
           title: 'New Board Members Welcomed',
-          excerpt: 'NASSU welcomes three new board members bringing expertise in education, finance, and technology.',
+          excerpt: 'EOTC NACLAASSU welcomes three new board members bringing expertise in education, finance, and technology.',
           reading_time: '4 min read'
         },
         digital_library: {
@@ -265,12 +265,12 @@ const translations = {
           last_name_placeholder: 'last name',
           email: 'Email Address',
           email_placeholder: 'you@example.com',
-          agreement: 'I agree to receive email communications from NASSU'
+          agreement: 'I agree to receive email communications from EOTC NACLAASSU'
         }
       },
       upcoming_events: {
         title: 'Upcoming Events',
-        subtitle: 'Mark your calendar for these important upcoming NASSU events and gatherings.',
+        subtitle: 'Mark your calendar for these important upcoming EOTC NACLAASSU events and gatherings.',
         teacher_workshop: {
           title: 'Teacher Training Workshop',
           description: 'A comprehensive workshop designed to equip Sunday School teachers with effective teaching methods, classroom management strategies, and engaging activities for Orthodox education.',
@@ -280,7 +280,7 @@ const translations = {
         },
         annual_conference: {
           title: 'Annual Conference',
-          description: 'NASSU\'s flagship event bringing together Orthodox educators, clergy, and experts for three days of learning, networking, and inspiration. Registration includes all sessions, materials, and meals.',
+          description: 'EOTC NACLAASSU\'s flagship event bringing together Orthodox educators, clergy, and experts for three days of learning, networking, and inspiration. Registration includes all sessions, materials, and meals.',
           location: 'Boston, MA',
           type: 'In-Person',
           audience: 'All Educators'
@@ -380,7 +380,7 @@ const translations = {
         subtitle: 'Supporting Orthodox Christian Education',
         what_we_offer: {
           title: 'What We Provide',
-          description: 'NASSU offers comprehensive support for Orthodox Christian education through various programs and resources. Our services are designed to nurture faith, knowledge, and spiritual growth for all ages within the Orthodox community.'
+          description: 'EOTC NACLAASSU offers comprehensive support for Orthodox Christian education through various programs and resources. Our services are designed to nurture faith, knowledge, and spiritual growth for all ages within the Orthodox community.'
         },
         services: [
           {
@@ -421,11 +421,11 @@ const translations = {
           },
           {
             title: 'Ongoing Support',
-            description: 'We offer continued support through regular check-ins, additional resources as needed, and opportunities for your teachers and youth to participate in NASSU events.'
+            description: 'We offer continued support through regular check-ins, additional resources as needed, and opportunities for your teachers and youth to participate in EOTC NACLAASSU events.'
           }
         ],
         request_services: 'Request Our Services',
-        request_description: 'Interested in bringing NASSU resources to your parish? Reach out to us today to discuss how we can support your Sunday School program.',
+        request_description: 'Interested in bringing EOTC NACLAASSU resources to your parish? Reach out to us today to discuss how we can support your Sunday School program.',
         form_labels: {
           parish_name: 'Parish Name',
           parish_name_placeholder: 'Enter your parish name',
@@ -486,9 +486,9 @@ const translations = {
       subtitle: 'Learn about our history, mission, and vision',
       our_story: 'Our Story',
       story_paragraphs: [
-        'The Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union (NASSU) was founded in September 2/ 2001 by a group of dedicated Ethiopian Orthodox priests and educators who recognized the need for a unified approach to Sunday School education across North America, Caribbean, and Latin America. What began as a small gathering of educators from various jurisdictions has grown into a comprehensive resource center supporting Sunday Schools throughout the continent.',
+        'The Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union (EOTC NACLAASSU) was founded in September 2/ 2001 by a group of dedicated Ethiopian Orthodox priests and educators who recognized the need for a unified approach to Sunday School education across North America, Caribbean, and Latin America. What began as a small gathering of educators from various jurisdictions has grown into a comprehensive resource center supporting Sunday Schools throughout the continent.',
         'For over 20 years, we have been developing curriculum materials, organizing teacher training workshops, and creating resources that help parishes provide quality Orthodox Christian education to children and youth. Our work spans across multiple Orthodox jurisdictions, bringing together the rich traditions and teachings of our faith.',
-        'Today, NASSU serves hundreds of parishes, reaching thousands of children each week. We continue to expand our offerings and adapt to the changing needs of Orthodox communities while remaining firmly rooted in the unchanging truths of our faith.'
+        'Today, EOTC NACLAASSU serves hundreds of parishes, reaching thousands of children each week. We continue to expand our offerings and adapt to the changing needs of Orthodox communities while remaining firmly rooted in the unchanging truths of our faith.'
       ],
       at_a_glance: 'At a Glance',
       stats: {
@@ -503,7 +503,7 @@ const translations = {
       mission: {
         title: 'Our Mission',
         description: [
-        'NASSU aims to: Restore the authentic St. Yared hymns in church singing.', 
+        'EOTC NACLAASSU aims to: Restore the authentic St. Yared hymns in church singing.', 
         'Support and develop monastic establishments and religious congregations financially.', 
         'Establish educational institutions for foundational Church teaching in Ethiopia.',
         'Educate Northern American youth about Church teachings and traditions.',
@@ -524,7 +524,7 @@ const translations = {
     // Gallery page translations
     gallery_page: {
       title: 'Photo Gallery',
-      subtitle: 'Images from our EOTC NASSU community and events',
+      subtitle: 'Images from our EOTC NACLAASSU community and events',
       section_title: 'Our Orthodox Community',
       section_description: 'Explore images from Sunday School classes, teacher workshops, youth events, and more from the Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union community.',
       search_placeholder: 'Search photos...',
@@ -534,7 +534,7 @@ const translations = {
         sunday_school: 'Sunday School',
         youth: 'Youth Events',
         community: 'Community Outreach',
-        events: 'NASSU Events'
+        events: 'EOTC NACLAASSU Events'
       },
       no_results: {
         title: 'No photos found',
@@ -544,7 +544,7 @@ const translations = {
       photo_count: '{filtered} of {total} photos • Click any image to view larger',
       no_description: 'No description available',
       youtube_section: {
-        title: 'Watch NASSU Videos on YouTube',
+        title: 'Watch EOTC NACLAASSU Videos on YouTube',
         description: 'Discover our Sunday School lessons, Orthodox teachings, youth activities, and community events through our video content.',
         visit_channel: 'Visit YouTube Channel',
         subscribe: 'Subscribe',
@@ -557,7 +557,7 @@ const translations = {
         teacher_workshop: 'Teacher Workshop',
         youth_camp: 'Youth Camp',
         community_outreach: 'Community Outreach',
-        nassu_events: 'NASSU Events'
+        nassu_events: 'EOTC NACLAASSU Events'
       },
       image_descriptions: {
         church_exterior: 'A beautiful Orthodox church exterior.',
@@ -565,13 +565,13 @@ const translations = {
         sunday_school_class: 'Students learning about Orthodox faith.',
         teacher_workshop: 'Teachers participating in professional development.',
         youth_camp: 'Youth engaging in spiritual activities.',
-        community_outreach: 'NASSU volunteers participating in community service'
+        community_outreach: 'EOTC NACLAASSU volunteers participating in community service'
       }
     },
     // Videos page translations
     videos_page: {
       title: 'Video Gallery',
-      subtitle: 'Watch NASSU videos and teachings',
+      subtitle: 'Watch EOTC NACLAASSU videos and teachings',
       section_title: 'Our Video Collection',
       section_description: 'Discover our Sunday School lessons, Orthodox teachings, youth activities, and community events through our video content.',
       search_placeholder: 'Search videos...',
@@ -581,7 +581,7 @@ const translations = {
         sunday_school: 'Sunday School',
         youth: 'Youth Events',
         community: 'Community Outreach',
-        events: 'NASSU Events'
+        events: 'EOTC NACLAASSU Events'
       },
       no_results: {
         title: 'No videos found',
@@ -590,7 +590,7 @@ const translations = {
       },
       video_count: '{count} of {total} videos • Click any video to watch',
       no_description: 'No description available',
-      youtube_channel_button: 'Visit NASSU YouTube Channel',
+      youtube_channel_button: 'Visit EOTC NACLAASSU YouTube Channel',
       video_titles: {
         sunday_school_lesson: 'Sunday School Lesson - Orthodox Faith',
         youth_ministry: 'Youth Ministry Activities',
@@ -598,14 +598,14 @@ const translations = {
         teacher_training: 'Teacher Training Workshop',
         orthodox_traditions: 'Orthodox Traditions & Customs',
         family_faith: 'Family Faith Formation',
-        annual_conference: 'NASSU Annual Conference',
+        annual_conference: 'EOTC NACLAASSU Annual Conference',
         prayer_worship: 'Prayer & Worship Guide',
         children_ministry: 'Children\'s Ministry Resources'
       },
       video_descriptions: {
         sunday_school_lesson: 'Learn about the fundamentals of Orthodox Christianity in this engaging Sunday School lesson',
-        youth_ministry: 'Discover exciting youth activities and spiritual development programs at NASSU',
-        community_outreach: 'See how NASSU serves the community through various outreach initiatives',
+        youth_ministry: 'Discover exciting youth activities and spiritual development programs at EOTC NACLAASSU',
+        community_outreach: 'See how EOTC NACLAASSU serves the community through various outreach initiatives',
         teacher_training: 'Professional development session for Sunday School teachers and volunteers',
         orthodox_traditions: 'Explore the rich traditions and customs of the Orthodox Church',
         family_faith: 'Guidance for families on incorporating Orthodox practices into daily life',
@@ -656,7 +656,7 @@ const translations = {
       zelle: {
         title: 'Send via Zelle',
         subtitle: 'Send your donation to:',
-        email: 'Nassupay@gmail.com',
+        email: 'EOTCNaclaassupay@gmail.com',
         copy_email: 'Copy Email',
         email_copied: '✓ Email copied!',
         email_copied_desc: 'Paste it into your Zelle app to complete your donation.',
@@ -689,7 +689,7 @@ const translations = {
           'Development of new curriculum materials',
           'Technology upgrades for digital resource delivery'
         ],
-        tax_deductible: 'NASSU is a 501(c)(3) non-profit organization. Your donation is tax-deductible to the extent allowed by law.'
+        tax_deductible: 'EOTC NACLAASSU is a 501(c)(3) non-profit organization. Your donation is tax-deductible to the extent allowed by law.'
       },
       success: {
         title: 'Thank you for your donation!',
@@ -708,7 +708,7 @@ const translations = {
       back_to_main: '← Back to main site',
       admin_email: 'Admin Email',
       admin_password: 'Admin Password',
-      email_placeholder: 'admin@nassu.org',
+      email_placeholder: 'admin@eotcnaclaassu.org',
       access_dashboard: 'Access Admin Dashboard',
       authenticating: 'Authenticating...',
       authorized_only: 'Only authorized administrators can access this area!',
@@ -1307,7 +1307,7 @@ const translations = {
     donate_cta: 'ድጋፋችሁ የሰንበት ት/ቤቶችን በሰሜን አሜሪካ ለማገዝ ምንጮችንና ስልጠናን ለመቀጠል ይረዳናል።',
     donation_helps: 'ልገሳችሁ በሰሜን አሜሪካ ውስጥ ለቅዱሳን ቤተክርስቲያናት ጥሩ የኦርቶዶክስ ትምህርት ምንጮችን ለማቅረብ ይረዳናል።',
     passionate_individuals: 'በኦርቶዶክስ ትምህርት ላይ የተሰጡ በፍቅር የሚሰሩ ሰዎችን ለህጻናትና ለወጣቶች ሕይወት ለመለወጥ እንፈልጋለን።',
-    nassu_leadership: 'ናሱ በኦርቶዶክስ ትምህርት፣ ፋይናንስ፣ ኮሚዩኒኬሽንና ስትራቴጂ አቅድ የተሞሉ ባለሙያዎች ቡድን ይመራዋል።',
+    nassu_leadership: 'EOTC NACLAASSU በኦርቶዶክስ ትምህርት፣ ፋይናንስ፣ ኮሚዩኒኬሽንና ስትራቴጂ አቅድ የተሞሉ ባለሙያዎች ቡድን ይመራዋል።',
     
     // Homepage translations
     hero: {
@@ -1323,7 +1323,7 @@ const translations = {
     // Gallery page translations - Amharic
     gallery_page: {
       title: 'የፎቶ ጋለሪ',
-      subtitle: 'ከየኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ናሱ ማህበረሰብ እና እንቅስቃሴዎች የተወሰዱ ምስሎች',
+      subtitle: 'ከየኢትዮጵያ ኦርቶዶክስ ተዋሕዶ EOTC NACLAASSU ማህበረሰብ እና እንቅስቃሴዎች የተወሰዱ ምስሎች',
       section_title: 'የእኛ ኦርቶዶክስ ማህበረሰብ',
       section_description: 'ከሰንበት ት/ቤት ክፍሎች፣ ከመምህራን ስልጠናዎች፣ ከወጣት እንቅስቃሴዎች እና ከየኢትዮጵያ ኦርቶዶክስ ቴዋሕዶ ቤተክርስቲያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አርክዲዮሴስ የሰንበት ት/ቤቶች ህብረት ማህበረሰብ ሌሎች እንቅስቃሴዎች የተወሰዱ ምስሎችን ይመልከቱ።',
       search_placeholder: 'ፎቶዎችን ይፈልጉ...',
@@ -1333,7 +1333,7 @@ const translations = {
         sunday_school: 'ሰንበት ት/ቤት',
         youth: 'የወጣቶች እንቅስቃሴዎች',
         community: 'የማህበረሰብ አገልግሎት',
-        events: 'የናሱ እንቅስቃሴዎች'
+        events: 'የEOTC NACLAASSU እንቅስቃሴዎች'
       },
       no_results: {
         title: 'ምንም ፎቶ አልተገኘም',
@@ -1343,7 +1343,7 @@ const translations = {
       photo_count: '{filtered} ከ {total} ፎቶዎች • ለትልቅ እይታ ማንኛውንም ምስል ይጫኑ',
       no_description: 'ምንም መግለጫ አይደለም',
       youtube_section: {
-        title: 'የናሱ ቪዲዮዎችን በዩቱብ ይመልከቱ',
+        title: 'የEOTC NACLAASSU ቪዲዮዎችን በዩቱብ ይመልከቱ',
         description: 'የሰንበት ት/ቤት ትምህርቶቻችንን፣ የኦርቶዶክስ ትምህርቶችን፣ የወጣት እንቅስቃሴዎችን እና የማህበረሰብ ክስተቶችን በቪዲዮ ይዘታችን ይወቁ።',
         visit_channel: 'የዩቱብ ቻነል ይጎብኙ',
         subscribe: 'ይመዝገቡ',
@@ -1356,7 +1356,7 @@ const translations = {
         teacher_workshop: 'የመምህራን ስልጠና',
         youth_camp: 'የወጣቶች ካምፕ',
         community_outreach: 'የማህበረሰብ አገልግሎት',
-        nassu_events: 'የናሱ እንቅስቃሴዎች'
+        nassu_events: 'የEOTC NACLAASSU እንቅስቃሴዎች'
       },
       image_descriptions: {
         church_exterior: 'ውብ የኦርቶዶክስ ቤተክርስቲያን ውጫዊ ክፍል።',
@@ -1364,13 +1364,13 @@ const translations = {
         sunday_school_class: 'ተማሪዎች ስለ ኦርቶዶክስ እምነት በመማር ላይ።',
         teacher_workshop: 'መምህራን በሙያ ማሳደጊያ ስልጠናዎች ላይ ተሳትፈዋል።',
         youth_camp: 'ወጣቶች በመንፈሳዊ እንቅስቃሴዎች ላይ ተሳትፈዋል።',
-        community_outreach: 'የናሱ በፈቃደኝነት የሚሰሩ ሰዎች በማህበረሰብ አገልግሎት ላይ ተሳትፈዋል።'
+        community_outreach: 'የEOTC NACLAASSU በፈቃደኝነት የሚሰሩ ሰዎች በማህበረሰብ አገልግሎት ላይ ተሳትፈዋል።'
       }
     },
     // Videos page translations - Amharic
     videos_page: {
       title: 'የቪዲዮ ጋለሪ',
-      subtitle: 'የናሱ ቪዲዮዎችን እና ትምህርቶችን ይመልከቱ',
+      subtitle: 'የEOTC NACLAASSU ቪዲዮዎችን እና ትምህርቶችን ይመልከቱ',
       section_title: 'የቪዲዮ ስብስባችን',
       section_description: 'የሰንበት ት/ቤት ትምህርቶቻችንን፣ የኦርቶዶክስ ትምህርቶችን፣ የወጣት እንቅስቃሴዎችን እና የማህበረሰብ ክስተቶችን በቪዲዮ ይዘታችን ይወቁ።',
       search_placeholder: 'ቪዲዮዎችን ይፈልጉ...',
@@ -1380,7 +1380,7 @@ const translations = {
         sunday_school: 'ሰንበት ት/ቤት',
         youth: 'የወጣቶች እንቅስቃሴዎች',
         community: 'የማህበረሰብ አገልግሎት',
-        events: 'የናሱ እንቅስቃሴዎች'
+        events: 'የEOTC NACLAASSU እንቅስቃሴዎች'
       },
       no_results: {
         title: 'ምንም ቪዲዮ አልተገኘም',
@@ -1389,7 +1389,7 @@ const translations = {
       },
       video_count: '{count} ከ {total} ቪዲዮዎች • ለመመልከት ማንኛውንም ቪዲዮ ይጫኑ',
       no_description: 'ምንም መግለጫ አይደለም',
-      youtube_channel_button: 'የናሱ ዩቱብ ቻነል ይጎብኙ',
+      youtube_channel_button: 'የEOTC NACLAASSU ዩቱብ ቻነል ይጎብኙ',
       video_titles: {
         sunday_school_lesson: 'የሰንበት ት/ቤት ትምህርት - የኦርቶዶክስ እምነት',
         youth_ministry: 'የወጣቶች አገልግሎት እንቅስቃሴዎች',
@@ -1397,7 +1397,7 @@ const translations = {
         teacher_training: 'የመምህራን ስልጠና ስራ ቤት',
         orthodox_traditions: 'የኦርቶዶክስ ትውፊቶች እና ልማዶች',
         family_faith: 'የቤተሰብ እምነት እድገት',
-        annual_conference: 'የናሱ የዓመት ኮንፈረንስ',
+        annual_conference: 'የEOTC NACLAASSU የዓመት ኮንፈረንስ',
         prayer_worship: 'የጸሎት እና የመስገድ መመሪያ',
         children_ministry: 'የልጆች አገልግሎት ምንጮች'
       },
@@ -1455,7 +1455,7 @@ const translations = {
       zelle: {
         title: 'በዘሌ ይላኩ',
         subtitle: 'የልገሳዎችን ወደዚህ ያስተላልፉ:',
-        email: 'Nassupay@gmail.com',
+        email: 'EOTCNaclaassupay@gmail.com',
         copy_email: 'ኢሜይል ያውዱ',
         email_copied: '✓ ኢሜይል ተወድዷል!',
         email_copied_desc: 'የልገሳዎችን ለመጨረስ ዘሌ መተግበሪያዎ ውስጥ ያስገቡት።',
@@ -1488,7 +1488,7 @@ const translations = {
           'የአዲስ ኩርክዮሎም ቁሳቁሶች እድገት',
           'የዲጂታል ምንጮች ለመላክ ቴክኖሎጂ ዓመት'
         ],
-        tax_deductible: 'ናሱ የ501(c)(3) ለትርፍ ያልተቋቋመ ድርጅት ነው። የልገሳዎች በህግ የተፈቀደ መጠን ውስጥ ከግብር ይቀንሳል።'
+        tax_deductible: 'EOTC NACLAASSU የ501(c)(3) ለትርፍ ያልተቋቋመ ድርጅት ነው። የልገሳዎች በህግ የተፈቀደ መጠን ውስጥ ከግብር ይቀንሳል።'
       },
       success: {
         title: 'ልገሳዎን ስላደረጉ እናመሰግናለን!',
@@ -1507,7 +1507,7 @@ const translations = {
       back_to_main: '← ወደ ዋና ጣቢያ ይመለሱ',
       admin_email: 'የአስተዳደር ኢሜይል',
       admin_password: 'የአስተዳደር ይለፍ ቃል',
-      email_placeholder: 'admin@nassu.org',
+      email_placeholder: 'admin@eotcnaclaassu.org',
       access_dashboard: 'የአስተዳደር ዳሽቦርድ ያግኙ',
       authenticating: 'የሚሰራጭ...',
       authorized_only: 'ይህን አካባቢ የሚያገኙ የሚያውቁ አስተዳደሮች ብቻ ናቸው!',

@@ -66,7 +66,7 @@ const PayPalPaymentForm: React.FC<PayPalPaymentFormProps> = (props) => {
           },
         ],
         application_context: {
-          brand_name: 'NASSU',
+          brand_name: 'EOTC NACLAASSU',
           landing_page: 'BILLING',
           user_action: 'PAY_NOW',
           shipping_preference: 'NO_SHIPPING'

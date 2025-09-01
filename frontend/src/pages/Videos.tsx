@@ -223,7 +223,7 @@ const Videos: React.FC = () => {
             {t('videos_page.video_count', { count: filteredVideos.length, total: videos.length })}
           </div>
 
-          {/* NASSU YouTube Channel Button */}
+                      {/* EOTC NACLAASSU YouTube Channel Button */}
           <div className="text-center">
             <a
               href="https://www.youtube.com/@eotcnassumedia6934"

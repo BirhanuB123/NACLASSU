@@ -115,7 +115,7 @@ const Services = () => {
             <p className="text-lg text-gray-700">
               {getTranslation(
                 'services_section.services_page.what_we_offer.description',
-                'NASSU provides a wide range of services designed to support Orthodox Christian education in parishes across North America.'
+                'EOTC NACLAASSU provides a wide range of services designed to support Orthodox Christian education in parishes across North America.'
               )}
             </p>
           </div>
@@ -185,7 +185,7 @@ const Services = () => {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
             {getTranslation(
               'services_section.services_page.request_description',
-              'Interested in bringing NASSU resources to your parish? Reach out to us today to discuss how we can support your Sunday School program.'
+              'Interested in bringing EOTC NACLAASSU resources to your parish? Reach out to us today to discuss how we can support your Sunday School program.'
             )}
           </p>
           <div className="bg-church-700 p-6 rounded-lg max-w-2xl mx-auto">

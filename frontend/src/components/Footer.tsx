@@ -37,7 +37,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <Church className="text-gold-400" size={28} />
               <div>
-                <span className="font-serif text-xl font-medium block text-white">NASSU</span>
+                <span className="font-serif text-xl font-medium block text-white">EOTC NACLAASSU</span>
                 <span className="text-xs font-light text-gray-400 -mt-1 block">Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union</span>
               </div>
             </div>

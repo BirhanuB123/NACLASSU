@@ -89,7 +89,7 @@ const Team = () => {
       image: "/images/tins.jpeg",
       email: "tinsae@nasunion.org",
       linkedin: "https://linkedin.com",
-      website: "https://tinsaeNassu.com"
+              website: "https://tinsaeEOTCNaclaassu.com"
     }
   ];
   

@@ -163,12 +163,12 @@ const BankTransferButton: React.FC<BankTransferButtonProps> = ({
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium">Account Name:</p>
               <div className="flex items-center gap-2">
-                <p className="text-sm">Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union (NASSU)</p>
+                <p className="text-sm">Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union (EOTC NACLAASSU)</p>
                 <Button 
                   variant="ghost" 
                   size="icon" 
                   className="h-8 w-8" 
-                  onClick={() => handleCopy("Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union (NASSU)")}
+                  onClick={() => handleCopy("Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union (EOTC NACLAASSU)")}
                 >
                   <Copy className="h-4 w-4" />
                 </Button>

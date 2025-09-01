@@ -19,7 +19,7 @@ const translations: Record<Language, Translations> = {
       subtitle: 'Nurturing faith and education in our Orthodox community',
     },
     welcome: {
-      title: 'Welcome to NASSU',
+      title: 'Welcome to EOTC NACLAASSU',
       content: 'Welcome message content in English...',
     },
   },
@@ -29,7 +29,7 @@ const translations: Record<Language, Translations> = {
       subtitle: 'ሃይማኖታዊ እምነት እና ትምህርትን በኦርቶዶክስ ማህበረሰባችን ውስጥ ማሳደግ',
     },
     welcome: {
-      title: 'እንኳን ወደ NASSU ደህና መጡ ',
+      title: 'እንኳን ወደ EOTC NACLAASSU ደህና መጡ ',
       content: 'የእንኳን ደህና መጡ መልእክት በአማርኛ...',
     },
   },

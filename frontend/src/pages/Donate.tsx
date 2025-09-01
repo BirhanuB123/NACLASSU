@@ -393,7 +393,7 @@ const DonatePage = () => {
                           variant="default"
                           size="sm"
                           onClick={() => {
-                            navigator.clipboard.writeText('Nassupay@gmail.com');
+                            navigator.clipboard.writeText('EOTCNaclaassupay@gmail.com');
                             toast({
                               title: t('donate_page.zelle.email_copied'),
                               description: t('donate_page.zelle.email_copied_desc'),

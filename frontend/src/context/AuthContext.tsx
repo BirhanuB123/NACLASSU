@@ -45,14 +45,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         
         // Check for admin access based on email (case-insensitive)
         const adminEmails = [
-          'admin@nassu.org',
+          'admin@eotcnaclaassu.org',
           'admin@example.com' // Remove this in production
         ].map(email => email.toLowerCase());
         
         const userEmail = firebaseUser.email?.toLowerCase() || '';
         const isAdminUser = userEmail ? 
           adminEmails.includes(userEmail) || 
-          userEmail.endsWith('@nassu.org') : false;
+          userEmail.endsWith('@eotcnaclaassu.org') : false;
           
         console.log('Admin check:', {
           email: userEmail,

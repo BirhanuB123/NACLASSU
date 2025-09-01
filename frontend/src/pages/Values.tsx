@@ -167,7 +167,7 @@ const Values = () => {
                 </h3>
               </div>
               <p className="text-gray-700 mb-6">
-                {t('values_page.living_values.paragraph1', {defaultValue: 'Our values are not just words on a page—they guide everything we do at NASSU. From curriculum development to teacher training, from youth events to parish consultation, we strive to embody these values in all aspects of our work.'})}
+                {t('values_page.living_values.paragraph1', {defaultValue: 'Our values are not just words on a page—they guide everything we do at EOTC NACLAASSU. From curriculum development to teacher training, from youth events to parish consultation, we strive to embody these values in all aspects of our work.'})}
               </p>
               <p className="text-gray-700 mb-6">
                 {t('values_page.living_values.paragraph2', {defaultValue: 'We invite you to join us in this important mission of nurturing the faith of the next generation. Together, we can help children and youth develop a strong foundation in the Orthodox faith that will support them throughout their lives.'})}

@@ -42,7 +42,7 @@ const JoinUs = () => {
             <h2 className="section-title">{translate("How You Can Get Involved", "እንዴት መሳተፍ እንደሚችሉ")}</h2>
             <p className="text-lg text-gray-700">
               {translate(
-                "There are many ways to participate in NASSU's mission of providing quality Orthodox Christian education to children and youth across North America. Whether you're a teacher, parent, clergy member, or supporter, we welcome your involvement.",
+                "There are many ways to participate in EOTC NACLAASSU's mission of providing quality Orthodox Christian education to children and youth across North America. Whether you're a teacher, parent, clergy member, or supporter, we welcome your involvement.",
                 "በሰሜን አሜሪካ ውስጥ ለልጆች እና ለወጣቶች ጥራት ያለው ኦርቶዶክስ ክርስቲያናዊ ትምህርት ለመስጠት በ NASSU ተልእኮ ውስጥ መሳተፍ የሚችሉት ብዙ መንገዶች አሉ። እርስዎ አስተማሪ፣ ወላጅ፣ ቄስ ወይም ደጋፊ ስለሆኑ፣ ተሳታፊነትዎን እንወዳለን።"
               )}
             </p>
@@ -137,7 +137,7 @@ const JoinUs = () => {
                       <h3 className="font-serif text-xl font-bold">Administrative Support</h3>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Assist with the day-to-day operations of NASSU, helping us maintain and grow our programs.
+                      Assist with the day-to-day operations of EOTC NACLAASSU, helping us maintain and grow our programs.
                     </p>
                     <ul className="list-disc list-inside text-gray-700 space-y-1 mb-6">
                       <li>Manage communications</li>
@@ -159,7 +159,7 @@ const JoinUs = () => {
                   <li>Initial phone interview with our volunteer coordinator</li>
                   <li>Background check (required for all volunteers working with youth)</li>
                   <li>Orientation and training specific to your volunteer role</li>
-                  <li>Begin serving with support from NASSU staff and experienced volunteers</li>
+                                          <li>Begin serving with support from EOTC NACLAASSU staff and experienced volunteers</li>
                 </ol>
               </div>
               
@@ -263,7 +263,7 @@ const JoinUs = () => {
             <TabsContent value="parish" className="border rounded-lg p-6">
               <h3 className="font-serif text-2xl font-bold mb-6">Parish Membership</h3>
               <p className="text-lg text-gray-700 mb-8">
-                Enroll your parish as a member of NASSU to access our full range of Orthodox Sunday School resources, training opportunities, and support services.
+                Enroll your parish as a member of EOTC NACLAASSU to access our full range of Orthodox Sunday School resources, training opportunities, and support services.
               </p>
               
               <div className="grid md:grid-cols-2 gap-8 mb-10">
@@ -358,7 +358,7 @@ const JoinUs = () => {
                 <h3 className="font-serif text-xl font-bold mb-4">Parish Membership Process</h3>
                 <ol className="list-decimal list-inside text-gray-700 space-y-2">
                   <li>Complete the parish membership application</li>
-                  <li>Consultation call with a NASSU representative</li>
+                                     <li>Consultation call with a EOTC NACLAASSU representative</li>
                   <li>Payment of annual membership fee</li>
                   <li>Onboarding and setup of parish account</li>
                   <li>Begin accessing resources and support</li>
@@ -367,7 +367,7 @@ const JoinUs = () => {
               
               <div className="text-center">
                 <p className="mb-6 italic text-gray-700">
-                  "NASSU membership has transformed our Sunday School program. The curriculum is engaging and authentically Orthodox, and the teacher training has given our volunteers confidence."
+                                     "EOTC NACLAASSU membership has transformed our Sunday School program. The curriculum is engaging and authentically Orthodox, and the teacher training has given our volunteers confidence."
                   <br />
                   <span className="font-medium mt-2 block">— Fr. John, St. Nicholas Orthodox Church</span>
                 </p>
@@ -410,7 +410,7 @@ const JoinUs = () => {
                     </div>
                     <h4 className="font-serif text-xl font-bold mb-2">Monthly Support</h4>
                     <p className="text-gray-700 mb-6">
-                      Become a sustaining donor with a recurring monthly donation to NASSU.
+                                             Become a sustaining donor with a recurring monthly donation to EOTC NACLAASSU.
                     </p>
                     <Button asChild className="bg-gold-500 hover:bg-gold-600 text-black">
                       <a href="/donate">Become a Monthly Supporter</a>
@@ -427,7 +427,7 @@ const JoinUs = () => {
                     </div>
                     <h4 className="font-serif text-xl font-bold mb-2">Legacy Giving</h4>
                     <p className="text-gray-700 mb-6">
-                      Include NASSU in your estate planning to leave a lasting impact on Orthodox education.
+                                             Include EOTC NACLAASSU in your estate planning to leave a lasting impact on Orthodox education.
                     </p>
                     <Button asChild className="bg-church-700 hover:bg-church-800 text-white">
                       <a href="/donate">Learn About Legacy Giving</a>

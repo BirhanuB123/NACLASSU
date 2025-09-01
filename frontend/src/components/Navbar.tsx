@@ -244,7 +244,7 @@ const Navbar = () => {
             <div className="flex flex-col space-y-1">
               <div className="flex items-center space-x-2">
                 <span className="font-serif text-2xl font-bold bg-gradient-to-r from-church-700 to-church-900 bg-clip-text text-transparent">
-                  NASSU
+                  EOTC NACLAASSU
                 </span>
                 <motion.div
                   animate={{ rotate: 360 }}
