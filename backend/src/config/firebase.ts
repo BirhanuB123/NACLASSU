@@ -7,9 +7,20 @@ if (!admin.apps.length) {
     const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
     let privateKey = process.env.FIREBASE_PRIVATE_KEY;
 
-    // Validate required environment variables
+    // Check if Firebase credentials are provided and valid
     if (!projectId || !privateKey || !clientEmail) {
-      throw new Error('❌ Missing required Firebase configuration in environment variables');
+      console.warn('⚠️  Firebase configuration not provided. Firebase features will be disabled.');
+      console.warn('   To enable Firebase, set FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, and FIREBASE_PRIVATE_KEY in your .env file');
+      return;
+    }
+
+    // Check if using placeholder values
+    if (projectId === 'your-firebase-project-id' || 
+        clientEmail === 'your-service-account@your-project.iam.gserviceaccount.com' ||
+        privateKey.includes('YOUR_PRIVATE_KEY_HERE')) {
+      console.warn('⚠️  Firebase configuration contains placeholder values. Firebase features will be disabled.');
+      console.warn('   Please update your .env file with actual Firebase credentials to enable Firebase features');
+      return;
     }
 
     // Ensure private key has proper line breaks
@@ -28,11 +39,8 @@ if (!admin.apps.length) {
     console.log('✅ Firebase Admin initialized successfully');
   } catch (error) {
     console.error('❌ Firebase admin initialization error:', error instanceof Error ? error.message : error);
-    if (error instanceof Error && error.stack) {
-      console.error('Stack trace:', error.stack);
-    }
-    // Re-throw the error to prevent the app from starting with invalid Firebase config
-    throw error;
+    console.warn('⚠️  Firebase features will be disabled. Please check your Firebase configuration.');
+    // Don't throw the error - let the app continue without Firebase
   }
 }
 
@@ -44,6 +52,10 @@ interface DecodedToken {
 
 export const verifyIdToken = async (token: string): Promise<DecodedToken | null> => {
   try {
+    if (!admin.apps.length) {
+      console.warn('⚠️  Firebase not initialized. Token verification skipped.');
+      return null;
+    }
     const decodedToken = await admin.auth().verifyIdToken(token);
     return { 
       uid: decodedToken.uid, 
@@ -56,6 +68,11 @@ export const verifyIdToken = async (token: string): Promise<DecodedToken | null>
   }
 };
 
-export const getAuth = () => admin.auth();
+export const getAuth = () => {
+  if (!admin.apps.length) {
+    throw new Error('Firebase not initialized. Please configure Firebase credentials.');
+  }
+  return admin.auth();
+};
 
 export default admin;

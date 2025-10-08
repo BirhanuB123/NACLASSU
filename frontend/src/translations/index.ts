@@ -18,6 +18,7 @@ const translations: Record<Language, Translations> = {
       title: 'Ethiopia Orthodox Tewahedo Church North America Caribbean Latin America Archdiocese Sunday Schools Union',
       subtitle: 'Nurturing faith and education in our Orthodox community',
     },
+    
     welcome: {
       title: 'Welcome to EOTC NACLAASSU',
       content: 'Welcome message content in English...',
