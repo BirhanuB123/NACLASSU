@@ -4,9 +4,7 @@ import { createOrder, capturePayment } from '../config/paypal';
 import { AuthenticatedRequest } from '../types/express';
 import SocketService from '../services/socket.service';
 
-// @desc    Create a new payment order
-// @route   POST /api/payments/create-order
-// @access  Private
+
 export const createPaymentOrder = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { amount } = req.body;

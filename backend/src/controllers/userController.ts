@@ -63,7 +63,6 @@ export const updateUsers = async (req: Request, res: Response): Promise<void> =>
       return;
     }
 
-    // Update Firebase Auth if firebaseUid is provided
     if (firebaseUid) {
       try {
         const auth = getAuth();
@@ -74,7 +73,6 @@ export const updateUsers = async (req: Request, res: Response): Promise<void> =>
         await auth.updateUser(firebaseUid, updateRequest);
       } catch (firebaseError) {
         console.error('Error updating Firebase user:', firebaseError);
-        // Continue with the response even if Firebase update fails
       }
     }
 

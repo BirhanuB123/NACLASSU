@@ -305,7 +305,9 @@ const translations = {
     sponsors: 'Sponsors',
     news: 'News & Messages',
     news_am: 'ዜና እና መልዕክቶች',
+    our: 'Our',
     gallery: 'Gallery',
+    photos: 'Photos',
     join: 'Join',
     login: 'Login',
     vision: {
@@ -1114,8 +1116,10 @@ const translations = {
     },
     sponsors: 'ስፖንሰሮች',
     news: 'ዜና እና መልዕክት',
+    our: 'የእኛ',
     gallery: 'የምስል ስብስቦች',
-    
+    photos: 'ፎቶዎች',
+
     // Common UI
     home_title: 'የኢትዮጵያ ኦርቶዶክስ ቴዋሕዶ ቤተክርስቲያን የሰሜን አሜሪካ ካሪቢያን ላቲን አሜሪካ አርክዲዮሴስ የሰንበት ት/ቤቶች ህብረት',
     join: 'ይቀላቀሉ',

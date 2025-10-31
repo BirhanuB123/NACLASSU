@@ -83,7 +83,62 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+// Get current user profile (requires Firebase auth)
+export const getCurrentUser = async (req: Request, res: Response) => {
+  try {
+    const authHeader = req.headers.authorization;
+    
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ 
+        success: false, 
+        message: 'No authentication token provided' 
+      });
+    }
+
+    const idToken = authHeader.split('Bearer ')[1];
+    
+    // Verify Firebase ID token
+    const decodedToken = await getAuth().verifyIdToken(idToken);
+    const email = decodedToken.email;
+
+    if (!email) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Email not found in token' 
+      });
+    }
+
+    // Get user from MongoDB
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'User not found in database' 
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {
+        id: user._id,
+        email: user.email,
+        fullName: user.fullName,
+        role: user.role
+      }
+    });
+
+  } catch (error: any) {
+    console.error('Get current user error:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: error.message || 'An error occurred while fetching user profile' 
+    });
+  }
+};
+
 // Add this to your existing exports if you have them
 export default {
-  login
+  login,
+  getCurrentUser
 };

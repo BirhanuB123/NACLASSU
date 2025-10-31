@@ -32,40 +32,74 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
-        // Map Firebase user to our custom User type
-        const user: User = {
-          id: firebaseUser.uid,
-          email: firebaseUser.email || '',
-          first_name: firebaseUser.displayName?.split(' ')[0] || null,
-          last_name: firebaseUser.displayName?.split(' ').slice(1).join(' ') || null,
-          role: 'user' // Default role, you might want to fetch this from your database
-        };
-        
-        setUser(user);
-        
-        // Check for admin access based on email (case-insensitive)
-        const adminEmails = [
-          'admin@eotcnaclaassu.org',
-          'admin@example.com' // Remove this in production
-        ].map(email => email.toLowerCase());
-        
-        const userEmail = firebaseUser.email?.toLowerCase() || '';
-        const isAdminUser = userEmail ? 
-          adminEmails.includes(userEmail) || 
-          userEmail.endsWith('@eotcnaclaassu.org') : false;
+        try {
+          // Get Firebase ID token
+          const idToken = await firebaseUser.getIdToken();
           
-        console.log('Admin check:', {
-          email: userEmail,
-          isAdmin: isAdminUser,
-          timestamp: new Date().toISOString()
-        });
-        
-        console.log('Auth State Changed:', {
-          email: firebaseUser.email,
-          isAdmin: isAdminUser,
-          timestamp: new Date().toISOString()
-        });
-        setIsAdmin(isAdminUser);
+          // Fetch user profile from backend to get the actual role from MongoDB
+          const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/me`, {
+            headers: {
+              'Authorization': `Bearer ${idToken}`,
+              'Content-Type': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const backendUser = data.data;
+            
+            // Map backend user to our custom User type with the actual role from MongoDB
+            const user: User = {
+              id: backendUser.id,
+              email: backendUser.email,
+              first_name: backendUser.fullName?.split(' ')[0] || null,
+              last_name: backendUser.fullName?.split(' ').slice(1).join(' ') || null,
+              role: backendUser.role || 'user'
+            };
+            
+            setUser(user);
+            
+            // Set admin status based on the actual role from MongoDB
+            const isAdminUser = backendUser.role === 'admin';
+            
+            console.log('Auth State Changed:', {
+              email: backendUser.email,
+              role: backendUser.role,
+              isAdmin: isAdminUser,
+              timestamp: new Date().toISOString()
+            });
+            
+            setIsAdmin(isAdminUser);
+          } else {
+            // If backend call fails, fall back to email-based check and create basic user
+            console.warn('Failed to fetch user from backend, using fallback auth');
+            
+            const user: User = {
+              id: firebaseUser.uid,
+              email: firebaseUser.email || '',
+              first_name: firebaseUser.displayName?.split(' ')[0] || null,
+              last_name: firebaseUser.displayName?.split(' ').slice(1).join(' ') || null,
+              role: 'user'
+            };
+            
+            setUser(user);
+            setIsAdmin(false);
+          }
+        } catch (error) {
+          console.error('Error fetching user profile:', error);
+          
+          // Fall back to basic user info if backend is unavailable
+          const user: User = {
+            id: firebaseUser.uid,
+            email: firebaseUser.email || '',
+            first_name: firebaseUser.displayName?.split(' ')[0] || null,
+            last_name: firebaseUser.displayName?.split(' ').slice(1).join(' ') || null,
+            role: 'user'
+          };
+          
+          setUser(user);
+          setIsAdmin(false);
+        }
       } else {
         setUser(null);
         setIsAdmin(false);
