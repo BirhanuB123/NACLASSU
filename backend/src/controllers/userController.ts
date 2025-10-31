@@ -42,7 +42,7 @@ export const createUsers = async (req: Request, res: Response): Promise<void> =>
 // Update user
 export const updateUsers = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
-  const { fullName, email, password, firebaseUid } = req.body;
+  const { fullName, email, password, firebaseUid, role } = req.body;
 
   if (!id) {
     res.status(400).json({ message: 'User ID is required' });
@@ -55,6 +55,10 @@ export const updateUsers = async (req: Request, res: Response): Promise<void> =>
     if (password) {
       // Only update password if it's provided
       updateData.password = password;
+    }
+    if (role && ['user', 'admin'].includes(role)) {
+      // Only update role if it's provided and valid
+      updateData.role = role;
     }
 
     const updatedUser = await User.findByIdAndUpdate(id, updateData, { new: true });
@@ -76,15 +80,66 @@ export const updateUsers = async (req: Request, res: Response): Promise<void> =>
       }
     }
 
-    res.status(200).json({ 
-      success: true, 
-      message: 'User updated successfully', 
-      data: updatedUser 
+    res.status(200).json({
+      success: true,
+      message: 'User updated successfully',
+      data: updatedUser
     });
-    await logActivity('update_user', req.user, { userId: updatedUser._id, email: updatedUser.email });
+    await logActivity('update_user', req.user, { userId: updatedUser._id, email: updatedUser.email, role: updatedUser.role });
   } catch (error) {
     res.status(500).json({
       message: 'Error updating user',
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
+}
+
+// Update user role (admin only)
+export const updateUserRole = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  if (!id) {
+    res.status(400).json({ message: 'User ID is required' });
+    return;
+  }
+
+  if (!role || !['user', 'admin'].includes(role)) {
+    res.status(400).json({ message: 'Valid role is required (user or admin)' });
+    return;
+  }
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { role },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      res.status(404).json({ message: 'User not found in database' });
+      return;
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `User role updated to ${role} successfully`,
+      data: {
+        id: updatedUser._id,
+        email: updatedUser.email,
+        fullName: updatedUser.fullName,
+        role: updatedUser.role
+      }
+    });
+
+    await logActivity('update_user_role', req.user, {
+      userId: updatedUser._id,
+      email: updatedUser.email,
+      newRole: role
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error updating user role',
       error: error instanceof Error ? error.message : 'Unknown error',
     });
   }

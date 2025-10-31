@@ -1,8 +1,17 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { login, getCurrentUser } from '../controllers/authController';
+import { register, login, getCurrentUser } from '../controllers/authController';
 import { errorHandler } from '../middleware/errorHandler';
 
 const router = Router();
+
+// Register route (public)
+router.post('/register', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    await register(req, res);
+  } catch (error) {
+    next(error);
+  }
+});
 
 // Login route
 router.post('/login', async (req: Request, res: Response, next: NextFunction) => {

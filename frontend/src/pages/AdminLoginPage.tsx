@@ -24,44 +24,32 @@ const AdminLoginPage = () => {
   useEffect(() => {
     // Only run this effect when auth state changes
     if (authLoading) return;
-    
-    console.log('[AdminLoginPage] Auth state changed', { 
+
+    console.log('[AdminLoginPage] Auth state changed', {
       user: user ? 'User exists' : 'No user',
       isAdmin,
-      path: window.location.pathname 
+      path: window.location.pathname
     });
 
-    // If user is logged in but not an admin, redirect to home
-    if (user && !isAdmin) {
-      console.log('[AdminLoginPage] User is not an admin, redirecting to home');
-      navigate('/', { replace: true });
-      return;
-    }
-
-    // If user is logged in and is admin, and we're on the login page, redirect to admin dashboard
-    if (user && isAdmin && window.location.pathname === '/admin/login') {
+    // If user is logged in and is admin, redirect to admin dashboard
+    if (user && isAdmin) {
       console.log('[AdminLoginPage] User is admin, redirecting to /admin');
       navigate('/admin', { replace: true });
       return;
     }
-    
-    // If user is logged in but not admin, show message but stay on login page
-    if (user) {
-      console.log('[AdminLoginPage] User is not admin, showing access denied');
+
+    // If user is logged in but not an admin, redirect to home with message
+    if (user && !isAdmin) {
+      console.log('[AdminLoginPage] User is not an admin, redirecting to home');
       toast({
         title: t('admin_page.access_denied'),
         description: t('admin_page.no_admin_privileges'),
         variant: "destructive",
       });
+      navigate('/', { replace: true });
       return;
     }
-    
-    // If no user is logged in, ensure we're on the login page
-    if (window.location.pathname !== '/admin/login') {
-      console.log('[AdminLoginPage] No user, ensuring on login page');
-      navigate('/admin/login', { replace: true });
-    }
-  }, [user, isAdmin, authLoading, navigate, toast]);
+  }, [user, isAdmin, authLoading, navigate, toast, t]);
 
   const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();

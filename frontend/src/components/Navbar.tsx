@@ -70,14 +70,6 @@ const Navbar = () => {
     }
   };
 
-  const navLinks = [
-    { to: '/', label: 'home' },
-    { to: '/about', label: 'about' },
-    { to: '/team', label: 'team' },
-    { to: '/sponsors', label: 'sponsors' },
-    { to: '/message', label: 'news_page.title' }
-  ];
-
   const ourLinks = [
     { to: '/services', label: 'services', icon: Heart },
     { to: '/values', label: 'values', icon: Target }
@@ -135,33 +127,51 @@ const Navbar = () => {
 
             {/* Navigation Links */}
             <div className="space-y-3 mb-4">
-              {navLinks.map(({ to, label }, index) => (
-                <motion.div
-                  key={to}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
+              {/* Home */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0 * 0.05 }}
+              >
+                <Link
+                  to="/"
+                  onClick={closeMenu}
+                  className={cn(
+                    'block px-6 py-4 rounded-xl text-base font-medium transition-all duration-300 border border-transparent mx-2',
+                    isActive('/')
+                      ? 'bg-gradient-to-r from-gold-400/20 to-gold-500/20 text-gold-300 border-gold-400/30 shadow-lg backdrop-blur-sm'
+                      : 'text-white/80 hover:bg-white/10 hover:text-white hover:border-white/20 hover:shadow-md'
+                  )}
                 >
-                  <Link
-                    to={to}
-                    onClick={closeMenu}
-                    className={cn(
-                      'block px-6 py-4 rounded-xl text-base font-medium transition-all duration-300 border border-transparent mx-2',
-                      isActive(to)
-                        ? 'bg-gradient-to-r from-gold-400/20 to-gold-500/20 text-gold-300 border-gold-400/30 shadow-lg backdrop-blur-sm'
-                        : 'text-white/80 hover:bg-white/10 hover:text-white hover:border-white/20 hover:shadow-md'
-                    )}
-                  >
-                    {t(label)}
-                  </Link>
-                </motion.div>
-              ))}
+                  {t('home')}
+                </Link>
+              </motion.div>
+
+              {/* About */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 1 * 0.05 }}
+              >
+                <Link
+                  to="/about"
+                  onClick={closeMenu}
+                  className={cn(
+                    'block px-6 py-4 rounded-xl text-base font-medium transition-all duration-300 border border-transparent mx-2',
+                    isActive('/about')
+                      ? 'bg-gradient-to-r from-gold-400/20 to-gold-500/20 text-gold-300 border-gold-400/30 shadow-lg backdrop-blur-sm'
+                      : 'text-white/80 hover:bg-white/10 hover:text-white hover:border-white/20 hover:shadow-md'
+                  )}
+                >
+                  {t('about')}
+                </Link>
+              </motion.div>
 
               {/* Our Submenu */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: navLinks.length * 0.05 }}
+                transition={{ duration: 0.3, delay: 2 * 0.05 }}
               >
                 <div className="mx-2">
                   <div className={cn(
@@ -193,11 +203,31 @@ const Navbar = () => {
                 </div>
               </motion.div>
 
+              {/* Team */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 3 * 0.05 }}
+              >
+                <Link
+                  to="/team"
+                  onClick={closeMenu}
+                  className={cn(
+                    'block px-6 py-4 rounded-xl text-base font-medium transition-all duration-300 border border-transparent mx-2',
+                    isActive('/team')
+                      ? 'bg-gradient-to-r from-gold-400/20 to-gold-500/20 text-gold-300 border-gold-400/30 shadow-lg backdrop-blur-sm'
+                      : 'text-white/80 hover:bg-white/10 hover:text-white hover:border-white/20 hover:shadow-md'
+                  )}
+                >
+                  {t('team')}
+                </Link>
+              </motion.div>
+
               {/* Gallery Submenu */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: (navLinks.length + 1) * 0.05 }}
+                transition={{ duration: 0.3, delay: 4 * 0.05 }}
               >
                 <div className="mx-2">
                   <div className={cn(
@@ -227,6 +257,46 @@ const Navbar = () => {
                     ))}
                   </div>
                 </div>
+              </motion.div>
+
+              {/* News */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 5 * 0.05 }}
+              >
+                <Link
+                  to="/message"
+                  onClick={closeMenu}
+                  className={cn(
+                    'block px-6 py-4 rounded-xl text-base font-medium transition-all duration-300 border border-transparent mx-2',
+                    isActive('/message')
+                      ? 'bg-gradient-to-r from-gold-400/20 to-gold-500/20 text-gold-300 border-gold-400/30 shadow-lg backdrop-blur-sm'
+                      : 'text-white/80 hover:bg-white/10 hover:text-white hover:border-white/20 hover:shadow-md'
+                  )}
+                >
+                  {t('news_page.title')}
+                </Link>
+              </motion.div>
+
+              {/* Sponsors */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 6 * 0.05 }}
+              >
+                <Link
+                  to="/sponsors"
+                  onClick={closeMenu}
+                  className={cn(
+                    'block px-6 py-4 rounded-xl text-base font-medium transition-all duration-300 border border-transparent mx-2',
+                    isActive('/sponsors')
+                      ? 'bg-gradient-to-r from-gold-400/20 to-gold-500/20 text-gold-300 border-gold-400/30 shadow-lg backdrop-blur-sm'
+                      : 'text-white/80 hover:bg-white/10 hover:text-white hover:border-white/20 hover:shadow-md'
+                  )}
+                >
+                  {t('sponsors')}
+                </Link>
               </motion.div>
             </div>
 
@@ -490,72 +560,6 @@ const Navbar = () => {
                 </Link>
               </motion.div>
 
-              {/* Sponsors */}
-              <motion.div
-                whileHover={{ y: -2 }}
-                transition={{ duration: 0.2 }}
-                className="flex-1"
-              >
-                <Link
-                  to="/sponsors"
-                  className={cn(
-                    "block px-3 xl:px-4 py-2.5 text-xs xl:text-sm font-medium rounded-lg xl:rounded-xl transition-all duration-300 relative group overflow-hidden whitespace-nowrap border text-center",
-                    "text-gray-700 hover:text-church-700",
-                    isActive('/sponsors')
-                      ? "text-church-700 font-semibold bg-gradient-to-r from-church-50 to-gold-50 border-church-300/50 shadow-md"
-                      : "border-transparent hover:bg-gray-50/80 hover:shadow-sm hover:border-gray-200/50"
-                  )}
-                >
-                  <span className="relative z-10 flex items-center justify-center">
-                    {t('sponsors')}
-                    {isActive('/sponsors') && (
-                      <motion.span
-                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full shadow-sm"
-                        layoutId="activeNavLink"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                      />
-                    )}
-                  </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-church-100/50 to-gold-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg xl:rounded-xl"
-                    initial={false}
-                  />
-                </Link>
-              </motion.div>
-
-              {/* News */}
-              <motion.div
-                whileHover={{ y: -2 }}
-                transition={{ duration: 0.2 }}
-                className="flex-1"
-              >
-                <Link
-                  to="/message"
-                  className={cn(
-                    "block px-3 xl:px-4 py-2.5 text-xs xl:text-sm font-medium rounded-lg xl:rounded-xl transition-all duration-300 relative group overflow-hidden whitespace-nowrap border text-center",
-                    "text-gray-700 hover:text-church-700",
-                    isActive('/message')
-                      ? "text-church-700 font-semibold bg-gradient-to-r from-church-50 to-gold-50 border-church-300/50 shadow-md"
-                      : "border-transparent hover:bg-gray-50/80 hover:shadow-sm hover:border-gray-200/50"
-                  )}
-                >
-                  <span className="relative z-10 flex items-center justify-center">
-                    {t('news_page.title')}
-                    {isActive('/message') && (
-                      <motion.span
-                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full shadow-sm"
-                        layoutId="activeNavLink"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                      />
-                    )}
-                  </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-church-100/50 to-gold-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg xl:rounded-xl"
-                    initial={false}
-                  />
-                </Link>
-              </motion.div>
-
               {/* Gallery Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -605,6 +609,72 @@ const Navbar = () => {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
+
+              {/* News */}
+              <motion.div
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.2 }}
+                className="flex-1"
+              >
+                <Link
+                  to="/message"
+                  className={cn(
+                    "block px-3 xl:px-4 py-2.5 text-xs xl:text-sm font-medium rounded-lg xl:rounded-xl transition-all duration-300 relative group overflow-hidden whitespace-nowrap border text-center",
+                    "text-gray-700 hover:text-church-700",
+                    isActive('/message')
+                      ? "text-church-700 font-semibold bg-gradient-to-r from-church-50 to-gold-50 border-church-300/50 shadow-md"
+                      : "border-transparent hover:bg-gray-50/80 hover:shadow-sm hover:border-gray-200/50"
+                  )}
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    {t('news_page.title')}
+                    {isActive('/message') && (
+                      <motion.span
+                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full shadow-sm"
+                        layoutId="activeNavLink"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                      />
+                    )}
+                  </span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-church-100/50 to-gold-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg xl:rounded-xl"
+                    initial={false}
+                  />
+                </Link>
+              </motion.div>
+
+              {/* Sponsors */}
+              <motion.div
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.2 }}
+                className="flex-1"
+              >
+                <Link
+                  to="/sponsors"
+                  className={cn(
+                    "block px-3 xl:px-4 py-2.5 text-xs xl:text-sm font-medium rounded-lg xl:rounded-xl transition-all duration-300 relative group overflow-hidden whitespace-nowrap border text-center",
+                    "text-gray-700 hover:text-church-700",
+                    isActive('/sponsors')
+                      ? "text-church-700 font-semibold bg-gradient-to-r from-church-50 to-gold-50 border-church-300/50 shadow-md"
+                      : "border-transparent hover:bg-gray-50/80 hover:shadow-sm hover:border-gray-200/50"
+                  )}
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    {t('sponsors')}
+                    {isActive('/sponsors') && (
+                      <motion.span
+                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full shadow-sm"
+                        layoutId="activeNavLink"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                      />
+                    )}
+                  </span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-church-100/50 to-gold-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg xl:rounded-xl"
+                    initial={false}
+                  />
+                </Link>
+              </motion.div>
             </div>
           </div>
 

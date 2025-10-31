@@ -4,6 +4,57 @@ import jwt from 'jsonwebtoken';
 import { getAuth } from 'firebase-admin/auth';
 import { UserDocument } from '../middleware/authMiddleware';
 
+// Register new user (public endpoint)
+export const register = async (req: Request, res: Response) => {
+  try {
+    const { fullName, email, password } = req.body;
+
+    if (!fullName || !email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide full name, email, and password'
+      });
+    }
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email: email.toLowerCase() });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: 'User with this email already exists'
+      });
+    }
+
+    // Create new user in MongoDB
+    const newUser = new User({
+      fullName,
+      email: email.toLowerCase(),
+      password,
+      role: 'user' // Default role
+    });
+
+    await newUser.save();
+
+    res.status(201).json({
+      success: true,
+      message: 'User registered successfully',
+      data: {
+        id: newUser._id,
+        email: newUser.email,
+        fullName: newUser.fullName,
+        role: newUser.role
+      }
+    });
+
+  } catch (error: any) {
+    console.error('Registration error:', error);
+    res.status(500).json({
+      success: false,
+      message: error.message || 'An error occurred during registration'
+    });
+  }
+};
+
 export const login = async (req: Request, res: Response) => {
   try {
     const { idToken } = req.body;

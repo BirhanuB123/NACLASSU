@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import User from '../models/User.model';
 import { errorHandler } from '../middleware/errorHandler';
-import { getUsers, createUsers, updateUsers, deleteUsers } from '../controllers/userController';
+import { getUsers, createUsers, updateUsers, deleteUsers, updateUserRole } from '../controllers/userController';
 import { auth, admin } from '../middleware/auth';
 
 const router = express.Router();
@@ -11,7 +11,7 @@ const router = express.Router();
 router.use(auth);
 router.use(admin);
 
-// Get user by ID
+// Get all users
 router.get('/', getUsers);
 
 // Create new user
@@ -19,6 +19,9 @@ router.post('/', createUsers);
 
 // Update user
 router.put('/:id', updateUsers);
+
+// Update user role (admin only)
+router.patch('/:id/role', updateUserRole);
 
 // Delete user
 router.delete('/:id', deleteUsers);
