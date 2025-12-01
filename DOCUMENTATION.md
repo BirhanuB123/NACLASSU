@@ -1,4 +1,4 @@
-# NASSU Website - Complete Documentation
+# NACLASSU Website - Complete Documentation
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -22,7 +22,7 @@
 
 ## Project Overview
 
-**NASSU** (North America Caribbean Latin America Archdiocese Sunday Schools Union) is a comprehensive web application for the Ethiopia Orthodox Tewahedo Church's Sunday School Union. The platform provides educational resources, community management, donation processing, and administrative tools for managing the organization.
+**NACLASSU** (North America Caribbean Latin America Archdiocese Sunday Schools Union) is a comprehensive web application for the Ethiopia Orthodox Tewahedo Church's Sunday School Union. The platform provides educational resources, community management, donation processing, and administrative tools for managing the organization.
 
 ### Purpose
 - Support Orthodox Christian education
@@ -100,7 +100,7 @@
 ## Project Structure
 
 ```
-NASSU/
+NACLASSU/
 ├── backend/                    # Backend server
 │   ├── src/
 │   │   ├── app.ts             # Express app configuration
