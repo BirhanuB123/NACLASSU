@@ -63,7 +63,8 @@ export interface DonationTrendsData {
 // Dashboard Statistics
 export const fetchDashboardStats = async (): Promise<DashboardStats> => {
   try {
-    const response = await axios.get('/api/admin/dashboard/stats');
+    // axios instance already has baseURL: '/api', so don't include /api in path
+    const response = await axios.get('/admin/dashboard/stats');
     return response.data.data;
   } catch (error) {
     console.error('Error fetching dashboard stats:', error);
@@ -74,7 +75,8 @@ export const fetchDashboardStats = async (): Promise<DashboardStats> => {
 // Recent Users
 export const fetchRecentUsers = async (limit: number = 5): Promise<DashboardUser[]> => {
   try {
-    const response = await axios.get(`/api/admin/dashboard/users?limit=${limit}`);
+    // axios instance already has baseURL: '/api', so don't include /api in path
+    const response = await axios.get(`/admin/dashboard/users?limit=${limit}`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching recent users:', error);
@@ -85,7 +87,8 @@ export const fetchRecentUsers = async (limit: number = 5): Promise<DashboardUser
 // Recent Donations
 export const fetchRecentDonations = async (limit: number = 5): Promise<DashboardDonation[]> => {
   try {
-    const response = await axios.get(`/api/admin/dashboard/donations?limit=${limit}`);
+    // axios instance already has baseURL: '/api', so don't include /api in path
+    const response = await axios.get(`/admin/dashboard/donations?limit=${limit}`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching recent donations:', error);
@@ -96,7 +99,8 @@ export const fetchRecentDonations = async (limit: number = 5): Promise<Dashboard
 // Recent Activities
 export const fetchRecentActivities = async (limit: number = 10): Promise<DashboardActivity[]> => {
   try {
-    const response = await axios.get(`/api/admin/dashboard/activities?limit=${limit}`);
+    // axios instance already has baseURL: '/api', so don't include /api in path
+    const response = await axios.get(`/admin/dashboard/activities?limit=${limit}`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching recent activities:', error);
@@ -107,7 +111,8 @@ export const fetchRecentActivities = async (limit: number = 10): Promise<Dashboa
 // User Growth Data
 export const fetchUserGrowthData = async (days: number = 30): Promise<UserGrowthData[]> => {
   try {
-    const response = await axios.get(`/api/admin/dashboard/user-growth?days=${days}`);
+    // axios instance already has baseURL: '/api', so don't include /api in path
+    const response = await axios.get(`/admin/dashboard/user-growth?days=${days}`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching user growth data:', error);
@@ -118,7 +123,8 @@ export const fetchUserGrowthData = async (days: number = 30): Promise<UserGrowth
 // Donation Trends Data
 export const fetchDonationTrendsData = async (days: number = 30): Promise<DonationTrendsData[]> => {
   try {
-    const response = await axios.get(`/api/admin/dashboard/donation-trends?days=${days}`);
+    // axios instance already has baseURL: '/api', so don't include /api in path
+    const response = await axios.get(`/admin/dashboard/donation-trends?days=${days}`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching donation trends data:', error);
@@ -129,7 +135,8 @@ export const fetchDonationTrendsData = async (days: number = 30): Promise<Donati
 // Activity Logs (existing function, but updated)
 export const fetchActivityLogs = async (page: number = 1, limit: number = 20): Promise<{ data: DashboardActivity[]; pagination: any }> => {
   try {
-    const response = await axios.get(`/api/admin/activities?page=${page}&limit=${limit}`);
+    // axios instance already has baseURL: '/api', so don't include /api in path
+    const response = await axios.get(`/admin/activities?page=${page}&limit=${limit}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching activity logs:', error);

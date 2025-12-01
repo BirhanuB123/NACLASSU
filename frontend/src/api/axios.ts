@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { auth } from '@/config/firebase';
 
+// Use relative URL which will be proxied by Vite
+// Vite proxy: /api -> http://localhost:5000/api
+// This avoids CORS issues and double /api paths
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: '/api',
 });
 
 API.interceptors.request.use(async (req) => {

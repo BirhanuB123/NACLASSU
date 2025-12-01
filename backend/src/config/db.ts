@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 const connectDB = async () => {
-  // Get MongoDB URI from environment variables
   const mongoUri = process.env.MONGODB_URI;
   
   if (!mongoUri) {
@@ -9,7 +8,6 @@ const connectDB = async () => {
     process.exit(1);
   }
 
-  // Log the connection string (with password hidden for security)
   const maskedUri = mongoUri.replace(/\/\/([^:]+):([^@]+)@/, '//$1:*****@');
   console.log(`🔗 Attempting to connect to MongoDB: ${maskedUri}`);
 

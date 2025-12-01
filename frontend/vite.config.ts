@@ -47,6 +47,12 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           secure: false,
           ws: true,
+          // Ensure the path is forwarded correctly without duplication
+          configure: (proxy, _options) => {
+            proxy.on('error', (err, _req, res) => {
+              console.log('proxy error', err);
+            });
+          },
         },
       }
     },

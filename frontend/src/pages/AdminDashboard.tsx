@@ -192,7 +192,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
                 <RefreshCw className={`mr-2 h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
                 Refresh
               </Button>
-              <Button variant="outline" size="sm" className="hidden sm:flex">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="hidden sm:flex"
+                onClick={() => navigate('/admin/settings')}
+              >
                 <Settings className="mr-2 h-4 w-4" />
                 {t('admin_dashboard.settings')}
               </Button>
@@ -323,7 +328,22 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
                     {t('admin_dashboard.recent_users.description')}
                   </CardDescription>
                 </div>
-                <Button variant="outline" size="sm" className="h-9 bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="h-9 bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100"
+                  onClick={() => {
+                    toast({
+                      title: 'Invite User',
+                      description: 'Users can sign up through the registration page. You can manage all users in the Users page.',
+                      action: (
+                        <Button size="sm" onClick={() => navigate('/admin/users')}>
+                          Go to Users
+                        </Button>
+                      ),
+                    });
+                  }}
+                >
                   <UserPlus className="mr-2 h-4 w-4" />
                   {t('admin_dashboard.recent_users.invite_user')}
                 </Button>
@@ -360,7 +380,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
                 )}
               </CardContent>
               <CardFooter className="border-t border-gray-100 px-6 py-4">
-                <Button variant="ghost" size="sm" className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+                  onClick={() => navigate('/admin/users')}
+                >
                   {t('admin_dashboard.recent_users.view_all_users')}
                 </Button>
               </CardFooter>
@@ -413,7 +438,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = () => {
                 )}
               </CardContent>
               <CardFooter className="border-t border-gray-100 px-6 py-4">
-                <Button variant="ghost" size="sm" className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+                  onClick={() => navigate('/admin/donations')}
+                >
                   {t('admin_dashboard.recent_donations.view_all_donations')}
                 </Button>
               </CardFooter>

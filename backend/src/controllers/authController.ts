@@ -48,6 +48,31 @@ export const register = async (req: Request, res: Response) => {
 
   } catch (error: any) {
     console.error('Registration error:', error);
+    
+    // Handle specific MongoDB errors
+    if (error.name === 'MongoServerError' && error.code === 11000) {
+      return res.status(400).json({
+        success: false,
+        message: 'User with this email already exists'
+      });
+    }
+    
+    // Handle validation errors
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({
+        success: false,
+        message: Object.values(error.errors).map((e: any) => e.message).join(', ')
+      });
+    }
+    
+    // Handle connection errors
+    if (error.name === 'MongoNetworkError' || error.message?.includes('connection')) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database connection error. Please try again later.'
+      });
+    }
+    
     res.status(500).json({
       success: false,
       message: error.message || 'An error occurred during registration'
@@ -159,8 +184,8 @@ export const getCurrentUser = async (req: Request, res: Response) => {
       });
     }
 
-    // Get user from MongoDB
-    const user = await User.findOne({ email });
+    // Get user from MongoDB (case-insensitive email lookup)
+    const user = await User.findOne({ email: email.toLowerCase() });
 
     if (!user) {
       return res.status(404).json({ 
@@ -169,13 +194,19 @@ export const getCurrentUser = async (req: Request, res: Response) => {
       });
     }
 
+    console.log('[getCurrentUser] User found:', {
+      email: user.email,
+      role: user.role,
+      fullName: user.fullName
+    });
+
     res.status(200).json({
       success: true,
       data: {
         id: user._id,
         email: user.email,
         fullName: user.fullName,
-        role: user.role
+        role: user.role || 'user' // Ensure role is always returned
       }
     });
 

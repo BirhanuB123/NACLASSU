@@ -104,7 +104,35 @@ const SignUpPage = () => {
         }
       }
       
-      const errorMessage = error.response?.data?.message || error.message || t('signup_page.sign_up_error');
+      // Handle different types of errors
+      let errorMessage = t('signup_page.sign_up_error');
+      
+      if (error.isNetworkError || error.code === 'ECONNABORTED' || error.message?.includes('Network Error') || !error.response) {
+        errorMessage = 'Network error: Unable to connect to the server. Please check if the backend server is running on port 5000.';
+      } else if (error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      } else if (error.code) {
+        // Firebase error codes
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            errorMessage = 'This email is already registered. Please use a different email or try logging in.';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'Invalid email address. Please enter a valid email.';
+            break;
+          case 'auth/weak-password':
+            errorMessage = 'Password is too weak. Please use a stronger password.';
+            break;
+          case 'auth/network-request-failed':
+            errorMessage = 'Network error: Unable to connect to Firebase. Please check your internet connection.';
+            break;
+          default:
+            errorMessage = error.message || t('signup_page.sign_up_error');
+        }
+      }
+      
       toast({
         title: t('signup_page.sign_up_failed'),
         description: errorMessage,

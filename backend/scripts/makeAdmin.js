@@ -1,7 +1,3 @@
-/**
- * Script to make a user an admin
- * Usage: node scripts/makeAdmin.js user@example.com
- */
 
 const mongoose = require('mongoose');
 const path = require('path');

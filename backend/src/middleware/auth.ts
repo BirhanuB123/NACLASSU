@@ -58,9 +58,25 @@ export const auth: RequestHandler = async (req: Request, res: Response, next: Ne
 
 export const admin: RequestHandler = (req: Request, res: Response, next: NextFunction): void => {
   const authReq = req as AuthenticatedRequest;
-  if (!authReq.user || authReq.user.role !== 'admin') {
-    res.status(403).json({ error: 'Forbidden - Admin access required' });
+  
+  if (!authReq.user) {
+    console.warn('Admin middleware: No user found in request');
+    res.status(403).json({ 
+      error: 'Forbidden - Admin access required',
+      message: 'User authentication required'
+    });
     return;
   }
+  
+  if (authReq.user.role !== 'admin') {
+    console.warn(`Admin middleware: User ${authReq.user.email} attempted admin access with role: ${authReq.user.role}`);
+    res.status(403).json({ 
+      error: 'Forbidden - Admin access required',
+      message: `User role '${authReq.user.role}' does not have admin privileges`
+    });
+    return;
+  }
+  
+  console.log(`Admin middleware: Admin access granted to ${authReq.user.email}`);
   next();
 };

@@ -21,9 +21,13 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 import Message from "./pages/Message";
+import NewsDetail from "./pages/NewsDetail";
 import ProfilePage from "./pages/ProfilePage";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLoginPage from "./pages/AdminLoginPage";
+import AdminUsers from "./pages/AdminUsers";
+import AdminDonations from "./pages/AdminDonations";
+import AdminSettings from "./pages/AdminSettings";
 import { AuthProvider } from "./context/AuthContext";
 import PayPalProvider from "./components/PayPalProvider";
 import { ErrorBoundary } from "./components/ErrorBoundary";
@@ -60,7 +64,11 @@ const App = () => {
                       <Route path="/login" element={<Login />} />
                       <Route path="/signup" element={<Signup />} />
                       <Route path="/message" element={<Message />} />
+                      <Route path="/news/:id" element={<NewsDetail />} />
                       <Route path="/admin/login" element={<AdminLoginPage />} />
+                      <Route path="/admin/users" element={<AdminUsers />} />
+                      <Route path="/admin/donations" element={<AdminDonations />} />
+                      <Route path="/admin/settings" element={<AdminSettings />} />
                       <Route 
                         path="/admin" 
                         element={

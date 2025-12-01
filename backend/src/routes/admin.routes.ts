@@ -7,11 +7,6 @@ import { AuthenticatedRequest } from '../types/express';
 
 const router = Router();
 
-// Test endpoint to verify admin routes are accessible
-router.get('/test', (req, res) => {
-  res.json({ message: 'Admin routes are working!', timestamp: new Date().toISOString() });
-});
-
 // Type guard for authenticated requests
 const isAuthenticated = (req: any): req is AuthenticatedRequest => {
   return req.user !== undefined;
@@ -20,6 +15,19 @@ const isAuthenticated = (req: any): req is AuthenticatedRequest => {
 // Apply auth and admin middleware to all routes
 router.use(auth);
 router.use(admin);
+
+// Test endpoint to verify admin routes are accessible (protected)
+router.get('/test', (req, res) => {
+  const authReq = req as AuthenticatedRequest;
+  res.json({ 
+    message: 'Admin routes are working!', 
+    timestamp: new Date().toISOString(),
+    user: {
+      email: authReq.user?.email,
+      role: authReq.user?.role
+    }
+  });
+});
 
 // Dashboard routes
 router.get('/dashboard/stats', (req, res, next) => {
@@ -99,6 +107,23 @@ router.get('/activities', (req, res, next) => {
     return res.status(401).json({ error: 'Unauthorized' });
   }
   return (getActivityLogs as any)(req, res, next);
+});
+
+// Get all users (admin only)
+router.get('/users', async (req, res, next) => {
+  try {
+    if (!isAuthenticated(req)) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    const User = (await import('../models/User.model')).default;
+    const users = await User.find().select('-password').sort({ createdAt: -1 });
+    res.json({
+      success: true,
+      data: users
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default router;

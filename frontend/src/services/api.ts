@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+// Use relative URL which will be proxied by Vite
+// Vite proxy: /api -> http://localhost:5000/api
+// So /api/auth/register becomes http://localhost:5000/api/auth/register
+const API_BASE_URL = '/api';
 
 export const createUser = async (userData: {
   fullName: string;
@@ -8,10 +11,27 @@ export const createUser = async (userData: {
   password: string;
 }) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/auth/register`, userData);
+    // Use relative URL - Vite proxy will handle forwarding to backend
+    const url = `${API_BASE_URL}/auth/register`;
+    
+    const response = await axios.post(url, userData, {
+      timeout: 10000, // 10 second timeout
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating user:', error);
+    console.error('Request URL was:', error.config?.url || 'unknown');
+    
+    // Handle network errors
+    if (error.code === 'ECONNABORTED' || error.message === 'Network Error' || !error.response) {
+      const networkError = new Error('Network error: Unable to connect to server. Please check if the backend server is running on port 5000.');
+      (networkError as any).isNetworkError = true;
+      throw networkError;
+    }
+    
     throw error;
   }
 };

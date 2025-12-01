@@ -37,7 +37,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           const idToken = await firebaseUser.getIdToken();
           
           // Fetch user profile from backend to get the actual role from MongoDB
-          const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/me`, {
+          // Use relative URL to go through Vite proxy (avoids CORS issues)
+          // Vite proxy: /api -> http://localhost:5000/api
+          // So /api/auth/me becomes http://localhost:5000/api/auth/me
+          // Always use relative URL in development to avoid CORS and double /api paths
+          const apiUrl = '/api/auth/me';
+          
+          console.log('[AuthContext] Fetching user from:', apiUrl);
+          
+          const response = await fetch(apiUrl, {
             headers: {
               'Authorization': `Bearer ${idToken}`,
               'Content-Type': 'application/json'
@@ -48,9 +56,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const data = await response.json();
             const backendUser = data.data;
             
+            if (!backendUser) {
+              console.error('No user data in response:', data);
+              throw new Error('No user data received from backend');
+            }
+            
             // Map backend user to our custom User type with the actual role from MongoDB
             const user: User = {
-              id: backendUser.id,
+              id: backendUser.id || backendUser._id,
               email: backendUser.email,
               first_name: backendUser.fullName?.split(' ')[0] || null,
               last_name: backendUser.fullName?.split(' ').slice(1).join(' ') || null,
@@ -60,18 +73,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setUser(user);
             
             // Set admin status based on the actual role from MongoDB
-            const isAdminUser = backendUser.role === 'admin';
+            // Check both lowercase and original case for role
+            const userRole = (backendUser.role || 'user').toLowerCase().trim();
+            const isAdminUser = userRole === 'admin';
             
             console.log('Auth State Changed:', {
               email: backendUser.email,
               role: backendUser.role,
+              roleLowercase: userRole,
               isAdmin: isAdminUser,
+              fullBackendData: backendUser,
+              fullResponse: data,
               timestamp: new Date().toISOString()
             });
             
             setIsAdmin(isAdminUser);
           } else {
-            // If backend call fails, fall back to email-based check and create basic user
+            // If backend call fails, log the error and fall back
+            const errorText = await response.text();
+            console.error('Failed to fetch user from backend:', {
+              status: response.status,
+              statusText: response.statusText,
+              error: errorText
+            });
             console.warn('Failed to fetch user from backend, using fallback auth');
             
             const user: User = {
