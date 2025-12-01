@@ -1,4 +1,4 @@
-# NASSU Website - Complete Documentation
+# NACLASSU Website - Complete Documentation
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -100,7 +100,7 @@
 ## Project Structure
 
 ```
-NASSU/
+NACLASSU/
 ├── backend/                    # Backend server
 │   ├── src/
 │   │   ├── app.ts             # Express app configuration
