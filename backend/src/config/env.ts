@@ -33,27 +33,18 @@ console.log(`   - PORT: ${process.env.PORT || '5000 (default)'}`);
 console.log(`   - NODE_ENV: ${process.env.NODE_ENV || 'development (default)'}`);
 
 // Validate required environment variables
-const requiredEnvVars = [
-  'FIREBASE_PROJECT_ID',
-  'FIREBASE_PRIVATE_KEY',
-  'FIREBASE_CLIENT_EMAIL',
-  'MONGODB_URI'
-];
-
-let hasMissingVars = false;
-for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar]) {
-    console.error(`❌ Missing required environment variable: ${envVar}`);
-    hasMissingVars = true;
-  }
+if (!process.env.MONGODB_URI) {
+  console.warn('⚠️  MONGODB_URI is not set in environment variables.');
 }
 
-if (hasMissingVars) {
-  console.error('💥 Missing required environment variables. Please check your .env file.');
-  process.exit(1);
+// Optional Firebase check
+const firebaseVars = ['FIREBASE_PROJECT_ID', 'FIREBASE_PRIVATE_KEY', 'FIREBASE_CLIENT_EMAIL'];
+const missingFirebase = firebaseVars.filter((v) => !process.env[v]);
+if (missingFirebase.length > 0) {
+  console.warn(`ℹ️  Firebase credentials incomplete (${missingFirebase.join(', ')} missing). Firebase auth features will run in fallback mode.`);
 }
 
-console.log('✅ Environment configuration loaded successfully');
+console.log('✅ Environment configuration evaluated successfully');
 
 // Helper to safely get environment variables
 const getEnv = (key: string, defaultValue?: string): string => {

@@ -64,7 +64,15 @@ app.use(cors(corsConfig));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Health check endpoint
+// Health check endpoints for Render and monitoring
+app.get('/', (req, res) => {
+  res.status(200).send('NASSU Backend API is active');
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,
