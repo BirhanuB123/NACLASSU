@@ -34,10 +34,13 @@ export const corsConfig = {
       ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
       : defaultOrigins;
 
+    const isVercel = origin.endsWith('.vercel.app') || origin.includes('vercel.app');
+    const isAllowedOrigin = configuredOrigins.includes(origin) || defaultOrigins.includes(origin);
+
     if (
       process.env.NODE_ENV !== 'production' ||
-      configuredOrigins.includes(origin) ||
-      defaultOrigins.includes(origin)
+      isAllowedOrigin ||
+      isVercel
     ) {
       return callback(null, true);
     }
