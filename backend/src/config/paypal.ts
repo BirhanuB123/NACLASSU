@@ -1,3 +1,4 @@
+// @ts-ignore
 import paypal from '@paypal/checkout-server-sdk';
 
 // Configure PayPal SDK environment
