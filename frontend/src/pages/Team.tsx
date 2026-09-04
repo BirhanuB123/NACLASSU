@@ -14,7 +14,7 @@ const Team = () => {
       name: t('team_page.team_members.abraham.name'),
       title: t('team_page.team_members.abraham.title'),
       bio: t('team_page.team_members.abraham.bio'),
-      image: "/images/1.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440160/nassu/gallery/1788440159572_1.jpg",
       email: "Sara@nasunion.org",
       linkedin: "https://linkedin.com",
       website: ""
@@ -23,7 +23,7 @@ const Team = () => {
       name: t('team_page.team_members.sara.name'),
       title: t('team_page.team_members.sara.title'),
       bio: t('team_page.team_members.sara.bio'),
-      image: "/images/Sara.jpeg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440912/nassu/gallery/1788440912254_Sara.jpg",
       email: "Sara@nasunion.org",
       linkedin: "https://linkedin.com",
       website: ""
@@ -32,7 +32,7 @@ const Team = () => {
       name: t('team_page.team_members.mintesnot.name'),
       title: t('team_page.team_members.mintesnot.title'),
       bio: t('team_page.team_members.mintesnot.bio'),
-      image: "/images/photo_2024-09-03_23-35-43.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440907/nassu/gallery/1788440907184_photo_2024-09-03_23-35-43.jpg",
       email: "Mintesnot@nasunion.org",
       linkedin: "https://linkedin.com",
       website: ""
@@ -41,7 +41,7 @@ const Team = () => {
       name: t('team_page.team_members.yared.name'),
       title: t('team_page.team_members.yared.title'),
       bio: t('team_page.team_members.yared.bio'),
-      image: "/images/yared2.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440976/nassu/gallery/1788440976715_yared2.jpg",
       email: "Yared@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Yared.com"
@@ -50,7 +50,7 @@ const Team = () => {
       name: t('team_page.team_members.wosen.name'),
       title: t('team_page.team_members.wosen.title'),
       bio: t('team_page.team_members.wosen.bio'),
-      image: "/images/wos2.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440934/nassu/gallery/1788440934362_wos2.jpg",
       email: "Wosen@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Wosen.com"
@@ -59,7 +59,7 @@ const Team = () => {
       name: t('team_page.team_members.biniyam.name'),
       title: t('team_page.team_members.biniyam.title'),
       bio: t('team_page.team_members.biniyam.bio'),
-      image: "/images/Ashu.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440621/nassu/gallery/1788440621450_Ashu.jpg",
       email: "Biniyam@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Biniyam.com"
@@ -68,7 +68,7 @@ const Team = () => {
       name: t('team_page.team_members.eskedar.name'),
       title: t('team_page.team_members.eskedar.title'),
       bio: t('team_page.team_members.eskedar.bio'),
-      image: "/images/esku.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440631/nassu/gallery/1788440631691_esku.jpg",
       email: "Eskedar@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Eskedar.com"
@@ -77,7 +77,7 @@ const Team = () => {
       name: t('team_page.team_members.betelhem.name'),
       title: t('team_page.team_members.betelhem.title'),
       bio: t('team_page.team_members.betelhem.bio'),
-      image: "/images/Betelhem.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440625/nassu/gallery/1788440625661_Betelhem.jpg",
       email: "Betelhem@nasunion.org",
       linkedin: "https://linkedin.com",
       website: "https://Betelhem.com"
@@ -86,10 +86,10 @@ const Team = () => {
       name: t('team_page.team_members.tinsae.name'),
       title: t('team_page.team_members.tinsae.title'),
       bio: t('team_page.team_members.tinsae.bio'),
-      image: "/images/tins.jpeg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440915/nassu/gallery/1788440914971_tins.jpg",
       email: "tinsae@nasunion.org",
       linkedin: "https://linkedin.com",
-              website: "https://tinsaeEOTCNaclaassu.com"
+      website: "https://tinsaeEOTCNaclaassu.com"
     }
   ];
   
@@ -127,6 +127,10 @@ const Team = () => {
                       src={member.image} 
                       alt={member.name} 
                       className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/placeholder.svg';
+                      }}
                     />
                   </div>
                   <div className="p-6">

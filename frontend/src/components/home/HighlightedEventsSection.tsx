@@ -13,7 +13,7 @@ const HighlightedEventsSection = () => {
       date: t('events.annual_youth_conference.date'),
       time: t('events.annual_youth_conference.time'),
       excerpt: t('events.annual_youth_conference.excerpt'),
-      image: 'images/events.jpg',
+      image: 'https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg',
       category: 'events'
     },
     {
@@ -22,7 +22,7 @@ const HighlightedEventsSection = () => {
       date: t('events.bible_study_workshop.date'),
       time: t('events.bible_study_workshop.time'),
       excerpt: t('events.bible_study_workshop.excerpt'),
-      image: 'images/events.jpg',
+      image: 'https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg',
       category: 'events'
     },
     {
@@ -31,7 +31,7 @@ const HighlightedEventsSection = () => {
       date: t('events.community_service_day.date'),
       time: t('events.community_service_day.time'),
       excerpt: t('events.community_service_day.excerpt'),
-      image: 'images/events.jpg',
+      image: 'https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg',
       category: 'events'
     }
   ];

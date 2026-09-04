@@ -13,19 +13,19 @@ const Sponsors = () => {
   const majorSponsors = [
     {
       name: "Ahadu Bank SC",
-      logo: "/images/download.png",
+      logo: "https://res.cloudinary.com/drersaifa/image/upload/v1788440630/nassu/gallery/1788440630902_download.png",
       description: "A foundation dedicated to supporting Orthodox education initiatives across North America.",
       website: "https://www.ahadubank.com"
     },
     {
       name: "Open to new Sponsors",
-      logo: "/images/sponsors.jpg",
+      logo: "https://res.cloudinary.com/drersaifa/image/upload/v1788440914/nassu/gallery/1788440914147_sponsors.jpg",
       description: "",
       website: "https://example.com"
     },
     {
       name: "Open to new Sponsors",
-      logo: "/images/sponsors.jpg",
+      logo: "https://res.cloudinary.com/drersaifa/image/upload/v1788440914/nassu/gallery/1788440914147_sponsors.jpg",
       description: "",
       website: "https://example.com"
     }
@@ -34,17 +34,17 @@ const Sponsors = () => {
   const partners = [
     {
       name: "We are new Partners",
-      logo: "/images/sponsors.jpg",
+      logo: "https://res.cloudinary.com/drersaifa/image/upload/v1788440914/nassu/gallery/1788440914147_sponsors.jpg",
       website: "https://example.com"
     },
     {
       name: "We are new Partners",
-      logo: "/images/sponsors.jpg",
+      logo: "https://res.cloudinary.com/drersaifa/image/upload/v1788440914/nassu/gallery/1788440914147_sponsors.jpg",
       website: "https://example.com"
     },
     {
       name: "We are new Partners",
-      logo: "/images/sponsors.jpg",
+      logo: "https://res.cloudinary.com/drersaifa/image/upload/v1788440914/nassu/gallery/1788440914147_sponsors.jpg",
       website: "https://example.com"
     }
   ];

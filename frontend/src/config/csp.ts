@@ -3,6 +3,8 @@ export const cspDirectives = {
   'default-src': ["'self'"],
   'connect-src': [
     "'self'",
+    'https://*.cloudinary.com',
+    'https://res.cloudinary.com',
     'https://*.paypal.com',
     'https://*.paypalobjects.com',
     'https://api-m.sandbox.paypal.com',
@@ -28,6 +30,8 @@ export const cspDirectives = {
     "'self'",
     'data:',
     'blob:',
+    'https://res.cloudinary.com',
+    'https://*.cloudinary.com',
     'https://*.paypal.com',
     'https://*.paypalobjects.com',
     'https://lovable.dev',

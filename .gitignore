@@ -35,3 +35,9 @@ yarn-error.log*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Migration manifests
+*.manifest.json
+.cloudinary-manifest.json
+.migration-manifest.json
+

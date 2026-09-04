@@ -6,9 +6,10 @@ const teamMemberSchema = new mongoose.Schema(
     position: String,
     bio: String,
     photoUrl: String,
+    photoStoragePath: String, // path within the Firebase Storage bucket, so we can delete it later
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 

@@ -1,13 +1,15 @@
-import express, { Request, Response } from 'express';
-import mongoose from 'mongoose';
-import { TeamMember } from '../models/TeamMember.model';
+import express from 'express';
+import { auth, admin } from '../middleware/auth';
+import { uploadImage } from '../middleware/upload';
+import { getMembers, createMembers, updateMember, deleteMember } from '../controllers/teamController';
 import { errorHandler } from '../middleware/errorHandler';
-import { createMembers } from '../controllers/teamController';
 
 const router = express.Router();
 
-// Team Member Route
-router.post('/', createMembers);
+router.get('/', getMembers);
+router.post('/', auth, admin, uploadImage.single('photo'), createMembers);
+router.put('/:id', auth, admin, uploadImage.single('photo'), updateMember);
+router.delete('/:id', auth, admin, deleteMember);
 
 // Global Error Handler (last)
 router.use(errorHandler);

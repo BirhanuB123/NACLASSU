@@ -110,7 +110,7 @@ router.get('/activities', (req, res, next) => {
 });
 
 // Get all users (admin only)
-router.get('/users', async (req, res, next) => {
+router.get('/users', (async (req: any, res: any, next: any) => {
   try {
     if (!isAuthenticated(req)) {
       return res.status(401).json({ error: 'Unauthorized' });
@@ -124,6 +124,6 @@ router.get('/users', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-});
+}) as any);
 
 export default router;

@@ -7,6 +7,16 @@ import { Calendar, Clock, Tag, FileText, Download } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { LanguageContext } from "@/context/LanguageContext";
 
+import axios from 'axios';
+
+interface CloudDocItem {
+  _id?: string;
+  title: string;
+  url: string;
+  fileType?: string;
+  category?: string;
+}
+
 const NewsPage = () => {
   const { t } = useContext(LanguageContext);
   
@@ -14,37 +24,45 @@ const NewsPage = () => {
   const [currentTab, setCurrentTab] = useState("all");
   const [visibleItems, setVisibleItems] = useState(8);
   const itemsPerPage = 8; // Number of items to load per page
+  const [documents, setDocuments] = useState<Array<{ name: string; path: string }>>([]);
+  const [docsLoading, setDocsLoading] = useState(true);
+
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
   
   useEffect(() => {
-    // Any initialization code can go here
+    let isMounted = true;
+    const fetchDocs = async () => {
+      try {
+        setDocsLoading(true);
+        let res;
+        try {
+          res = await axios.get(`${API_BASE_URL}/documents`);
+        } catch (initialErr) {
+          if (API_BASE_URL.startsWith('http')) {
+            res = await axios.get('/api/documents');
+          } else {
+            throw initialErr;
+          }
+        }
+
+        if (isMounted && res.data?.success && Array.isArray(res.data.data)) {
+          const mapped = res.data.data.map((d: CloudDocItem) => ({
+            name: d.title || 'Sunday School Document',
+            path: d.url,
+          }));
+          setDocuments(mapped);
+        }
+      } catch (error) {
+        console.error('Error fetching documents from cloud:', error);
+      } finally {
+        if (isMounted) setDocsLoading(false);
+      }
+    };
+    fetchDocs();
     return () => {
-      // Cleanup function
+      isMounted = false;
     };
   }, []);
-
-  // Document data from public/documents
-  // Paths must match actual file names in frontend/public/documents/
-  const documents = [
-    { name: "19th year NASSU NASSU.pdf", path: "/documents/19th year NASSU NASSU.pdf" },
-    { name: "2024 METSHET FOR NASSU and NASSU.pdf", path: "/documents/2024 METSHET FOR NASSU and NASSU.pdf" },
-    { name: "2025 NASSU LIDET.pdf", path: "/documents/2025 NASSU LIDET.pdf" },
-    { name: "MICHIGAN SUNDAY SCHOOL THE 4 COUNCILS AND CREED.pdf", path: "/documents/MICHIGAN SUNDAY SCHOOL THE 4 COUNCILS AND CREED.pdf" },
-    { name: "NASSU ABIY TSOME.pdf", path: "/documents/NASSU ABIY TSOME.pdf" },
-    { name: "NASSU GEBRHER.pdf", path: "/documents/NASSU GEBRHER.pdf" },
-    { name: "NASSU KIDIST.pdf", path: "/documents/NASSU KIDIST.pdf" },
-    { name: "NASSU LIDET BEAL 2024.pdf", path: "/documents/NASSU LIDET BEAL 2024.pdf" },
-    { name: "NASSU MEKURAB.pdf", path: "/documents/NASSU MEKURAB.pdf" },
-    { name: "NASSU METSAGU.pdf", path: "/documents/NASSU METSAGU.pdf" },
-    { name: "NASSU NEW YEAR.pdf", path: "/documents/NASSU NEW YEAR.pdf" },
-    { name: "NASSU NICODIMUS.pdf", path: "/documents/NASSU NICODIMUS.pdf" },
-    { name: "NASSU SIBKET BIRHAN AND NOLAWI.pdf", path: "/documents/NASSU SIBKET BIRHAN AND NOLAWI.pdf" },
-    { name: "NASSU SPIRITUAL ETHICS 1.pdf", path: "/documents/NASSU SPIRITUAL ETHICS 1.pdf" },
-    { name: "NASSU TSOME NINEVEH (NENEWE).pdf", path: "/documents/NASSU TSOME NINEVEH (NENEWE).pdf" },
-    { name: "NASSU WOREHA TSIGE.pdf", path: "/documents/NASSU WOREHA TSIGE.pdf" },
-    { name: "POEM FOR NASSU 2018.pdf", path: "/documents/POEM FOR NASSU 2018.pdf" },
-    { name: "TAKS SUNDAY SCHOOL COURSE.pdf", path: "/documents/TAKS SUNDAY SCHOOL COURSE.pdf" },
-    { name: "THE 4 CONVENTION AND THE CREED IN ENGLISH.pdf", path: "/documents/THE 4 CONVENTION AND THE CREED IN ENGLISH.pdf" },
-  ];
 
   // Sample news data
   const newsItems = [
@@ -53,7 +71,7 @@ const NewsPage = () => {
       title: t('news_page.news_items.annual_conference.title'),
       date: "May 10, 2025",
       category: "events",
-      image: "images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.annual_conference.excerpt'),
       readingTime: t('news_page.news_items.annual_conference.reading_time')
     },
@@ -62,7 +80,7 @@ const NewsPage = () => {
       title: t('news_page.news_items.new_curriculum.title'),
       date: "April 28, 2025",
       category: "resources",
-      image: "images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.new_curriculum.excerpt'),
       readingTime: t('news_page.news_items.new_curriculum.reading_time')
     },
@@ -71,7 +89,7 @@ const NewsPage = () => {
       title: t('news_page.news_items.teacher_training.title'),
       date: "April 15, 2025",
       category: "events",
-      image: "images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.teacher_training.excerpt'),
       readingTime: t('news_page.news_items.teacher_training.reading_time')
     },
@@ -80,7 +98,7 @@ const NewsPage = () => {
       title: t('news_page.news_items.partnership.title'),
       date: "April 5, 2025",
       category: "announcements",
-      image: "images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.partnership.excerpt'),
       readingTime: t('news_page.news_items.partnership.reading_time')
     },
@@ -89,7 +107,7 @@ const NewsPage = () => {
       title: t('news_page.news_items.summer_camp.title'),
       date: "March 20, 2025",
       category: "events",
-      image: "images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.summer_camp.excerpt'),
       readingTime: t('news_page.news_items.summer_camp.reading_time')
     },
@@ -98,7 +116,7 @@ const NewsPage = () => {
       title: t('news_page.news_items.new_board.title'),
       date: "March 12, 2025",
       category: "announcements",
-      image: "images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.new_board.excerpt'),
       readingTime: t('news_page.news_items.new_board.reading_time')
     },
@@ -107,7 +125,7 @@ const NewsPage = () => {
       title: t('news_page.news_items.digital_library.title'),
       date: "February 28, 2025",
       category: "resources",
-      image: "images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.digital_library.excerpt'),
       readingTime: t('news_page.news_items.digital_library.reading_time')
     },
@@ -313,44 +331,55 @@ const NewsPage = () => {
             </TabsContent>
 
             <TabsContent value="documents" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {documents.map((doc, index) => (
-                  <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                    <div className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0 bg-orthodox-blue/10 p-3 rounded-lg">
-                          <FileText className="h-6 w-6 text-orthodox-blue" />
+              {docsLoading ? (
+                <div className="text-center py-12">
+                  <p className="text-gray-500">Loading documents from cloud storage...</p>
+                </div>
+              ) : documents.length === 0 ? (
+                <div className="text-center py-12 bg-white rounded-lg shadow-sm border">
+                  <FileText className="mx-auto h-10 w-10 text-gray-400 mb-2" />
+                  <p className="text-gray-600 font-medium">No documents available yet.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {documents.map((doc, index) => (
+                    <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                      <div className="p-6">
+                        <div className="flex items-start space-x-4">
+                          <div className="flex-shrink-0 bg-orthodox-blue/10 p-3 rounded-lg">
+                            <FileText className="h-6 w-6 text-orthodox-blue" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <a
+                              href={doc.path}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block group"
+                            >
+                              <h3 className="text-lg font-medium text-gray-900 truncate group-hover:text-orthodox-blue transition-colors cursor-pointer">
+                                {doc.name.replace(/\.pdf$/i, '')}
+                              </h3>
+                            </a>
+                            <p className="text-sm text-gray-500">{t('news_page.document_types.pdf_document')}</p>
+                          </div>
                         </div>
-                        <div className="flex-1 min-w-0">
+                        <div className="mt-4 flex justify-end">
                           <a
                             href={doc.path}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block group"
+                            download
+                            className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-orthodox-blue bg-orthodox-blue/10 hover:bg-orthodox-blue/20"
                           >
-                            <h3 className="text-lg font-medium text-gray-900 truncate group-hover:text-orthodox-blue transition-colors cursor-pointer">
-                              {doc.name.replace(/\.pdf$/i, '')}
-                            </h3>
+                            <Download className="h-3.5 w-3.5 mr-1.5" />
+                            {t('news_page.actions.download')}
                           </a>
-                          <p className="text-sm text-gray-500">{t('news_page.document_types.pdf_document')}</p>
                         </div>
                       </div>
-                      <div className="mt-4 flex justify-end">
-                        <a
-                          href={doc.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          download
-                          className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-orthodox-blue bg-orthodox-blue/10 hover:bg-orthodox-blue/20"
-                        >
-                          <Download className="h-3.5 w-3.5 mr-1.5" />
-                          {t('news_page.actions.download')}
-                        </a>
-                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </TabsContent>
           </Tabs>
 

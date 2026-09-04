@@ -19,7 +19,7 @@ const NewsDetail = () => {
       title: t('news_page.news_items.annual_conference.title'),
       date: "May 10, 2025",
       category: "events",
-      image: "/images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.annual_conference.excerpt'),
       readingTime: t('news_page.news_items.annual_conference.reading_time'),
       content: `We are excited to announce the dates for our 2025 Annual Conference, which will focus on innovative approaches to Orthodox education. This year's conference will bring together educators, administrators, and community leaders from across North America, the Caribbean, and Latin America.
@@ -39,7 +39,7 @@ Registration will open in the coming weeks, and early bird pricing will be avail
       title: t('news_page.news_items.new_curriculum.title'),
       date: "April 28, 2025",
       category: "resources",
-      image: "/images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.new_curriculum.excerpt'),
       readingTime: t('news_page.news_items.new_curriculum.reading_time'),
       content: `We are pleased to announce the release of our newly developed curriculum materials designed specifically for middle school Sunday School classes. This comprehensive curriculum has been developed by a team of experienced Orthodox educators and theologians.
@@ -59,7 +59,7 @@ These materials are now available for download in the Resources section of our w
       title: t('news_page.news_items.teacher_training.title'),
       date: "April 15, 2025",
       category: "events",
-      image: "/images/events.jpg",
+      image: "https://res.cloudinary.com/drersaifa/image/upload/v1788440633/nassu/gallery/1788440632831_events.jpg",
       excerpt: t('news_page.news_items.teacher_training.excerpt'),
       readingTime: t('news_page.news_items.teacher_training.reading_time'),
       content: `Registration is now open for our spring teacher training workshop series. These workshops are designed to equip Sunday School teachers with the skills and knowledge needed to effectively teach Orthodox faith and traditions.
@@ -324,4 +324,5 @@ Dates and locations for regional conferences will be announced soon. We encourag
 };
 
 export default NewsDetail;
+
 

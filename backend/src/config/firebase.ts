@@ -11,32 +11,29 @@ if (!admin.apps.length) {
     if (!projectId || !privateKey || !clientEmail) {
       console.warn('⚠️  Firebase configuration not provided. Firebase features will be disabled.');
       console.warn('   To enable Firebase, set FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, and FIREBASE_PRIVATE_KEY in your .env file');
-      return;
-    }
-
-    // Check if using placeholder values
-    if (projectId === 'your-firebase-project-id' || 
-        clientEmail === 'your-service-account@your-project.iam.gserviceaccount.com' ||
-        privateKey.includes('YOUR_PRIVATE_KEY_HERE')) {
+    } else if (
+      projectId === 'your-firebase-project-id' || 
+      clientEmail === 'your-service-account@your-project.iam.gserviceaccount.com' ||
+      privateKey.includes('YOUR_PRIVATE_KEY_HERE')
+    ) {
       console.warn('⚠️  Firebase configuration contains placeholder values. Firebase features will be disabled.');
       console.warn('   Please update your .env file with actual Firebase credentials to enable Firebase features');
-      return;
+    } else {
+      // Ensure private key has proper line breaks
+      privateKey = privateKey.replace(/\\n/g, '\n');
+
+      // Initialize Firebase Admin
+      admin.initializeApp({
+        credential: admin.credential.cert({
+          projectId,
+          clientEmail,
+          privateKey
+        } as admin.ServiceAccount),
+        databaseURL: `https://${projectId}.firebaseio.com`
+      });
+      
+      console.log('✅ Firebase Admin initialized successfully');
     }
-
-    // Ensure private key has proper line breaks
-    privateKey = privateKey.replace(/\\n/g, '\n');
-
-    // Initialize Firebase Admin
-    admin.initializeApp({
-      credential: admin.credential.cert({
-        projectId,
-        clientEmail,
-        privateKey
-      } as admin.ServiceAccount),
-      databaseURL: `https://${projectId}.firebaseio.com`
-    });
-    
-    console.log('✅ Firebase Admin initialized successfully');
   } catch (error) {
     console.error('❌ Firebase admin initialization error:', error instanceof Error ? error.message : error);
     console.warn('⚠️  Firebase features will be disabled. Please check your Firebase configuration.');

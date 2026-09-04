@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center z-0" 
         style={{ 
-          backgroundImage: 'url("images/church2.png")',
+          backgroundImage: 'url("https://res.cloudinary.com/drersaifa/image/upload/v1788440630/nassu/gallery/1788440629787_church2.png")',
           filter: 'brightness(0.6)'
         }}
       />

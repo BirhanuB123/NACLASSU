@@ -1,15 +1,16 @@
 import mongoose from 'mongoose';
 
-const PhotoSchema = new mongoose.Schema(
+const DocumentSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     description: { type: String, default: '' },
     url: { type: String, required: true }, // public Firebase Storage URL
     storagePath: { type: String, required: true }, // path within the bucket, needed to delete later
-    category: { type: String, default: 'gallery' }, // e.g. 'gallery', 'events', 'team'
+    fileType: { type: String, default: 'pdf' },
+    category: { type: String, default: 'general' }, // e.g. 'lessons', 'bulletins'
     uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   { timestamps: true }
 );
 
-export default mongoose.model('Photo', PhotoSchema);
+export default mongoose.model('Document', DocumentSchema);

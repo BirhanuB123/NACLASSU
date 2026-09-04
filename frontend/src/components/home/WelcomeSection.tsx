@@ -31,10 +31,14 @@ const WelcomeSection = () => {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold-500 rounded-lg"></div>
               <img 
-                src="/images/Mariyam_enate.jpg" 
+                src="https://res.cloudinary.com/drersaifa/image/upload/v1788440634/nassu/gallery/1788440633752_Mariyam_enate.jpg" 
                 alt="Sunday School Children" 
                 className="rounded-lg shadow-lg w-full h-auto object-cover"
                 style={{ maxHeight: "500px" }}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/placeholder.svg';
+                }}
               />
             </div>
           </div>
